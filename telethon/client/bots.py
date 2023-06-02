@@ -44,16 +44,16 @@ class BotMethods:
 
         Returns
             A list of `custom.InlineResult
-            <telethon.tl.custom.inlineresult.InlineResult>`.
+            <wuyusile.tl.custom.inlineresult.InlineResult>`.
 
         Example
             .. code-block:: python
 
                 # Make an inline query to @like
-                results = await client.inline_query('like', 'Do you like Telethon?')
+                results = await client.inline_query('like', 'Do you like daxiedewy?')
 
                 # Send the first result to some chat
-                message = await results[0].click('TelethonOffTopic')
+                message = await results[0].click('daxiedewyOffTopic')
         """
         bot = await self.get_input_entity(bot)
         if entity:

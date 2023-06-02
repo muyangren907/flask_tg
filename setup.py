@@ -6,7 +6,7 @@ https://packaging.python.org/en/latest/distributing.html
 https://github.com/pypa/sampleproject
 
 Extra supported commands are:
-* gen, to generate the classes required for Telethon to run or docs
+* gen, to generate the classes required for daxiedewy to run or docs
 * pypi, to generate sdist, bdist_wheel, and push to PyPi
 """
 
@@ -44,10 +44,10 @@ class TempWorkDir:
         os.chdir(self.original)
 
 
-API_REF_URL = 'https://tl.telethon.dev/'
+API_REF_URL = 'https://tl.wuyusile.dev/'
 
-GENERATOR_DIR = Path('telethon_generator')
-LIBRARY_DIR = Path('telethon')
+GENERATOR_DIR = Path('wuyusile_generator')
+LIBRARY_DIR = Path('wuyusile')
 
 ERRORS_IN = GENERATOR_DIR / 'data/errors.csv'
 ERRORS_OUT = LIBRARY_DIR / 'errors/rpcerrorlist.py'
@@ -66,10 +66,10 @@ DOCS_OUT = Path('docs')
 
 
 def generate(which, action='gen'):
-    from telethon_generator.parsers import\
+    from wuyusile_generator.parsers import\
         parse_errors, parse_methods, parse_tl, find_layer
 
-    from telethon_generator.generators import\
+    from wuyusile_generator.generators import\
         generate_errors, generate_tlobjects, generate_docs, clean_tlobjects
 
     layer = next(filter(None, map(find_layer, TLOBJECT_IN_TLS)))
@@ -158,7 +158,7 @@ def main(argv):
         generate(argv[2:], argv[1])
 
     elif len(argv) >= 2 and argv[1] == 'pypi':
-        # Make sure tl.telethon.dev is up-to-date first
+        # Make sure tl.wuyusile.dev is up-to-date first
         with urllib.request.urlopen(API_REF_URL) as resp:
             html = resp.read()
             m = re.search(br'layer\s+(\d+)', html)
@@ -166,7 +166,7 @@ def main(argv):
                 print('Failed to check that the API reference is up to date:', API_REF_URL)
                 return
 
-            from telethon_generator.parsers import find_layer
+            from wuyusile_generator.parsers import find_layer
             layer = next(filter(None, map(find_layer, TLOBJECT_IN_TLS)))
             published_layer = int(m[1])
             if published_layer != layer:
@@ -177,14 +177,14 @@ def main(argv):
         # (Re)generate the code to make sure we don't push without it
         generate(['tl', 'errors'])
 
-        # Try importing the telethon module to assert it has no errors
+        # Try importing the wuyusile module to assert it has no errors
         try:
-            import telethon
+            import wuyusile
         except:
             print('Packaging for PyPi aborted, importing the module failed.')
             return
 
-        remove_dirs = ['__pycache__', 'build', 'dist', 'Telethon.egg-info']
+        remove_dirs = ['__pycache__', 'build', 'dist', 'daxiedewy.egg-info']
         for root, _dirs, _files in os.walk(LIBRARY_DIR, topdown=False):
             # setuptools is including __pycache__ for some reason (#1605)
             if root.endswith('/__pycache__'):
@@ -195,7 +195,7 @@ def main(argv):
         run('python3 setup.py sdist', shell=True)
         run('python3 setup.py bdist_wheel', shell=True)
         run('twine upload dist/*', shell=True)
-        for x in ('build', 'dist', 'Telethon.egg-info'):
+        for x in ('build', 'dist', 'daxiedewy.egg-info'):
             shutil.rmtree(x, ignore_errors=True)
 
     else:
@@ -207,17 +207,17 @@ def main(argv):
         with open('README.rst', 'r', encoding='utf-8') as f:
             long_description = f.read()
 
-        with open('telethon/version.py', 'r', encoding='utf-8') as f:
+        with open('wuyusile/version.py', 'r', encoding='utf-8') as f:
             version = re.search(r"^__version__\s*=\s*'(.*)'.*$",
                                 f.read(), flags=re.MULTILINE).group(1)
         setup(
-            name='Telethon',
+            name='daxiedewy',
             version=version,
             description="Full-featured Telegram client library for Python 3",
             long_description=long_description,
 
-            url='https://github.com/LonamiWebs/Telethon',
-            download_url='https://github.com/LonamiWebs/Telethon/releases',
+            url='https://github.com/LonamiWebs/daxiedewy',
+            download_url='https://github.com/LonamiWebs/daxiedewy/releases',
 
             author='Lonami Exo',
             author_email='totufals@hotmail.com',
@@ -249,7 +249,7 @@ def main(argv):
             ],
             keywords='telegram api chat client library messaging mtproto',
             packages=find_packages(exclude=[
-                'telethon_*', 'tests*'
+                'wuyusile_*', 'tests*'
             ]),
             install_requires=['pyaes', 'rsa'],
             extras_require={

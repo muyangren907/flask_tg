@@ -71,7 +71,7 @@ class TelegramBaseClient(abc.ABC):
     leaves the `__call__` unimplemented.
 
     Arguments
-        session (`str` | `telethon.sessions.abstract.Session`, `None`):
+        session (`str` | `wuyusile.sessions.abstract.Session`, `None`):
             The file name of the session file to be used if a string is
             given (it may be a full path), or the Session instance to be
             used otherwise. If it's `None`, the session will not be saved,
@@ -91,11 +91,11 @@ class TelegramBaseClient(abc.ABC):
         api_hash (`str`):
             The API hash you obtained from https://my.telegram.org.
 
-        connection (`telethon.network.connection.common.Connection`, optional):
+        connection (`wuyusile.network.connection.common.Connection`, optional):
             The connection instance to be used when creating a new connection
             to the servers. It **must** be a type.
 
-            Defaults to `telethon.network.connection.tcpfull.ConnectionTcpFull`.
+            Defaults to `wuyusile.network.connection.tcpfull.ConnectionTcpFull`.
 
         use_ipv6 (`bool`, optional):
             Whether to connect to the servers through IPv6 or not.
@@ -165,7 +165,7 @@ class TelegramBaseClient(abc.ABC):
             larger than a day (like ``float('inf')``) will be changed to a day.
 
         raise_last_call_error (`bool`, optional):
-            When API calls fail in a way that causes Telethon to retry
+            When API calls fail in a way that causes daxiedewy to retry
             automatically, should the RPC error of the last attempt be raised
             instead of a generic ValueError. This is mostly useful for
             detecting when Telegram has internal issues.
@@ -180,7 +180,7 @@ class TelegramBaseClient(abc.ABC):
 
         app_version (`str`, optional):
             "App version" to be sent when creating the initial connection.
-            Defaults to `telethon.version.__version__`.
+            Defaults to `wuyusile.version.__version__`.
 
         lang_code (`str`, optional):
             "Language code" to be sent when creating the initial connection.
@@ -265,7 +265,7 @@ class TelegramBaseClient(abc.ABC):
         if not api_id or not api_hash:
             raise ValueError(
                 "Your API ID or Hash cannot be empty or None. "
-                "Refer to telethon.rtfd.io for more information.")
+                "Refer to wuyusile.rtfd.io for more information.")
 
         self._use_ipv6 = use_ipv6
 
@@ -276,7 +276,7 @@ class TelegramBaseClient(abc.ABC):
 
         class _Loggers(dict):
             def __missing__(self, key):
-                if key.startswith("telethon."):
+                if key.startswith("wuyusile."):
                     key = key.split('.', maxsplit=1)[1]
 
                 return base_logger.getChild(key)
@@ -331,12 +331,12 @@ class TelegramBaseClient(abc.ABC):
         #
         # TODO A better fix is obviously avoiding the use of `sock_connect`
         #
-        # See https://github.com/LonamiWebs/Telethon/issues/1337 for details.
+        # See https://github.com/LonamiWebs/daxiedewy/issues/1337 for details.
         if not callable(getattr(self.loop, 'sock_connect', None)):
             raise TypeError(
                 'Event loop of type {} lacks `sock_connect`, which is needed to use proxies.\n\n'
                 'Change the event loop in use to use proxies:\n'
-                '# https://github.com/LonamiWebs/Telethon/issues/1337\n'
+                '# https://github.com/LonamiWebs/daxiedewy/issues/1337\n'
                 'import asyncio\n'
                 'asyncio.set_event_loop(asyncio.SelectorEventLoop())'.format(
                     self.loop.__class__.__name__
@@ -522,7 +522,7 @@ class TelegramBaseClient(abc.ABC):
             using.
 
             Before Telegram sends you updates, you need to make a high-level
-            request, like `client.get_me() <telethon.client.users.UserMethods.get_me>`,
+            request, like `client.get_me() <wuyusile.client.users.UserMethods.get_me>`,
             as described in https://core.telegram.org/api/updates.
 
         Example
@@ -932,7 +932,7 @@ class TelegramBaseClient(abc.ABC):
             flood_sleep_threshold (`int` | `None`, optional):
                 The flood sleep threshold to use for this request. This overrides
                 the default value stored in
-                `client.flood_sleep_threshold <telethon.client.telegrambaseclient.TelegramBaseClient.flood_sleep_threshold>`
+                `client.flood_sleep_threshold <wuyusile.client.telegrambaseclient.TelegramBaseClient.flood_sleep_threshold>`
 
         Returns:
             The result of the request (often a `TLObject`) or a list of

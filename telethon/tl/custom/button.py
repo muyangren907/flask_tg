@@ -8,9 +8,9 @@ class Button:
 
         This class is used to **define** reply markups, e.g. when
         sending a message or replying to events. When you access
-        `Message.buttons <telethon.tl.custom.message.Message.buttons>`
+        `Message.buttons <wuyusile.tl.custom.message.Message.buttons>`
         they are actually `MessageButton
-        <telethon.tl.custom.messagebutton.MessageButton>`,
+        <wuyusile.tl.custom.messagebutton.MessageButton>`,
         so you might want to refer to that class instead.
 
     Helper class to allow defining ``reply_markup`` when
@@ -71,7 +71,7 @@ class Button:
         data in a database and a reference to that data inside the button.
 
         When the user clicks this button, `events.CallbackQuery
-        <telethon.events.callbackquery.CallbackQuery>` will trigger with the
+        <wuyusile.events.callbackquery.CallbackQuery>` will trigger with the
         same data that the button contained, so that you can determine which
         button was pressed.
         """
@@ -144,7 +144,7 @@ class Button:
                     For now, you cannot use ID or username for this argument.
                     If you want to use a different bot than the one currently
                     logged in, you must manually use `client.get_input_entity()
-                    <telethon.client.users.UserMethods.get_input_entity>`.
+                    <wuyusile.client.users.UserMethods.get_input_entity>`.
 
             write_access (`bool`):
                 Whether write access is required or not.
@@ -187,7 +187,7 @@ class Button:
 
         When the user clicks this button, a text message with the same text
         as the button will be sent, and can be handled with `events.NewMessage
-        <telethon.events.newmessage.NewMessage>`. You cannot distinguish
+        <wuyusile.events.newmessage.NewMessage>`. You cannot distinguish
         between a button press and the user typing and sending exactly the
         same text on their own.
         """

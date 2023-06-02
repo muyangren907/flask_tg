@@ -258,7 +258,7 @@ class UserMethods:
         Example
             .. code-block:: python
 
-                from telethon import utils
+                from wuyusile import utils
 
                 me = await client.get_entity('me')
                 print(utils.get_display_name(me))
@@ -466,7 +466,7 @@ class UserMethods:
 
         raise ValueError(
             'Could not find the input entity for {} ({}). Please read https://'
-            'docs.telethon.dev/en/stable/concepts/entities.html to'
+            'docs.wuyusile.dev/en/stable/concepts/entities.html to'
             ' find out more details.'
             .format(peer, type(peer).__name__)
         )

@@ -42,7 +42,7 @@ class NewMessage(EventBuilder):
         .. code-block:: python
 
             import asyncio
-            from telethon import events
+            from wuyusile import events
 
             @client.on(events.NewMessage(pattern='(?i)hello.+'))
             async def handler(event):
@@ -166,25 +166,25 @@ class NewMessage(EventBuilder):
     class Event(EventCommon):
         """
         Represents the event of a new message. This event can be treated
-        to all effects as a `Message <telethon.tl.custom.message.Message>`,
+        to all effects as a `Message <wuyusile.tl.custom.message.Message>`,
         so please **refer to its documentation** to know what you can do
         with this event.
 
         Members:
-            message (`Message <telethon.tl.custom.message.Message>`):
+            message (`Message <wuyusile.tl.custom.message.Message>`):
                 This is the only difference with the received
-                `Message <telethon.tl.custom.message.Message>`, and will
-                return the `telethon.tl.custom.message.Message` itself,
+                `Message <wuyusile.tl.custom.message.Message>`, and will
+                return the `wuyusile.tl.custom.message.Message` itself,
                 not the text.
 
-                See `Message <telethon.tl.custom.message.Message>` for
+                See `Message <wuyusile.tl.custom.message.Message>` for
                 the rest of available members and methods.
 
             pattern_match (`obj`):
                 The resulting object from calling the passed ``pattern`` function.
                 Here's an example using a string (defaults to regex match):
 
-                >>> from telethon import TelegramClient, events
+                >>> from wuyusile import TelegramClient, events
                 >>> client = TelegramClient(...)
                 >>>
                 >>> @client.on(events.NewMessage(pattern=r'hi (\\w+)!'))

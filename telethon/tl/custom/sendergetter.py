@@ -26,7 +26,7 @@ class SenderGetter(abc.ABC):
         If you need to call a method which needs
         this chat, use `input_sender` instead.
 
-        If you're using `telethon.events`, use `get_sender()` instead.
+        If you're using `wuyusile.events`, use `get_sender()` instead.
         """
         return self._sender
 
@@ -63,7 +63,7 @@ class SenderGetter(abc.ABC):
         """
         This :tl:`InputPeer` is the input version of the user/channel who
         sent the message. Similarly to `input_chat
-        <telethon.tl.custom.chatgetter.ChatGetter.input_chat>`, this doesn't
+        <wuyusile.tl.custom.chatgetter.ChatGetter.input_chat>`, this doesn't
         have things like username or similar, but still useful in some cases.
 
         Note that this might not be available if the library can't

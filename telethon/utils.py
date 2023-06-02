@@ -31,7 +31,7 @@ except ImportError:
     hachoir = None
 
 # Register some of the most common mime-types to avoid any issues.
-# See https://github.com/LonamiWebs/Telethon/issues/1096.
+# See https://github.com/LonamiWebs/daxiedewy/issues/1096.
 mimetypes.add_type('image/png', '.png')
 mimetypes.add_type('image/jpeg', '.jpeg')
 mimetypes.add_type('image/webp', '.webp')
@@ -1124,11 +1124,11 @@ def _encode_telegram_base64(string):
 
 def resolve_bot_file_id(file_id):
     """
-    Given a Bot API-style `file_id <telethon.tl.custom.file.File.id>`,
-    returns the media it represents. If the `file_id <telethon.tl.custom.file.File.id>`
+    Given a Bot API-style `file_id <wuyusile.tl.custom.file.File.id>`,
+    returns the media it represents. If the `file_id <wuyusile.tl.custom.file.File.id>`
     is not valid, `None` is returned instead.
 
-    Note that the `file_id <telethon.tl.custom.file.File.id>` does not have information
+    Note that the `file_id <wuyusile.tl.custom.file.File.id>` does not have information
     such as image dimensions or file size, so these will be zero if present.
 
     For thumbnails, the photo ID and hash will always be zero.
@@ -1449,8 +1449,8 @@ def split_text(text, entities, *, limit=4096, max_entities=100, split_at=(r'\n',
     Example
         .. code-block:: python
 
-            from telethon import utils
-            from telethon.extensions import markdown
+            from wuyusile import utils
+            from wuyusile.extensions import markdown
 
             very_long_markdown_text = "..."
             text, entities = markdown.parse(very_long_markdown_text)

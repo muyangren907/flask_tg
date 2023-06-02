@@ -30,7 +30,7 @@ def get_import_code(tlobject):
     """``TLObject -> from ... import ...``."""
     kind = 'functions' if tlobject.is_function else 'types'
     ns = '.' + tlobject.namespace if tlobject.namespace else ''
-    return 'from telethon.tl.{}{} import {}'\
+    return 'from wuyusile.tl.{}{} import {}'\
         .format(kind, ns, tlobject.class_name)
 
 
@@ -374,15 +374,15 @@ def _write_html_pages(tlobjects, methods, layer, input_res):
                         docs.add_row('{}.'.format(error.description))
                     docs.end_table()
                     docs.write_text('You can import these from '
-                                    '<code>telethon.errors</code>.')
+                                    '<code>wuyusile.errors</code>.')
 
                 docs.write_title('Example', id='examples')
                 if tlobject.friendly:
                     ns, friendly = tlobject.friendly
                     docs.write_text(
                         'Please refer to the documentation of <a href="'
-                        'https://docs.telethon.dev/en/stable/modules/client.html'
-                        '#telethon.client.{0}.{1}"><code>client.{1}()</code></a> '
+                        'https://docs.wuyusile.dev/en/stable/modules/client.html'
+                        '#wuyusile.client.{0}.{1}"><code>client.{1}()</code></a> '
                         'to learn about the parameters and see several code '
                         'examples on how to use it.'
                         .format(ns, friendly)
@@ -396,8 +396,8 @@ def _write_html_pages(tlobjects, methods, layer, input_res):
                     docs.write('<details>')
 
                 docs.write('''<pre>\
-<strong>from</strong> telethon.sync <strong>import</strong> TelegramClient
-<strong>from</strong> telethon <strong>import</strong> functions, types
+<strong>from</strong> wuyusile.sync <strong>import</strong> TelegramClient
+<strong>from</strong> wuyusile <strong>import</strong> functions, types
 
 <strong>with</strong> TelegramClient(name, api_id, api_hash) <strong>as</strong> client:
     result = client(''')

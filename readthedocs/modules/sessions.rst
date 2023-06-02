@@ -1,4 +1,4 @@
-.. _telethon-sessions:
+.. _wuyusile-sessions:
 
 ========
 Sessions
@@ -6,22 +6,22 @@ Sessions
 
 These are the different built-in session storage that you may subclass.
 
-.. automodule:: telethon.sessions.abstract
+.. automodule:: wuyusile.sessions.abstract
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.sessions.memory
+.. automodule:: wuyusile.sessions.memory
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.sessions.sqlite
+.. automodule:: wuyusile.sessions.sqlite
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.sessions.string
+.. automodule:: wuyusile.sessions.string
     :members:
     :undoc-members:
     :show-inheritance:

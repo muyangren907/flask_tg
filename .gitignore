@@ -1,8 +1,8 @@
 # Generated code
-/telethon/tl/functions/
-/telethon/tl/types/
-/telethon/tl/alltlobjects.py
-/telethon/errors/rpcerrorlist.py
+/wuyusile/tl/functions/
+/wuyusile/tl/types/
+/wuyusile/tl/alltlobjects.py
+/wuyusile/errors/rpcerrorlist.py
 
 # User session
 *.session

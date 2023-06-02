@@ -16,10 +16,10 @@ to find out about the attributes.
 ChatGetter
 ==========
 
-All events base `ChatGetter <telethon.tl.custom.chatgetter.ChatGetter>`,
+All events base `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`,
 and some of the objects below do too, so it's important to know its methods.
 
-.. currentmodule:: telethon.tl.custom.chatgetter.ChatGetter
+.. currentmodule:: wuyusile.tl.custom.chatgetter.ChatGetter
 
 .. autosummary::
     :nosignatures:
@@ -38,11 +38,11 @@ and some of the objects below do too, so it's important to know its methods.
 SenderGetter
 ============
 
-Similar to `ChatGetter <telethon.tl.custom.chatgetter.ChatGetter>`, a
-`SenderGetter <telethon.tl.custom.sendergetter.SenderGetter>` is the same,
+Similar to `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`, a
+`SenderGetter <wuyusile.tl.custom.sendergetter.SenderGetter>` is the same,
 but it works for senders instead.
 
-.. currentmodule:: telethon.tl.custom.sendergetter.SenderGetter
+.. currentmodule:: wuyusile.tl.custom.sendergetter.SenderGetter
 
 .. autosummary::
     :nosignatures:
@@ -58,14 +58,14 @@ but it works for senders instead.
 Message
 =======
 
-.. currentmodule:: telethon.tl.custom.message
+.. currentmodule:: wuyusile.tl.custom.message
 
 The `Message` type is very important, mostly because we are working
 with a library for a *messaging* platform, so messages are widely used:
 in events, when fetching history, replies, etc.
 
-It bases `ChatGetter <telethon.tl.custom.chatgetter.ChatGetter>` and
-`SenderGetter <telethon.tl.custom.sendergetter.SenderGetter>`.
+It bases `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>` and
+`SenderGetter <wuyusile.tl.custom.sendergetter.SenderGetter>`.
 
 Properties
 ----------
@@ -75,7 +75,7 @@ Properties
     We document *custom properties* here, not all the attributes of the
     `Message` (which is the information Telegram actually returns).
 
-.. currentmodule:: telethon.tl.custom.message.Message
+.. currentmodule:: wuyusile.tl.custom.message.Message
 
 .. autosummary::
     :nosignatures:
@@ -131,12 +131,12 @@ Methods
 File
 ====
 
-The `File <telethon.tl.custom.file.File>` type is a wrapper object
-returned by `Message.file <telethon.tl.custom.message.Message.file>`,
+The `File <wuyusile.tl.custom.file.File>` type is a wrapper object
+returned by `Message.file <wuyusile.tl.custom.message.Message.file>`,
 and you can use it to easily access a document's attributes, such as
 its name, bot-API style file ID, etc.
 
-.. currentmodule:: telethon.tl.custom.file.File
+.. currentmodule:: wuyusile.tl.custom.file.File
 
 .. autosummary::
     :nosignatures:
@@ -158,14 +158,14 @@ its name, bot-API style file ID, etc.
 Conversation
 ============
 
-The `Conversation <telethon.tl.custom.conversation.Conversation>` object
+The `Conversation <wuyusile.tl.custom.conversation.Conversation>` object
 is returned by the `client.conversation()
-<telethon.client.dialogs.DialogMethods.conversation>` method to easily
+<wuyusile.client.dialogs.DialogMethods.conversation>` method to easily
 send and receive responses like a normal conversation.
 
-It bases `ChatGetter <telethon.tl.custom.chatgetter.ChatGetter>`.
+It bases `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`.
 
-.. currentmodule:: telethon.tl.custom.conversation.Conversation
+.. currentmodule:: wuyusile.tl.custom.conversation.Conversation
 
 .. autosummary::
     :nosignatures:
@@ -185,14 +185,14 @@ It bases `ChatGetter <telethon.tl.custom.chatgetter.ChatGetter>`.
 AdminLogEvent
 =============
 
-The `AdminLogEvent <telethon.tl.custom.adminlogevent.AdminLogEvent>` object
+The `AdminLogEvent <wuyusile.tl.custom.adminlogevent.AdminLogEvent>` object
 is returned by the `client.iter_admin_log()
-<telethon.client.chats.ChatMethods.iter_admin_log>` method to easily iterate
+<wuyusile.client.chats.ChatMethods.iter_admin_log>` method to easily iterate
 over past "events" (deleted messages, edits, title changes, leaving members…)
 
 These are all the properties you can find in it:
 
-.. currentmodule:: telethon.tl.custom.adminlogevent.AdminLogEvent
+.. currentmodule:: wuyusile.tl.custom.adminlogevent.AdminLogEvent
 
 .. autosummary::
     :nosignatures:
@@ -226,13 +226,13 @@ These are all the properties you can find in it:
 Button
 ======
 
-The `Button <telethon.tl.custom.button.Button>` class is used when you login
+The `Button <wuyusile.tl.custom.button.Button>` class is used when you login
 as a bot account to send messages with reply markup, such as inline buttons
 or custom keyboards.
 
 These are the static methods you can use to create instances of the markup:
 
-.. currentmodule:: telethon.tl.custom.button.Button
+.. currentmodule:: wuyusile.tl.custom.button.Button
 
 .. autosummary::
     :nosignatures:
@@ -252,21 +252,21 @@ These are the static methods you can use to create instances of the markup:
 InlineResult
 ============
 
-The `InlineResult <telethon.tl.custom.inlineresult.InlineResult>` object
+The `InlineResult <wuyusile.tl.custom.inlineresult.InlineResult>` object
 is returned inside a list by the `client.inline_query()
-<telethon.client.bots.BotMethods.inline_query>` method to make an inline
+<wuyusile.client.bots.BotMethods.inline_query>` method to make an inline
 query to a bot that supports being used in inline mode, such as
 `@like <https://t.me/like>`_.
 
 Note that the list returned is in fact a *subclass* of a list called
-`InlineResults <telethon.tl.custom.inlineresults.InlineResults>`, which,
+`InlineResults <wuyusile.tl.custom.inlineresults.InlineResults>`, which,
 in addition of being a list (iterator, indexed access, etc.), has extra
 attributes and methods.
 
 These are the constants for the types, properties and methods you
 can find the individual results:
 
-.. currentmodule:: telethon.tl.custom.inlineresult.InlineResult
+.. currentmodule:: wuyusile.tl.custom.inlineresult.InlineResult
 
 .. autosummary::
     :nosignatures:
@@ -296,10 +296,10 @@ can find the individual results:
 Dialog
 ======
 
-The `Dialog <telethon.tl.custom.dialog.Dialog>` object is returned when
-you call `client.iter_dialogs() <telethon.client.dialogs.DialogMethods.iter_dialogs>`.
+The `Dialog <wuyusile.tl.custom.dialog.Dialog>` object is returned when
+you call `client.iter_dialogs() <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`.
 
-.. currentmodule:: telethon.tl.custom.dialog.Dialog
+.. currentmodule:: wuyusile.tl.custom.dialog.Dialog
 
 .. autosummary::
     :nosignatures:
@@ -312,10 +312,10 @@ you call `client.iter_dialogs() <telethon.client.dialogs.DialogMethods.iter_dial
 Draft
 ======
 
-The `Draft <telethon.tl.custom.draft.Draft>` object is returned when
-you call `client.iter_drafts() <telethon.client.dialogs.DialogMethods.iter_drafts>`.
+The `Draft <wuyusile.tl.custom.draft.Draft>` object is returned when
+you call `client.iter_drafts() <wuyusile.client.dialogs.DialogMethods.iter_drafts>`.
 
-.. currentmodule:: telethon.tl.custom.draft.Draft
+.. currentmodule:: wuyusile.tl.custom.draft.Draft
 
 .. autosummary::
     :nosignatures:
@@ -335,10 +335,10 @@ you call `client.iter_drafts() <telethon.client.dialogs.DialogMethods.iter_draft
 Utils
 =====
 
-The `telethon.utils` module has plenty of methods that make using the
+The `wuyusile.utils` module has plenty of methods that make using the
 library a lot easier. Only the interesting ones will be listed here.
 
-.. currentmodule:: telethon.utils
+.. currentmodule:: wuyusile.utils
 
 .. autosummary::
     :nosignatures:

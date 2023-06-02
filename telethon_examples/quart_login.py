@@ -3,8 +3,8 @@ import os
 
 from quart import Quart, render_template_string, request
 
-from telethon import TelegramClient, utils
-from telethon.errors import SessionPasswordNeededError
+from wuyusile import TelegramClient, utils
+from wuyusile.errors import SessionPasswordNeededError
 
 
 def get_env(name, message):
@@ -18,7 +18,7 @@ BASE_TEMPLATE = '''
 <html>
     <head>
         <meta charset='UTF-8'>
-        <title>Telethon + Quart</title>
+        <title>daxiedewy + Quart</title>
     </head>
     <body>{{ content | safe }}</body>
 </html>
@@ -50,7 +50,7 @@ SESSION = os.environ.get('TG_SESSION', 'quart')
 API_ID = int(get_env('TG_API_ID', 'Enter your API ID: '))
 API_HASH = get_env('TG_API_HASH', 'Enter your API hash: ')
 
-# Telethon client
+# daxiedewy client
 client = TelegramClient(SESSION, API_ID, API_HASH)
 client.parse_mode = 'html'  # <- Render things nicely
 phone = None
@@ -131,7 +131,7 @@ async def root():
 
 
 # By default, `Quart.run` uses `asyncio.run()`, which creates a new asyncio
-# event loop. If we had connected the `TelegramClient` before, `telethon` will
+# event loop. If we had connected the `TelegramClient` before, `wuyusile` will
 # use `asyncio.get_running_loop()` to create some additional tasks. If these
 # loops are different, it won't work.
 #

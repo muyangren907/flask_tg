@@ -3,8 +3,8 @@ import pathlib
 
 import pytest
 
-from telethon import utils
-from telethon.tl.types import (
+from wuyusile import utils
+from wuyusile.tl.types import (
     MessageMediaGame, Game, PhotoEmpty
 )
 

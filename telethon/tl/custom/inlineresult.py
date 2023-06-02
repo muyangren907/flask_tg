@@ -112,10 +112,10 @@ class InlineResult:
             entity (`entity`):
                 The entity to which the message of this result should be sent.
 
-            reply_to (`int` | `Message <telethon.tl.custom.message.Message>`, optional):
+            reply_to (`int` | `Message <wuyusile.tl.custom.message.Message>`, optional):
                 If present, the sent message will reply to this ID or message.
 
-            comment_to (`int` | `Message <telethon.tl.custom.message.Message>`, optional):
+            comment_to (`int` | `Message <wuyusile.tl.custom.message.Message>`, optional):
                 Similar to ``reply_to``, but replies in the linked group of a
                 broadcast channel instead (effectively leaving a "comment to"
                 the specified message).
@@ -169,7 +169,7 @@ class InlineResult:
         document will be downloaded; otherwise, the photo will if present).
 
         This is a wrapper around `client.download_media
-        <telethon.client.downloads.DownloadMethods.download_media>`.
+        <wuyusile.client.downloads.DownloadMethods.download_media>`.
         """
         if self.document or self.photo:
             return await self._client.download_media(

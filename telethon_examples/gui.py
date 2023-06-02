@@ -11,10 +11,10 @@ import tkinter.constants
 import tkinter.scrolledtext
 import tkinter.ttk
 
-from telethon import TelegramClient, events, utils
+from wuyusile import TelegramClient, events, utils
 
 # Some configuration for the app
-TITLE = 'Telethon GUI'
+TITLE = 'daxiedewy GUI'
 SIZE = '640x280'
 REPLY = re.compile(r'\.r\s*(\d+)\s*(.+)', re.IGNORECASE)
 DELETE = re.compile(r'\.d\s*(\d+)', re.IGNORECASE)

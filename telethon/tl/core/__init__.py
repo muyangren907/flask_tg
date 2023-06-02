@@ -1,6 +1,6 @@
 """
 This module holds core "special" types, which are more convenient ways
-to do stuff in a `telethon.network.mtprotosender.MTProtoSender` instance.
+to do stuff in a `wuyusile.network.mtprotosender.MTProtoSender` instance.
 
 Only special cases are gzip-packed data, the response message (not a
 client message), the message container which references these messages

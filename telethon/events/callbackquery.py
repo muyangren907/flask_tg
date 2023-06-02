@@ -34,7 +34,7 @@ class CallbackQuery(EventBuilder):
     Example
         .. code-block:: python
 
-            from telethon import events, Button
+            from wuyusile import events, Button
 
             # Handle all callback queries and check data inside the handler
             @client.on(events.CallbackQuery)
@@ -91,7 +91,7 @@ class CallbackQuery(EventBuilder):
         if isinstance(update, types.UpdateBotCallbackQuery):
             return cls.Event(update, update.peer, update.msg_id)
         elif isinstance(update, types.UpdateInlineBotCallbackQuery):
-            # See https://github.com/LonamiWebs/Telethon/pull/1005
+            # See https://github.com/LonamiWebs/daxiedewy/pull/1005
             # The long message ID is actually just msg_id + peer_id
             mid, pid = struct.unpack('<ii', struct.pack('<q', update.msg_id.id))
             peer = types.PeerChannel(-pid) if pid < 0 else types.PeerUser(pid)
@@ -270,7 +270,7 @@ class CallbackQuery(EventBuilder):
         async def respond(self, *args, **kwargs):
             """
             Responds to the message (not as a reply). Shorthand for
-            `telethon.client.messages.MessageMethods.send_message` with
+            `wuyusile.client.messages.MessageMethods.send_message` with
             ``entity`` already set.
 
             This method also creates a task to `answer` the callback.
@@ -284,7 +284,7 @@ class CallbackQuery(EventBuilder):
         async def reply(self, *args, **kwargs):
             """
             Replies to the message (as a reply). Shorthand for
-            `telethon.client.messages.MessageMethods.send_message` with
+            `wuyusile.client.messages.MessageMethods.send_message` with
             both ``entity`` and ``reply_to`` already set.
 
             This method also creates a task to `answer` the callback.
@@ -299,7 +299,7 @@ class CallbackQuery(EventBuilder):
         async def edit(self, *args, **kwargs):
             """
             Edits the message. Shorthand for
-            `telethon.client.messages.MessageMethods.edit_message` with
+            `wuyusile.client.messages.MessageMethods.edit_message` with
             the ``entity`` set to the correct :tl:`InputBotInlineMessageID` or :tl:`InputBotInlineMessageID64`.
 
             Returns `True` if the edit was successful.
@@ -309,7 +309,7 @@ class CallbackQuery(EventBuilder):
             .. note::
 
                 This method won't respect the previous message unlike
-                `Message.edit <telethon.tl.custom.message.Message.edit>`,
+                `Message.edit <wuyusile.tl.custom.message.Message.edit>`,
                 since the message object is normally not present.
             """
             self._client.loop.create_task(self.answer())
@@ -326,12 +326,12 @@ class CallbackQuery(EventBuilder):
         async def delete(self, *args, **kwargs):
             """
             Deletes the message. Shorthand for
-            `telethon.client.messages.MessageMethods.delete_messages` with
+            `wuyusile.client.messages.MessageMethods.delete_messages` with
             ``entity`` and ``message_ids`` already set.
 
             If you need to delete more than one message at once, don't use
             this `delete` method. Use a
-            `telethon.client.telegramclient.TelegramClient` instance directly.
+            `wuyusile.client.telegramclient.TelegramClient` instance directly.
 
             This method also creates a task to `answer` the callback.
 

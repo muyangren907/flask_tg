@@ -17,7 +17,7 @@ class MessageRead(EventBuilder):
     Example
         .. code-block:: python
 
-            from telethon import events
+            from wuyusile import events
 
             @client.on(events.MessageRead)
             async def handler(event):
@@ -105,7 +105,7 @@ class MessageRead(EventBuilder):
 
         async def get_messages(self):
             """
-            Returns the list of `Message <telethon.tl.custom.message.Message>`
+            Returns the list of `Message <wuyusile.tl.custom.message.Message>`
             **which contents'** were read.
 
             Use :meth:`is_read` if you need to check whether a message

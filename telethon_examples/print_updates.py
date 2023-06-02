@@ -6,7 +6,7 @@ import sys
 import time
 
 # Import the client
-from telethon import TelegramClient
+from wuyusile import TelegramClient
 
 
 # This is a helper method to access environment variables or

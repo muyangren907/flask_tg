@@ -1,4 +1,4 @@
-.. _telethon-utils:
+.. _wuyusile-utils:
 
 =========
 Utilities
@@ -6,7 +6,7 @@ Utilities
 
 These are the utilities that the library has to offer.
 
-.. automodule:: telethon.utils
+.. automodule:: wuyusile.utils
     :members:
     :undoc-members:
     :show-inheritance:

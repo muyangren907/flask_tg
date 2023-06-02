@@ -1,14 +1,14 @@
 """
-tests for telethon.helpers
+tests for wuyusile.helpers
 """
 
 from base64 import b64decode
 
 import pytest
 
-from telethon import helpers
-from telethon.utils import get_inner_text
-from telethon.tl.types import MessageEntityUnknown as Meu
+from wuyusile import helpers
+from wuyusile.utils import get_inner_text
+from wuyusile.tl.types import MessageEntityUnknown as Meu
 
 
 def test_strip_text():

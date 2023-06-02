@@ -1,10 +1,10 @@
-.. _telethon-client:
+.. _wuyusile-client:
 
 ==============
 TelegramClient
 ==============
 
-.. currentmodule:: telethon.client
+.. currentmodule:: wuyusile.client
 
 The `TelegramClient <telegramclient.TelegramClient>` aggregates several mixin
 classes to provide all the common functionality in a nice, Pythonic interface.
@@ -14,7 +14,7 @@ Each mixin has its own methods, which you all can use.
 
 .. code-block:: python
 
-    from telethon import TelegramClient
+    from wuyusile import TelegramClient
 
     client = TelegramClient(name, api_id, api_hash)
 
@@ -32,72 +32,72 @@ you can access all of their methods.
 
 See :ref:`client-ref` for a short summary.
 
-.. automodule:: telethon.client.telegramclient
+.. automodule:: wuyusile.client.telegramclient
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.telegrambaseclient
+.. automodule:: wuyusile.client.telegrambaseclient
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.account
+.. automodule:: wuyusile.client.account
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.auth
+.. automodule:: wuyusile.client.auth
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.bots
+.. automodule:: wuyusile.client.bots
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.buttons
+.. automodule:: wuyusile.client.buttons
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.chats
+.. automodule:: wuyusile.client.chats
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.dialogs
+.. automodule:: wuyusile.client.dialogs
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.downloads
+.. automodule:: wuyusile.client.downloads
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.messageparse
+.. automodule:: wuyusile.client.messageparse
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.messages
+.. automodule:: wuyusile.client.messages
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.updates
+.. automodule:: wuyusile.client.updates
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.uploads
+.. automodule:: wuyusile.client.uploads
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: telethon.client.users
+.. automodule:: wuyusile.client.users
     :members:
     :undoc-members:
     :show-inheritance:

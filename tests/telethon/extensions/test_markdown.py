@@ -1,8 +1,8 @@
 """
-Tests for `telethon.extensions.markdown`.
+Tests for `wuyusile.extensions.markdown`.
 """
-from telethon.extensions import markdown
-from telethon.tl.types import MessageEntityBold, MessageEntityItalic, MessageEntityTextUrl
+from wuyusile.extensions import markdown
+from wuyusile.tl.types import MessageEntityBold, MessageEntityItalic, MessageEntityTextUrl
 
 
 def test_entity_edges():

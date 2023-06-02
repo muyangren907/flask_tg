@@ -21,7 +21,7 @@ class StopPropagation(Exception):
 
     Example usage:
 
-        >>> from telethon import TelegramClient, events
+        >>> from wuyusile import TelegramClient, events
         >>> client = TelegramClient(...)
         >>>
         >>> @client.on(events.NewMessage)
@@ -44,21 +44,21 @@ def register(event=None):
     """
     Decorator method to *register* event handlers. This is the client-less
     `add_event_handler()
-    <telethon.client.updates.UpdateMethods.add_event_handler>` variant.
+    <wuyusile.client.updates.UpdateMethods.add_event_handler>` variant.
 
     Note that this method only registers callbacks as handlers,
     and does not attach them to any client. This is useful for
     external modules that don't have access to the client, but
     still want to define themselves as a handler. Example:
 
-    >>> from telethon import events
+    >>> from wuyusile import events
     >>> @events.register(events.NewMessage)
     ... async def handler(event):
     ...     ...
     ...
     >>> # (somewhere else)
     ...
-    >>> from telethon import TelegramClient
+    >>> from wuyusile import TelegramClient
     >>> client = TelegramClient(...)
     >>> client.add_event_handler(handler)
 
@@ -88,7 +88,7 @@ def unregister(callback, event=None):
     """
     Inverse operation of `register` (though not a decorator). Client-less
     `remove_event_handler
-    <telethon.client.updates.UpdateMethods.remove_event_handler>`
+    <wuyusile.client.updates.UpdateMethods.remove_event_handler>`
     variant. **Note that this won't remove handlers from the client**,
     because it simply can't, so you would generally use this before
     adding the handlers to the client.

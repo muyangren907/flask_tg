@@ -4,10 +4,10 @@ import sys
 import time
 from getpass import getpass
 
-from telethon import TelegramClient, events
-from telethon.errors import SessionPasswordNeededError
-from telethon.network import ConnectionTcpAbridged
-from telethon.utils import get_display_name
+from wuyusile import TelegramClient, events
+from wuyusile.errors import SessionPasswordNeededError
+from wuyusile.network import ConnectionTcpAbridged
+from wuyusile.utils import get_display_name
 
 
 def sprint(string, *args, **kwargs):
@@ -65,10 +65,10 @@ def get_env(name, message, cast=str):
 
 class InteractiveTelegramClient(TelegramClient):
     """Full featured Telegram client, meant to be used on an interactive
-       session to see what Telethon is capable off -
+       session to see what daxiedewy is capable off -
 
        This client allows the user to perform some basic interaction with
-       Telegram through Telethon, such as listing dialogs (open chats),
+       Telegram through daxiedewy, such as listing dialogs (open chats),
        talking to people, downloading media, and receiving updates.
     """
 

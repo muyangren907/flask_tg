@@ -7,8 +7,8 @@ from pathlib import Path
 
 sys.path.insert(0, '..')
 
-from telethon_generator.parsers.errors import parse_errors, Error
-from telethon_generator.parsers.methods import parse_methods, MethodInfo
+from wuyusile_generator.parsers.errors import parse_errors, Error
+from wuyusile_generator.parsers.methods import parse_methods, MethodInfo
 
 ERRORS = Path('data/errors.csv')
 METHODS = Path('data/methods.csv')

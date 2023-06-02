@@ -38,12 +38,12 @@ class _OpaqueRequest(TLRequest):
 
 class MTProtoState:
     """
-    `telethon.network.mtprotosender.MTProtoSender` needs to hold a state
+    `wuyusile.network.mtprotosender.MTProtoSender` needs to hold a state
     in order to be able to encrypt and decrypt incoming/outgoing messages,
     as well as generating the message IDs. Instances of this class hold
     together all the required information.
 
-    It doesn't make sense to use `telethon.sessions.abstract.Session` for
+    It doesn't make sense to use `wuyusile.sessions.abstract.Session` for
     the sender because the sender should *not* be concerned about storing
     this information to disk, as one may create as many senders as they
     desire to any other data center, or some CDN. Using the same session

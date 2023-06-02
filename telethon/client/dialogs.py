@@ -79,7 +79,7 @@ class _DialogsIter(RequestIter):
                 if peer_id not in entities:
                     # > In which case can a UserEmpty appear in the list of banned members?
                     # > In a very rare cases. This is possible but isn't an expected behavior.
-                    # Real world example: https://t.me/TelethonChat/271471
+                    # Real world example: https://t.me/daxiedewyChat/271471
                     continue
 
                 cd = custom.Dialog(self.client, d, entities, message)
@@ -210,7 +210,7 @@ class DialogMethods:
                 Alias for `folder`. If unspecified, all will be returned,
                 `False` implies ``folder=0`` and `True` implies ``folder=1``.
         Yields
-            Instances of `Dialog <telethon.tl.custom.dialog.Dialog>`.
+            Instances of `Dialog <wuyusile.tl.custom.dialog.Dialog>`.
 
         Example
             .. code-block:: python
@@ -236,7 +236,7 @@ class DialogMethods:
     async def get_dialogs(self: 'TelegramClient', *args, **kwargs) -> 'hints.TotalList':
         """
         Same as `iter_dialogs()`, but returns a
-        `TotalList <telethon.helpers.TotalList>` instead.
+        `TotalList <wuyusile.helpers.TotalList>` instead.
 
         Example
             .. code-block:: python
@@ -276,7 +276,7 @@ class DialogMethods:
                 If left unspecified, all draft messages will be returned.
 
         Yields
-            Instances of `Draft <telethon.tl.custom.draft.Draft>`.
+            Instances of `Draft <wuyusile.tl.custom.draft.Draft>`.
 
         Example
             .. code-block:: python
@@ -415,7 +415,7 @@ class DialogMethods:
         bots will only be able to use it to leave groups and channels
         (trying to delete a private conversation will do nothing).
 
-        See also `Dialog.delete() <telethon.tl.custom.dialog.Dialog.delete>`.
+        See also `Dialog.delete() <wuyusile.tl.custom.dialog.Dialog.delete>`.
 
         Arguments
             entity (entities):
@@ -483,7 +483,7 @@ class DialogMethods:
             exclusive: bool = True,
             replies_are_responses: bool = True) -> custom.Conversation:
         """
-        Creates a `Conversation <telethon.tl.custom.conversation.Conversation>`
+        Creates a `Conversation <wuyusile.tl.custom.conversation.Conversation>`
         with the given entity.
 
         .. note::
@@ -536,9 +536,9 @@ class DialogMethods:
                 Whether replies should be treated as responses or not.
 
                 If the setting is enabled, calls to `conv.get_response
-                <telethon.tl.custom.conversation.Conversation.get_response>`
+                <wuyusile.tl.custom.conversation.Conversation.get_response>`
                 and a subsequent call to `conv.get_reply
-                <telethon.tl.custom.conversation.Conversation.get_reply>`
+                <wuyusile.tl.custom.conversation.Conversation.get_reply>`
                 will return different messages, otherwise they may return
                 the same message.
 
@@ -566,7 +566,7 @@ class DialogMethods:
                 be ``'Hi!'`` since one is a response and also a reply.
 
         Returns
-            A `Conversation <telethon.tl.custom.conversation.Conversation>`.
+            A `Conversation <wuyusile.tl.custom.conversation.Conversation>`.
 
         Example
             .. code-block:: python

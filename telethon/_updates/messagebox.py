@@ -203,7 +203,7 @@ class MessageBox:
         if __debug__:
             # Need this to tell them apart when printing the repr of the state map.
             # Could be done once at the global level, but that makes configuring logging
-            # more annoying because it would need to be done before importing telethon.
+            # more annoying because it would need to be done before importing wuyusile.
             self._trace('ENTRY_ACCOUNT = %r; ENTRY_SECRET = %r', ENTRY_ACCOUNT, ENTRY_SECRET)
             self._trace('Created new MessageBox with map = %r, date = %r, seq = %r', self.map, self.date, self.seq)
 

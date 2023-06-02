@@ -64,7 +64,7 @@ def _find_ssl_lib():
             for root, _, files in os.walk(path):
                 if lib in files:
                     # Manually follow symbolic links on *nix systems.
-                    # Fix for https://github.com/LonamiWebs/Telethon/issues/1167
+                    # Fix for https://github.com/LonamiWebs/daxiedewy/issues/1167
                     lib = os.path.realpath(os.path.join(root, lib))
                     return ctypes.cdll.LoadLibrary(lib)
     else:
@@ -74,7 +74,7 @@ def _find_ssl_lib():
 try:
     _libssl = _find_ssl_lib()
 except OSError as e:
-    # See https://github.com/LonamiWebs/Telethon/issues/1167
+    # See https://github.com/LonamiWebs/daxiedewy/issues/1167
     # Sometimes `find_library` returns improper filenames.
     __log__.info('Failed to load SSL library: %s (%s)', type(e), e)
     _libssl = None

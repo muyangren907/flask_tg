@@ -17,7 +17,7 @@ class MessageDeleted(EventBuilder):
         can identify the chat with the message ID alone if you saved it
         previously.
 
-        Telethon **does not** save information of where messages occur,
+        daxiedewy **does not** save information of where messages occur,
         so it cannot know in which chat a message was deleted (this will
         only work in channels, where the channel ID *is* present).
 
@@ -27,7 +27,7 @@ class MessageDeleted(EventBuilder):
     Example
         .. code-block:: python
 
-            from telethon import events
+            from wuyusile import events
 
             @client.on(events.MessageDeleted)
             async def handler(event):

@@ -17,8 +17,8 @@ class Message(ChatGetter, SenderGetter, TLObject):
     :tl:`MessageService` to ease accessing their members.
 
     Remember that this class implements `ChatGetter
-    <telethon.tl.custom.chatgetter.ChatGetter>` and `SenderGetter
-    <telethon.tl.custom.sendergetter.SenderGetter>` which means you
+    <wuyusile.tl.custom.chatgetter.ChatGetter>` and `SenderGetter
+    <wuyusile.tl.custom.sendergetter.SenderGetter>` which means you
     have access to all their sender and chat properties and methods.
 
     Members:
@@ -100,7 +100,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
 
         message (`str`):
             The string text of the message for `Message
-            <telethon.tl.custom.message.Message>` instances,
+            <wuyusile.tl.custom.message.Message>` instances,
             which will be `None` for other types of messages.
 
         media (:tl:`MessageMedia`):
@@ -332,7 +332,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     @property
     def client(self):
         """
-        Returns the `TelegramClient <telethon.client.telegramclient.TelegramClient>`
+        Returns the `TelegramClient <wuyusile.client.telegramclient.TelegramClient>`
         that *patched* this message. This will only be present if you
         **use the friendly methods**, it won't be there if you invoke
         raw API methods manually, in which case you should only access
@@ -394,7 +394,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     @property
     def forward(self):
         """
-        The `Forward <telethon.tl.custom.forward.Forward>`
+        The `Forward <wuyusile.tl.custom.forward.Forward>`
         information if this message is a forwarded message.
         """
         return self._forward
@@ -403,7 +403,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     def buttons(self):
         """
         Returns a list of lists of `MessageButton
-        <telethon.tl.custom.messagebutton.MessageButton>`,
+        <wuyusile.tl.custom.messagebutton.MessageButton>`,
         if any.
 
         Otherwise, it returns `None`.
@@ -456,13 +456,13 @@ class Message(ChatGetter, SenderGetter, TLObject):
     @property
     def file(self):
         """
-        Returns a `File <telethon.tl.custom.file.File>` wrapping the
+        Returns a `File <wuyusile.tl.custom.file.File>` wrapping the
         `photo` or `document` in this message. If the media type is different
         (polls, games, none, etc.), this property will be `None`.
 
         This instance lets you easily access other properties, such as
-        `file.id <telethon.tl.custom.file.File.id>`,
-        `file.name <telethon.tl.custom.file.File.name>`,
+        `file.id <wuyusile.tl.custom.file.File.id>`,
+        `file.name <wuyusile.tl.custom.file.File.name>`,
         etc., without having to manually inspect the ``document.attributes``.
         """
         if not self._file:
@@ -702,7 +702,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
                 Returns entities matching this type only. For example,
                 the following will print the text for all ``code`` entities:
 
-                >>> from telethon.tl.types import MessageEntityCode
+                >>> from wuyusile.tl.types import MessageEntityCode
                 >>>
                 >>> m = ...  # get the message
                 >>> for _, inner_text in m.get_entities_text(MessageEntityCode):
@@ -749,7 +749,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def respond(self, *args, **kwargs):
         """
         Responds to the message (not as a reply). Shorthand for
-        `telethon.client.messages.MessageMethods.send_message`
+        `wuyusile.client.messages.MessageMethods.send_message`
         with ``entity`` already set.
         """
         if self._client:
@@ -759,7 +759,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def reply(self, *args, **kwargs):
         """
         Replies to the message (as a reply). Shorthand for
-        `telethon.client.messages.MessageMethods.send_message`
+        `wuyusile.client.messages.MessageMethods.send_message`
         with both ``entity`` and ``reply_to`` already set.
         """
         if self._client:
@@ -770,12 +770,12 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def forward_to(self, *args, **kwargs):
         """
         Forwards the message. Shorthand for
-        `telethon.client.messages.MessageMethods.forward_messages`
+        `wuyusile.client.messages.MessageMethods.forward_messages`
         with both ``messages`` and ``from_peer`` already set.
 
         If you need to forward more than one message at once, don't use
         this `forward_to` method. Use a
-        `telethon.client.telegramclient.TelegramClient` instance directly.
+        `wuyusile.client.telegramclient.TelegramClient` instance directly.
         """
         if self._client:
             kwargs['messages'] = self.id
@@ -785,7 +785,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def edit(self, *args, **kwargs):
         """
         Edits the message iff it's outgoing. Shorthand for
-        `telethon.client.messages.MessageMethods.edit_message`
+        `wuyusile.client.messages.MessageMethods.edit_message`
         with both ``entity`` and ``message`` already set.
 
         Returns `None` if the message was incoming,
@@ -794,7 +794,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
         .. note::
 
             This is different from `client.edit_message
-            <telethon.client.messages.MessageMethods.edit_message>`
+            <wuyusile.client.messages.MessageMethods.edit_message>`
             and **will respect** the previous state of the message.
             For example, if the message didn't have a link preview,
             the edit won't add one by default, and you should force
@@ -822,12 +822,12 @@ class Message(ChatGetter, SenderGetter, TLObject):
         Deletes the message. You're responsible for checking whether you
         have the permission to do so, or to except the error otherwise.
         Shorthand for
-        `telethon.client.messages.MessageMethods.delete_messages` with
+        `wuyusile.client.messages.MessageMethods.delete_messages` with
         ``entity`` and ``message_ids`` already set.
 
         If you need to delete more than one message at once, don't use
         this `delete` method. Use a
-        `telethon.client.telegramclient.TelegramClient` instance directly.
+        `wuyusile.client.telegramclient.TelegramClient` instance directly.
         """
         if self._client:
             return await self._client.delete_messages(
@@ -838,7 +838,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def download_media(self, *args, **kwargs):
         """
         Downloads the media contained in the message, if any. Shorthand
-        for `telethon.client.downloads.DownloadMethods.download_media`
+        for `wuyusile.client.downloads.DownloadMethods.download_media`
         with the ``message`` already set.
         """
         if self._client:
@@ -851,7 +851,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
                     share_geo=None, password=None):
         """
         Calls :tl:`SendVote` with the specified poll option
-        or `button.click <telethon.tl.custom.messagebutton.MessageButton.click>`
+        or `button.click <wuyusile.tl.custom.messagebutton.MessageButton.click>`
         on the specified button.
 
         Does nothing if the message is not a poll or has no buttons.
@@ -892,8 +892,8 @@ class Message(ChatGetter, SenderGetter, TLObject):
             filter (`callable`):
                 Clicks the first button or poll option for which the callable
                 returns `True`. The callable should accept a single
-                `MessageButton <telethon.tl.custom.messagebutton.MessageButton>`
-                or `PollAnswer <telethon.tl.types.PollAnswer>` argument.
+                `MessageButton <wuyusile.tl.custom.messagebutton.MessageButton>`
+                or `PollAnswer <wuyusile.tl.types.PollAnswer>` argument.
 
                 If you need to select multiple options in a poll,
                 pass a list of indices to the ``i`` parameter.
@@ -1041,7 +1041,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
         """
         Marks the message as read. Shorthand for
         `client.send_read_acknowledge()
-        <telethon.client.messages.MessageMethods.send_read_acknowledge>`
+        <wuyusile.client.messages.MessageMethods.send_read_acknowledge>`
         with both ``entity`` and ``message`` already set.
         """
         if self._client:
@@ -1051,7 +1051,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def pin(self, *, notify=False, pm_oneside=False):
         """
         Pins the message. Shorthand for
-        `telethon.client.messages.MessageMethods.pin_message`
+        `wuyusile.client.messages.MessageMethods.pin_message`
         with both ``entity`` and ``message`` already set.
         """
         # TODO Constantly checking if client is a bit annoying,
@@ -1064,7 +1064,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     async def unpin(self):
         """
         Unpins the message. Shorthand for
-        `telethon.client.messages.MessageMethods.unpin_message`
+        `wuyusile.client.messages.MessageMethods.unpin_message`
         with both ``entity`` and ``message`` already set.
         """
         if self._client:

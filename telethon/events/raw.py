@@ -16,7 +16,7 @@ class Raw(EventBuilder):
     Example
         .. code-block:: python
 
-            from telethon import events
+            from wuyusile import events
 
             @client.on(events.Raw)
             async def handler(update):

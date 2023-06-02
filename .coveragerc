@@ -2,7 +2,7 @@
 branch = true
 parallel = true
 source =
-    telethon
+    wuyusile
 
 [report]
 precision = 2

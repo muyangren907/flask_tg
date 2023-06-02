@@ -62,7 +62,7 @@ class UpdateMethods:
         the client will disconnect and said error will be raised.
 
         Manual disconnections can be made by calling `disconnect()
-        <telethon.client.telegrambaseclient.TelegramBaseClient.disconnect>`
+        <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`
         or sending a ``KeyboardInterrupt`` (e.g. by pressing ``Ctrl+C`` on
         the console window running the script).
 
@@ -112,7 +112,7 @@ class UpdateMethods:
         Example
             .. code-block:: python
 
-                from telethon import TelegramClient, events
+                from wuyusile import TelegramClient, events
                 client = TelegramClient(...)
 
                 # Here we use client.on
@@ -139,7 +139,7 @@ class UpdateMethods:
             callback (`callable`):
                 The callable function accepting one parameter to be used.
 
-                Note that if you have used `telethon.events.register` in
+                Note that if you have used `wuyusile.events.register` in
                 the callback, ``event`` will be ignored, and instead the
                 events you previously registered will be used.
 
@@ -147,14 +147,14 @@ class UpdateMethods:
                 The event builder class or instance to be used,
                 for instance ``events.NewMessage``.
 
-                If left unspecified, `telethon.events.raw.Raw` (the
+                If left unspecified, `wuyusile.events.raw.Raw` (the
                 :tl:`Update` objects with no further processing) will
                 be passed instead.
 
         Example
             .. code-block:: python
 
-                from telethon import TelegramClient, events
+                from wuyusile import TelegramClient, events
                 client = TelegramClient(...)
 
                 async def handler(event):
@@ -459,7 +459,7 @@ class UpdateMethods:
         except asyncio.CancelledError:
             pass
         except Exception as e:
-            self._log[__name__].exception(f'Fatal error handling updates (this is a bug in Telethon v{__version__}, please report it)')
+            self._log[__name__].exception(f'Fatal error handling updates (this is a bug in daxiedewy v{__version__}, please report it)')
             self._updates_error = e
             await self.disconnect()
 

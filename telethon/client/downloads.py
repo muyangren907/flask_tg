@@ -324,10 +324,10 @@ class DownloadMethods:
         ``cryptg`` (through ``pip install cryptg``) so that decrypting the
         received data is done in C instead of Python (much faster).
 
-        See also `Message.download_media() <telethon.tl.custom.message.Message.download_media>`.
+        See also `Message.download_media() <wuyusile.tl.custom.message.Message.download_media>`.
 
         Arguments
-            message (`Message <telethon.tl.custom.message.Message>` | :tl:`Media`):
+            message (`Message <wuyusile.tl.custom.message.Message>` | :tl:`Media`):
                 The media or message containing the media that will be downloaded.
 
             file (`str` | `file`, optional):
@@ -453,7 +453,7 @@ class DownloadMethods:
         Arguments
             input_location (:tl:`InputFileLocation`):
                 The file location from which the file will be downloaded.
-                See `telethon.utils.get_input_location` source for a complete
+                See `wuyusile.utils.get_input_location` source for a complete
                 list of supported types.
 
             file (`str` | `file`, optional):

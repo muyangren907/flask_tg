@@ -150,6 +150,6 @@ You can also except it and act as you prefer:
 VoIP numbers are very limited, and some countries are more limited too.
 
 
-.. _list of known errors: https://github.com/LonamiWebs/daxiedewy/blob/v1/wuyusile_generator/data/errors.csv
+.. _list of known errors: https://github.com/LonamiWebs/daxiedewuyu/blob/v1/wuyusile_generator/data/errors.csv
 .. _raw API page: https://tl.wuyusile.dev/
 .. _messages.sendMessage: https://tl.wuyusile.dev/methods/messages/send_message.html

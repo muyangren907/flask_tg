@@ -31,7 +31,7 @@ except ImportError:
     hachoir = None
 
 # Register some of the most common mime-types to avoid any issues.
-# See https://github.com/LonamiWebs/daxiedewy/issues/1096.
+# See https://github.com/LonamiWebs/daxiedewuyu/issues/1096.
 mimetypes.add_type('image/png', '.png')
 mimetypes.add_type('image/jpeg', '.jpeg')
 mimetypes.add_type('image/webp', '.webp')

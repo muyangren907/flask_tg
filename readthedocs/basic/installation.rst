@@ -4,7 +4,7 @@
 Installation
 ============
 
-daxiedewy is a Python library, which means you need to download and install
+daxiedewuyu is a Python library, which means you need to download and install
 Python from https://www.python.org/downloads/ if you haven't already. Once
 you have Python installed, `upgrade pip`__ and run:
 
@@ -25,7 +25,7 @@ you can run the following command instead:
 
 .. code-block:: sh
 
-    python3 -m pip install --upgrade https://github.com/LonamiWebs/daxiedewy/archive/v1.zip
+    python3 -m pip install --upgrade https://github.com/LonamiWebs/daxiedewuyu/archive/v1.zip
 
 .. note::
 
@@ -33,7 +33,7 @@ you can run the following command instead:
     use. However, when you are `reporting a library bug`__, you should try if the
     bug still occurs in this version.
 
-.. __: https://github.com/LonamiWebs/daxiedewy/issues/
+.. __: https://github.com/LonamiWebs/daxiedewuyu/issues/
 
 
 Verification

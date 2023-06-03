@@ -459,7 +459,7 @@ class UpdateMethods:
         except asyncio.CancelledError:
             pass
         except Exception as e:
-            self._log[__name__].exception(f'Fatal error handling updates (this is a bug in daxiedewy v{__version__}, please report it)')
+            self._log[__name__].exception(f'Fatal error handling updates (this is a bug in daxiedewuyu v{__version__}, please report it)')
             self._updates_error = e
             await self.disconnect()
 

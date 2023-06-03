@@ -79,7 +79,7 @@ class _DialogsIter(RequestIter):
                 if peer_id not in entities:
                     # > In which case can a UserEmpty appear in the list of banned members?
                     # > In a very rare cases. This is possible but isn't an expected behavior.
-                    # Real world example: https://t.me/daxiedewyChat/271471
+                    # Real world example: https://t.me/daxiedewuyuChat/271471
                     continue
 
                 cd = custom.Dialog(self.client, d, entities, message)

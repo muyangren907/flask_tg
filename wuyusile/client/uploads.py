@@ -51,7 +51,7 @@ def _resize_photo_if_needed(
 
     try:
         # Don't use a `with` block for `image`, or `file` would be closed.
-        # See https://github.com/LonamiWebs/daxiedewy/issues/1121 for more.
+        # See https://github.com/LonamiWebs/daxiedewuyu/issues/1121 for more.
         image = PIL.Image.open(file)
         try:
             kwargs = {'exif': image.info['exif']}

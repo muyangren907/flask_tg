@@ -14,7 +14,7 @@ import tkinter.ttk
 from wuyusile import TelegramClient, events, utils
 
 # Some configuration for the app
-TITLE = 'daxiedewy GUI'
+TITLE = 'daxiedewuyu GUI'
 SIZE = '640x280'
 REPLY = re.compile(r'\.r\s*(\d+)\s*(.+)', re.IGNORECASE)
 DELETE = re.compile(r'\.d\s*(\d+)', re.IGNORECASE)

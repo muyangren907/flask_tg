@@ -1,16 +1,16 @@
-daxiedewy
+daxiedewuyu
 ========
 .. epigraph::
 
   ⭐️ Thanks **everyone** who has starred the project, it means a lot!
 
-|logo| **daxiedewy** is an asyncio_ **Python 3**
+|logo| **daxiedewuyu** is an asyncio_ **Python 3**
 MTProto_ library to interact with Telegram_'s API
 as a user or through a bot account (bot API alternative).
 
 .. important::
 
-    If you have code using daxiedewy before its 1.0 version, you must
+    If you have code using daxiedewuyu before its 1.0 version, you must
     read `Compatibility and Convenience`_ to learn how to migrate.
     As with any third-party library for Telegram, be careful not to
     break `Telegram's ToS`_ or `Telegram can ban the account`_.
@@ -55,7 +55,7 @@ Doing stuff
 
     print(client.get_me().stringify())
 
-    client.send_message('username', 'Hello! Talking to you from daxiedewy')
+    client.send_message('username', 'Hello! Talking to you from daxiedewuyu')
     client.send_file('username', '/home/myself/Pictures/holidays.jpg')
 
     client.download_profile_photo('me')
@@ -70,7 +70,7 @@ Doing stuff
 Next steps
 ----------
 
-Do you like how daxiedewy looks? Check out `Read The Docs`_ for a more
+Do you like how daxiedewuyu looks? Check out `Read The Docs`_ for a more
 in-depth explanation, with examples, troubleshooting issues, and more
 useful information.
 

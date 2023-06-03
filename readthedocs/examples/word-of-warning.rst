@@ -14,4 +14,4 @@ since Telegram changes very often. The friendly methods will be kept
 compatible between major versions.
 
 If you need to see real-world examples, please refer to the
-`wiki page of projects using daxiedewy <https://github.com/LonamiWebs/daxiedewy/wiki/Projects-using-daxiedewy>`__.
+`wiki page of projects using daxiedewuyu <https://github.com/LonamiWebs/daxiedewuyu/wiki/Projects-using-daxiedewuyu>`__.

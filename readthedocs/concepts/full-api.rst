@@ -20,7 +20,7 @@ The :ref:`wuyusile-client` doesn't offer a method for every single request
 the Telegram API supports. However, it's very simple to *call* or *invoke*
 any request defined in Telegram's API.
 
-This section will teach you how to use what daxiedewy calls the `TL reference`_.
+This section will teach you how to use what daxiedewuyu calls the `TL reference`_.
 The linked page contains a list and a way to search through *all* types
 generated from the definition of Telegram's API (in ``.tl`` file format,
 hence the name). These types include requests and constructors.
@@ -33,7 +33,7 @@ hence the name). These types include requests and constructors.
     can also do ``from wuyusile.tl import types, functions``. Both work.
 
 Telegram makes these ``.tl`` files public, which other implementations, such
-as daxiedewy, can also use to generate code. These files are versioned under
+as daxiedewuyu, can also use to generate code. These files are versioned under
 what's called "layers". ``.tl`` files consist of thousands of definitions,
 and newer layers often add, change, or remove them. Each definition refers
 to either a Remote Procedure Call (RPC) function, or a type (which the
@@ -96,7 +96,7 @@ navigate to those to learn what those contain or need.
 Types
 -----
 
-"Types" as understood by TL are not actually generated in daxiedewy.
+"Types" as understood by TL are not actually generated in daxiedewuyu.
 They would be the "abstract base class" of the constructors, but since Python
 is duck-typed, there is hardly any need to generate mostly unnecessary code.
 The page for a type contains:

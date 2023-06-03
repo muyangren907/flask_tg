@@ -5,7 +5,7 @@ Client Reference
 ================
 
 This page contains a summary of all the important methods and properties that
-you may need when using daxiedewy. They are sorted by relevance and are not in
+you may need when using daxiedewuyu. They are sorted by relevance and are not in
 alphabetical order.
 
 You should use this page to learn about which methods are available, and

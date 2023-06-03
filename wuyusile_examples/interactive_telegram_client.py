@@ -65,10 +65,10 @@ def get_env(name, message, cast=str):
 
 class InteractiveTelegramClient(TelegramClient):
     """Full featured Telegram client, meant to be used on an interactive
-       session to see what daxiedewy is capable off -
+       session to see what daxiedewuyu is capable off -
 
        This client allows the user to perform some basic interaction with
-       Telegram through daxiedewy, such as listing dialogs (open chats),
+       Telegram through daxiedewuyu, such as listing dialogs (open chats),
        talking to people, downloading media, and receiving updates.
     """
 

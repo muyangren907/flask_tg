@@ -122,7 +122,7 @@ running this in a loop will obviously not increase the views forever
 unless you wait a day between each iteration. If you run it any sooner
 than that, the views simply won't be increased.
 
-__ https://github.com/LonamiWebs/daxiedewy/issues/233
-__ https://github.com/LonamiWebs/daxiedewy/issues/305
-__ https://github.com/LonamiWebs/daxiedewy/issues/409
-__ https://github.com/LonamiWebs/daxiedewy/issues/447
+__ https://github.com/LonamiWebs/daxiedewuyu/issues/233
+__ https://github.com/LonamiWebs/daxiedewuyu/issues/305
+__ https://github.com/LonamiWebs/daxiedewuyu/issues/409
+__ https://github.com/LonamiWebs/daxiedewuyu/issues/447

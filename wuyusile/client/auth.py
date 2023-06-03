@@ -376,9 +376,9 @@ class AuthMethods:
             phone_code_hash: str = None) -> 'types.User':
         """
         This method can no longer be used, and will immediately raise a ``ValueError``.
-        See `issue #4050 <https://github.com/LonamiWebs/daxiedewy/issues/4050>`_ for context.
+        See `issue #4050 <https://github.com/LonamiWebs/daxiedewuyu/issues/4050>`_ for context.
         """
-        raise ValueError('Third-party applications cannot sign up for Telegram. See https://github.com/LonamiWebs/daxiedewy/issues/4050 for details')
+        raise ValueError('Third-party applications cannot sign up for Telegram. See https://github.com/LonamiWebs/daxiedewuyu/issues/4050 for details')
 
     async def _on_login(self, user):
         """
@@ -409,7 +409,7 @@ class AuthMethods:
 
             force_sms (`bool`, optional):
                 Whether to force sending as SMS. This has been deprecated.
-                See `issue #4050 <https://github.com/LonamiWebs/daxiedewy/issues/4050>`_ for context.
+                See `issue #4050 <https://github.com/LonamiWebs/daxiedewuyu/issues/4050>`_ for context.
 
         Returns
             An instance of :tl:`SentCode`.
@@ -600,10 +600,10 @@ class AuthMethods:
             .. code-block:: python
 
                 # Setting a password for your account which didn't have
-                await client.edit_2fa(new_password='I_<3_daxiedewy')
+                await client.edit_2fa(new_password='I_<3_daxiedewuyu')
 
                 # Removing the password
-                await client.edit_2fa(current_password='I_<3_daxiedewy')
+                await client.edit_2fa(current_password='I_<3_daxiedewuyu')
         """
         if new_password is None and current_password is None:
             return False

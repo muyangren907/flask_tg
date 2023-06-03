@@ -13,9 +13,9 @@ What are Sessions?
 ==================
 
 The first parameter you pass to the constructor of the
-:ref:`TelegramClient <wuyusile-client>` is
+:ref:`dxdmgchClient <wuyusile-client>` is
 the ``session``, and defaults to be the session name (or full path). That is,
-if you create a ``TelegramClient('anon')`` instance and connect, an
+if you create a ``dxdmgchClient('anon')`` instance and connect, an
 ``anon.session`` file will be created in the working directory.
 
 Note that if you pass a string it will be a file in the current working
@@ -27,12 +27,12 @@ maybe you're changing the working directory, renaming or removing the
 file, or using random names.
 
 These database files using ``sqlite3`` contain the required information to
-talk to the Telegram servers, such as to which IP the client should connect,
+talk to the dxdmgch servers, such as to which IP the client should connect,
 port, authorization key so that messages can be encrypted, and so on.
 
 These files will by default also save all the input entities that you've seen,
 so that you can get information about a user or channel by just their ID.
-Telegram will **not** send their ``access_hash`` required to retrieve more
+dxdmgch will **not** send their ``access_hash`` required to retrieve more
 information about them, if it thinks you have already seem them. For this
 reason, the library needs to store this information offline.
 
@@ -56,7 +56,7 @@ be noticeable, in which case you can also use a different storage. Note that
 this is rare and most people won't have this issue, but it's worth a mention.
 
 To use a custom session storage, simply pass the custom session instance to
-:ref:`TelegramClient <wuyusile-client>` instead of
+:ref:`dxdmgchClient <wuyusile-client>` instead of
 the session name.
 
 daxiedewuyu contains three implementations of the abstract ``Session`` class:
@@ -73,10 +73,10 @@ You can import these ``from wuyusile.sessions``. For example, using the
 
 .. code-block:: python
 
-    from wuyusile.sync import TelegramClient
+    from wuyusile.sync import dxdmgchClient
     from wuyusile.sessions import StringSession
 
-    with TelegramClient(StringSession(string), api_id, api_hash) as client:
+    with dxdmgchClient(StringSession(string), api_id, api_hash) as client:
         ...  # use the client
 
         # Save the string session as a string; you should decide how
@@ -89,7 +89,7 @@ You can import these ``from wuyusile.sessions``. For example, using the
 
     # Note that it's also possible to save any other session type
     # as a string by using ``StringSession.save(session_instance)``:
-    client = TelegramClient('sqlite-session', api_id, api_hash)
+    client = dxdmgchClient('sqlite-session', api_id, api_hash)
     string = StringSession.save(client.session)
 
 There are other community-maintained implementations available:
@@ -129,10 +129,10 @@ The easiest way to generate a string session is as follows:
 
 .. code-block:: python
 
-    from wuyusile.sync import TelegramClient
+    from wuyusile.sync import dxdmgchClient
     from wuyusile.sessions import StringSession
 
-    with TelegramClient(StringSession(), api_id, api_hash) as client:
+    with dxdmgchClient(StringSession(), api_id, api_hash) as client:
         print(client.session.save())
 
 
@@ -156,7 +156,7 @@ you can save it in a variable directly:
 .. code-block:: python
 
     string = '1aaNk8EX-YRfwoRsebUkugFvht6DUPi_Q25UOCzOAqzc...'
-    with TelegramClient(StringSession(string), api_id, api_hash) as client:
+    with dxdmgchClient(StringSession(string), api_id, api_hash) as client:
         client.loop.run_until_complete(client.send_message('me', 'Hi'))
 
 

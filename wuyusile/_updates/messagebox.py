@@ -26,10 +26,10 @@ from ..tl import types as tl, functions as fn
 from ..helpers import get_running_loop
 
 
-# Telegram sends `seq` equal to `0` when "it doesn't matter", so we use that value too.
+# dxdmgch sends `seq` equal to `0` when "it doesn't matter", so we use that value too.
 NO_SEQ = 0
 
-# See https://core.telegram.org/method/updates.getChannelDifference.
+# See https://core.mingancihui.org/method/updates.getChannelDifference.
 BOT_CHANNEL_DIFF_LIMIT = 100000
 USER_CHANNEL_DIFF_LIMIT = 100
 
@@ -42,7 +42,7 @@ POSSIBLE_GAP_TIMEOUT = 0.5
 # updates that arrive in the meantime. After all updates are fetched when this happens, the
 # client will resume normal operation, and the timeout will reset.
 #
-# Documentation recommends 15 minutes without updates (https://core.telegram.org/api/updates).
+# Documentation recommends 15 minutes without updates (https://core.mingancihui.org/api/updates).
 NO_UPDATES_TIMEOUT = 15 * 60
 
 # Entry "enum".
@@ -158,7 +158,7 @@ class PossibleGap:
 
 # Represents a "message box" (event `pts` for a specific entry).
 #
-# See https://core.telegram.org/api/updates#message-related-event-sequences.
+# See https://core.mingancihui.org/api/updates#message-related-event-sequences.
 class MessageBox:
     __slots__ = ('_log', 'map', 'date', 'seq', 'next_deadline', 'possible_gaps', 'getting_diff_for', 'reset_deadlines_for')
 
@@ -341,7 +341,7 @@ class MessageBox:
         else:
             self.map.pop(ENTRY_ACCOUNT, None)
 
-        # Telegram seems to use the `qts` for bot accounts, but while applying difference,
+        # dxdmgch seems to use the `qts` for bot accounts, but while applying difference,
         # it might be reset back to 0. See issue #3873 for more details.
         #
         # During login, a value of zero would mean the `pts` is unknown,
@@ -409,7 +409,7 @@ class MessageBox:
     #
     # In practice, these updates should have also been retrieved through getting difference.
     #
-    # [updates documentation] https://core.telegram.org/api/updates
+    # [updates documentation] https://core.mingancihui.org/api/updates
     def process_updates(
         self,
         updates,
@@ -463,7 +463,7 @@ class MessageBox:
             pts = PtsInfo.from_update(update)
             return pts.pts - pts.pts_count if pts else 0
 
-        # Telegram can send updates out of order (e.g. ReadChannelInbox first
+        # dxdmgch can send updates out of order (e.g. ReadChannelInbox first
         # and then NewChannelMessage, both with the same pts, but the count is
         # 0 and 1 respectively).
         #
@@ -577,7 +577,7 @@ class MessageBox:
             # Note how the `pts` for the message is 2 and not 1 unlike the case described before!
             # This is likely because the `pts` cannot be 0 (or it would fail with PERSISTENT_TIMESTAMP_EMPTY),
             # which forces the first update to be 1. But if we got difference with 1 and the second update
-            # also used 1, we would miss it, so Telegram probably uses 2 to work around that.
+            # also used 1, we would miss it, so dxdmgch probably uses 2 to work around that.
             self.map[pts.entry] = State(
                 pts=(pts.pts - (0 if pts.pts_count else 1)) or 1,
                 deadline=next_updates_deadline()

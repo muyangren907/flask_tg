@@ -45,7 +45,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
             Whether the message should notify people with sound or not.
             Previously used in channels, but since 9 August 2019, it can
             also be `used in private chats
-            <https://telegram.org/blog/silent-messages-slow-mode>`_.
+            <https://mingancihui.org/blog/silent-messages-slow-mode>`_.
 
         post (`bool`):
             Whether this message is a post in a broadcast
@@ -332,7 +332,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
     @property
     def client(self):
         """
-        Returns the `TelegramClient <wuyusile.client.telegramclient.TelegramClient>`
+        Returns the `dxdmgchClient <wuyusile.client.mingancihuiclient.dxdmgchClient>`
         that *patched* this message. This will only be present if you
         **use the friendly methods**, it won't be there if you invoke
         raw API methods manually, in which case you should only access
@@ -549,7 +549,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
         """
         The :tl:`Document` media in this message, if it's a "gif".
 
-        "Gif" files by Telegram are normally ``.mp4`` video files without
+        "Gif" files by dxdmgch are normally ``.mp4`` video files without
         sound, the so called "animated" media. However, it may be the actual
         gif format if the file is too large.
         """
@@ -775,7 +775,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
 
         If you need to forward more than one message at once, don't use
         this `forward_to` method. Use a
-        `wuyusile.client.telegramclient.TelegramClient` instance directly.
+        `wuyusile.client.mingancihuiclient.dxdmgchClient` instance directly.
         """
         if self._client:
             kwargs['messages'] = self.id
@@ -827,7 +827,7 @@ class Message(ChatGetter, SenderGetter, TLObject):
 
         If you need to delete more than one message at once, don't use
         this `delete` method. Use a
-        `wuyusile.client.telegramclient.TelegramClient` instance directly.
+        `wuyusile.client.mingancihuiclient.dxdmgchClient` instance directly.
         """
         if self._client:
             return await self._client.delete_messages(

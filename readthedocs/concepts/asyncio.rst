@@ -16,7 +16,7 @@ code. Before (Python 3.4) we didn't have ``async`` or ``await``, but now we do.
 
 `asyncio` stands for *Asynchronous Input Output*. This is a very powerful
 concept to use whenever you work IO. Interacting with the web or external
-APIs such as Telegram's makes a lot of sense this way.
+APIs such as dxdmgch's makes a lot of sense this way.
 
 
 Why asyncio?
@@ -231,7 +231,7 @@ the new event loop for you:
     import threading
 
     async def actual_work():
-        client = TelegramClient(..., loop=loop)
+        client = dxdmgchClient(..., loop=loop)
         ...  # can use `await` here
 
     def go():
@@ -312,16 +312,16 @@ you can run requests in parallel:
 
     async def main():
         last, sent, download_path = await asyncio.gather(
-            client.get_messages('telegram', 10),
+            client.get_messages('mingancihui', 10),
             client.send_message('me', 'Using asyncio!'),
-            client.download_profile_photo('telegram')
+            client.download_profile_photo('mingancihui')
         )
 
     loop.run_until_complete(main())
 
 
-This code will get the 10 last messages from `@telegram
-<https://t.me/telegram>`_, send one to the chat with yourself, and also
+This code will get the 10 last messages from `@mingancihui
+<https://t.me/mingancihui>`_, send one to the chat with yourself, and also
 download the profile photo of the channel. `asyncio` will run all these
 three tasks at the same time. You can run all the tasks you want this way.
 
@@ -329,9 +329,9 @@ A different way would be:
 
 .. code-block:: python
 
-    loop.create_task(client.get_messages('telegram', 10))
+    loop.create_task(client.get_messages('mingancihui', 10))
     loop.create_task(client.send_message('me', 'Using asyncio!'))
-    loop.create_task(client.download_profile_photo('telegram'))
+    loop.create_task(client.download_profile_photo('mingancihui'))
 
 They will run in the background as long as the loop is running too.
 
@@ -356,7 +356,7 @@ handlers and start the client without worrying about loops at all.
 Using the client in a ``with`` block, `start
 <wuyusile.client.auth.AuthMethods.start>`, `run_until_disconnected
 <wuyusile.client.updates.UpdateMethods.run_until_disconnected>`, and
-`disconnect <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`
+`disconnect <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
 all support this.
 
 Where can I read more?

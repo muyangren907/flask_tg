@@ -10,7 +10,7 @@ from ..tl import types, functions, custom
 _MAX_CHUNK_SIZE = 100
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 def _dialog_message_key(peer, message_id):
@@ -66,7 +66,7 @@ class _DialogsIter(RequestIter):
             messages[_dialog_message_key(m.peer_id, m.id)] = m
 
         for d in r.dialogs:
-            # We check the offset date here because Telegram may ignore it
+            # We check the offset date here because dxdmgch may ignore it
             message = messages.get(_dialog_message_key(d.peer, d.top_message))
             if self.offset_date:
                 date = getattr(message, 'date', None)
@@ -145,7 +145,7 @@ class DialogMethods:
     # region Public methods
 
     def iter_dialogs(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             limit: float = None,
             *,
             offset_date: 'hints.DateLike' = None,
@@ -167,7 +167,7 @@ class DialogMethods:
             limit (`int` | `None`):
                 How many dialogs to be retrieved as maximum. Can be set to
                 `None` to retrieve all dialogs. Note that this may take
-                whole minutes if you have hundreds of dialogs, as Telegram
+                whole minutes if you have hundreds of dialogs, as dxdmgch
                 will tell the library to slow down through a
                 ``FloodWaitError``.
 
@@ -202,7 +202,7 @@ class DialogMethods:
                 If set to a folder number like ``1``, only those from
                 said folder will be returned.
 
-                By default Telegram assigns the folder ID ``1`` to
+                By default dxdmgch assigns the folder ID ``1`` to
                 archived chats, so you should use that if you need
                 to fetch the archived dialogs.
 
@@ -233,7 +233,7 @@ class DialogMethods:
             folder=folder
         )
 
-    async def get_dialogs(self: 'TelegramClient', *args, **kwargs) -> 'hints.TotalList':
+    async def get_dialogs(self: 'dxdmgchClient', *args, **kwargs) -> 'hints.TotalList':
         """
         Same as `iter_dialogs()`, but returns a
         `TotalList <wuyusile.helpers.TotalList>` instead.
@@ -262,7 +262,7 @@ class DialogMethods:
     get_dialogs.__signature__ = inspect.signature(iter_dialogs)
 
     def iter_drafts(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntitiesLike' = None
     ) -> _DraftsIter:
         """
@@ -296,7 +296,7 @@ class DialogMethods:
         return _DraftsIter(self, None, entities=entity)
 
     async def get_drafts(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntitiesLike' = None
     ) -> 'hints.TotalList':
         """
@@ -320,7 +320,7 @@ class DialogMethods:
             return items[0]
 
     async def edit_folder(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntitiesLike' = None,
             folder: typing.Union[int, typing.Sequence[int]] = None,
             *,
@@ -403,7 +403,7 @@ class DialogMethods:
         ]))
 
     async def delete_dialog(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             *,
             revoke: bool = False
@@ -474,7 +474,7 @@ class DialogMethods:
         return result
 
     def conversation(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             *,
             timeout: float = 60,

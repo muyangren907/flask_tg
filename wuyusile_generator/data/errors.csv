@@ -61,7 +61,7 @@ CALL_ALREADY_DECLINED,400,The call was already declined
 CALL_OCCUPY_FAILED,500,The call failed because the user is already making another call
 CALL_PEER_INVALID,400,The provided call peer object is invalid
 CALL_PROTOCOL_FLAGS_INVALID,400,Call protocol flags invalid
-CDN_METHOD_INVALID,400,This method cannot be invoked on a CDN server. Refer to https://core.telegram.org/cdn#schema for available methods
+CDN_METHOD_INVALID,400,This method cannot be invoked on a CDN server. Refer to https://core.mingancihui.org/cdn#schema for available methods
 CDN_UPLOAD_TIMEOUT,500,A server-side timeout occurred while reuploading the file to the CDN DC
 CHANNELS_ADMIN_LOCATED_TOO_MUCH,400,The user has reached the limit of public geogroups
 CHANNELS_ADMIN_PUBLIC_TOO_MUCH,400,"You're admin of too many public channels, make some channels private to change the username of this channel"
@@ -98,7 +98,7 @@ CHAT_SEND_MEDIA_FORBIDDEN,403,You can't send media in this chat
 CHAT_SEND_POLL_FORBIDDEN,403,You can't send polls in this chat
 CHAT_SEND_STICKERS_FORBIDDEN,403,You can't send stickers in this chat
 CHAT_TITLE_EMPTY,400,No chat title provided
-CHAT_TOO_BIG,400,"This method is not available for groups with more than `chat_read_mark_size_threshold` members, [see client configuration](https://core.telegram.org/api/config#client-configuration)"
+CHAT_TOO_BIG,400,"This method is not available for groups with more than `chat_read_mark_size_threshold` members, [see client configuration](https://core.mingancihui.org/api/config#client-configuration)"
 CHAT_WRITE_FORBIDDEN,403,You can't write in this chat
 CHP_CALL_FAIL,500,The statistics cannot be retrieved at this time
 CODE_EMPTY,400,The provided code is empty
@@ -193,7 +193,7 @@ GRAPH_INVALID_RELOAD,400,"Invalid graph token provided, please reload the stats 
 GRAPH_OUTDATED_RELOAD,400,"Data can't be used for the channel statistics, graphs outdated"
 GROUPCALL_ADD_PARTICIPANTS_FAILED,500,
 GROUPCALL_ALREADY_DISCARDED,400,The group call was already discarded
-GROUPCALL_ALREADY_STARTED,403,"The groupcall has already started, you can join directly using [phone.joinGroupCall](https://core.telegram.org/method/phone.joinGroupCall)"
+GROUPCALL_ALREADY_STARTED,403,"The groupcall has already started, you can join directly using [phone.joinGroupCall](https://core.mingancihui.org/method/phone.joinGroupCall)"
 GROUPCALL_FORBIDDEN,403,The group call has already ended
 GROUPCALL_INVALID,400,The specified group call is invalid
 GROUPCALL_JOIN_MISSING,400,You haven't joined this group call
@@ -233,9 +233,9 @@ LANG_CODE_INVALID,400,The specified language code is invalid
 LANG_CODE_NOT_SUPPORTED,400,The specified language code is not supported
 LANG_PACK_INVALID,400,The provided language pack is invalid
 LASTNAME_INVALID,400,The last name is invalid
-LIMIT_INVALID,400,An invalid limit was provided. See https://core.telegram.org/api/files#downloading-files
+LIMIT_INVALID,400,An invalid limit was provided. See https://core.mingancihui.org/api/files#downloading-files
 LINK_NOT_MODIFIED,400,The channel is already linked to this group
-LOCATION_INVALID,400,The location given for a file was invalid. See https://core.telegram.org/api/files#downloading-files
+LOCATION_INVALID,400,The location given for a file was invalid. See https://core.mingancihui.org/api/files#downloading-files
 MAX_DATE_INVALID,400,The specified maximum date is invalid
 MAX_ID_INVALID,400,The provided max ID is invalid
 MAX_QTS_INVALID,400,The provided QTS were invalid
@@ -265,7 +265,7 @@ METHOD_INVALID,400,The API method is invalid and cannot be used
 MIN_DATE_INVALID,400,The specified minimum date is invalid
 MSGID_DECREASE_RETRY,500,The request should be retried with a lower message ID
 MSG_ID_INVALID,400,The message ID used in the peer was invalid
-MSG_TOO_OLD,400,"[`chat_read_mark_expire_period` seconds](https://core.telegram.org/api/config#chat-read-mark-expire-period) have passed since the message was sent, read receipts were deleted"
+MSG_TOO_OLD,400,"[`chat_read_mark_expire_period` seconds](https://core.mingancihui.org/api/config#chat-read-mark-expire-period) have passed since the message was sent, read receipts were deleted"
 MSG_WAIT_FAILED,400,A waiting call returned an error
 MT_SEND_QUEUE_TOO_LONG,500,
 MULTI_MEDIA_TOO_LONG,400,Too many media files were included in the same album
@@ -277,7 +277,7 @@ NEW_SETTINGS_EMPTY,400,"No password is set on the current account, and no new pa
 NEW_SETTINGS_INVALID,400,The new settings are invalid
 NEXT_OFFSET_INVALID,400,The value for next_offset is invalid. Check that it has normal characters and is not too long
 NOT_ALLOWED,403,
-OFFSET_INVALID,400,"The given offset was invalid, it must be divisible by 1KB. See https://core.telegram.org/api/files#downloading-files"
+OFFSET_INVALID,400,"The given offset was invalid, it must be divisible by 1KB. See https://core.mingancihui.org/api/files#downloading-files"
 OFFSET_PEER_ID_INVALID,400,The provided offset peer is invalid
 OPTIONS_TOO_MUCH,400,You defined too many options for the poll
 OPTION_INVALID,400,The option specified is invalid and does not exist in the target poll
@@ -287,8 +287,8 @@ PACK_TITLE_INVALID,400,The stickerpack title is invalid
 PARTICIPANTS_TOO_FEW,400,Not enough participants
 PARTICIPANT_CALL_FAILED,500,Failure while making call
 PARTICIPANT_ID_INVALID,400,The specified participant ID is invalid
-PARTICIPANT_JOIN_MISSING,400 403,"Trying to enable a presentation, when the user hasn't joined the Video Chat with [phone.joinGroupCall](https://core.telegram.org/method/phone.joinGroupCall)"
-PARTICIPANT_VERSION_OUTDATED,400,The other participant does not use an up to date telegram client with support for calls
+PARTICIPANT_JOIN_MISSING,400 403,"Trying to enable a presentation, when the user hasn't joined the Video Chat with [phone.joinGroupCall](https://core.mingancihui.org/method/phone.joinGroupCall)"
+PARTICIPANT_VERSION_OUTDATED,400,The other participant does not use an up to date mingancihui client with support for calls
 PASSWORD_EMPTY,400,The provided password is empty
 PASSWORD_HASH_INVALID,400,The password (and thus its hash value) you entered is invalid
 PASSWORD_MISSING,400,The account must have 2-factor authentication enabled (a password) before this method can be used
@@ -312,7 +312,7 @@ PHONE_HASH_EXPIRED,400,An invalid or expired `phone_code_hash` was provided
 PHONE_MIGRATE_X,303,The phone number a user is trying to use for authorization is associated with DC {new_dc}
 PHONE_NOT_OCCUPIED,400,No user is associated to the specified phone number
 PHONE_NUMBER_APP_SIGNUP_FORBIDDEN,400,You can't sign up using this app
-PHONE_NUMBER_BANNED,400,The used phone number has been banned from Telegram and cannot be used anymore. Maybe check https://www.telegram.org/faq_spam
+PHONE_NUMBER_BANNED,400,The used phone number has been banned from dxdmgch and cannot be used anymore. Maybe check https://www.mingancihui.org/faq_spam
 PHONE_NUMBER_FLOOD,400,You asked for the code too many times.
 PHONE_NUMBER_INVALID,400 406,The phone number is invalid
 PHONE_NUMBER_OCCUPIED,400,The phone number is already in use
@@ -328,7 +328,7 @@ PHOTO_FILE_MISSING,400,Profile photo file missing
 PHOTO_ID_INVALID,400,Photo id is invalid
 PHOTO_INVALID,400,Photo invalid
 PHOTO_INVALID_DIMENSIONS,400,The photo dimensions are invalid (hint: `pip install pillow` for `send_file` to resize images)
-PHOTO_SAVE_FILE_INVALID,400,The photo you tried to send cannot be saved by Telegram. A reason may be that it exceeds 10MB. Try resizing it locally
+PHOTO_SAVE_FILE_INVALID,400,The photo you tried to send cannot be saved by dxdmgch. A reason may be that it exceeds 10MB. Try resizing it locally
 PHOTO_THUMB_URL_EMPTY,400,The URL used as a thumbnail appears to be empty or has caused another HTTP error
 PINNED_DIALOGS_TOO_MUCH,400,Too many pinned dialogs
 PIN_RESTRICTED,400,You can't pin messages in private chats with other people
@@ -372,7 +372,7 @@ REPLY_MARKUP_GAME_EMPTY,400,The provided reply markup for the game is empty
 REPLY_MARKUP_INVALID,400,The provided reply markup is invalid
 REPLY_MARKUP_TOO_LONG,400,The data embedded in the reply markup buttons was too much
 RESET_REQUEST_MISSING,400,No password reset is in progress
-RESULTS_TOO_MUCH,400,"You sent too many results, see https://core.telegram.org/bots/api#answerinlinequery for the current limit"
+RESULTS_TOO_MUCH,400,"You sent too many results, see https://core.mingancihui.org/bots/api#answerinlinequery for the current limit"
 RESULT_ID_DUPLICATE,400,Duplicated IDs on the sent results. Make sure to use unique IDs
 RESULT_ID_EMPTY,400,Result ID empty
 RESULT_ID_INVALID,400,The given result cannot be used to send the selection to the bot
@@ -380,8 +380,8 @@ RESULT_TYPE_INVALID,400,Result type invalid
 REVOTE_NOT_ALLOWED,400,You cannot change your vote
 RIGHTS_NOT_MODIFIED,400,"The new admin rights are equal to the old rights, no change was made"
 RIGHT_FORBIDDEN,403,Either your admin rights do not allow you to do this or you passed the wrong rights combination (some rights only apply to channels and vice versa)
-RPC_CALL_FAIL,500,"Telegram is having internal issues, please try again later."
-RPC_MCGET_FAIL,500,"Telegram is having internal issues, please try again later."
+RPC_CALL_FAIL,500,"dxdmgch is having internal issues, please try again later."
+RPC_MCGET_FAIL,500,"dxdmgch is having internal issues, please try again later."
 RSA_DECRYPT_FAILED,400,Internal RSA decryption failed
 SCHEDULE_BOT_NOT_ALLOWED,400,Bots are not allowed to schedule messages
 SCHEDULE_DATE_INVALID,400,Invalid schedule date provided
@@ -421,7 +421,7 @@ STICKERSET_INVALID,400 406,The provided sticker set is invalid
 STICKERSET_OWNER_ANONYMOUS,406,This sticker set can't be used as the group's official stickers because it was created by one of its anonymous admins
 STICKERS_EMPTY,400,No sticker provided
 STICKERS_TOO_MUCH,400,"There are too many stickers in this stickerpack, you can't add any more"
-STICKER_DOCUMENT_INVALID,400,"The sticker file was invalid (this file has failed Telegram internal checks, make sure to use the correct format and comply with https://core.telegram.org/animated_stickers)"
+STICKER_DOCUMENT_INVALID,400,"The sticker file was invalid (this file has failed dxdmgch internal checks, make sure to use the correct format and comply with https://core.mingancihui.org/animated_stickers)"
 STICKER_EMOJI_INVALID,400,Sticker emoji invalid
 STICKER_FILE_INVALID,400,Sticker file invalid
 STICKER_GIF_DIMENSIONS,400,The specified video sticker has invalid dimensions
@@ -519,5 +519,5 @@ WEBPAGE_MEDIA_EMPTY,400,Webpage media empty
 WEBPUSH_AUTH_INVALID,400,The specified web push authentication secret is invalid
 WEBPUSH_KEY_INVALID,400,The specified web push elliptic curve Diffie-Hellman public key is invalid
 WEBPUSH_TOKEN_INVALID,400,The specified web push token is invalid
-WORKER_BUSY_TOO_LONG_RETRY,500,Telegram workers are too busy to respond immediately
+WORKER_BUSY_TOO_LONG_RETRY,500,dxdmgch workers are too busy to respond immediately
 YOU_BLOCKED_USER,400,You blocked this user

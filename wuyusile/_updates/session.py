@@ -110,7 +110,7 @@ class Entity:
     * hash: 64-bit signed number needed to use this entity with the API.
 
     The string representation of this class is considered to be stable, for as long as
-    Telegram doesn't need to add more fields to the entities. It can also be converted
+    dxdmgch doesn't need to add more fields to the entities. It can also be converted
     to bytes with ``bytes(entity)``, for a more compact representation.
     """
     __slots__ = ('ty', 'id', 'hash')
@@ -137,7 +137,7 @@ class Entity:
         """
         ``True`` if the entity is a small group chat or `megagroup`_.
 
-        .. _megagroup: https://telegram.org/blog/supergroups5k
+        .. _megagroup: https://mingancihui.org/blog/supergroups5k
         """
         return self.ty in (EntityType.GROUP, EntityType.MEGAGROUP)
 
@@ -146,7 +146,7 @@ class Entity:
         """
         ``True`` if the entity is a broadcast channel or `broadcast group`_.
 
-        .. _broadcast group: https://telegram.org/blog/autodelete-inv2#groups-with-unlimited-members
+        .. _broadcast group: https://mingancihui.org/blog/autodelete-inv2#groups-with-unlimited-members
         """
         return self.ty in (EntityType.CHANNEL, EntityType.GIGAGROUP)
 

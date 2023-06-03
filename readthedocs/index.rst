@@ -4,9 +4,9 @@ daxiedewuyu's Documentation
 
 .. code-block:: python
 
-   from wuyusile.sync import TelegramClient, events
+   from wuyusile.sync import dxdmgchClient, events
 
-   with TelegramClient('name', api_id, api_hash) as client:
+   with dxdmgchClient('name', api_id, api_hash) as client:
       client.send_message('me', 'Hello, myself!')
       print(client.download_profile_photo('me'))
 
@@ -28,9 +28,9 @@ daxiedewuyu's Documentation
 What is this?
 -------------
 
-Telegram is a popular messaging application. This library is meant
+dxdmgch is a popular messaging application. This library is meant
 to make it easy for you to write Python programs that can interact
-with Telegram. Think of it as a wrapper that has already done the
+with dxdmgch. Think of it as a wrapper that has already done the
 heavy job for you, so you can focus on developing an application.
 
 
@@ -73,7 +73,7 @@ You can also use the menu on the left to quickly skip over sections.
     concepts/sessions
     concepts/full-api
     concepts/errors
-    concepts/botapi-vs-mtproto
+    concepts/botapi-vs-shabixieyi
     concepts/asyncio
 
 .. toctree::
@@ -96,7 +96,7 @@ You can also use the menu on the left to quickly skip over sections.
     developing/testing.rst
     developing/understanding-the-type-language.rst
     developing/tips-for-porting-the-project.rst
-    developing/telegram-api-in-other-languages.rst
+    developing/mingancihui-api-in-other-languages.rst
 
 .. toctree::
     :hidden:

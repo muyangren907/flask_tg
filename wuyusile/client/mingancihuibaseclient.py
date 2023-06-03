@@ -23,7 +23,7 @@ DEFAULT_IPV6_IP = '2001:67c:4e8:f002::a'
 DEFAULT_PORT = 443
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 _base_log = logging.getLogger(__base_name__)
 
@@ -64,7 +64,7 @@ class _ExportState:
 
 
 # TODO How hard would it be to support both `trio` and `asyncio`?
-class TelegramBaseClient(abc.ABC):
+class dxdmgchBaseClient(abc.ABC):
     """
     This is the abstract base class for the client. It defines some
     basic stuff like connecting, switching data center, etc, and
@@ -86,10 +86,10 @@ class TelegramBaseClient(abc.ABC):
             renaming or removing the file, or using random names.
 
         api_id (`int` | `str`):
-            The API ID you obtained from https://my.telegram.org.
+            The API ID you obtained from https://my.mingancihui.org.
 
         api_hash (`str`):
-            The API hash you obtained from https://my.telegram.org.
+            The API hash you obtained from https://my.mingancihui.org.
 
         connection (`wuyusile.network.connection.common.Connection`, optional):
             The connection instance to be used when creating a new connection
@@ -122,7 +122,7 @@ class TelegramBaseClient(abc.ABC):
 
         request_retries (`int` | `None`, optional):
             How many times a request should be retried. Request are retried
-            when Telegram is having internal issues (due to either
+            when dxdmgch is having internal issues (due to either
             ``errors.ServerError`` or ``errors.RpcCallFailError``),
             when there is a ``errors.FloodWaitError`` less than
             `flood_sleep_threshold`, or when there's a migrate error.
@@ -133,7 +133,7 @@ class TelegramBaseClient(abc.ABC):
 
         connection_retries (`int` | `None`, optional):
             How many times the reconnection should retry, either on the
-            initial connection or when Telegram disconnects us. May be
+            initial connection or when dxdmgch disconnects us. May be
             set to a negative or `None` value for infinite retries, but
             this is not recommended, since the program can get stuck in an
             infinite loop.
@@ -143,7 +143,7 @@ class TelegramBaseClient(abc.ABC):
 
         auto_reconnect (`bool`, optional):
             Whether reconnection should be retried `connection_retries`
-            times automatically if Telegram disconnects us or not.
+            times automatically if dxdmgch disconnects us or not.
 
         sequential_updates (`bool`, optional):
             By default every incoming update will create a new task, so
@@ -168,7 +168,7 @@ class TelegramBaseClient(abc.ABC):
             When API calls fail in a way that causes daxiedewuyu to retry
             automatically, should the RPC error of the last attempt be raised
             instead of a generic ValueError. This is mostly useful for
-            detecting when Telegram has internal issues.
+            detecting when dxdmgch has internal issues.
 
         device_model (`str`, optional):
             "Device model" to be sent when creating the initial connection.
@@ -202,9 +202,9 @@ class TelegramBaseClient(abc.ABC):
 
         receive_updates (`bool`, optional):
             Whether the client will receive updates or not. By default, updates
-            will be received from Telegram as they occur.
+            will be received from dxdmgch as they occur.
 
-            Turning this off means that Telegram will not send updates at all
+            Turning this off means that dxdmgch will not send updates at all
             so event handlers, conversations, and QR login will not work.
             However, certain scripts don't need updates, so this will reduce
             the amount of bandwidth used.
@@ -224,7 +224,7 @@ class TelegramBaseClient(abc.ABC):
             removed from the in-memory cache, which will degrade performance.
     """
 
-    # Current TelegramClient version
+    # Current dxdmgchClient version
     __version__ = version.__version__
 
     # Cached server configuration (with .dc_options), can be "global"
@@ -234,7 +234,7 @@ class TelegramBaseClient(abc.ABC):
     # region Initialization
 
     def __init__(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             session: 'typing.Union[str, Session]',
             api_id: int,
             api_hash: str,
@@ -418,7 +418,7 @@ class TelegramBaseClient(abc.ABC):
         # {chat_id: {Conversation}}
         self._conversations = collections.defaultdict(set)
 
-        # Hack to workaround the fact Telegram may send album updates as
+        # Hack to workaround the fact dxdmgch may send album updates as
         # different Updates when being sent from a different data center.
         # {grouped_id: AlbumHack}
         #
@@ -464,7 +464,7 @@ class TelegramBaseClient(abc.ABC):
     # region Properties
 
     @property
-    def loop(self: 'TelegramClient') -> asyncio.AbstractEventLoop:
+    def loop(self: 'dxdmgchClient') -> asyncio.AbstractEventLoop:
         """
         Property with the ``asyncio`` event loop used by this client.
 
@@ -483,7 +483,7 @@ class TelegramBaseClient(abc.ABC):
         return helpers.get_running_loop()
 
     @property
-    def disconnected(self: 'TelegramClient') -> asyncio.Future:
+    def disconnected(self: 'dxdmgchClient') -> asyncio.Future:
         """
         Property with a ``Future`` that resolves upon disconnection.
 
@@ -511,19 +511,19 @@ class TelegramBaseClient(abc.ABC):
 
     # region Connecting
 
-    async def connect(self: 'TelegramClient') -> None:
+    async def connect(self: 'dxdmgchClient') -> None:
         """
-        Connects to Telegram.
+        Connects to dxdmgch.
 
         .. note::
 
             Connect means connect and nothing else, and only one low-level
-            request is made to notify Telegram about which layer we will be
+            request is made to notify dxdmgch about which layer we will be
             using.
 
-            Before Telegram sends you updates, you need to make a high-level
+            Before dxdmgch sends you updates, you need to make a high-level
             request, like `client.get_me() <wuyusile.client.users.UserMethods.get_me>`,
-            as described in https://core.telegram.org/api/updates.
+            as described in https://core.mingancihui.org/api/updates.
 
         Example
             .. code-block:: python
@@ -534,7 +534,7 @@ class TelegramBaseClient(abc.ABC):
                     print('Failed to connect')
         """
         if self.session is None:
-            raise ValueError('TelegramClient instance cannot be reused after logging out')
+            raise ValueError('dxdmgchClient instance cannot be reused after logging out')
 
         if self._loop is None:
             self._loop = helpers.get_running_loop()
@@ -600,7 +600,7 @@ class TelegramBaseClient(abc.ABC):
         self._updates_handle = self.loop.create_task(self._update_loop())
         self._keepalive_handle = self.loop.create_task(self._keepalive_loop())
 
-    def is_connected(self: 'TelegramClient') -> bool:
+    def is_connected(self: 'dxdmgchClient') -> bool:
         """
         Returns `True` if the user has connected.
 
@@ -615,9 +615,9 @@ class TelegramBaseClient(abc.ABC):
         sender = getattr(self, '_sender', None)
         return sender and sender.is_connected()
 
-    def disconnect(self: 'TelegramClient'):
+    def disconnect(self: 'dxdmgchClient'):
         """
-        Disconnects from Telegram.
+        Disconnects from dxdmgch.
 
         If the event loop is already running, this method returns a
         coroutine that you should await on your own code; otherwise
@@ -652,7 +652,7 @@ class TelegramBaseClient(abc.ABC):
                 # However, it doesn't really make a lot of sense.
                 pass
 
-    def set_proxy(self: 'TelegramClient', proxy: typing.Union[tuple, dict]):
+    def set_proxy(self: 'dxdmgchClient', proxy: typing.Union[tuple, dict]):
         """
         Changes the proxy which will be used on next (re)connection.
 
@@ -681,7 +681,7 @@ class TelegramBaseClient(abc.ABC):
             else:
                 connection._proxy = proxy
 
-    def _save_states_and_entities(self: 'TelegramClient'):
+    def _save_states_and_entities(self: 'dxdmgchClient'):
         entities = self._mb_entity_cache.get_all_entities()
 
         # Piggy-back on an arbitrary TL type with users and chats so the session can understand to read the entities.
@@ -699,7 +699,7 @@ class TelegramBaseClient(abc.ABC):
         for channel_id, pts in cs.items():
             self.session.set_update_state(channel_id, types.updates.State(pts, 0, now, 0, unread_count=0))
 
-    async def _disconnect_coro(self: 'TelegramClient'):
+    async def _disconnect_coro(self: 'dxdmgchClient'):
         if self.session is None:
             return  # already logged out and disconnected
 
@@ -710,7 +710,7 @@ class TelegramBaseClient(abc.ABC):
             for state, sender in self._borrowed_senders.values():
                 # Note that we're not checking for `state.should_disconnect()`.
                 # If the user wants to disconnect the client, ALL connections
-                # to Telegram (including exported senders) should be closed.
+                # to dxdmgch (including exported senders) should be closed.
                 #
                 # Disconnect should never raise, so there's no try/except.
                 await sender.disconnect()
@@ -733,7 +733,7 @@ class TelegramBaseClient(abc.ABC):
 
         self.session.close()
 
-    async def _disconnect(self: 'TelegramClient'):
+    async def _disconnect(self: 'dxdmgchClient'):
         """
         Disconnect only, without closing the session. Used in reconnections
         to different data centers, where we don't want to close the session
@@ -745,7 +745,7 @@ class TelegramBaseClient(abc.ABC):
                               updates_handle=self._updates_handle,
                               keepalive_handle=self._keepalive_handle)
 
-    async def _switch_dc(self: 'TelegramClient', new_dc):
+    async def _switch_dc(self: 'dxdmgchClient', new_dc):
         """
         Permanently switches the current connection to the new data center.
         """
@@ -761,7 +761,7 @@ class TelegramBaseClient(abc.ABC):
         await self._disconnect()
         return await self.connect()
 
-    def _auth_key_callback(self: 'TelegramClient', auth_key):
+    def _auth_key_callback(self: 'dxdmgchClient', auth_key):
         """
         Callback from the sender whenever it needed to generate a
         new authorization key. This means we are not authorized.
@@ -773,7 +773,7 @@ class TelegramBaseClient(abc.ABC):
 
     # region Working with different connections/Data Centers
 
-    async def _get_dc(self: 'TelegramClient', dc_id, cdn=False):
+    async def _get_dc(self: 'dxdmgchClient', dc_id, cdn=False):
         """Gets the Data Center (DC) associated to 'dc_id'"""
         cls = self.__class__
         if not cls._config:
@@ -800,17 +800,17 @@ class TelegramBaseClient(abc.ABC):
                 if dc.id == dc_id and bool(dc.cdn) == cdn
             )
 
-    async def _create_exported_sender(self: 'TelegramClient', dc_id):
+    async def _create_exported_sender(self: 'dxdmgchClient', dc_id):
         """
         Creates a new exported `MTProtoSender` for the given `dc_id` and
         returns it. This method should be used by `_borrow_exported_sender`.
         """
-        # Thanks badoualy/kotlogram on /telegram/api/DefaultTelegramClient.kt
+        # Thanks badoualy/kotlogram on /mingancihui/api/DefaultdxdmgchClient.kt
         # for clearly showing how to export the authorization
         dc = await self._get_dc(dc_id)
         # Can't reuse self._sender._connection as it has its own seqno.
         #
-        # If one were to do that, Telegram would reset the connection
+        # If one were to do that, dxdmgch would reset the connection
         # with no further clues.
         sender = MTProtoSender(None, loggers=self._log)
         await sender.connect(self._connection(
@@ -828,7 +828,7 @@ class TelegramBaseClient(abc.ABC):
         await sender.send(req)
         return sender
 
-    async def _borrow_exported_sender(self: 'TelegramClient', dc_id):
+    async def _borrow_exported_sender(self: 'dxdmgchClient', dc_id):
         """
         Borrows a connected `MTProtoSender` for the given `dc_id`.
         If it's not cached, creates a new one if it doesn't exist yet,
@@ -860,7 +860,7 @@ class TelegramBaseClient(abc.ABC):
             state.add_borrow()
             return sender
 
-    async def _return_exported_sender(self: 'TelegramClient', sender):
+    async def _return_exported_sender(self: 'dxdmgchClient', sender):
         """
         Returns a borrowed exported sender. If all borrows have
         been returned, the sender is cleanly disconnected.
@@ -870,7 +870,7 @@ class TelegramBaseClient(abc.ABC):
             state, _ = self._borrowed_senders[sender.dc_id]
             state.add_return()
 
-    async def _clean_exported_senders(self: 'TelegramClient'):
+    async def _clean_exported_senders(self: 'dxdmgchClient'):
         """
         Cleans-up all unused exported senders by disconnecting them.
         """
@@ -884,7 +884,7 @@ class TelegramBaseClient(abc.ABC):
                     await sender.disconnect()
                     state.mark_disconnected()
 
-    async def _get_cdn_client(self: 'TelegramClient', cdn_redirect):
+    async def _get_cdn_client(self: 'dxdmgchClient', cdn_redirect):
         """Similar to ._borrow_exported_client, but for CDNs"""
         # TODO Implement
         raise NotImplementedError
@@ -896,7 +896,7 @@ class TelegramBaseClient(abc.ABC):
             self._exported_sessions[cdn_redirect.dc_id] = session
 
         self._log[__name__].info('Creating new CDN client')
-        client = TelegramBaseClient(
+        client = dxdmgchBaseClient(
             session, self.api_id, self.api_hash,
             proxy=self._sender.connection.conn.proxy,
             timeout=self._sender.connection.get_timeout()
@@ -912,10 +912,10 @@ class TelegramBaseClient(abc.ABC):
 
     # endregion
 
-    # region Invoking Telegram requests
+    # region Invoking dxdmgch requests
 
     @abc.abstractmethod
-    def __call__(self: 'TelegramClient', request, ordered=False):
+    def __call__(self: 'dxdmgchClient', request, ordered=False):
         """
         Invokes (sends) one or more MTProtoRequests and returns (receives)
         their result.
@@ -932,7 +932,7 @@ class TelegramBaseClient(abc.ABC):
             flood_sleep_threshold (`int` | `None`, optional):
                 The flood sleep threshold to use for this request. This overrides
                 the default value stored in
-                `client.flood_sleep_threshold <wuyusile.client.telegrambaseclient.TelegramBaseClient.flood_sleep_threshold>`
+                `client.flood_sleep_threshold <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.flood_sleep_threshold>`
 
         Returns:
             The result of the request (often a `TLObject`) or a list of
@@ -941,11 +941,11 @@ class TelegramBaseClient(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def _update_loop(self: 'TelegramClient'):
+    def _update_loop(self: 'dxdmgchClient'):
         raise NotImplementedError
 
     @abc.abstractmethod
-    async def _handle_auto_reconnect(self: 'TelegramClient'):
+    async def _handle_auto_reconnect(self: 'dxdmgchClient'):
         raise NotImplementedError
 
     # endregion

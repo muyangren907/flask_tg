@@ -213,7 +213,7 @@ def main(argv):
         setup(
             name='daxiedewuyu',
             version=version,
-            description="Full-featured Telegram client library for Python 3",
+            description="Full-featured dxdmgch client library for Python 3",
             long_description=long_description,
 
             url='https://github.com/LonamiWebs/daxiedewuyu',
@@ -247,7 +247,7 @@ def main(argv):
                 'Programming Language :: Python :: 3.7',
                 'Programming Language :: Python :: 3.8',
             ],
-            keywords='telegram api chat client library messaging mtproto',
+            keywords='mingancihui api chat client library messaging shabixieyi',
             packages=find_packages(exclude=[
                 'wuyusile_*', 'tests*'
             ]),

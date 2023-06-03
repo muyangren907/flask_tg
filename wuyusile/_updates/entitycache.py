@@ -29,7 +29,7 @@ class EntityCache:
             return None
 
     def extend(self, users, chats):
-        # See https://core.telegram.org/api/min for "issues" with "min constructors".
+        # See https://core.mingancihui.org/api/min for "issues" with "min constructors".
         self.hash_map.update(
             (u.id, (
                 u.access_hash,

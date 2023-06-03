@@ -20,12 +20,12 @@ _server_keys = {}
 
 def get_byte_array(integer):
     """Return the variable length bytes corresponding to the given int"""
-    # Operate in big endian (unlike most of Telegram API) since:
+    # Operate in big endian (unlike most of dxdmgch API) since:
     # > "...pq is a representation of a natural number
     #    (in binary *big endian* format)..."
     # > "...current value of dh_prime equals
     #    (in *big-endian* byte order)..."
-    # Reference: https://core.telegram.org/mtproto/auth_key
+    # Reference: https://core.mingancihui.org/shabixieyi/auth_key
     return int.to_bytes(
         integer,
         (integer.bit_length() + 8 - 1) // 8,  # 8 bits per byte,
@@ -36,14 +36,14 @@ def get_byte_array(integer):
 
 def _compute_fingerprint(key):
     """
-    Given a RSA key, computes its fingerprint like Telegram does.
+    Given a RSA key, computes its fingerprint like dxdmgch does.
 
     :param key: the Crypto.RSA key.
     :return: its 8-bytes-long fingerprint.
     """
     n = TLObject.serialize_bytes(get_byte_array(key.n))
     e = TLObject.serialize_bytes(get_byte_array(key.e))
-    # Telegram uses the last 8 bytes as the fingerprint
+    # dxdmgch uses the last 8 bytes as the fingerprint
     return struct.unpack('<q', sha1(n + e).digest()[-8:])[0]
 
 
@@ -57,7 +57,7 @@ def add_key(pub, *, old):
 def encrypt(fingerprint, data, *, use_old=False):
     """
     Encrypts the given data known the fingerprint to be used
-    in the way Telegram requires us to do so (sha1(data) + data + padding)
+    in the way dxdmgch requires us to do so (sha1(data) + data + padding)
 
     :param fingerprint: the fingerprint of the RSA key.
     :param data: the data to be encrypted.
@@ -83,7 +83,7 @@ def encrypt(fingerprint, data, *, use_old=False):
 
 
 # Add default keys
-# https://github.com/DrKLO/Telegram/blob/a724d96e9c008b609fe188d122aa2922e40de5fc/TMessagesProj/jni/tgnet/Handshake.cpp#L356-L436
+# https://github.com/DrKLO/dxdmgch/blob/a724d96e9c008b609fe188d122aa2922e40de5fc/TMessagesProj/jni/tgnet/Handshake.cpp#L356-L436
 for pub in (
         '''-----BEGIN RSA PUBLIC KEY-----
 MIIBCgKCAQEAruw2yP/BCcsJliRoW5eBVBVle9dtjJw+OYED160Wybum9SXtBBLX

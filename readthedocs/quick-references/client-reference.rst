@@ -14,7 +14,7 @@ sure to follow the links.
 
 .. contents::
 
-TelegramClient
+dxdmgchClient
 ==============
 
 This is a summary of the methods and
@@ -38,7 +38,7 @@ Auth
 Base
 ----
 
-.. py:currentmodule:: wuyusile.client.telegrambaseclient.TelegramBaseClient
+.. py:currentmodule:: wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient
 
 .. autosummary::
     :nosignatures:

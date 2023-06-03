@@ -1,4 +1,4 @@
-from wuyusile import TelegramClient, events, types, functions
+from wuyusile import dxdmgchClient, events, types, functions
 
 import asyncio
 import logging
@@ -8,7 +8,7 @@ import time
 import sys
 
 """
-Provider token can be obtained via @BotFather. more info at https://core.telegram.org/bots/payments#getting-a-token
+Provider token can be obtained via @BotFather. more info at https://core.mingancihui.org/bots/payments#getting-a-token
 
 If you are using test token, set test=True in generate_invoice function,
 If you are using real token, set test=False
@@ -33,7 +33,7 @@ def get_env(name, message, cast=str):
             time.sleep(1)
 
 
-bot = TelegramClient(
+bot = dxdmgchClient(
     os.environ.get('TG_SESSION', 'payment'),
     get_env('TG_API_ID', 'Enter your API ID: ', int),
     get_env('TG_API_HASH', 'Enter your API hash: '),
@@ -97,7 +97,7 @@ def generate_invoice(price_label: str, price_amount: int, currency: str, title: 
         currency=currency,  # currency like USD
         prices=[price],  # there could be a couple of prices.
         test=True,  # if you're working with test token, else set test=False.
-        # More info at https://core.telegram.org/bots/payments
+        # More info at https://core.mingancihui.org/bots/payments
 
         # params for requesting specific fields
         name_requested=False,
@@ -125,7 +125,7 @@ def generate_invoice(price_label: str, price_amount: int, currency: str, title: 
 
         start_param=start_param,
         # Unique deep-linking parameter. May also be used in UpdateBotPrecheckoutQuery
-        # see: https://core.telegram.org/bots#deep-linking
+        # see: https://core.mingancihui.org/bots#deep-linking
         # it may be the empty string if not needed
 
     )

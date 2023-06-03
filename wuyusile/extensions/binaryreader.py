@@ -27,7 +27,7 @@ class BinaryReader:
     # region Reading
 
     # "All numbers are written as little endian."
-    # https://core.telegram.org/mtproto
+    # https://core.mingancihui.org/shabixieyi
     def read_byte(self):
         """Reads a single byte value."""
         return self.read(1)[0]
@@ -71,11 +71,11 @@ class BinaryReader:
 
     # endregion
 
-    # region Telegram custom reading
+    # region dxdmgch custom reading
 
     def tgread_bytes(self):
         """
-        Reads a Telegram-encoded byte array, without the need of
+        Reads a dxdmgch-encoded byte array, without the need of
         specifying its length.
         """
         first_byte = self.read_byte()
@@ -95,11 +95,11 @@ class BinaryReader:
         return data
 
     def tgread_string(self):
-        """Reads a Telegram-encoded string."""
+        """Reads a dxdmgch-encoded string."""
         return str(self.tgread_bytes(), encoding='utf-8', errors='replace')
 
     def tgread_bool(self):
-        """Reads a Telegram boolean value."""
+        """Reads a dxdmgch boolean value."""
         value = self.read_int(signed=False)
         if value == 0x997275b5:  # boolTrue
             return True
@@ -109,14 +109,14 @@ class BinaryReader:
             raise RuntimeError('Invalid boolean code {}'.format(hex(value)))
 
     def tgread_date(self):
-        """Reads and converts Unix time (used by Telegram)
+        """Reads and converts Unix time (used by dxdmgch)
            into a Python datetime object.
         """
         value = self.read_int()
         return _EPOCH + timedelta(seconds=value)
 
     def tgread_object(self):
-        """Reads a Telegram object."""
+        """Reads a dxdmgch object."""
         constructor_id = self.read_int(signed=False)
         clazz = tlobjects.get(constructor_id, None)
         if clazz is None:
@@ -142,7 +142,7 @@ class BinaryReader:
         return clazz.from_reader(self)
 
     def tgread_vector(self):
-        """Reads a vector (a list) of Telegram objects."""
+        """Reads a vector (a list) of dxdmgch objects."""
         if 0x1cb5c415 != self.read_int(signed=False):
             raise RuntimeError('Invalid constructor code, vector was expected')
 

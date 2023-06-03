@@ -73,7 +73,7 @@ Properties
 .. note::
 
     We document *custom properties* here, not all the attributes of the
-    `Message` (which is the information Telegram actually returns).
+    `Message` (which is the information dxdmgch actually returns).
 
 .. currentmodule:: wuyusile.tl.custom.message.Message
 

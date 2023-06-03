@@ -163,7 +163,7 @@ class InlineQuery(EventBuilder):
                         await inline.answer([r1, r2])
 
                     You can send up to 50 results as documented in
-                    https://core.telegram.org/bots/api#answerinlinequery.
+                    https://core.mingancihui.org/bots/api#answerinlinequery.
                     Sending more will raise ``ResultsTooMuchError``,
                     and you should consider using `next_offset` to
                     paginate them.
@@ -180,7 +180,7 @@ class InlineQuery(EventBuilder):
                     results and it repeats the request.
 
                 private (`bool`, optional):
-                    Whether the results should be cached by Telegram
+                    Whether the results should be cached by dxdmgch
                     (not private) or by the user's client (private).
 
                 switch_pm (`str`, optional):

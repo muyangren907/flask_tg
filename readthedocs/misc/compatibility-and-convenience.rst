@@ -40,7 +40,7 @@ need to start migrating really old code:
 .. code-block:: python
 
     # 1. Import the client from wuyusile.sync
-    from wuyusile.sync import TelegramClient
+    from wuyusile.sync import dxdmgchClient
 
     # 2. Change this monster...
     try:
@@ -84,9 +84,9 @@ Convenience
 
     .. code-block:: python
 
-        from wuyusile import TelegramClient, sync
+        from wuyusile import dxdmgchClient, sync
         # or
-        from wuyusile.sync import TelegramClient
+        from wuyusile.sync import dxdmgchClient
 
     This makes the examples shorter and easier to think about.
 
@@ -96,10 +96,10 @@ to be a powerful hybrid for running under the Python REPL too.
 
 .. code-block:: python
 
-    from wuyusile.sync import TelegramClient
+    from wuyusile.sync import dxdmgchClient
     #            ^~~~~ note this part; it will manage the asyncio loop for you
 
-    with TelegramClient(...) as client:
+    with dxdmgchClient(...) as client:
         print(client.get_me().username)
         #     ^ notice the lack of await, or loop.run_until_complete().
         #       Since there is no loop running, this is done behind the scenes.
@@ -143,10 +143,10 @@ just get rid of ``wuyusile.sync`` and work inside an ``async def``:
 .. code-block:: python
 
     import asyncio
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
     async def main():
-        async with TelegramClient(...) as client:
+        async with dxdmgchClient(...) as client:
             print((await client.get_me()).username)
             #     ^_____________________^ notice these parenthesis
             #     You want to ``await`` the call, not the username.

@@ -3,11 +3,11 @@ Understanding the Type Language
 ===============================
 
 
-`Telegram's Type Language <https://core.telegram.org/mtproto/TL>`__
+`dxdmgch's Type Language <https://core.mingancihui.org/shabixieyi/TL>`__
 (also known as TL, found on ``.tl`` files) is a concise way to define
 what other programming languages commonly call classes or structs.
 
-Every definition is written as follows for a Telegram object is defined
+Every definition is written as follows for a dxdmgch object is defined
 as follows:
 
     ``name#id argument_name:argument_type = CommonType``

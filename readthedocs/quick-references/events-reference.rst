@@ -57,7 +57,7 @@ MessageDeleted
 ==============
 
 Occurs whenever a message is deleted. Note that this event isn't 100%
-reliable, since Telegram doesn't always notify the clients that a message
+reliable, since dxdmgch doesn't always notify the clients that a message
 was deleted.
 
 It only has the ``deleted_id`` and ``deleted_ids`` attributes
@@ -243,5 +243,5 @@ Raw
 ===
 
 Raw events are not actual events. Instead, they are the raw
-:tl:`Update` object that Telegram sends. You normally shouldn't
+:tl:`Update` object that dxdmgch sends. You normally shouldn't
 need these.

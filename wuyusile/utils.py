@@ -1,5 +1,5 @@
 """
-Utilities for working with the Telegram API itself (such as handy methods
+Utilities for working with the dxdmgch API itself (such as handy methods
 to convert between an entity like a User, Chat, etc. into its Input version)
 """
 import base64
@@ -54,7 +54,7 @@ mimetypes.add_type('audio/flac', '.flac')
 mimetypes.add_type('application/x-tgsticker', '.tgs')
 
 USERNAME_RE = re.compile(
-    r'@|(?:https?://)?(?:www\.)?(?:telegram\.(?:me|dog)|t\.me)/(@|\+|joinchat/)?'
+    r'@|(?:https?://)?(?:www\.)?(?:mingancihui\.(?:me|dog)|t\.me)/(@|\+|joinchat/)?'
 )
 TG_JOIN_RE = re.compile(
     r'tg://(join)\?invite='
@@ -64,7 +64,7 @@ TG_JOIN_RE = re.compile(
 # special, very well known bots. This list may be incomplete though:
 #    "[...] @gif, @vid, @pic, @bing, @wiki, @imdb and @bold [...]"
 #
-# See https://telegram.org/blog/inline-bots#how-does-it-work
+# See https://mingancihui.org/blog/inline-bots#how-does-it-work
 VALID_USERNAME_RE = re.compile(
     r'^([a-z](?:(?!__)\w){3,30}[a-z\d]'
     r'|gif|vid|pic|bing|wiki|imdb|bold|vote|like|coub)$',
@@ -79,7 +79,7 @@ _log = logging.getLogger(__name__)
 def chunks(iterable, size=100):
     """
     Turns the given iterable into chunks of the specified size,
-    which is 100 by default since that's what Telegram uses the most.
+    which is 100 by default since that's what dxdmgch uses the most.
     """
     it = iter(iterable)
     size -= 1
@@ -109,9 +109,9 @@ def get_display_name(entity):
 
 
 def get_extension(media):
-    """Gets the corresponding extension for any Telegram media."""
+    """Gets the corresponding extension for any dxdmgch media."""
 
-    # Photos are always compressed as .jpg by Telegram
+    # Photos are always compressed as .jpg by dxdmgch
     try:
         get_input_photo(media)
         return '.jpg'
@@ -171,7 +171,7 @@ def get_input_peer(entity, allow_self=True, check_hash=True):
     #
     #     > Yes.
     #
-    # More information: https://core.telegram.org/api/min
+    # More information: https://core.mingancihui.org/api/min
     try:
         if entity.SUBCLASS_OF_ID == 0xc91c90b6:  # crc32(b'InputPeer')
             return entity
@@ -851,13 +851,13 @@ def _get_extension(file):
         # Note: ``file.name`` works for :tl:`InputFile` and some `IOBase`
         return _get_extension(file.name)
     else:
-        # Maybe it's a Telegram media
+        # Maybe it's a dxdmgch media
         return get_extension(file)
 
 
 def is_image(file):
     """
-    Returns `True` if the file extension looks like an image file to Telegram.
+    Returns `True` if the file extension looks like an image file to dxdmgch.
     """
     match = re.match(r'\.(png|jpe?g)', _get_extension(file), re.IGNORECASE)
     if match:
@@ -868,7 +868,7 @@ def is_image(file):
 
 def is_gif(file):
     """
-    Returns `True` if the file extension looks like a gif file to Telegram.
+    Returns `True` if the file extension looks like a gif file to dxdmgch.
     """
     return re.match(r'\.gif', _get_extension(file), re.IGNORECASE)
 
@@ -1096,12 +1096,12 @@ def _rle_encode(string):
     return new
 
 
-def _decode_telegram_base64(string):
+def _decode_mingancihui_base64(string):
     """
     Decodes a url-safe base64-encoded string into its bytes
     by first adding the stripped necessary padding characters.
 
-    This is the way Telegram shares binary data as strings,
+    This is the way dxdmgch shares binary data as strings,
     such as Bot API-style file IDs or invite links.
 
     Returns `None` if the input string was not valid.
@@ -1112,9 +1112,9 @@ def _decode_telegram_base64(string):
         return None  # not valid base64, not valid ascii, not a string
 
 
-def _encode_telegram_base64(string):
+def _encode_mingancihui_base64(string):
     """
-    Inverse for `_decode_telegram_base64`.
+    Inverse for `_decode_mingancihui_base64`.
     """
     try:
         return base64.urlsafe_b64encode(string).rstrip(b'=').decode('ascii')
@@ -1133,7 +1133,7 @@ def resolve_bot_file_id(file_id):
 
     For thumbnails, the photo ID and hash will always be zero.
     """
-    data = _rle_decode(_decode_telegram_base64(file_id))
+    data = _rle_decode(_decode_mingancihui_base64(file_id))
     if not data:
         return None
 
@@ -1258,7 +1258,7 @@ def pack_bot_file_id(file):
                 continue
             break
 
-        return _encode_telegram_base64(_rle_encode(struct.pack(
+        return _encode_mingancihui_base64(_rle_encode(struct.pack(
             '<iiqqb', file_type, file.dc_id, file.id, file.access_hash, 2)))
 
     elif isinstance(file, types.Photo):
@@ -1269,7 +1269,7 @@ def pack_bot_file_id(file):
             return None
 
         size = size.location
-        return _encode_telegram_base64(_rle_encode(struct.pack(
+        return _encode_mingancihui_base64(_rle_encode(struct.pack(
             '<iiqqqqib', 2, file.dc_id, file.id, file.access_hash,
             size.volume_id, 0, size.local_id, 2  # 0 = old `secret`
         )))
@@ -1300,7 +1300,7 @@ def resolve_invite_link(link):
     if re.match(r'[a-fA-F\d]+', link_hash) and len(link_hash) in (24, 32):
         payload = bytes.fromhex(link_hash)
     else:
-        payload = _decode_telegram_base64(link_hash)
+        payload = _decode_mingancihui_base64(link_hash)
 
     try:
         if len(payload) == 12:
@@ -1328,7 +1328,7 @@ def resolve_inline_message_id(inline_msg_id):
     """
     try:
         dc_id, message_id, pid, access_hash = \
-            struct.unpack('<iiiq', _decode_telegram_base64(inline_msg_id))
+            struct.unpack('<iiiq', _decode_mingancihui_base64(inline_msg_id))
         peer = types.PeerChannel(-pid) if pid < 0 else types.PeerUser(pid)
         return message_id, peer, dc_id, access_hash
     except (struct.error, TypeError):
@@ -1528,7 +1528,7 @@ def stripped_photo_to_jpg(stripped):
     """
     Adds the JPG header and footer to a stripped image.
 
-    Ported from https://github.com/telegramdesktop/tdesktop/blob/bec39d89e19670eb436dc794a8f20b657cb87c71/Telegram/SourceFiles/ui/image/image.cpp#L225
+    Ported from https://github.com/mingancihuidesktop/tdesktop/blob/bec39d89e19670eb436dc794a8f20b657cb87c71/dxdmgch/SourceFiles/ui/image/image.cpp#L225
     """
     # NOTE: Changes here should update _photo_size_byte_count
     if len(stripped) < 3 or stripped[0] != 1:

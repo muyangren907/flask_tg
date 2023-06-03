@@ -9,7 +9,7 @@ body:
       description: Provide a code example that reproduces the problem. Try to keep it short without other dependencies.
       placeholder: |
         ```python
-        from wuyusile.sync import TelegramClient
+        from wuyusile.sync import dxdmgchClient
         ...
 
         ```

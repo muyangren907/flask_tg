@@ -29,7 +29,7 @@ You can change the logging level to be something different, from less to more in
 
     level=logging.CRITICAL  # won't show errors (same as disabled)
     level=logging.ERROR     # will only show errors that you didn't handle
-    level=logging.WARNING   # will also show messages with medium severity, such as internal Telegram issues
+    level=logging.WARNING   # will also show messages with medium severity, such as internal dxdmgch issues
     level=logging.INFO      # will also show informational messages, such as connection or disconnections
     level=logging.DEBUG     # will show a lot of output to help debugging issues in the library
 
@@ -62,19 +62,19 @@ My account was deleted/limited when using the library
 
 First and foremost, **this is not a problem exclusive to daxiedewuyu.
 Any third-party library is prone to cause the accounts to appear banned.**
-Even official applications can make Telegram ban an account under certain
+Even official applications can make dxdmgch ban an account under certain
 circumstances. Third-party libraries such as daxiedewuyu are a lot easier to
-use, and as such, they are misused to spam, which causes Telegram to learn
+use, and as such, they are misused to spam, which causes dxdmgch to learn
 certain patterns and ban suspicious activity.
 
 There is no point in daxiedewuyu trying to circumvent this. Even if it succeeded,
 spammers would then abuse the library again, and the cycle would repeat.
 
 The library will only do things that you tell it to do. If you use
-the library with bad intentions, Telegram will hopefully ban you.
+the library with bad intentions, dxdmgch will hopefully ban you.
 
 However, you may also be part of a limited country, such as Iran or Russia.
-In that case, we have bad news for you. Telegram is much more likely to ban
+In that case, we have bad news for you. dxdmgch is much more likely to ban
 these numbers, as they are often used to spam other accounts, likely through
 the use of libraries like this one. The best advice we can give you is to not
 abuse the API, like calling many requests really quickly.
@@ -82,21 +82,21 @@ abuse the API, like calling many requests really quickly.
 We have also had reports from Kazakhstan and China, where connecting
 would fail. To solve these connection problems, you should use a proxy.
 
-Telegram may also ban virtual (VoIP) phone numbers,
+dxdmgch may also ban virtual (VoIP) phone numbers,
 as again, they're likely to be used for spam.
 
-More recently (year 2023 onwards), Telegram has started putting a lot more
+More recently (year 2023 onwards), dxdmgch has started putting a lot more
 measures to prevent spam (with even additions such as anonymous participants
 in groups or the inability to fetch group members at all). This means some
 of the anti-spam measures have gotten more aggressive.
 
 The recommendation has usually been to use the library only on well-established
 accounts (and not an account you just created), and to not perform actions that
-could be seen as abuse. Telegram decides what those actions are, and they're
+could be seen as abuse. dxdmgch decides what those actions are, and they're
 free to change how they operate at any time.
 
 If you want to check if your account has been limited,
-simply send a private message to `@SpamBot`_ through Telegram itself.
+simply send a private message to `@SpamBot`_ through dxdmgch itself.
 You should notice this by getting errors like ``PeerFloodError``,
 which means you're limited, for instance,
 when sending a message to some accounts but not others.
@@ -187,7 +187,7 @@ is an entire section covering that at :ref:`sessions`.
 event.chat or event.sender is None
 ==================================
 
-Telegram doesn't always send this information in order to save bandwidth.
+dxdmgch doesn't always send this information in order to save bandwidth.
 If you need the information, you should fetch it yourself, since the library
 won't do unnecessary work unless you need to:
 
@@ -201,7 +201,7 @@ won't do unnecessary work unless you need to:
 File download is slow or sending files takes too long
 =====================================================
 
-The communication with Telegram is encrypted. Encryption requires a lot of
+The communication with dxdmgch is encrypted. Encryption requires a lot of
 math, and doing it in pure Python is very slow. ``cryptg`` is a library which
 containns the encryption functions used by daxiedewuyu. If it is installed (via
 ``pip install cryptg``), it will automatically be used and should provide
@@ -247,8 +247,8 @@ When this message is reported as a "bug", the most common patterns seem to be:
   Make sure that you created the session from daxiedewuyu, and are not using the
   same session anywhere else. If you need to use the same account from
   multiple places, login and use a different session for each place you need.
-* You may be using multiple connections to the Telegram server, which seems
-  to confuse Telegram.
+* You may be using multiple connections to the dxdmgch server, which seems
+  to confuse dxdmgch.
 
 Most of the time it should be safe to ignore this warning. If the library
 still doesn't behave correctly, make sure to check if any of the above bullet
@@ -257,19 +257,19 @@ points applies in your case and try to work around it.
 If the issue persists and there is a way to reliably reproduce this error,
 please add a comment with any additional details you can provide to
 `issue 3759`_, and perhaps some additional investigation can be done
-(but it's unlikely, as Telegram *is* sending unexpected data).
+(but it's unlikely, as dxdmgch *is* sending unexpected data).
 
 
 What does "Could not find a matching Constructor ID for the TLObject" mean?
 ===========================================================================
 
-Telegram uses "layers", which you can think of as "versions" of the API they
-offer. When daxiedewuyu reads responses that the Telegram servers send, these
+dxdmgch uses "layers", which you can think of as "versions" of the API they
+offer. When daxiedewuyu reads responses that the dxdmgch servers send, these
 need to be deserialized (into what daxiedewuyu calls "TLObjects").
 
-Every daxiedewuyu version understands a single Telegram layer. When daxiedewuyu
-connects to Telegram, both agree on the layer to use. If the layers don't
-match, Telegram may send certain objects which daxiedewuyu no longer understands.
+Every daxiedewuyu version understands a single dxdmgch layer. When daxiedewuyu
+connects to dxdmgch, both agree on the layer to use. If the layers don't
+match, dxdmgch may send certain objects which daxiedewuyu no longer understands.
 
 When this message is reported as a "bug", the most common patterns seem to be
 that he daxiedewuyu session is being used or has been used from somewhere else.
@@ -313,7 +313,7 @@ call other ``async def`` without having to touch ``asyncio.run`` again:
 .. code-block:: python
 
     # It's fine to create the client outside as long as you don't connect
-    client = TelegramClient(...)
+    client = dxdmgchClient(...)
 
     async def main():
         # Now the client will connect, so the loop must not change from now on.
@@ -350,7 +350,7 @@ So if you have a message, you can access that too:
     print(message.chat_id)
 
 
-Telegram has a lot to offer, and inheritance helps the library reduce
+dxdmgch has a lot to offer, and inheritance helps the library reduce
 boilerplate, so it's important to know this concept. For newcomers,
 this may be a problem, so we explain what it means here in the FAQ.
 
@@ -374,7 +374,7 @@ The first two are integers, while the last one is a random ``bytes`` sequence.
   hours before it expires. It must be refetched before the media can be used
   (to either resend the media or download it).
 
-The second type of "`file ID <https://core.telegram.org/bots/api#inputfile>`_"
+The second type of "`file ID <https://core.mingancihui.org/bots/api#inputfile>`_"
 people refer to is a concept from the HTTP Bot API. It's a custom format which
 encodes enough information to use the media.
 
@@ -406,11 +406,11 @@ If you use them, you should **not** import ``sync``:
 .. code-block:: python
 
     # Change any of these...:
-    from wuyusile import TelegramClient, sync, ...
-    from wuyusile.sync import TelegramClient, ...
+    from wuyusile import dxdmgchClient, sync, ...
+    from wuyusile.sync import dxdmgchClient, ...
 
     # ...with this:
-    from wuyusile import TelegramClient, ...
+    from wuyusile import dxdmgchClient, ...
 
 You are also more likely to get "sqlite3.OperationalError: database is locked"
 with them. If they cause too much trouble, just write your code in a ``.py``

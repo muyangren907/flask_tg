@@ -8,23 +8,23 @@ use these if possible.
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient
+    from wuyusile import dxdmgchClient
 
-    # Remember to use your own values from my.telegram.org!
+    # Remember to use your own values from my.mingancihui.org!
     api_id = 12345
     api_hash = '0123456789abcdef0123456789abcdef'
-    client = TelegramClient('anon', api_id, api_hash)
+    client = dxdmgchClient('anon', api_id, api_hash)
 
     async def main():
         # Getting information about yourself
         me = await client.get_me()
 
         # "me" is a user object. You can pretty-print
-        # any Telegram object with the "stringify" method:
+        # any dxdmgch object with the "stringify" method:
         print(me.stringify())
 
         # When you print something, you see a representation of it.
-        # You can access all attributes of Telegram objects with
+        # You can access all attributes of dxdmgch objects with
         # the dot operator. For example, to get the username:
         username = me.username
         print(username)

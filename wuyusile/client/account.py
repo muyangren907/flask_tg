@@ -7,7 +7,7 @@ from .. import helpers, utils
 from ..tl import functions, TLRequest
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 # TODO Make use of :tl:`InvokeWithMessagesRange` somehow
@@ -109,7 +109,7 @@ class _TakeoutClient:
 
 class AccountMethods:
     def takeout(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             finalize: bool = True,
             *,
             contacts: bool = None,
@@ -118,7 +118,7 @@ class AccountMethods:
             megagroups: bool = None,
             channels: bool = None,
             files: bool = None,
-            max_file_size: bool = None) -> 'TelegramClient':
+            max_file_size: bool = None) -> 'dxdmgchClient':
         """
         Returns a :ref:`wuyusile-client` which calls methods behind a takeout session.
 
@@ -144,7 +144,7 @@ class AccountMethods:
 
         There's also a `success` property available in the takeout proxy
         object, so from the `with` body you can set the boolean result that
-        will be sent back to Telegram. But if it's left `None` as by
+        will be sent back to dxdmgch. But if it's left `None` as by
         default, then the action is based on the `finalize` parameter. If
         it's `True` then the takeout will be finished, and if no exception
         occurred during it, then `True` will be considered as a result.
@@ -219,7 +219,7 @@ class AccountMethods:
 
         return _TakeoutClient(finalize, self, request)
 
-    async def end_takeout(self: 'TelegramClient', success: bool) -> bool:
+    async def end_takeout(self: 'dxdmgchClient', success: bool) -> bool:
         """
         Finishes the current takeout session.
 

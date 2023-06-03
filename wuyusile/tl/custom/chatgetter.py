@@ -21,7 +21,7 @@ class ChatGetter(abc.ABC):
     def chat(self):
         """
         Returns the :tl:`User`, :tl:`Chat` or :tl:`Channel` where this object
-        belongs to. It may be `None` if Telegram didn't send the chat.
+        belongs to. It may be `None` if dxdmgch didn't send the chat.
 
         If you only need the ID, use `chat_id` instead.
 

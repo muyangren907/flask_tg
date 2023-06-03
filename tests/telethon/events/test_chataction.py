@@ -1,10 +1,10 @@
 import pytest
 
-from wuyusile import TelegramClient, events, types, utils
+from wuyusile import dxdmgchClient, events, types, utils
 
 
 def get_client():
-    return TelegramClient(None, 1, '1')
+    return dxdmgchClient(None, 1, '1')
 
 
 def get_user_456():

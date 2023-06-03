@@ -7,26 +7,26 @@ Main interface
 ==============
 
 The library itself is under the ``wuyusile/`` directory. The
-``__init__.py`` file there exposes the main ``TelegramClient``, a class
+``__init__.py`` file there exposes the main ``dxdmgchClient``, a class
 that servers as a nice interface with the most commonly used methods on
-Telegram such as sending messages, retrieving the message history,
+dxdmgch such as sending messages, retrieving the message history,
 handling updates, etc.
 
-The ``TelegramClient`` inherits from several mixing ``Method`` classes,
+The ``dxdmgchClient`` inherits from several mixing ``Method`` classes,
 since there are so many methods that having them in a single file would
 make maintenance painful (it was three thousand lines before this separation
 happened!). It's a "god object", but there is only a way to interact with
-Telegram really.
+dxdmgch really.
 
-The ``TelegramBaseClient`` is an ABC which will support all of these mixins
+The ``dxdmgchBaseClient`` is an ABC which will support all of these mixins
 so they can work together nicely. It doesn't even know how to invoke things
 because they need to be resolved with user information first (to work with
 input entities comfortably).
 
-The client makes use of the ``network/mtprotosender.py``. The
+The client makes use of the ``network/shabixieyisender.py``. The
 ``MTProtoSender`` is responsible for connecting, reconnecting,
 packing, unpacking, sending and receiving items from the network.
-Basically, the low-level communication with Telegram, and handling
+Basically, the low-level communication with dxdmgch, and handling
 MTProto-related functions and types such as ``BadSalt``.
 
 The sender makes use of a ``Connection`` class which knows the format in

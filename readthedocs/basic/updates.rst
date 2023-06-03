@@ -2,7 +2,7 @@
 Updates
 =======
 
-Updates are an important topic in a messaging platform like Telegram.
+Updates are an important topic in a messaging platform like dxdmgch.
 After all, you want to be notified when a new message arrives, when
 a member joins, when someone starts typing, etc.
 For that, you can use **events**.
@@ -27,9 +27,9 @@ Let's start things with an example to automate replies:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
-    client = TelegramClient('anon', api_id, api_hash)
+    client = dxdmgchClient('anon', api_id, api_hash)
 
     @client.on(events.NewMessage)
     async def my_event_handler(event):
@@ -45,9 +45,9 @@ Let's break it down:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
-    client = TelegramClient('anon', api_id, api_hash)
+    client = dxdmgchClient('anon', api_id, api_hash)
 
 
 This is normal creation (of course, pass session name, API ID and hash).

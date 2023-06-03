@@ -4,12 +4,12 @@ from .. import hints
 from ..tl import types, functions, custom
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 class BotMethods:
     async def inline_query(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             bot: 'hints.EntityLike',
             query: str,
             *,

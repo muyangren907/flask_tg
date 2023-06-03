@@ -16,7 +16,7 @@ import inspect
 
 from . import events, errors, utils, connection, helpers
 from .client.account import _TakeoutClient
-from .client.telegramclient import TelegramClient
+from .client.mingancihuiclient import dxdmgchClient
 from .tl import types, functions, custom
 from .tl.custom import (
     Draft, Dialog, MessageButton, Forward, Button,
@@ -59,7 +59,7 @@ def syncify(*types):
                     _syncify_wrap(t, name)
 
 
-syncify(TelegramClient, _TakeoutClient, Draft, Dialog, MessageButton,
+syncify(dxdmgchClient, _TakeoutClient, Draft, Dialog, MessageButton,
         ChatGetter, SenderGetter, Forward, Message, InlineResult, Conversation)
 
 
@@ -68,7 +68,7 @@ syncify(TelegramClient, _TakeoutClient, Draft, Dialog, MessageButton,
 _syncify_wrap(Conversation, '_get_result')
 
 __all__ = [
-    'TelegramClient', 'Button',
+    'dxdmgchClient', 'Button',
     'types', 'functions', 'custom', 'errors',
     'events', 'utils', 'connection'
 ]

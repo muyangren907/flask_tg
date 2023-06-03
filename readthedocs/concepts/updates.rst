@@ -75,10 +75,10 @@ client (or clients) where they should be added to:
 .. code-block:: python
 
     # main.py
-    from wuyusile import TelegramClient
+    from wuyusile import dxdmgchClient
     import handlers.welcome
 
-    with TelegramClient(...) as client:
+    with dxdmgchClient(...) as client:
         client.add_event_handler(handlers.welcome.handler)
         client.run_until_disconnected()
 
@@ -97,12 +97,12 @@ you can explicitly pass the event handler to use to the mentioned
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
     async def handler(event):
         ...
 
-    with TelegramClient(...) as client:
+    with dxdmgchClient(...) as client:
         client.add_event_handler(handler, events.NewMessage)
         client.run_until_disconnected()
 
@@ -170,23 +170,23 @@ loop, you should use `client.run_until_disconnected
 .. code-block:: python
 
     import asyncio
-    from wuyusile import TelegramClient
+    from wuyusile import dxdmgchClient
 
-    client = TelegramClient(...)
+    client = dxdmgchClient(...)
     ...
     client.run_until_disconnected()
 
 
 Behind the scenes, this method is ``await``'ing on the `client.disconnected
-<wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnected>` property,
+<wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>` property,
 so the code above and the following are equivalent:
 
 .. code-block:: python
 
     import asyncio
-    from wuyusile import TelegramClient
+    from wuyusile import dxdmgchClient
 
-    client = TelegramClient(...)
+    client = dxdmgchClient(...)
 
     async def main():
         await client.disconnected
@@ -195,7 +195,7 @@ so the code above and the following are equivalent:
 
 
 You could also run `client.disconnected
-<wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnected>`
+<wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>`
 until it completed.
 
 But if you don't want to ``await``, then you should know what you want
@@ -203,7 +203,7 @@ to be doing instead! What matters is that you shouldn't let your script
 die. If you don't care about updates, you don't need any of this.
 
 Notice that unlike `client.disconnected
-<wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnected>`,
+<wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>`,
 `client.run_until_disconnected
 <wuyusile.client.updates.UpdateMethods.run_until_disconnected>` will
 handle ``KeyboardInterrupt`` for you. This method is special and can
@@ -224,5 +224,5 @@ you should set ``sequential_updates=True`` when creating the client:
 
 .. code-block:: python
 
-    with TelegramClient(..., sequential_updates=True) as client:
+    with dxdmgchClient(..., sequential_updates=True) as client:
         ...

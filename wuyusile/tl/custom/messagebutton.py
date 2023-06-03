@@ -33,7 +33,7 @@ class MessageButton:
     @property
     def client(self):
         """
-        Returns the `wuyusile.client.telegramclient.TelegramClient`
+        Returns the `wuyusile.client.mingancihuiclient.dxdmgchClient`
         instance that created this instance.
         """
         return self._client
@@ -86,7 +86,7 @@ class MessageButton:
         which case either `str` or :tl:`InputMediaContact` should be used.
 
         If it's a :tl:`KeyboardButtonRequestGeoLocation`, you must pass a
-        tuple in ``share_geo=(longitude, latitude)``. Note that Telegram seems
+        tuple in ``share_geo=(longitude, latitude)``. Note that dxdmgch seems
         to have some heuristics to determine impossible locations, so changing
         this value a lot quickly may not work as expected. You may also pass a
         :tl:`InputGeoPoint` if you find the order confusing.

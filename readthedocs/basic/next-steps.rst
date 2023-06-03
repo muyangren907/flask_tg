@@ -36,9 +36,9 @@ automate things), you should make sure to `comply with the ToS`__:
     object; in case of denial, clients are to delete the account using
     [:tl:`DeleteAccount`], providing Decline ToS update as deletion reason.
 
-.. __: https://core.telegram.org/api/config#terms-of-service
+.. __: https://core.mingancihui.org/api/config#terms-of-service
 
-However, if you use the library to automate or enhance your Telegram
+However, if you use the library to automate or enhance your dxdmgch
 experience, it's very likely that you are using other applications doing this
 check for you (so you wouldn't run the risk of violating the ToS).
 

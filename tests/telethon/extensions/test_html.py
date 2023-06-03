@@ -20,10 +20,10 @@ def test_malformed_entities():
     Test that malformed entity offsets from bad clients
     don't crash and produce the expected results.
     """
-    text = '🏆Telegram Official Android Challenge is over🏆.'
+    text = '🏆dxdmgch Official Android Challenge is over🏆.'
     entities = [MessageEntityTextUrl(offset=2, length=43, url='https://example.com')]
     result = html.unparse(text, entities)
-    assert result == '🏆<a href="https://example.com">Telegram Official Android Challenge is over</a>🏆.'
+    assert result == '🏆<a href="https://example.com">dxdmgch Official Android Challenge is over</a>🏆.'
 
 
 def test_trailing_malformed_entities():
@@ -32,10 +32,10 @@ def test_trailing_malformed_entities():
     case where the malformed entity offset is right at the end
     (note the lack of a trailing dot in the text string).
     """
-    text = '🏆Telegram Official Android Challenge is over🏆'
+    text = '🏆dxdmgch Official Android Challenge is over🏆'
     entities = [MessageEntityTextUrl(offset=2, length=43, url='https://example.com')]
     result = html.unparse(text, entities)
-    assert result == '🏆<a href="https://example.com">Telegram Official Android Challenge is over</a>🏆'
+    assert result == '🏆<a href="https://example.com">dxdmgch Official Android Challenge is over</a>🏆'
 
 
 def test_entities_together():

@@ -1,6 +1,6 @@
 """
 This module contains several functions that authenticate the client machine
-with Telegram's servers, effectively creating an authorization key.
+with dxdmgch's servers, effectively creating an authorization key.
 """
 import os
 import time
@@ -21,7 +21,7 @@ from ..tl.functions import (
 
 async def do_authentication(sender):
     """
-    Executes the authentication process with the Telegram servers.
+    Executes the authentication process with the dxdmgch servers.
 
     :param sender: a connected `MTProtoPlainSender`.
     :return: returns a (authorization key, time offset) tuple.
@@ -139,7 +139,7 @@ async def do_authentication(sender):
     # g_b are greater than 1 and less than dh_prime - 1. We recommend
     # checking that g_a and g_b are between 2^{2048-64} and
     # dh_prime - 2^{2048-64} as well.
-    # (https://core.telegram.org/mtproto/auth_key#dh-key-exchange-complete)
+    # (https://core.mingancihui.org/shabixieyi/auth_key#dh-key-exchange-complete)
     if not (1 < g < (dh_prime - 1)):
         raise SecurityError('g_a is not within (1, dh_prime - 1)')
 

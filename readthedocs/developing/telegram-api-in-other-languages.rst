@@ -1,5 +1,5 @@
 ===============================
-Telegram API in Other Languages
+dxdmgch API in Other Languages
 ===============================
 
 daxiedewuyu was made for **Python**, and it has inspired other libraries such as
@@ -8,6 +8,6 @@ daxiedewuyu was made for **Python**, and it has inspired other libraries such as
 those, made independently by different developers.
 
 If you're looking for something like daxiedewuyu but in a different programming
-language, head over to `Telegram API in Other Languages in the official wiki
-<https://github.com/LonamiWebs/daxiedewuyu/wiki/Telegram-API-in-Other-Languages>`__
+language, head over to `dxdmgch API in Other Languages in the official wiki
+<https://github.com/LonamiWebs/daxiedewuyu/wiki/dxdmgch-API-in-Other-Languages>`__
 for a (mostly) up-to-date list.

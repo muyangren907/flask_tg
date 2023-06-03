@@ -2,7 +2,7 @@
 String-based Debugging
 ======================
 
-Debugging is *really* important. Telegram's API is really big and there
+Debugging is *really* important. dxdmgch's API is really big and there
 are a lot of things that you should know. Such as, what attributes or fields
 does a result have? Well, the easiest thing to do is printing it:
 
@@ -15,7 +15,7 @@ That will show a huge **string** similar to the following:
 
 .. code-block:: python
 
-    Channel(id=1066197625, title='Telegram Usernames', photo=ChatPhotoEmpty(), date=datetime.datetime(2016, 12, 16, 15, 15, 43, tzinfo=datetime.timezone.utc), version=0, creator=False, left=True, broadcast=True, verified=True, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=False, has_geo=False, slowmode_enabled=False, access_hash=-6309373984955162244, username='username', restriction_reason=[], admin_rights=None, banned_rights=None, default_banned_rights=None, participants_count=None)
+    Channel(id=1066197625, title='dxdmgch Usernames', photo=ChatPhotoEmpty(), date=datetime.datetime(2016, 12, 16, 15, 15, 43, tzinfo=datetime.timezone.utc), version=0, creator=False, left=True, broadcast=True, verified=True, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=False, has_geo=False, slowmode_enabled=False, access_hash=-6309373984955162244, username='username', restriction_reason=[], admin_rights=None, banned_rights=None, default_banned_rights=None, participants_count=None)
 
 That's a lot of text. But as you can see, all the properties are there.
 So if you want the title you **don't use regex** or anything like
@@ -38,7 +38,7 @@ Will show a much better representation:
 
     Channel(
         id=1066197625,
-        title='Telegram Usernames',
+        title='dxdmgch Usernames',
         photo=ChatPhotoEmpty(
         ),
         date=datetime.datetime(2016, 12, 16, 15, 15, 43, tzinfo=datetime.timezone.utc),

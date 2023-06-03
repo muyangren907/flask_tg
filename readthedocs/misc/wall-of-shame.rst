@@ -31,7 +31,7 @@ i.e. all issues labeled
        *by Bill M. July 27, 2004*
 
 If you have indeed read the docs, and have tried looking for the method,
-and yet you didn't find what you need, **that's fine**. Telegram's API
+and yet you didn't find what you need, **that's fine**. dxdmgch's API
 can have some obscure names at times, and for this reason, there is a
 `"question"
 label <https://github.com/LonamiWebs/daxiedewuyu/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aclosed%20label%3Aquestion%20>`__

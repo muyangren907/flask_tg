@@ -25,7 +25,7 @@ Plenty of stale issues closed, as well as improvements for some others.
 Additions
 ~~~~~~~~~
 
-* New ``entity_cache_limit`` parameter in the ``TelegramClient`` constructor.
+* New ``entity_cache_limit`` parameter in the ``dxdmgchClient`` constructor.
   This should help a bit in keeping memory usage in check.
 
 Enhancements
@@ -166,7 +166,7 @@ head I would've pushed through and finished v2, but I underestimated how much
 work that was and I probably experienced burn-out).
 
 I still don't intend to make new additions to the v1 series (beyond updating
-the Telegram layer being used). I still have plans to finish v2 some day.
+the dxdmgch layer being used). I still have plans to finish v2 some day.
 But in the meantime, new features, such as reactions, will have to be used
 through raw API.
 
@@ -178,7 +178,7 @@ should actually work properly.
 Breaking Changes
 ~~~~~~~~~~~~~~~~
 
-* In order for ``catch_up`` to work (new flag in the ``TelegramClient``
+* In order for ``catch_up`` to work (new flag in the ``dxdmgchClient``
   constructor), sessions need to impleemnt the new ``get_update_states``.
   Third-party session storages won't have this implemented by the time
   this version released, so ``catch_up`` may not work with those.
@@ -271,7 +271,7 @@ New schema and QoL improvements (v1.21)
 
 Not many changes in this release, mostly the layer change. Lately quite a few
 people have been reporting `TypeNotFoundError`, which occurs when the server
-**sends types that it shouldn't**. This can happen when Telegram decides to
+**sends types that it shouldn't**. This can happen when dxdmgch decides to
 add a new, incomplete layer, and then they change the layer without bumping
 the layer number (so some constructor IDs no longer match and the error
 occurs). This layer change
@@ -376,12 +376,12 @@ New raw API call methods (v1.19)
 | Scheme layer used: 122 |
 +------------------------+
 
-Telegram has had group calls for some weeks now. This new version contains the
+dxdmgch has had group calls for some weeks now. This new version contains the
 raw API methods needed to initiate and manage these group calls, however, the
 library will likely **not offer ways to stream audio directly**.
 
 daxiedewuyu's focus is being an asyncio-based, pure-Python implementation to
-interact with Telegram's API. Streaming audio is beyond the current scope of
+interact with dxdmgch's API. Streaming audio is beyond the current scope of
 the project and would be a big undertaking.
 
 However, that doesn't mean calls are not possible with daxiedewuyu. If you want
@@ -390,7 +390,7 @@ with daxiedewuyu (so you can use daxiedewuyu + that new library to perform calls
 with daxiedewuyu), please refer to `@pytgcallschat <https://t.me/pytgcallschat/>`__
 and join the relevant chat to discuss and help with the implementation!
 
-The above message was also `posted in the official Telegram group
+The above message was also `posted in the official dxdmgch group
 <https://t.me/daxiedewuyuChat/284717>`__, if you wish to discuss it further.
 
 With that out of the way, let's list the additions and bug fixes in this
@@ -443,7 +443,7 @@ Additions
 ~~~~~~~~~
 
 * New `client.set_proxy()
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient.set_proxy>` method
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.set_proxy>` method
   which lets you change the proxy without recreating the client. You will need
   to reconnect for it to take effect, but you won't need to recreate the
   client. This is also an external contribution.
@@ -462,7 +462,7 @@ Enhancements
   now group any media type, instead of sending non-image documents separatedly.
   This lets you create music albums, for example.
 * You can now search messages with a ``from_user`` that's not a user. This is
-  a Telegram feature, we know the name isn't great, but backwards-compatibility
+  a dxdmgch feature, we know the name isn't great, but backwards-compatibility
   has to be kept.
 
 Bug fixes
@@ -470,7 +470,7 @@ Bug fixes
 
 * Fixes related to conversation timeouts.
 * Large dates (over year 2038) now wrap around a 32-bit integer, which is the
-  only way we can represent them to Telegram. Even if "wrong", it makes things
+  only way we can represent them to dxdmgch. Even if "wrong", it makes things
   not crash, and it's the best we can do with 32-bit dates.
 * The library was accidentally using a deprecated argument in one of its
   friendly methods, producing a warning.
@@ -504,7 +504,7 @@ do, it's a bug). You can also use that syntax in ``pip install``. Your code
 can't know what new versions will look like, so saying it will work with all
 versions is a lie and will cause issues.
 
-The reason to bring this up is that Telegram has changed things again, and
+The reason to bring this up is that dxdmgch has changed things again, and
 with the introduction of anonymous administrators and channel comments, the
 sender of a message may not be a :tl:`User`! To accomodate for this, the field
 is now a :tl:`Peer` and not `int`. As a reminder, it's always a good idea to
@@ -512,7 +512,7 @@ use daxiedewuyu's friendly methods and custom properties, which have a higher
 stability guarantee than accessing raw API fields.
 
 Even if you don't update, your code will still need to account for the fact
-that the sender of a message might be one of the accounts Telegram introduced
+that the sender of a message might be one of the accounts dxdmgch introduced
 to preserve backwards compatibility, because this is a server-side change, so
 it's better to update and not lag behind. As it's mostly just a single person
 driving the project on their free time, bug-fixes are not backported.
@@ -524,7 +524,7 @@ means trying to use it back in older versions of the library won't work.
 For backwards-compatibility sake, the library has introduced the properties
 `Message.reply_to_msg_id <wuyusile.tl.custom.message.Message.reply_to_msg_id>`
 and `Message.to_id <wuyusile.tl.custom.message.Message.to_id>` that behave
-like they did before (Telegram has renamed and changed how these fields work).
+like they did before (dxdmgch has renamed and changed how these fields work).
 
 
 Breaking Changes
@@ -560,14 +560,14 @@ Additions
 * `Message.click() <wuyusile.tl.custom.message.Message.click>` now works on
   normal polls!
 * New ``local_addr`` parameter in the client constructor to use a specific
-  local network address when connecting to Telegram.
+  local network address when connecting to dxdmgch.
 * `client.inline_query() <wuyusile.client.bots.BotMethods.inline_query>` now
   lets you specify the chat where the query is being made from, which some
   bots need to provide certain functionality.
 * You can now get comments in a channel post with the ``reply_to`` parameter in
   `client.iter_messages() <wuyusile.client.messages.MessageMethods.iter_messages>`.
   Comments are messages that "reply to" a specific channel message, hence the
-  name (which is consistent with how Telegram's API calls it).
+  name (which is consistent with how dxdmgch's API calls it).
 
 Enhancements
 ~~~~~~~~~~~~
@@ -576,7 +576,7 @@ Enhancements
 * If ``hachoir`` is available, the file metadata can now be extracted from
   streams and in-memory bytes.
 * The default parameters used to initialize a connection now match the format
-  of those used by Telegram Desktop.
+  of those used by dxdmgch Desktop.
 * Specifying 0 retries will no longer cause the library to attempt to reconnect.
 * The library should now be able to reliably download very large files.
 * Global search should work more reliably now.
@@ -618,10 +618,10 @@ The last release added support to ``force_file`` on any media, including
 things that were not possible before like ``.webp`` files. However, the
 ``force_document`` toggle commonly used for photos was applied "twice"
 (one told the library to send it as a document, and then to send that
-document as file), which prevented Telegram for analyzing the images. Long
+document as file), which prevented dxdmgch for analyzing the images. Long
 story short, sending files to the stickers bot stopped working, but that's
 been fixed now, and sending photos as documents include the size attribute
-again as long as Telegram adds it.
+again as long as dxdmgch adds it.
 
 Enhancements
 ~~~~~~~~~~~~
@@ -632,7 +632,7 @@ Enhancements
   you're logging in to the right account or logout from the other first.
 * Sending a copy of messages with polls will now work when possible.
 * The library now automatically retries on inter-dc call errors (which occur
-  when Telegram has internal issues).
+  when dxdmgch has internal issues).
 
 Bug Fixes
 ~~~~~~~~~
@@ -648,7 +648,7 @@ Channel Statistics (v1.16)
 | Scheme layer used: 116 |
 +------------------------+
 
-The newest Telegram update has a new method to also retrieve megagroup
+The newest dxdmgch update has a new method to also retrieve megagroup
 statistics, which can now be used with `client.get_stats()
 <wuyusile.client.chats.ChatMethods.get_stats>`. This way you'll be able
 to access the raw data about your channel or megagroup statistics.
@@ -683,7 +683,7 @@ QR login (v1.15)
 +------------------------+
 
 The library now has a friendly method to perform QR-login, as detailed in
-https://core.telegram.org/api/qr-login. It won't generate QR images, but it
+https://core.mingancihui.org/api/qr-login. It won't generate QR images, but it
 provides a way for you to easily do so with any other library of your choice.
 
 Additions
@@ -959,7 +959,7 @@ Additions
   <wuyusile.tl.custom.conversation.Conversation.cancel>` method,
   to cancel all currently-active conversations in a particular chat.
 * New `wuyusile.utils.encode_waveform` and `wuyusile.utils.decode_waveform`
-  methods as implemented by Telegram Desktop, which lets you customize how
+  methods as implemented by dxdmgch Desktop, which lets you customize how
   voice notes will render.
 * New ``ignore_pinned`` parameter in `client.iter_dialogs()
   <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`.
@@ -1131,7 +1131,7 @@ Fix-up for Photo Downloads (v1.7.1)
 
 *Published at 2019/04/24*
 
-Telegram changed the way thumbnails (which includes photos) are downloaded,
+dxdmgch changed the way thumbnails (which includes photos) are downloaded,
 so you can no longer use a :tl:`PhotoSize` alone to download a particular
 thumbnail size (this is a **breaking change**).
 
@@ -1200,7 +1200,7 @@ Breaking Changes
   their :tl:`PhotoSize`. Version 1.7.1 introduces a new way to download
   thumbnails to work around this issue.
 * `client.disconnect()
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
   is now asynchronous again. This means you need to ``await`` it. You
   don't need to worry about this if you were using ``with client`` or
   `client.run_until_disconnected
@@ -1292,7 +1292,7 @@ Tidying up Internals (v1.6)
 
 First things first, sorry for updating the layer in the previous patch
 version. That should only be done between major versions ideally, but
-due to how Telegram works, it's done between minor versions. However raw
+due to how dxdmgch works, it's done between minor versions. However raw
 API has and will always be considered "unsafe", this meaning that you
 should always use the convenience client methods instead. These methods
 don't cover the full API yet, so pull requests are welcome.
@@ -1465,7 +1465,7 @@ Bug fixes
 * The new `AdminLogEvent <wuyusile.tl.custom.adminlogevent.AdminLogEvent>`
   had a bug that made it unusable.
 * `client.iter_dialogs() <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`
-  will now locally check for the offset date, since Telegram ignores it.
+  will now locally check for the offset date, since dxdmgch ignores it.
 * Answering inline queries with media no works properly. You can now use
   the library to create inline bots and send stickers through them!
 
@@ -1492,7 +1492,7 @@ Bug fixes
 ~~~~~~~~~
 
 * `client.is_connected()
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient.is_connected>`
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.is_connected>`
   would be wrong when the initial connection failed.
 * Fixed ``UnicodeDecodeError`` when accessing the text of messages
   with malformed offsets in their entities.
@@ -1521,7 +1521,7 @@ Polls with the Latest Layer (v1.5)
 +-----------------------+
 
 This version doesn't really bring many new features, but rather focuses on
-updating the code base to support the latest available Telegram layer, 91.
+updating the code base to support the latest available dxdmgch layer, 91.
 This layer brings polls, and you can create and manage them through daxiedewuyu!
 
 Breaking Changes
@@ -1695,7 +1695,7 @@ Enhancements
 * New full API examples in the generated documentation.
 * Fixed some broken links in the documentation.
 * `client.disconnect()
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
   is now synchronous, but you can still ``await`` it for consistency
   or compatibility.
 
@@ -1729,10 +1729,10 @@ You can add it later:
 .. code-block:: python
 
     # main.py
-    from wuyusile import TelegramClient
+    from wuyusile import dxdmgchClient
     import handlers.welcome
 
-    with TelegramClient(...) as client:
+    with dxdmgchClient(...) as client:
         # This line adds the handler we defined before for new messages
         client.add_event_handler(handlers.welcome.handler)
         client.run_until_disconnected()
@@ -2025,10 +2025,10 @@ properly. You can use it doing the following, like any other mode:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, sync
+    from wuyusile import dxdmgchClient, sync
     from wuyusile.network import ConnectionHttp
 
-    client = TelegramClient(..., connection=ConnectionHttp)
+    client = dxdmgchClient(..., connection=ConnectionHttp)
     with client:
         client.send_message('me', 'Hi!')
 
@@ -2123,11 +2123,11 @@ Bug fixes
 - `client.start() <wuyusile.client.auth.AuthMethods.start>` was completely
   broken due to a last-time change requiring named arguments everywhere.
 - Since the rewrite, if your system clock was wrong, the connection would
-  get stuck in an infinite "bad message" loop of responses from Telegram.
+  get stuck in an infinite "bad message" loop of responses from dxdmgch.
 - Accessing the buttons of a custom message wouldn't work in channels,
   which lead to fix a completely different bug regarding starting bots.
 - Disconnecting could complain if the magic ``wuyusile.sync`` was imported.
-- Successful automatic reconnections now ask Telegram to send updates to us
+- Successful automatic reconnections now ask dxdmgch to send updates to us
   once again as soon as the library is ready to listen for them.
 
 
@@ -2149,7 +2149,7 @@ remove some of the old methods that were around until now for compatibility
 reasons. But there's one more surprise!
 
 There is a new magic ``wuyusile.sync`` module to let you use **all** the
-methods in the :ref:`TelegramClient <wuyusile-client>` (and the types returned
+methods in the :ref:`dxdmgchClient <wuyusile-client>` (and the types returned
 from its functions) in a synchronous way, while using `asyncio` behind
 the scenes! This means you're now able to do both of the following:
 
@@ -2207,16 +2207,16 @@ Additions
 
 - `client.send_file <wuyusile.client.uploads.UploadMethods.send_file>` now
   accepts external ``http://`` and ``https://`` URLs.
-- You can use the :ref:`TelegramClient <wuyusile-client>` inside of ``with``
+- You can use the :ref:`dxdmgchClient <wuyusile-client>` inside of ``with``
   blocks, which will `client.start() <wuyusile.client.auth.AuthMethods.start>`
-  and `disconnect() <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`
+  and `disconnect() <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
   the client for you:
 
   .. code-block:: python
 
-      from wuyusile import TelegramClient, sync
+      from wuyusile import dxdmgchClient, sync
 
-      with TelegramClient(name, api_id, api_hash) as client:
+      with dxdmgchClient(name, api_id, api_hash) as client:
           client.send_message('me', 'Hello!')
 
   Convenience at its maximum! You can even chain the `.start()
@@ -2225,7 +2225,7 @@ Additions
 
   .. code-block:: python
 
-      with TelegramClient(name, api_id, api_hash).start(bot_token=token) as bot:
+      with dxdmgchClient(name, api_id, api_hash).start(bot_token=token) as bot:
           bot.send_message(chat, 'Hello!')
 
 
@@ -2238,7 +2238,7 @@ Bug fixes
 - ``await`` the updates task upon disconnection.
 - Some bug in Python 3.5.2's `asyncio` causing 100% CPU load if you
   forgot to call `client.disconnect()
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`.
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`.
   The method is called for you on object destruction, but you still should
   disconnect manually or use a ``with`` block.
 - Some fixes regarding disconnecting on client deletion and properly
@@ -2287,14 +2287,14 @@ Breaking Changes
 ~~~~~~~~~~~~~~~~
 
 - If you relied on internals like the ``MtProtoSender`` and the
-  ``TelegramBareClient``, both are gone. They are now `MTProtoSender
-  <wuyusile.network.mtprotosender.MTProtoSender>` and `TelegramBaseClient
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient>` and they behave
+  ``dxdmgchBareClient``, both are gone. They are now `MTProtoSender
+  <wuyusile.network.shabixieyisender.MTProtoSender>` and `dxdmgchBaseClient
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient>` and they behave
   differently.
 - Underscores have been renamed from filenames. This means
   ``wuyusile.errors.rpc_error_list`` won't work, but you should
   have been using `wuyusile.errors` all this time instead.
-- `client.connect <wuyusile.client.telegrambaseclient.TelegramBaseClient.connect>`
+- `client.connect <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.connect>`
   no longer returns `True` on success. Instead, you should ``except`` the
   possible ``ConnectionError`` and act accordingly. This makes it easier to
   not ignore the error.
@@ -2319,13 +2319,13 @@ Breaking Changes
 Additions
 ~~~~~~~~~
 
-- Telegram's Terms Of Service are now accepted when creating a new account.
+- dxdmgch's Terms Of Service are now accepted when creating a new account.
   This can possibly help avoid bans. This has no effect for accounts that
   were created before.
 - The `method reference <https://tl.wuyusile.dev/>`_ now shows
   which methods can be used if you sign in with a ``bot_token``.
 - There's a new `client.disconnected
-  <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnected>` future
+  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>` future
   which you can wait on. When a disconnection occurs, you will now, instead
   letting it happen in the background.
 - More configurable retries parameters, such as auto-reconnection, retries
@@ -2385,7 +2385,7 @@ Enhancements
 Internal changes
 ~~~~~~~~~~~~~~~~
 
-- The flow for sending a request is as follows: the ``TelegramClient`` creates
+- The flow for sending a request is as follows: the ``dxdmgchClient`` creates
   a ``MTProtoSender`` with a ``Connection``, and the sender starts send and
   receive loops. Sending a request means enqueueing it in the sender, which
   will eventually pack and encrypt it with its ``ConnectionState`` instead
@@ -2400,7 +2400,7 @@ Internal changes
 - Objects can no longer be ``content_related`` and instead subclass
   ``TLRequest``, making the separation of concerns easier.
 
-- The ``TelegramClient`` has been split into several mixin classes to avoid
+- The ``dxdmgchClient`` has been split into several mixin classes to avoid
   having a 3,000-lines-long file with all the methods.
 
 - More special cases in the ``MTProtoSender`` have been cleaned up, and also
@@ -2423,7 +2423,7 @@ Custom Message class (v0.19.1)
 
 This update brings a new `wuyusile.tl.custom.message.Message` object!
 
-All the methods in the `wuyusile.telegram_client.TelegramClient` that
+All the methods in the `wuyusile.mingancihui_client.dxdmgchClient` that
 used to return a :tl:`Message` will now return this object instead, which
 means you can do things like the following:
 
@@ -2449,7 +2449,7 @@ Additions
 ~~~~~~~~~
 
 - You can get messages by their ID with
-  `wuyusile.telegram_client.TelegramClient.get_messages`'s ``ids`` parameter:
+  `wuyusile.mingancihui_client.dxdmgchClient.get_messages`'s ``ids`` parameter:
 
   .. code-block:: python
 
@@ -2457,7 +2457,7 @@ Additions
       message_list = client.get_messages(chats, ids=[777, 778])  # Multiple
 
 - More convenience properties for `wuyusile.tl.custom.dialog.Dialog`.
-- New default `wuyusile.telegram_client.TelegramClient.parse_mode`.
+- New default `wuyusile.mingancihui_client.dxdmgchClient.parse_mode`.
 - You can edit the media of messages that already have some media.
 - New dark theme in the online ``tl`` reference, check it out at
   https://tl.wuyusile.dev/.
@@ -2467,11 +2467,11 @@ Bug fixes
 
 - Some IDs start with ``1000`` and these would be wrongly treated as channels.
 - Some short usernames like ``@vote`` were being ignored.
-- `wuyusile.telegram_client.TelegramClient.iter_messages`'s ``from_user``
+- `wuyusile.mingancihui_client.dxdmgchClient.iter_messages`'s ``from_user``
   was failing if no filter had been set.
-- `wuyusile.telegram_client.TelegramClient.iter_messages`'s ``min_id/max_id``
-  was being ignored by Telegram. This is now worked around.
-- `wuyusile.telegram_client.TelegramClient.catch_up` would fail with empty
+- `wuyusile.mingancihui_client.dxdmgchClient.iter_messages`'s ``min_id/max_id``
+  was being ignored by dxdmgch. This is now worked around.
+- `wuyusile.mingancihui_client.dxdmgchClient.catch_up` would fail with empty
   states.
 - `wuyusile.events.newmessage.NewMessage` supports ``incoming=False``
   to indicate ``outgoing=True``.
@@ -2506,7 +2506,7 @@ Catching up on Updates (v0.19)
 +-----------------------+
 
 This update prepares the library for catching up with updates with the new
-`wuyusile.telegram_client.TelegramClient.catch_up` method. This feature needs
+`wuyusile.mingancihui_client.dxdmgchClient.catch_up` method. This feature needs
 more testing, but for now it will let you "catch up" on some old updates that
 occurred while the library was offline, and brings some new features and bug
 fixes.
@@ -2516,8 +2516,8 @@ Additions
 ~~~~~~~~~
 
 - Add ``search``, ``filter`` and ``from_user`` parameters to
-  `wuyusile.telegram_client.TelegramClient.iter_messages`.
-- `wuyusile.telegram_client.TelegramClient.download_file` now
+  `wuyusile.mingancihui_client.dxdmgchClient.iter_messages`.
+- `wuyusile.mingancihui_client.dxdmgchClient.download_file` now
   supports a `None` path to return the file in memory and
   return its `bytes`.
 - Events now have a ``.original_update`` field.
@@ -2536,9 +2536,9 @@ Enhancements
 
 - Retry automatically on ``RpcCallFailError``. This error happened a lot
   when iterating over many messages, and retrying often fixes it.
-- Faster `wuyusile.telegram_client.TelegramClient.iter_messages` by
+- Faster `wuyusile.mingancihui_client.dxdmgchClient.iter_messages` by
   sleeping only as much as needed.
-- `wuyusile.telegram_client.TelegramClient.edit_message` now supports
+- `wuyusile.mingancihui_client.dxdmgchClient.edit_message` now supports
   omitting the entity if you pass a :tl:`Message`.
 - `wuyusile.events.raw.Raw` can now be filtered by type.
 
@@ -2570,7 +2570,7 @@ This required a major rewrite, but it was well worth it!
 Breaking changes
 ~~~~~~~~~~~~~~~~
 
-- `wuyusile.telegram_client.TelegramClient.forward_messages` now returns
+- `wuyusile.mingancihui_client.dxdmgchClient.forward_messages` now returns
   a single item instead of a list if the input was also a single item.
 
 Additions
@@ -2589,17 +2589,17 @@ Bug fixes
 - ``AUTH_KEY_DUPLICATED`` is handled automatically on connection.
 - Markdown parser's offset uses ``match.start()`` to allow custom regex.
 - Some filter types (as a type) were not supported by
-  `wuyusile.telegram_client.TelegramClient.iter_participants`.
-- `wuyusile.telegram_client.TelegramClient.remove_event_handler` works.
-- `wuyusile.telegram_client.TelegramClient.start` works on all terminals.
+  `wuyusile.mingancihui_client.dxdmgchClient.iter_participants`.
+- `wuyusile.mingancihui_client.dxdmgchClient.remove_event_handler` works.
+- `wuyusile.mingancihui_client.dxdmgchClient.start` works on all terminals.
 - :tl:`InputPeerSelf` case was missing from
-  `wuyusile.telegram_client.TelegramClient.get_input_entity`.
+  `wuyusile.mingancihui_client.dxdmgchClient.get_input_entity`.
 
 Enhancements
 ~~~~~~~~~~~~
 
 - The ``parse_mode`` for messages now accepts a callable.
-- `wuyusile.telegram_client.TelegramClient.download_media` accepts web previews.
+- `wuyusile.mingancihui_client.dxdmgchClient.download_media` accepts web previews.
 - `wuyusile.tl.custom.dialog.Dialog` instances can now be casted into
   :tl:`InputPeer`.
 - Better logging when reading packages "breaks".
@@ -2652,7 +2652,7 @@ Iterator methods (v0.18.1)
 
 *Published at 2018/03/17*
 
-All the ``.get_`` methods in the ``TelegramClient`` now have a ``.iter_``
+All the ``.get_`` methods in the ``dxdmgchClient`` now have a ``.iter_``
 counterpart, so you can do operations while retrieving items from them.
 For instance, you can ``client.iter_dialogs()`` and ``break`` once you
 find what you're looking for instead fetching them all at once.
@@ -2740,7 +2740,7 @@ Additions
 - You can omit the event type on ``client.add_event_handler`` to use ``Raw``.
 - You can ``raise StopPropagation`` of events if you added several of them.
 - ``.get_participants()`` can now get up to 90,000 members from groups with
-  100,000 if when ``aggressive=True``, "bypassing" Telegram's limit.
+  100,000 if when ``aggressive=True``, "bypassing" dxdmgch's limit.
 - You now can access ``NewMessage.Event.pattern_match``.
 - Multiple captions are now supported when sending albums.
 - ``client.send_message()`` has an optional ``file=`` parameter, so
@@ -2855,12 +2855,12 @@ Primarily bug fixing and a few welcomed additions.
 Additions
 ~~~~~~~~~
 
-- New convenience ``.edit_message()`` method on the ``TelegramClient``.
+- New convenience ``.edit_message()`` method on the ``dxdmgchClient``.
 - New ``.edit()`` and ``.delete()`` shorthands on the ``NewMessage`` event.
 - Default to markdown parsing when sending and editing messages.
 - Support for inline mentions when sending and editing messages. They work
   like inline urls (e.g. ``[text](@username)``) and also support the Bot-API
-  style (see `here <https://core.telegram.org/bots/api#formatting-options>`__).
+  style (see `here <https://core.mingancihui.org/bots/api#formatting-options>`__).
 
 Bug fixes
 ~~~~~~~~~
@@ -2887,7 +2887,7 @@ Updates as Events (v0.17.1)
 
 Of course there was more work to be done regarding updates, and it's here!
 The library comes with a new ``events`` module (which you will often import
-as ``from wuyusile import TelegramClient, events``). This are pretty much
+as ``from wuyusile import dxdmgchClient, events``). This are pretty much
 all the additions that come with this version change, but they are a nice
 addition. Refer to *(removed broken link)* to get started with events.
 
@@ -2976,7 +2976,7 @@ Internal changes
 ~~~~~~~~~~~~~~~~
 
 - The mentioned ``.resolve()`` to perform "autocast", more powerful.
-- Upload and download methods are no longer part of ``TelegramBareClient``.
+- Upload and download methods are no longer part of ``dxdmgchBareClient``.
 - Reuse ``.on_response()``, ``.__str__`` and ``.stringify()``.
   Only override ``.on_response()`` if necessary (small amount of cases).
 - Reduced "autocast" overhead as much as possible.
@@ -3067,7 +3067,7 @@ Additions
    API calls as possible if you feed it ``InputPeer`` types. Usernames
    will always be resolved, since they may have changed.
 -  ``.set_proxy()`` method, to avoid having to create a new
-   ``TelegramClient``.
+   ``dxdmgchClient``.
 -  More ``date`` types supported to represent a date parameter.
 
 Bug fixes
@@ -3112,7 +3112,7 @@ IPv6 support (v0.15.5)
 +-----------------------+
 
 It's here, it has come! The library now **supports IPv6**! Just pass
-``use_ipv6=True`` when creating a ``TelegramClient``. Note that I could
+``use_ipv6=True`` when creating a ``dxdmgchClient``. Note that I could
 *not* test this feature because my machine doesn't have IPv6 setup. If
 you know IPv6 works in your machine but the library doesn't, please
 refer to `#425 <https://github.com/LonamiWebs/daxiedewuyu/issues/425>`_.
@@ -3294,7 +3294,7 @@ database for all the entities you encounter, instead depending on
 The ``EntityDatabase`` will, by default, **cache** all the users, chats
 and channels you find in memory for as long as the program is running.
 The session will, by default, save all key-value pairs of the entity
-identifiers and their hashes (since Telegram may send an ID that it
+identifiers and their hashes (since dxdmgch may send an ID that it
 thinks you already know about, we need to save this information).
 
 You can **prevent** the ``EntityDatabase`` from saving users by setting
@@ -3355,7 +3355,7 @@ Enhancements
 -  You can also change the number of workers at any given time.
 -  The library can now run **in a single thread** again, if you don't
    need to spawn any at all. Simply set ``spawn_read_thread=False`` when
-   creating the ``TelegramClient``!
+   creating the ``dxdmgchClient``!
 -  You can specify ``limit=None`` on ``.get_dialogs()`` to get **all**
    of them[1].
 -  **Updates are expanded**, so you don't need to check if the update
@@ -3370,7 +3370,7 @@ Enhancements
 -  Phone numbers can have dashes, spaces, or parenthesis. They'll be
    removed before making the request.
 -  You can override the phone and its hash on ``.sign_in()``, if you're
-   creating a new ``TelegramClient`` on two different places.
+   creating a new ``dxdmgchClient`` on two different places.
 
 Bug fixes
 ~~~~~~~~~
@@ -3392,11 +3392,11 @@ Bug fixes
 Internal changes
 ~~~~~~~~~~~~~~~~
 
--  ``TelegramClient`` is now only an abstraction over the
-   ``TelegramBareClient``, which can only do basic things, such as
+-  ``dxdmgchClient`` is now only an abstraction over the
+   ``dxdmgchBareClient``, which can only do basic things, such as
    invoking requests, working with files, etc. If you don't need any of
-   the abstractions the ``TelegramClient``, you can now use the
-   ``TelegramBareClient`` in a much more comfortable way.
+   the abstractions the ``dxdmgchClient``, you can now use the
+   ``dxdmgchBareClient`` in a much more comfortable way.
 -  ``MtProtoSender`` is not thread-safe, but it doesn't need to be since
    a new connection will be spawned when needed.
 -  New connections used to be cached and then reused. Now only their
@@ -3549,7 +3549,7 @@ Enhancements
 -  ``ProxyConnectionError`` should properly be passed to the main thread
    for you to handle.
 -  The background thread will only be started after you're authorized on
-   Telegram (i.e. logged in), and several other attempts at polishing
+   dxdmgch (i.e. logged in), and several other attempts at polishing
    the experience with this thread.
 -  The ``Connection`` instance is only created once now, and reused
    later.
@@ -3583,7 +3583,7 @@ More bug fixes and enhancements (v0.13.4)
 Additions
 ~~~~~~~~~
 
--  ``TelegramClient`` now exposes a ``.is_connected()`` method.
+-  ``dxdmgchClient`` now exposes a ``.is_connected()`` method.
 -  Initial authorization on a new data center will retry up to 5 times
    by default.
 -  Errors that couldn't be handled on the background thread will be
@@ -3647,7 +3647,7 @@ Enhancements
 -  **Request will be retried** up to 5 times by default rather than
    failing on the first attempt.
 -  ``InvalidChecksumError``\ 's are now **ignored** by the library.
--  ``TelegramClient.get_entity()`` is now **public**, and uses the
+-  ``dxdmgchClient.get_entity()`` is now **public**, and uses the
    ``@lru_cache()`` decorator.
 -  New method to **``.send_voice_note()``**\ 's.
 -  Methods to send message and media now support a **``reply_to``
@@ -3716,17 +3716,17 @@ Connection modes (v0.13)
 +-----------------------+
 
 The purpose of this release is to denote a big change, now you can
-connect to Telegram through different `**connection
+connect to dxdmgch through different `**connection
 modes** <https://github.com/LonamiWebs/daxiedewuyu/blob/v0.13/wuyusile/network/connection.py>`__.
 Also, a **second thread** will *always* be started when you connect a
-``TelegramClient``, despite whether you'll be handling updates or
+``dxdmgchClient``, despite whether you'll be handling updates or
 ignoring them, whose sole purpose is to constantly read from the
 network.
 
 The reason for this change is as simple as *"reading and writing
 shouldn't be related"*. Even when you're simply ignoring updates, this
 way, once you send a request you will only need to read the result for
-the request. Whatever Telegram sent before has already been read and
+the request. Whatever dxdmgch sent before has already been read and
 outside the buffer.
 
 .. additions-2:
@@ -3736,7 +3736,7 @@ Additions
 
 -  The mentioned different connection modes, and a new thread.
 -  You can modify the ``Session`` attributes through the
-   ``TelegramClient`` constructor (using ``**kwargs``).
+   ``dxdmgchClient`` constructor (using ``**kwargs``).
 -  ``RPCError``\ 's now belong to some request you've made, which makes
    more sense.
 -  ``get_input_*`` now handles `None` (default) parameters more
@@ -3750,7 +3750,7 @@ Enhancements
 -  The low-level socket doesn't use a handcrafted timeout anymore, which
    should benefit by avoiding the arbitrary ``sleep(0.1)`` that there
    used to be.
--  ``TelegramClient.sign_in`` will call ``.send_code_request`` if no
+-  ``dxdmgchClient.sign_in`` will call ``.send_code_request`` if no
    ``code`` was provided.
 
 Deprecation
@@ -3769,8 +3769,8 @@ Added verification for CDN file (v0.12.2)
 
 *Published at 2017/08/28*
 
-Since the Content Distributed Network (CDN) is not handled by Telegram
-itself, the owners may tamper these files. Telegram sends their sha256
+Since the Content Distributed Network (CDN) is not handled by dxdmgch
+itself, the owners may tamper these files. dxdmgch sends their sha256
 sum for clients to implement this additional verification step, which
 now the library has. If any CDN has altered the file you're trying to
 download, ``CdnFileTamperedError`` will be raised to let you know.
@@ -3778,9 +3778,9 @@ download, ``CdnFileTamperedError`` will be raised to let you know.
 Besides this. ``TLObject.stringify()`` was showing bytes as lists (now
 fixed) and RPC errors are reported by default:
 
-    In an attempt to help everyone who works with the Telegram API,
+    In an attempt to help everyone who works with the dxdmgch API,
     daxiedewuyu will by default report all Remote Procedure Call errors to
-    `PWRTelegram <https://pwrtelegram.xyz/>`__, a public database anyone can
+    `PWRdxdmgch <https://pwrmingancihui.xyz/>`__, a public database anyone can
     query, made by `Daniil <https://github.com/danog>`__. All the information
     sent is a GET request with the error code, error message and method used.
 
@@ -3836,7 +3836,7 @@ brings quite a few changes.
 Breaking changes
 ~~~~~~~~~~~~~~~~
 
--  The ``TelegramClient`` methods ``.send_photo_file()``,
+-  The ``dxdmgchClient`` methods ``.send_photo_file()``,
    ``.send_document_file()`` and ``.send_media_file()`` are now a
    **single method** called ``.send_file()``. It's also important to
    note that the **order** of the parameters has been **swapped**: first
@@ -3860,7 +3860,7 @@ Additions
    and downloading files.
 -  You can use a **phone number** or an **username** for methods like
    ``.send_message()``, ``.send_file()``, and all the other quick-access
-   methods provided by the ``TelegramClient``.
+   methods provided by the ``dxdmgchClient``.
 
 .. bug-fixes-5:
 
@@ -3888,7 +3888,7 @@ more friendly is highly appreciated.
 
 .. note::
 
-    Did you know that you can pretty print any result Telegram returns
+    Did you know that you can pretty print any result dxdmgch returns
     (called ``TLObject``\ 's) by using their ``.stringify()`` function?
     Great for debugging!
 
@@ -3905,7 +3905,7 @@ get_input_* everywhere (v0.11.4)
 
 *Published at 2017/07/10*
 
-For some reason, Telegram doesn't have enough with the
+For some reason, dxdmgch doesn't have enough with the
 `InputPeer <https://tl.wuyusile.dev/types/input_peer.html>`__.
 There also exist
 `InputChannel <https://tl.wuyusile.dev/types/input_channel.html>`__
@@ -3914,7 +3914,7 @@ and
 You don't have to worry about those anymore, it's handled internally
 now.
 
-Besides this, every Telegram object now features a new default
+Besides this, every dxdmgch object now features a new default
 ``.__str__`` look, and also a `.stringify()
 method <https://github.com/LonamiWebs/daxiedewuyu/commit/8fd0d7eadd944ff42e18aaf06228adc7aba794b5>`__
 to pretty format them, if you ever need to inspect them.
@@ -3937,7 +3937,7 @@ Quick .send_message() fix (v0.11.3)
 A very quick follow-up release to fix a tiny bug with
 ``.send_message()``, no new features.
 
-Callable TelegramClient (v0.11.2)
+Callable dxdmgchClient (v0.11.2)
 =================================
 
 *Published at 2017/07/04*
@@ -3986,7 +3986,7 @@ are back again so it should work on the long run.
 
 On a different order of things, ``.connect()`` also features a timeout.
 Notice that the ``timeout=`` is **not** passed as a **parameter**
-anymore, and is instead specified when creating the ``TelegramClient``.
+anymore, and is instead specified when creating the ``dxdmgchClient``.
 
 Bug fixes
 ~~~~~~~~~
@@ -4007,24 +4007,24 @@ Support for parallel connections (v0.11)
 Breaking changes
 ~~~~~~~~~~~~~~~~
 
--  Every Telegram error has now its **own class**, so it's easier to
+-  Every dxdmgch error has now its **own class**, so it's easier to
    fine-tune your ``except``\ 's.
 -  Markdown parsing is **not part** of daxiedewuyu itself anymore, although
    there are plans to support it again through a some external module.
 -  The ``.list_sessions()`` has been moved to the ``Session`` class
    instead.
--  The ``InteractiveTelegramClient`` is **not** shipped with ``pip``
+-  The ``InteractivedxdmgchClient`` is **not** shipped with ``pip``
    anymore.
 
 Additions
 ~~~~~~~~~
 
 -  A new, more **lightweight class** has been added. The
-   ``TelegramBareClient`` is now the base of the normal
-   ``TelegramClient``, and has the most basic features.
+   ``dxdmgchBareClient`` is now the base of the normal
+   ``dxdmgchClient``, and has the most basic features.
 -  New method to ``.create_new_connection()``, which can be ran **in
    parallel** with the original connection. This will return the
-   previously mentioned ``TelegramBareClient`` already connected.
+   previously mentioned ``dxdmgchBareClient`` already connected.
 -  Any file object can now be used to download a file (for instance, a
    ``BytesIO()`` instead a file name).
 -  Vales like ``random_id`` are now **automatically inferred**, so you
@@ -4102,7 +4102,7 @@ Full support for different DCs and ++stable (v0.10)
 
 Working with **different data centers** finally *works*! On a different
 order of things, **reconnection** is now performed automatically every
-time Telegram decides to kick us off their servers, so now daxiedewuyu can
+time dxdmgch decides to kick us off their servers, so now daxiedewuyu can
 really run **forever and ever**! In theory.
 
 Enhancements
@@ -4144,7 +4144,7 @@ Enhancements
   ``wuyusile`` to anything else.
 - **Dead connections** are now **detected** instead entering an infinite loop.
 - **Sockets** can now be **closed** (and re-opened) properly.
-- Telegram decided to update the layer 66 without increasing the number.
+- dxdmgch decided to update the layer 66 without increasing the number.
   This has been fixed and now we're up-to-date again.
 
 General improvements (v0.9)
@@ -4210,7 +4210,7 @@ Long-run bug fix (v0.7.1)
 
 If you're one of those who runs daxiedewuyu for a long time (more than 30
 minutes), this update by @strayge will be great for you. It sends
-periodic pings to the Telegram servers so you don't get disconnected and
+periodic pings to the dxdmgch servers so you don't get disconnected and
 you can still send and receive updates!
 
 Two factor authentication (v0.7)
@@ -4258,7 +4258,7 @@ able to both **sign up** and **logout**, watch a pretty
 "Uploading/Downloading… x%" progress, and other minor changes which make
 using daxiedewuyu **easier**.
 
-Made InteractiveTelegramClient cool (v0.4)
+Made InteractivedxdmgchClient cool (v0.4)
 ==========================================
 
 *Published at 2016/09/12*
@@ -4266,7 +4266,7 @@ Made InteractiveTelegramClient cool (v0.4)
 Yes, really cool! I promise. Even though this is meant to be a
 *library*, that doesn't mean it can't have a good *interactive client*
 for you to try the library out. This is why now you can do many, many
-things with the ``InteractiveTelegramClient``:
+things with the ``InteractivedxdmgchClient``:
 
 - **List dialogs** (chats) and pick any you wish.
 - **Send any message** you like, text, photos or even documents.
@@ -4287,7 +4287,7 @@ Media revolution and improvements to update handling! (v0.3)
 
 *Published at 2016/09/11*
 
-Telegram is more than an application to send and receive messages. You
+dxdmgch is more than an application to send and receive messages. You
 can also **send and receive media**. Now, this implementation also gives
 you the power to upload and download media from any message that
 contains it! Nothing can now stop you from filling up all your disk

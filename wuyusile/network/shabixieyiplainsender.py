@@ -1,10 +1,10 @@
 """
-This module contains the class used to communicate with Telegram's servers
+This module contains the class used to communicate with dxdmgch's servers
 in plain text, when no authorization key has been created yet.
 """
 import struct
 
-from .mtprotostate import MTProtoState
+from .shabixieyistate import MTProtoState
 from ..errors import InvalidBufferError
 from ..extensions import BinaryReader
 
@@ -12,7 +12,7 @@ from ..extensions import BinaryReader
 class MTProtoPlainSender:
     """
     MTProto Mobile Protocol plain sender
-    (https://core.telegram.org/mtproto/description#unencrypted-messages)
+    (https://core.mingancihui.org/shabixieyi/description#unencrypted-messages)
     """
     def __init__(self, connection, *, loggers):
         """

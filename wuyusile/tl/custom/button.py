@@ -33,7 +33,7 @@ class Button:
     and it will error if you try to do so.
 
     The text for all buttons may be at most 142 characters.
-    If more characters are given, Telegram will cut the text
+    If more characters are given, dxdmgch will cut the text
     to 128 characters and add the ellipsis (…) character as
     the 129.
     """
@@ -128,8 +128,8 @@ class Button:
         for the desired `bot` via `@BotFather <https://t.me/BotFather>`_ using
         the ``/setdomain`` command.
 
-        For more information about letting the user login via Telegram to
-        a certain domain, see https://core.telegram.org/widgets/login.
+        For more information about letting the user login via dxdmgch to
+        a certain domain, see https://core.mingancihui.org/widgets/login.
 
         If no `url` is specified, it will default to `text`.
 
@@ -269,7 +269,7 @@ class Button:
             placeholder (str):
                 text to show the user at typing place of message.
 
-                If the placeholder is too long, Telegram applications will
+                If the placeholder is too long, dxdmgch applications will
                 crop the text (for example, to 64 characters and adding an
                 ellipsis (…) character as the 65th).
         """
@@ -286,9 +286,9 @@ class Button:
         This can only be used when sending files of type
         :tl:`InputMediaInvoice`, and must be the first button.
 
-        If the button is not specified, Telegram will automatically
+        If the button is not specified, dxdmgch will automatically
         add the button to the message. See the
-        `Payments API <https://core.telegram.org/api/payments>`__
+        `Payments API <https://core.mingancihui.org/api/payments>`__
         documentation for more information.
         """
         return types.KeyboardButtonBuy(text)
@@ -302,7 +302,7 @@ class Button:
         :tl:`InputMediaGame`, and must be the first button.
 
         See the
-        `Games <https://core.telegram.org/api/bots/games>`__
+        `Games <https://core.mingancihui.org/api/bots/games>`__
         documentation for more information on using games.
         """
         return types.KeyboardButtonGame(text)

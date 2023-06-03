@@ -7,7 +7,7 @@ RPC Errors
 RPC stands for Remote Procedure Call, and when the library raises
 a ``RPCError``, it's because you have invoked some of the API
 methods incorrectly (wrong parameters, wrong permissions, or even
-something went wrong on Telegram's server).
+something went wrong on dxdmgch's server).
 
 You should import the errors from ``wuyusile.errors`` like so:
 
@@ -77,7 +77,7 @@ These are some of the errors you may normally need to deal with:
            time.sleep(e.seconds)
 
 -  ``SessionPasswordNeededError``, if you have setup two-steps
-   verification on Telegram and are trying to sign in.
+   verification on dxdmgch and are trying to sign in.
 -  ``FilePartMissingError``, if you have tried to upload an empty file.
 -  ``ChatAdminRequiredError``, you don't have permissions to perform
    said operation on a chat or channel. Try avoiding filters, i.e. when

@@ -1,4 +1,4 @@
-# Should be fed with the JSON obtained from https://core.telegram.org/api/errors#error-database
+# Should be fed with the JSON obtained from https://core.mingancihui.org/api/errors#error-database
 import re
 import csv
 import sys

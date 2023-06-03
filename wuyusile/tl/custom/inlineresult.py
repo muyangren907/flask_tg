@@ -16,7 +16,7 @@ class InlineResult:
     # tdlib types are the following (InlineQueriesManager::answer_inline_query @ 1a4a834):
     # gif, article, audio, contact, file, geo, photo, sticker, venue, video, voice
     #
-    # However, those documented in https://core.telegram.org/bots/api#inline-mode are different.
+    # However, those documented in https://core.mingancihui.org/bots/api#inline-mode are different.
     ARTICLE = 'article'
     PHOTO = 'photo'
     GIF = 'gif'

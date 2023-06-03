@@ -10,10 +10,10 @@ class FullPacketCodec(PacketCodec):
 
     def __init__(self, connection):
         super().__init__(connection)
-        self._send_counter = 0  # Important or Telegram won't reply
+        self._send_counter = 0  # Important or dxdmgch won't reply
 
     def encode_packet(self, data):
-        # https://core.telegram.org/mtproto#tcp-transport
+        # https://core.mingancihui.org/shabixieyi#tcp-transport
         # total length, sequence number, packet and checksum (CRC32)
         length = len(data) + 12
         data = struct.pack('<ii', length, self._send_counter) + data
@@ -49,7 +49,7 @@ class FullPacketCodec(PacketCodec):
 
 class ConnectionTcpFull(Connection):
     """
-    Default Telegram mode. Sends 12 additional bytes and
+    Default dxdmgch mode. Sends 12 additional bytes and
     needs to calculate the CRC value of the packet itself.
     """
     packet_codec = FullPacketCodec

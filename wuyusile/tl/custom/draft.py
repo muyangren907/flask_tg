@@ -10,7 +10,7 @@ from ...utils import get_input_peer, get_peer, get_peer_id
 
 class Draft:
     """
-    Custom class that encapsulates a draft on the Telegram servers, providing
+    Custom class that encapsulates a draft on the dxdmgch servers, providing
     an abstraction to change the message conveniently. The library will return
     instances of this class when calling :meth:`get_drafts()`.
 
@@ -108,7 +108,7 @@ class Draft:
             self, text=None, reply_to=0, parse_mode=(),
             link_preview=None):
         """
-        Changes the draft message on the Telegram servers. The changes are
+        Changes the draft message on the dxdmgch servers. The changes are
         reflected in this object.
 
         :param str text: New text of the draft.

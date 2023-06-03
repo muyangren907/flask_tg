@@ -12,7 +12,7 @@ from ..tl import TLRequest, types, functions
 _NOT_A_REQUEST = lambda: TypeError('You can only invoke requests, not types!')
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 def _fmt_flood(delay, request, *, early=False, td=datetime.timedelta):
@@ -26,10 +26,10 @@ def _fmt_flood(delay, request, *, early=False, td=datetime.timedelta):
 
 
 class UserMethods:
-    async def __call__(self: 'TelegramClient', request, ordered=False, flood_sleep_threshold=None):
+    async def __call__(self: 'dxdmgchClient', request, ordered=False, flood_sleep_threshold=None):
         return await self._call(self._sender, request, ordered=ordered)
 
-    async def _call(self: 'TelegramClient', sender, request, ordered=False, flood_sleep_threshold=None):
+    async def _call(self: 'dxdmgchClient', sender, request, ordered=False, flood_sleep_threshold=None):
         if self._loop is not None and self._loop != helpers.get_running_loop():
             raise RuntimeError('The asyncio event loop must not change after connection (see the FAQ for details)')
         # if the loop is None it will fail with a connection error later on
@@ -92,7 +92,7 @@ class UserMethods:
                     errors.InterdcCallRichErrorError) as e:
                 last_error = e
                 self._log[__name__].warning(
-                    'Telegram is having internal issues %s: %s',
+                    'dxdmgch is having internal issues %s: %s',
                     e.__class__.__name__, e)
 
                 await asyncio.sleep(2)
@@ -134,7 +134,7 @@ class UserMethods:
 
     # region Public methods
 
-    async def get_me(self: 'TelegramClient', input_peer: bool = False) \
+    async def get_me(self: 'dxdmgchClient', input_peer: bool = False) \
             -> 'typing.Union[types.User, types.InputPeerUser]':
         """
         Gets "me", the current :tl:`User` who is logged in.
@@ -171,7 +171,7 @@ class UserMethods:
             return None
 
     @property
-    def _self_id(self: 'TelegramClient') -> typing.Optional[int]:
+    def _self_id(self: 'dxdmgchClient') -> typing.Optional[int]:
         """
         Returns the ID of the logged-in user, if known.
 
@@ -180,7 +180,7 @@ class UserMethods:
         """
         return self._mb_entity_cache.self_id
 
-    async def is_bot(self: 'TelegramClient') -> bool:
+    async def is_bot(self: 'dxdmgchClient') -> bool:
         """
         Return `True` if the signed-in user is a bot, `False` otherwise.
 
@@ -197,7 +197,7 @@ class UserMethods:
 
         return self._mb_entity_cache.self_bot
 
-    async def is_user_authorized(self: 'TelegramClient') -> bool:
+    async def is_user_authorized(self: 'dxdmgchClient') -> bool:
         """
         Returns `True` if the user is authorized (logged in).
 
@@ -220,10 +220,10 @@ class UserMethods:
         return self._authorized
 
     async def get_entity(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntitiesLike') -> 'hints.Entity':
         """
-        Turns the given entity into a valid Telegram :tl:`User`, :tl:`Chat`
+        Turns the given entity into a valid dxdmgch :tl:`User`, :tl:`Chat`
         or :tl:`Channel`. You can also pass a list or iterable of entities,
         and they will be efficiently fetched from the network.
 
@@ -345,7 +345,7 @@ class UserMethods:
         return result[0] if single else result
 
     async def get_input_entity(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             peer: 'hints.EntityLike') -> 'types.TypeInputPeer':
         """
         Turns the given entity into its input entity version.
@@ -471,12 +471,12 @@ class UserMethods:
             .format(peer, type(peer).__name__)
         )
 
-    async def _get_peer(self: 'TelegramClient', peer: 'hints.EntityLike'):
+    async def _get_peer(self: 'dxdmgchClient', peer: 'hints.EntityLike'):
         i, cls = utils.resolve_id(await self.get_peer_id(peer))
         return cls(i)
 
     async def get_peer_id(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             peer: 'hints.EntityLike',
             add_mark: bool = True) -> int:
         """
@@ -512,7 +512,7 @@ class UserMethods:
 
     # region Private methods
 
-    async def _get_entity_from_string(self: 'TelegramClient', string):
+    async def _get_entity_from_string(self: 'dxdmgchClient', string):
         """
         Gets a full entity from the given string, which may be a phone or
         a username, and processes all the found entities on the session.
@@ -576,7 +576,7 @@ class UserMethods:
             'Cannot find any entity corresponding to "{}"'.format(string)
         )
 
-    async def _get_input_dialog(self: 'TelegramClient', dialog):
+    async def _get_input_dialog(self: 'dxdmgchClient', dialog):
         """
         Returns a :tl:`InputDialogPeer`. This is a bit tricky because
         it may or not need access to the client to convert what's given
@@ -593,7 +593,7 @@ class UserMethods:
 
         return types.InputDialogPeer(await self.get_input_entity(dialog))
 
-    async def _get_input_notify(self: 'TelegramClient', notify):
+    async def _get_input_notify(self: 'dxdmgchClient', notify):
         """
         Returns a :tl:`InputNotifyPeer`. This is a bit tricky because
         it may or not need access to the client to convert what's given

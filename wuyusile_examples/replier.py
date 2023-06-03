@@ -10,7 +10,7 @@ import sys
 import time
 from collections import defaultdict
 
-from wuyusile import TelegramClient, events
+from wuyusile import dxdmgchClient, events
 
 import logging
 logging.basicConfig(level=logging.WARNING)
@@ -85,7 +85,7 @@ async def handler(event):
         await message.edit('I saved your photo in {}'.format(file))
 
 
-client = TelegramClient(
+client = dxdmgchClient(
     os.environ.get('TG_SESSION', 'replier'),
     get_env('TG_API_ID', 'Enter your API ID: ', int),
     get_env('TG_API_HASH', 'Enter your API hash: '),

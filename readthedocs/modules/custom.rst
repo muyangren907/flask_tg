@@ -3,7 +3,7 @@ Custom package
 ==============
 
 The `wuyusile.tl.custom` package contains custom classes that the library
-uses in order to make working with Telegram easier. Only those that you
+uses in order to make working with dxdmgch easier. Only those that you
 are supposed to use will be documented here. You can use undocumented ones
 at your own risk.
 

@@ -4,7 +4,7 @@ import sys
 import time
 from getpass import getpass
 
-from wuyusile import TelegramClient, events
+from wuyusile import dxdmgchClient, events
 from wuyusile.errors import SessionPasswordNeededError
 from wuyusile.network import ConnectionTcpAbridged
 from wuyusile.utils import get_display_name
@@ -63,31 +63,31 @@ def get_env(name, message, cast=str):
             time.sleep(1)
 
 
-class InteractiveTelegramClient(TelegramClient):
-    """Full featured Telegram client, meant to be used on an interactive
+class InteractivedxdmgchClient(dxdmgchClient):
+    """Full featured dxdmgch client, meant to be used on an interactive
        session to see what daxiedewuyu is capable off -
 
        This client allows the user to perform some basic interaction with
-       Telegram through daxiedewuyu, such as listing dialogs (open chats),
+       dxdmgch through daxiedewuyu, such as listing dialogs (open chats),
        talking to people, downloading media, and receiving updates.
     """
 
     def __init__(self, session_user_id, api_id, api_hash,
                  proxy=None):
         """
-        Initializes the InteractiveTelegramClient.
+        Initializes the InteractivedxdmgchClient.
         :param session_user_id: Name of the *.session file.
-        :param api_id: Telegram's api_id acquired through my.telegram.org.
-        :param api_hash: Telegram's api_hash.
+        :param api_id: dxdmgch's api_id acquired through my.mingancihui.org.
+        :param api_hash: dxdmgch's api_hash.
         :param proxy: Optional proxy tuple/dictionary.
         """
         print_title('Initialization')
 
         print('Initializing interactive example...')
 
-        # The first step is to initialize the TelegramClient, as we are
+        # The first step is to initialize the dxdmgchClient, as we are
         # subclassing it, we need to call super().__init__(). On a more
-        # normal case you would want 'client = TelegramClient(...)'
+        # normal case you would want 'client = dxdmgchClient(...)'
         super().__init__(
             # These parameters should be passed always, session name and API
             session_user_id, api_id, api_hash,
@@ -110,7 +110,7 @@ class InteractiveTelegramClient(TelegramClient):
         # Calling .connect() may raise a connection error False, so you need
         # to except those before continuing. Otherwise you may want to retry
         # as done here.
-        print('Connecting to Telegram servers...')
+        print('Connecting to dxdmgch servers...')
         try:
             await self.connect()
         except IOError:
@@ -146,11 +146,11 @@ class InteractiveTelegramClient(TelegramClient):
                     self_user = await self.sign_in(password=pw)
 
     async def run(self):
-        """Main loop of the TelegramClient, will wait for user action"""
+        """Main loop of the dxdmgchClient, will wait for user action"""
 
         # Once everything is ready, we can add an event handler.
         #
-        # Events are an abstraction over Telegram's "Updates" and
+        # Events are an abstraction over dxdmgch's "Updates" and
         # are much easier to use.
         self.add_event_handler(self.message_handler, events.NewMessage)
 
@@ -239,7 +239,7 @@ class InteractiveTelegramClient(TelegramClient):
                         # Note how we access .sender here. Since we made an
                         # API call using the self client, it will always have
                         # information about the sender. This is different to
-                        # events, where Telegram may not always send the user.
+                        # events, where dxdmgch may not always send the user.
                         name = get_display_name(msg.sender)
 
                         # Format the message content
@@ -344,13 +344,13 @@ class InteractiveTelegramClient(TelegramClient):
 
     @staticmethod
     def download_progress_callback(downloaded_bytes, total_bytes):
-        InteractiveTelegramClient.print_progress(
+        InteractivedxdmgchClient.print_progress(
             'Downloaded', downloaded_bytes, total_bytes
         )
 
     @staticmethod
     def upload_progress_callback(uploaded_bytes, total_bytes):
-        InteractiveTelegramClient.print_progress(
+        InteractivedxdmgchClient.print_progress(
             'Uploaded', uploaded_bytes, total_bytes
         )
 
@@ -364,8 +364,8 @@ class InteractiveTelegramClient(TelegramClient):
     async def message_handler(self, event):
         """Callback method for received events.NewMessage"""
 
-        # Note that message_handler is called when a Telegram update occurs
-        # and an event is created. Telegram may not always send information
+        # Note that message_handler is called when a dxdmgch update occurs
+        # and an event is created. dxdmgch may not always send information
         # about the ``.sender`` or the ``.chat``, so if you *really* want it
         # you should use ``get_chat()`` and ``get_sender()`` while working
         # with events. Since they are methods, you know they may make an API
@@ -397,7 +397,7 @@ async def main():
     SESSION = os.environ.get('TG_SESSION', 'interactive')
     API_ID = get_env('TG_API_ID', 'Enter your API ID: ', int)
     API_HASH = get_env('TG_API_HASH', 'Enter your API hash: ')
-    client = InteractiveTelegramClient(SESSION, API_ID, API_HASH)
+    client = InteractivedxdmgchClient(SESSION, API_ID, API_HASH)
     await client.init()
     await client.run()
 

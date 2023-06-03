@@ -2,7 +2,7 @@ import inspect
 
 import pytest
 
-from wuyusile import TelegramClient
+from wuyusile import dxdmgchClient
 
 
 @pytest.mark.asyncio
@@ -10,7 +10,7 @@ async def test_send_message_with_file_forwards_args():
     arguments = {}
     sentinel = object()
 
-    for value, name in enumerate(inspect.signature(TelegramClient.send_message).parameters):
+    for value, name in enumerate(inspect.signature(dxdmgchClient.send_message).parameters):
         if name in {'self', 'entity', 'file'}:
             continue  # positional
 
@@ -22,7 +22,7 @@ async def test_send_message_with_file_forwards_args():
 
         arguments[name] = value
 
-    class MockedClient(TelegramClient):
+    class MockedClient(dxdmgchClient):
         # noinspection PyMissingConstructor
         def __init__(self):
             pass

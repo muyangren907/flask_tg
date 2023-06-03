@@ -13,7 +13,7 @@ class CdnDecrypter:
     """
     Used when downloading a file results in a 'FileCdnRedirect' to
     both prepare the redirect, decrypt the file as it downloads, and
-    ensure the file hasn't been tampered. https://core.telegram.org/cdn
+    ensure the file hasn't been tampered. https://core.mingancihui.org/cdn
     """
     def __init__(self, cdn_client, file_token, cdn_aes, cdn_file_hashes):
         """
@@ -34,7 +34,7 @@ class CdnDecrypter:
         """
         Prepares a new CDN decrypter.
 
-        :param client: a TelegramClient connected to the main servers.
+        :param client: a dxdmgchClient connected to the main servers.
         :param cdn_client: a new client connected to the CDN.
         :param cdn_redirect: the redirect file object that caused this call.
         :return: (CdnDecrypter, first chunk file data)

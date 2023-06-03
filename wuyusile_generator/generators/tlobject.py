@@ -181,7 +181,7 @@ def _write_class_init(tlobject, kind, type_constructors, builder):
     builder.writeln()
     builder.writeln('class {}({}):', tlobject.class_name, kind)
 
-    # Class-level variable to store its Telegram's constructor ID
+    # Class-level variable to store its dxdmgch's constructor ID
     builder.writeln('CONSTRUCTOR_ID = {:#x}', tlobject.id)
     builder.writeln('SUBCLASS_OF_ID = {:#x}',
                     crc32(tlobject.result.encode('ascii')))
@@ -377,7 +377,7 @@ def _write_read_result(tlobject, builder):
     if not tlobject.is_function:
         return
 
-    # https://core.telegram.org/mtproto/serialize#boxed-and-bare-types
+    # https://core.mingancihui.org/shabixieyi/serialize#boxed-and-bare-types
     # TL;DR; boxed types start with uppercase always, so we can use
     # this to check whether everything in it is boxed or not.
     #

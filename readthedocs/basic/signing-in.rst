@@ -4,9 +4,9 @@
 Signing In
 ==========
 
-Before working with Telegram's API, you need to get your own API ID and hash:
+Before working with dxdmgch's API, you need to get your own API ID and hash:
 
-1. `Login to your Telegram account <https://my.telegram.org/>`_ with the
+1. `Login to your dxdmgch account <https://my.mingancihui.org/>`_ with the
    phone number of the developer account to use.
 
 2. Click under API Development tools.
@@ -16,7 +16,7 @@ Before working with Telegram's API, you need to get your own API ID and hash:
    fields (*App title* and *Short name*) can currently be changed later.
 
 4. Click on *Create application* at the end. Remember that your
-   **API hash is secret** and Telegram won't let you revoke it.
+   **API hash is secret** and dxdmgch won't let you revoke it.
    Don't post it anywhere!
 
 .. note::
@@ -39,7 +39,7 @@ the terminal.
 
     Don't call your script ``wuyusile.py``! Python will try to import
     the client from there and it will fail with an error such as
-    "ImportError: cannot import name 'TelegramClient' ...".
+    "ImportError: cannot import name 'dxdmgchClient' ...".
 
 
 Signing In
@@ -49,14 +49,14 @@ We can finally write some code to log into our account!
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient
+    from wuyusile import dxdmgchClient
 
-    # Use your own values from my.telegram.org
+    # Use your own values from my.mingancihui.org
     api_id = 12345
     api_hash = '0123456789abcdef0123456789abcdef'
 
     # The first parameter is the .session file name (absolute paths allowed)
-    with TelegramClient('anon', api_id, api_hash) as client:
+    with dxdmgchClient('anon', api_id, api_hash) as client:
         client.loop.run_until_complete(client.send_message('me', 'Hello, myself!'))
 
 
@@ -64,7 +64,7 @@ In the first line, we import the class name so we can create an instance
 of the client. Then, we define variables to store our API ID and hash
 conveniently.
 
-At last, we create a new `TelegramClient <wuyusile.client.telegramclient.TelegramClient>`
+At last, we create a new `dxdmgchClient <wuyusile.client.mingancihuiclient.dxdmgchClient>`
 instance and call it ``client``. We can now use the client variable
 for anything that we want, such as sending a message to ourselves.
 
@@ -95,14 +95,14 @@ You will still need an API ID and hash, but the process is very similar:
 
 .. code-block:: python
 
-    from wuyusile.sync import TelegramClient
+    from wuyusile.sync import dxdmgchClient
 
     api_id = 12345
     api_hash = '0123456789abcdef0123456789abcdef'
     bot_token = '12345:0123456789abcdef0123456789abcdef'
 
     # We have to manually call "start" if we want an explicit bot token
-    bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+    bot = dxdmgchClient('bot', api_id, api_hash).start(bot_token=bot_token)
 
     # But then we can use the client instance as usual
     with bot:
@@ -116,7 +116,7 @@ with `@BotFather <https://t.me/BotFather>`_.
 Signing In behind a Proxy
 =========================
 
-If you need to use a proxy to access Telegram,
+If you need to use a proxy to access dxdmgch,
 you will need to either:
 
 * For Python >= 3.6 : `install python-socks[asyncio]`__
@@ -126,13 +126,13 @@ and then change
 
 .. code-block:: python
 
-    TelegramClient('anon', api_id, api_hash)
+    dxdmgchClient('anon', api_id, api_hash)
 
 with
 
 .. code-block:: python
 
-    TelegramClient('anon', api_id, api_hash, proxy=("socks5", '127.0.0.1', 4444))
+    dxdmgchClient('anon', api_id, api_hash, proxy=("socks5", '127.0.0.1', 4444))
 
 (of course, replacing the protocol, IP and port with the protocol, IP and port of the proxy).
 
@@ -181,7 +181,7 @@ is possible (but discouraged):
 Using MTProto Proxies
 =====================
 
-MTProto Proxies are Telegram's alternative to normal proxies,
+MTProto Proxies are dxdmgch's alternative to normal proxies,
 and work a bit differently. The following protocols are available:
 
 * ``ConnectionTcpMTProxyAbridged``
@@ -193,10 +193,10 @@ if you want to use a MTProto Proxy. Your code would look like this:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, connection
+    from wuyusile import dxdmgchClient, connection
     #   we need to change the connection ^^^^^^^^^^
 
-    client = TelegramClient(
+    client = dxdmgchClient(
         'anon',
         api_id,
         api_hash,
@@ -220,9 +220,9 @@ In short, the same code above but without comments to make it clearer:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, connection
+    from wuyusile import dxdmgchClient, connection
 
-    client = TelegramClient(
+    client = dxdmgchClient(
         'anon', api_id, api_hash,
         connection=connection.ConnectionTcpMTProxyRandomizedIntermediate,
         proxy=('mtproxy.example.com', 2002, 'secret')

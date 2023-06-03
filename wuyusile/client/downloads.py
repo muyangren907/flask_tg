@@ -18,7 +18,7 @@ except ImportError:
     aiohttp = None
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 # Chunk sizes for upload.getFile must be multiples of the smallest size
 MIN_CHUNK_SIZE = 4096
@@ -197,7 +197,7 @@ class DownloadMethods:
     # region Public methods
 
     async def download_profile_photo(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             file: 'hints.FileLike' = None,
             *,
@@ -311,7 +311,7 @@ class DownloadMethods:
                 return None
 
     async def download_media(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             message: 'hints.MessageLike',
             file: 'hints.FileLike' = None,
             *,
@@ -432,7 +432,7 @@ class DownloadMethods:
             )
 
     async def download_file(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             input_location: 'hints.FileLike',
             file: 'hints.OutFileLike' = None,
             *,
@@ -506,7 +506,7 @@ class DownloadMethods:
         )
 
     async def _download_file(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             input_location: 'hints.FileLike',
             file: 'hints.OutFileLike' = None,
             *,
@@ -566,7 +566,7 @@ class DownloadMethods:
                 f.close()
 
     def iter_download(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             file: 'hints.FileLike',
             *,
             offset: int = 0,
@@ -618,7 +618,7 @@ class DownloadMethods:
                 By default, it equals to `request_size`.
 
             request_size (`int`, optional):
-                How many bytes will be requested to Telegram when more
+                How many bytes will be requested to dxdmgch when more
                 data is required. By default, as many bytes as possible
                 are requested. If you would like to request data in
                 smaller sizes, adjust this parameter.
@@ -672,7 +672,7 @@ class DownloadMethods:
         )
 
     def _iter_download(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             file: 'hints.FileLike',
             *,
             offset: int = 0,
@@ -741,7 +741,7 @@ class DownloadMethods:
 
     @staticmethod
     def _get_thumb(thumbs, thumb):
-        # Seems Telegram has changed the order and put `PhotoStrippedSize`
+        # Seems dxdmgch has changed the order and put `PhotoStrippedSize`
         # last while this is the smallest (layer 116). Ensure we have the
         # sizes sorted correctly with a custom function.
         def sort_thumbs(thumb):
@@ -780,7 +780,7 @@ class DownloadMethods:
         else:
             return None
 
-    def _download_cached_photo_size(self: 'TelegramClient', size, file):
+    def _download_cached_photo_size(self: 'dxdmgchClient', size, file):
         # No need to download anything, simply write the bytes
         if isinstance(size, types.PhotoStrippedSize):
             data = utils.stripped_photo_to_jpg(size.bytes)
@@ -802,7 +802,7 @@ class DownloadMethods:
                 f.close()
         return file
 
-    async def _download_photo(self: 'TelegramClient', photo, file, date, thumb, progress_callback):
+    async def _download_photo(self: 'dxdmgchClient', photo, file, date, thumb, progress_callback):
         """Specialized version of .download_media() for photos"""
         # Determine the photo and its largest size
         if isinstance(photo, types.MessageMediaPhoto):
@@ -967,7 +967,7 @@ class DownloadMethods:
         try:
             async with aiohttp.ClientSession() as session:
                 # TODO Use progress_callback; get content length from response
-                # https://github.com/telegramdesktop/tdesktop/blob/c7e773dd9aeba94e2be48c032edc9a78bb50234e/Telegram/SourceFiles/ui/images.cpp#L1318-L1319
+                # https://github.com/mingancihuidesktop/tdesktop/blob/c7e773dd9aeba94e2be48c032edc9a78bb50234e/dxdmgch/SourceFiles/ui/images.cpp#L1318-L1319
                 async with session.get(web.url) as response:
                     while True:
                         chunk = await response.content.read(128 * 1024)

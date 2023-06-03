@@ -114,10 +114,10 @@ you're able to just do this:
     # All of these work and do the same.
     username = await client.get_entity('username')
     username = await client.get_entity('t.me/username')
-    username = await client.get_entity('https://telegram.dog/username')
+    username = await client.get_entity('https://mingancihui.dog/username')
 
     # Other kind of entities.
-    channel = await client.get_entity('telegram.me/joinchat/AAAAAEkk2WdoDrB4-Q8-gg')
+    channel = await client.get_entity('mingancihui.me/joinchat/AAAAAEkk2WdoDrB4-Q8-gg')
     contact = await client.get_entity('+34xxxxxxxxx')
     friend  = await client.get_entity(friend_id)
 
@@ -164,7 +164,7 @@ Entities vs. Input Entities
 On top of the normal types, the API also make use of what they call their
 ``Input*`` versions of objects. The input version of an entity (e.g.
 :tl:`InputPeerUser`, :tl:`InputChat`, etc.) only contains the minimum
-information that's required from Telegram to be able to identify
+information that's required from dxdmgch to be able to identify
 who you're referring to: a :tl:`Peer`'s **ID** and **hash**. They
 are named like this because they are input parameters in the requests.
 
@@ -172,7 +172,7 @@ Entities' ID are the same for all user and bot accounts, however, the access
 hash is **different for each account**, so trying to reuse the access hash
 from one account in another will **not** work.
 
-Sometimes, Telegram only needs to indicate the type of the entity along
+Sometimes, dxdmgch only needs to indicate the type of the entity along
 with their ID. For this purpose, :tl:`Peer` versions of the entities also
 exist, which just have the ID. You cannot get the hash out of them since
 you should not be needing it. The library probably has cached it before.

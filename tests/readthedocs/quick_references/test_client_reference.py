@@ -1,6 +1,6 @@
 import re
 
-from wuyusile import TelegramClient
+from wuyusile import dxdmgchClient
 
 
 def test_all_methods_present(docs_dir):
@@ -8,7 +8,7 @@ def test_all_methods_present(docs_dir):
         present_methods = set(map(str.lstrip, re.findall(r'^ {4}\w+$', fd.read(), re.MULTILINE)))
 
     assert len(present_methods) > 0
-    for name in dir(TelegramClient):
-        attr = getattr(TelegramClient, name)
+    for name in dir(dxdmgchClient):
+        attr = getattr(dxdmgchClient, name)
         if callable(attr) and not name.startswith('_'):
             assert name in present_methods

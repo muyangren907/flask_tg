@@ -4,7 +4,7 @@
 Chats vs Channels
 =================
 
-Telegram's raw API can get very confusing sometimes, in particular when it
+dxdmgch's raw API can get very confusing sometimes, in particular when it
 comes to talking about "chats", "channels", "groups", "megagroups", and all
 those concepts.
 

@@ -19,7 +19,7 @@ from ..version import __version__
 
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 Callback = typing.Callable[[typing.Any], typing.Any]
@@ -28,7 +28,7 @@ class UpdateMethods:
 
     # region Public methods
 
-    async def _run_until_disconnected(self: 'TelegramClient'):
+    async def _run_until_disconnected(self: 'dxdmgchClient'):
         try:
             # Make a high-level request to notify that we want updates
             await self(functions.updates.GetStateRequest())
@@ -41,28 +41,28 @@ class UpdateMethods:
         finally:
             await self.disconnect()
 
-    async def set_receive_updates(self: 'TelegramClient', receive_updates):
+    async def set_receive_updates(self: 'dxdmgchClient', receive_updates):
         """
         Change the value of `receive_updates`.
 
-        This is an `async` method, because in order for Telegram to start
+        This is an `async` method, because in order for dxdmgch to start
         sending updates again, a request must be made.
         """
         self._no_updates = not receive_updates
         if receive_updates:
             await self(functions.updates.GetStateRequest())
 
-    def run_until_disconnected(self: 'TelegramClient'):
+    def run_until_disconnected(self: 'dxdmgchClient'):
         """
         Runs the event loop until the library is disconnected.
 
-        It also notifies Telegram that we want to receive updates
-        as described in https://core.telegram.org/api/updates.
+        It also notifies dxdmgch that we want to receive updates
+        as described in https://core.mingancihui.org/api/updates.
         If an unexpected error occurs during update handling,
         the client will disconnect and said error will be raised.
 
         Manual disconnections can be made by calling `disconnect()
-        <wuyusile.client.telegrambaseclient.TelegramBaseClient.disconnect>`
+        <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
         or sending a ``KeyboardInterrupt`` (e.g. by pressing ``Ctrl+C`` on
         the console window running the script).
 
@@ -99,7 +99,7 @@ class UpdateMethods:
             # No loop.run_until_complete; it's already syncified
             self.disconnect()
 
-    def on(self: 'TelegramClient', event: EventBuilder):
+    def on(self: 'dxdmgchClient', event: EventBuilder):
         """
         Decorator used to `add_event_handler` more conveniently.
 
@@ -112,8 +112,8 @@ class UpdateMethods:
         Example
             .. code-block:: python
 
-                from wuyusile import TelegramClient, events
-                client = TelegramClient(...)
+                from wuyusile import dxdmgchClient, events
+                client = dxdmgchClient(...)
 
                 # Here we use client.on
                 @client.on(events.NewMessage)
@@ -127,7 +127,7 @@ class UpdateMethods:
         return decorator
 
     def add_event_handler(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             callback: Callback,
             event: EventBuilder = None):
         """
@@ -154,8 +154,8 @@ class UpdateMethods:
         Example
             .. code-block:: python
 
-                from wuyusile import TelegramClient, events
-                client = TelegramClient(...)
+                from wuyusile import dxdmgchClient, events
+                client = dxdmgchClient(...)
 
                 async def handler(event):
                     ...
@@ -176,7 +176,7 @@ class UpdateMethods:
         self._event_builders.append((event, callback))
 
     def remove_event_handler(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             callback: Callback,
             event: EventBuilder = None) -> int:
         """
@@ -214,7 +214,7 @@ class UpdateMethods:
 
         return found
 
-    def list_event_handlers(self: 'TelegramClient')\
+    def list_event_handlers(self: 'dxdmgchClient')\
             -> 'typing.Sequence[typing.Tuple[Callback, EventBuilder]]':
         """
         Lists all registered event handlers.
@@ -235,7 +235,7 @@ class UpdateMethods:
         """
         return [(callback, event) for event, callback in self._event_builders]
 
-    async def catch_up(self: 'TelegramClient'):
+    async def catch_up(self: 'dxdmgchClient'):
         """
         "Catches up" on the missed updates while the client was offline.
         You should call this method after registering the event handlers
@@ -254,7 +254,7 @@ class UpdateMethods:
 
     # region Private methods
 
-    async def _update_loop(self: 'TelegramClient'):
+    async def _update_loop(self: 'dxdmgchClient'):
         # If the MessageBox is not empty, the account had to be logged-in to fill in its state.
         # This flag is used to propagate the "you got logged-out" error up (but getting logged-out
         # can only happen if it was once logged-in).
@@ -306,8 +306,8 @@ class UpdateMethods:
                     try:
                         diff = await self(get_diff)
                     except (errors.ServerError, errors.TimeoutError, ValueError) as e:
-                        # Telegram is having issues
-                        self._log[__name__].info('Cannot get difference since Telegram is having issues: %s', type(e).__name__)
+                        # dxdmgch is having issues
+                        self._log[__name__].info('Cannot get difference since dxdmgch is having issues: %s', type(e).__name__)
                         self._message_box.end_difference()
                         continue
                     except (errors.UnauthorizedError, errors.AuthKeyError) as e:
@@ -320,7 +320,7 @@ class UpdateMethods:
                             break
                         continue
                     except errors.TypeNotFoundError as e:
-                        # User is likely doing weird things with their account or session and Telegram gets confused as to what layer they use
+                        # User is likely doing weird things with their account or session and dxdmgch gets confused as to what layer they use
                         self._log[__name__].warning('Cannot get difference since the account is likely misusing the session: %s', e)
                         self._message_box.end_difference()
                         self._updates_error = e
@@ -381,13 +381,13 @@ class UpdateMethods:
                         errors.TimeoutError,
                         ValueError
                     ) as e:
-                        # According to Telegram's docs:
+                        # According to dxdmgch's docs:
                         # "Channel internal replication issues, try again later (treat this like an RPC_CALL_FAIL)."
                         # We can treat this as "empty difference" and not update the local pts.
                         # Then this same call will be retried when another gap is detected or timeout expires.
                         #
                         # Another option would be to literally treat this like an RPC_CALL_FAIL and retry after a few
-                        # seconds, but if Telegram is having issues it's probably best to wait for it to send another
+                        # seconds, but if dxdmgch is having issues it's probably best to wait for it to send another
                         # update (hinting it may be okay now) and retry then.
                         #
                         # This is a bit hacky because MessageBox doesn't really have a way to "not update" the pts.
@@ -471,7 +471,7 @@ class UpdateMethods:
             u._entities = entities
         return updates
 
-    async def _keepalive_loop(self: 'TelegramClient'):
+    async def _keepalive_loop(self: 'dxdmgchClient'):
         # Pings' ID don't really need to be secure, just "random"
         rnd = lambda: random.randrange(-2**63, 2**63)
         while self.is_connected():
@@ -511,7 +511,7 @@ class UpdateMethods:
 
             self.session.save()
 
-    async def _dispatch_update(self: 'TelegramClient', update):
+    async def _dispatch_update(self: 'dxdmgchClient', update):
         # TODO only used for AlbumHack, and MessageBox is not really designed for this
         others = None
 
@@ -578,7 +578,7 @@ class UpdateMethods:
                     name = getattr(callback, '__name__', repr(callback))
                     self._log[__name__].exception('Unhandled exception on %s', name)
 
-    async def _dispatch_event(self: 'TelegramClient', event):
+    async def _dispatch_event(self: 'dxdmgchClient', event):
         """
         Dispatches a single, out-of-order event. Used by `AlbumHack`.
         """
@@ -619,9 +619,9 @@ class UpdateMethods:
                     name = getattr(callback, '__name__', repr(callback))
                     self._log[__name__].exception('Unhandled exception on %s', name)
 
-    async def _handle_auto_reconnect(self: 'TelegramClient'):
+    async def _handle_auto_reconnect(self: 'dxdmgchClient'):
         # TODO Catch-up
-        # For now we make a high-level request to let Telegram
+        # For now we make a high-level request to let dxdmgch
         # know we are still interested in receiving more updates.
         try:
             await self.get_me()
@@ -636,7 +636,7 @@ class UpdateMethods:
 
             # TODO consider:
             # If there aren't many updates while the client is disconnected
-            # (I tried with up to 20), Telegram seems to send them without
+            # (I tried with up to 20), dxdmgch seems to send them without
             # asking for them (via updates.getDifference).
             #
             # On disconnection, the library should probably set a "need
@@ -644,8 +644,8 @@ class UpdateMethods:
             # ignored, and then the library should call updates.getDifference
             # itself to fetch them.
             #
-            # In any case (either there are too many updates and Telegram
-            # didn't send them, or there isn't a lot and Telegram sent them
+            # In any case (either there are too many updates and dxdmgch
+            # didn't send them, or there isn't a lot and dxdmgch sent them
             # but we dropped them), we fetch the new difference to get all
             # missed updates. I feel like this would be the best solution.
 
@@ -669,7 +669,7 @@ class EventBuilderDict:
     """
     Helper "dictionary" to return events from types and cache them.
     """
-    def __init__(self, client: 'TelegramClient', update, others):
+    def __init__(self, client: 'dxdmgchClient', update, others):
         self.client = client
         self.update = update
         self.others = others

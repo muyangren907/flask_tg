@@ -361,7 +361,7 @@ class Connection(abc.ABC):
         After this method finishes, the writer will be drained.
 
         Subclasses should make use of this if they need to send
-        data to Telegram to indicate which connection mode will
+        data to dxdmgch to indicate which connection mode will
         be used.
         """
         if self._codec.tag:
@@ -382,7 +382,7 @@ class Connection(abc.ABC):
 
 class ObfuscatedConnection(Connection):
     """
-    Base class for "obfuscated" connections ("obfuscated2", "mtproto proxy")
+    Base class for "obfuscated" connections ("obfuscated2", "shabixieyi proxy")
     """
     """
     This attribute should be redefined by subclasses

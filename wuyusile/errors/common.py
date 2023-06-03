@@ -1,4 +1,4 @@
-"""Errors not related to the Telegram API itself"""
+"""Errors not related to the dxdmgch API itself"""
 import struct
 import textwrap
 

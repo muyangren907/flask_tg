@@ -21,8 +21,8 @@ class StopPropagation(Exception):
 
     Example usage:
 
-        >>> from wuyusile import TelegramClient, events
-        >>> client = TelegramClient(...)
+        >>> from wuyusile import dxdmgchClient, events
+        >>> client = dxdmgchClient(...)
         >>>
         >>> @client.on(events.NewMessage)
         ... async def delete(event):
@@ -58,8 +58,8 @@ def register(event=None):
     ...
     >>> # (somewhere else)
     ...
-    >>> from wuyusile import TelegramClient
-    >>> client = TelegramClient(...)
+    >>> from wuyusile import dxdmgchClient
+    >>> client = dxdmgchClient(...)
     >>> client.add_event_handler(handler)
 
     Remember that you can use this as a non-decorator

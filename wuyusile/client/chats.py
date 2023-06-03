@@ -9,7 +9,7 @@ from ..requestiter import RequestIter
 from ..tl import types, functions, custom
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 _MAX_PARTICIPANTS_CHUNK_SIZE = 200
 _MAX_ADMIN_LOG_CHUNK_SIZE = 100
@@ -359,7 +359,7 @@ class _ProfilePhotoIter(RequestIter):
                 self.request.offset += len(result.photos)
         else:
             # Some broadcast channels have a photo that this request doesn't
-            # retrieve for whatever random reason the Telegram server feels.
+            # retrieve for whatever random reason the dxdmgch server feels.
             #
             # This means the `total` count may be wrong but there's not much
             # that can be done around it (perhaps there are too many photos
@@ -395,7 +395,7 @@ class ChatMethods:
     # region Public methods
 
     def iter_participants(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             limit: float = None,
             *,
@@ -431,7 +431,7 @@ class ChatMethods:
             aggressive (`bool`, optional):
                 Does nothing. This is kept for backwards-compatibility.
 
-                There have been several changes to Telegram's API that limits
+                There have been several changes to dxdmgch's API that limits
                 the amount of members that can be retrieved, and this was a
                 hack that no longer works.
 
@@ -466,7 +466,7 @@ class ChatMethods:
         )
 
     async def get_participants(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             *args,
             **kwargs) -> 'hints.TotalList':
         """
@@ -489,7 +489,7 @@ class ChatMethods:
 
 
     def iter_admin_log(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             limit: float = None,
             *,
@@ -637,7 +637,7 @@ class ChatMethods:
         )
 
     async def get_admin_log(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             *args,
             **kwargs) -> 'hints.TotalList':
         """
@@ -657,7 +657,7 @@ class ChatMethods:
     get_admin_log.__signature__ = inspect.signature(iter_admin_log)
 
     def iter_profile_photos(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             limit: int = None,
             *,
@@ -703,7 +703,7 @@ class ChatMethods:
         )
 
     async def get_profile_photos(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             *args,
             **kwargs) -> 'hints.TotalList':
         """
@@ -724,7 +724,7 @@ class ChatMethods:
     get_profile_photos.__signature__ = inspect.signature(iter_profile_photos)
 
     def action(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             action: 'typing.Union[str, types.TypeSendMessageAction]',
             *,
@@ -821,7 +821,7 @@ class ChatMethods:
             self, entity, action, delay=delay, auto_cancel=auto_cancel)
 
     async def edit_admin(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             user: 'hints.EntityLike',
             *,
@@ -973,7 +973,7 @@ class ChatMethods:
                 'You can only edit permissions in groups and channels')
 
     async def edit_permissions(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             user: 'typing.Optional[hints.EntityLike]' = None,
             until_date: 'hints.DateLike' = None,
@@ -1129,7 +1129,7 @@ class ChatMethods:
         ))
 
     async def kick_participant(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             user: 'typing.Optional[hints.EntityLike]'
     ):
@@ -1197,7 +1197,7 @@ class ChatMethods:
         return self._get_response_message(None, resp, entity)
 
     async def get_permissions(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             user: 'hints.EntityLike' = None
     ) -> 'typing.Optional[custom.ParticipantPermissions]':
@@ -1267,7 +1267,7 @@ class ChatMethods:
         raise ValueError('You must pass either a channel or a chat')
 
     async def get_stats(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message: 'typing.Union[int, types.Message]' = None,
     ):
@@ -1308,7 +1308,7 @@ class ChatMethods:
                 print('Stats from', stats.period.min_date, 'to', stats.period.max_date, ':')
                 print(stats.stringify())
 
-        .. _`at least 500 members`: https://telegram.org/blog/profile-videos-people-nearby-and-more
+        .. _`at least 500 members`: https://mingancihui.org/blog/profile-videos-people-nearby-and-more
         """
         entity = await self.get_input_entity(entity)
         if helpers._entity_type(entity) != helpers._EntityType.CHANNEL:

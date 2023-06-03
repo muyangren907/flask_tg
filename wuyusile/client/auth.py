@@ -10,7 +10,7 @@ from ..tl import types, functions, custom
 from .._updates import SessionState
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 class AuthMethods:
@@ -18,7 +18,7 @@ class AuthMethods:
     # region Public methods
 
     def start(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             phone: typing.Callable[[], str] = lambda: input('Please enter your phone (or bot token): '),
             password: typing.Callable[[], str] = lambda: getpass.getpass('Please enter your password: '),
             *,
@@ -27,7 +27,7 @@ class AuthMethods:
             code_callback: typing.Callable[[], typing.Union[str, int]] = None,
             first_name: str = 'New User',
             last_name: str = '',
-            max_attempts: int = 3) -> 'TelegramClient':
+            max_attempts: int = 3) -> 'dxdmgchClient':
         """
         Starts the client (connects and logs in if necessary).
 
@@ -60,7 +60,7 @@ class AuthMethods:
                 This only makes sense when signing in with a `phone`.
 
             code_callback (`callable`, optional):
-                A callable that will be used to retrieve the Telegram
+                A callable that will be used to retrieve the dxdmgch
                 login code. Defaults to `input()`.
                 The argument may be a coroutine.
 
@@ -76,13 +76,13 @@ class AuthMethods:
                 retried or switching between signing in and signing up.
 
         Returns
-            This `TelegramClient`, so initialization
+            This `dxdmgchClient`, so initialization
             can be chained with ``.start()``.
 
         Example
             .. code-block:: python
 
-                client = TelegramClient('anon', api_id, api_hash)
+                client = dxdmgchClient('anon', api_id, api_hash)
 
                 # Starting as a bot account
                 await client.start(bot_token=bot_token)
@@ -103,7 +103,7 @@ class AuthMethods:
         elif not callable(code_callback):
             raise ValueError(
                 'The code_callback parameter needs to be a callable '
-                'function that returns the code you received by Telegram.'
+                'function that returns the code you received by dxdmgch.'
             )
 
         if not phone and not bot_token:
@@ -129,7 +129,7 @@ class AuthMethods:
         )
 
     async def _start(
-            self: 'TelegramClient', phone, password, bot_token, force_sms,
+            self: 'dxdmgchClient', phone, password, bot_token, force_sms,
             code_callback, first_name, last_name, max_attempts):
         if not self.is_connected():
             await self.connect()
@@ -266,7 +266,7 @@ class AuthMethods:
         return phone, phone_hash
 
     async def sign_in(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             phone: str = None,
             code: typing.Union[str, int] = None,
             *,
@@ -274,7 +274,7 @@ class AuthMethods:
             bot_token: str = None,
             phone_code_hash: str = None) -> 'typing.Union[types.User, types.auth.SentCode]':
         """
-        Logs in to Telegram to an existing user or bot account.
+        Logs in to dxdmgch to an existing user or bot account.
 
         You should only use this if you are not authorized yet.
 
@@ -291,7 +291,7 @@ class AuthMethods:
                 these requests.
 
             code (`str` | `int`):
-                The code that Telegram sent. Note that if you have sent this
+                The code that dxdmgch sent. Note that if you have sent this
                 code through the application itself it will immediately
                 expire. If you want to send the code, obfuscate it somehow.
                 If you're not doing any of this you can ignore this note.
@@ -367,7 +367,7 @@ class AuthMethods:
         return await self._on_login(result.user)
 
     async def sign_up(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             code: typing.Union[str, int],
             first_name: str,
             last_name: str = '',
@@ -378,7 +378,7 @@ class AuthMethods:
         This method can no longer be used, and will immediately raise a ``ValueError``.
         See `issue #4050 <https://github.com/LonamiWebs/daxiedewuyu/issues/4050>`_ for context.
         """
-        raise ValueError('Third-party applications cannot sign up for Telegram. See https://github.com/LonamiWebs/daxiedewuyu/issues/4050 for details')
+        raise ValueError('Third-party applications cannot sign up for dxdmgch. See https://github.com/LonamiWebs/daxiedewuyu/issues/4050 for details')
 
     async def _on_login(self, user):
         """
@@ -395,13 +395,13 @@ class AuthMethods:
         return user
 
     async def send_code_request(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             phone: str,
             *,
             force_sms: bool = False,
             _retry_count: int = 0) -> 'types.auth.SentCode':
         """
-        Sends the Telegram code needed to login to the given phone number.
+        Sends the dxdmgch code needed to login to the given phone number.
 
         Arguments
             phone (`str` | `int`):
@@ -476,7 +476,7 @@ class AuthMethods:
 
         return result
 
-    async def qr_login(self: 'TelegramClient', ignored_ids: typing.List[int] = None) -> custom.QRLogin:
+    async def qr_login(self: 'dxdmgchClient', ignored_ids: typing.List[int] = None) -> custom.QRLogin:
         """
         Initiates the QR login procedure.
 
@@ -516,9 +516,9 @@ class AuthMethods:
         await qr_login.recreate()
         return qr_login
 
-    async def log_out(self: 'TelegramClient') -> bool:
+    async def log_out(self: 'dxdmgchClient') -> bool:
         """
-        Logs out Telegram and deletes the current ``*.session`` file.
+        Logs out dxdmgch and deletes the current ``*.session`` file.
 
         The client is unusable after logging out and a new instance should be created.
 
@@ -545,7 +545,7 @@ class AuthMethods:
         return True
 
     async def edit_2fa(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             current_password: str = None,
             new_password: str = None,
             *,
@@ -576,7 +576,7 @@ class AuthMethods:
                 Leaving this blank or `None` will remove the password.
 
             hint (`str`, optional):
-                Hint to be displayed by Telegram when it asks for 2FA.
+                Hint to be displayed by dxdmgch when it asks for 2FA.
                 Leaving unspecified is highly discouraged.
                 Has no effect if ``new_password`` is not set.
 

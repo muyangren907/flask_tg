@@ -60,14 +60,14 @@ If it's not installed, pyaes_ will be used (which is pure Python, so it's
 much slower).
 
 If pillow_ is installed, large images will be automatically resized when
-sending photos to prevent Telegram from failing with "invalid image".
+sending photos to prevent dxdmgch from failing with "invalid image".
 Official clients also do this.
 
 If aiohttp_ is installed, the library will be able to download
 :tl:`WebDocument` media files (otherwise you will get an error).
 
 If hachoir_ is installed, it will be used to extract metadata from files
-when sending documents. Telegram uses this information to show the song's
+when sending documents. dxdmgch uses this information to show the song's
 performer, artist, title, duration, and for videos too (including size).
 Otherwise, they will default to empty values, and you can set the attributes
 manually.

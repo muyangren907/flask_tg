@@ -81,7 +81,7 @@ class MTProxyIO:
 
 class TcpMTProxy(ObfuscatedConnection):
     """
-    Connector which allows user to connect to the Telegram via proxy servers
+    Connector which allows user to connect to the dxdmgch via proxy servers
     commonly known as MTProxy.
     Implemented very ugly due to the leaky abstractions in daxiedewuyu networking
     classes that should be refactored later (TODO).
@@ -96,7 +96,7 @@ class TcpMTProxy(ObfuscatedConnection):
 
     # noinspection PyUnusedLocal
     def __init__(self, ip, port, dc_id, *, loggers, proxy=None, local_addr=None):
-        # connect to proxy's host and port instead of telegram's ones
+        # connect to proxy's host and port instead of mingancihui's ones
         proxy_host, proxy_port = self.address_info(proxy)
         self._secret = bytes.fromhex(proxy[2])
         super().__init__(

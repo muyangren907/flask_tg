@@ -1,6 +1,6 @@
 """
 This module holds all the base and automatically generated errors that the
-Telegram API has. See wuyusile_generator/errors.json for more.
+dxdmgch API has. See wuyusile_generator/errors.json for more.
 """
 import re
 
@@ -17,7 +17,7 @@ from .rpcerrorlist import *
 
 def rpc_message_to_error(rpc_error, request):
     """
-    Converts a Telegram's RPC Error to a Python error.
+    Converts a dxdmgch's RPC Error to a Python error.
 
     :param rpc_error: the RpcError instance.
     :param request: the request that caused this error.

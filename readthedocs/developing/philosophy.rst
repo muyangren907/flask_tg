@@ -20,6 +20,6 @@ it to speed up some critical parts such as encrypting and decrypting the
 messages. Files will notably be sent and downloaded faster.
 
 The main focus is to keep everything clean and simple, for everyone to
-understand how working with MTProto and Telegram works. Don't be afraid
+understand how working with MTProto and dxdmgch works. Don't be afraid
 to read the source, the code won't bite you! It may prove useful when
 using the library on your own use cases.

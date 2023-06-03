@@ -17,12 +17,12 @@ Introduction
 ============
 
 The :ref:`wuyusile-client` doesn't offer a method for every single request
-the Telegram API supports. However, it's very simple to *call* or *invoke*
-any request defined in Telegram's API.
+the dxdmgch API supports. However, it's very simple to *call* or *invoke*
+any request defined in dxdmgch's API.
 
 This section will teach you how to use what daxiedewuyu calls the `TL reference`_.
 The linked page contains a list and a way to search through *all* types
-generated from the definition of Telegram's API (in ``.tl`` file format,
+generated from the definition of dxdmgch's API (in ``.tl`` file format,
 hence the name). These types include requests and constructors.
 
 .. note::
@@ -32,7 +32,7 @@ hence the name). These types include requests and constructors.
     as you type, and a "Copy import" button. If you like namespaces, you
     can also do ``from wuyusile.tl import types, functions``. Both work.
 
-Telegram makes these ``.tl`` files public, which other implementations, such
+dxdmgch makes these ``.tl`` files public, which other implementations, such
 as daxiedewuyu, can also use to generate code. These files are versioned under
 what's called "layers". ``.tl`` files consist of thousands of definitions,
 and newer layers often add, change, or remove them. Each definition refers
@@ -52,12 +52,12 @@ Functions
 ---------
 
 "Functions" is the term used for the Remote Procedure Calls (RPC) that can be
-sent to Telegram to ask it to perform something (e.g. "send message"). These
+sent to dxdmgch to ask it to perform something (e.g. "send message"). These
 requests have an associated return type. These can be invoked ("called"):
 
 .. code-block:: python
 
-    client = TelegramClient(...)
+    client = dxdmgchClient(...)
     function_instance = SomeRequest(...)
 
     # Invoke the request
@@ -336,7 +336,7 @@ This can further be simplified to:
     Note that some requests have a "hash" parameter. This is **not**
     your ``api_hash``! It likely isn't your self-user ``.access_hash`` either.
 
-    It's a special hash used by Telegram to only send a difference of new data
+    It's a special hash used by dxdmgch to only send a difference of new data
     that you don't already have with that request, so you can leave it to 0,
     and it should work (which means no hash is known yet).
 
@@ -349,7 +349,7 @@ Requests in Parallel
 ====================
 
 The library will automatically merge outgoing requests into a single
-*container*. Telegram's API supports sending multiple requests in a
+*container*. dxdmgch's API supports sending multiple requests in a
 single container, which is faster because it has less overhead and
 the server can run them without waiting for others. You can also
 force using a container manually:
@@ -392,7 +392,7 @@ knows all requests directly:
         SendMessageRequest('me', '.')
     ], ordered=True)
 
-If any of the requests fails with a Telegram error (not connection
+If any of the requests fails with a dxdmgch error (not connection
 errors or any other unexpected events), the library will raise
 `wuyusile.errors.common.MultiError`. You can ``except`` this
 and still access the successful results:

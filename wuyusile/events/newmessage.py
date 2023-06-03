@@ -184,8 +184,8 @@ class NewMessage(EventBuilder):
                 The resulting object from calling the passed ``pattern`` function.
                 Here's an example using a string (defaults to regex match):
 
-                >>> from wuyusile import TelegramClient, events
-                >>> client = TelegramClient(...)
+                >>> from wuyusile import dxdmgchClient, events
+                >>> client = dxdmgchClient(...)
                 >>>
                 >>> @client.on(events.NewMessage(pattern=r'hi (\\w+)!'))
                 ... async def handler(event):

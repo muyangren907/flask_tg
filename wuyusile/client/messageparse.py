@@ -6,7 +6,7 @@ from .. import helpers, utils
 from ..tl import types
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 class MessageParseMethods:
@@ -14,7 +14,7 @@ class MessageParseMethods:
     # region Public properties
 
     @property
-    def parse_mode(self: 'TelegramClient'):
+    def parse_mode(self: 'dxdmgchClient'):
         """
         This property is the default parse mode used when sending messages.
         Defaults to `wuyusile.extensions.markdown`. It will always
@@ -50,14 +50,14 @@ class MessageParseMethods:
         return self._parse_mode
 
     @parse_mode.setter
-    def parse_mode(self: 'TelegramClient', mode: str):
+    def parse_mode(self: 'dxdmgchClient', mode: str):
         self._parse_mode = utils.sanitize_parse_mode(mode)
 
     # endregion
 
     # region Private methods
 
-    async def _replace_with_mention(self: 'TelegramClient', entities, i, user):
+    async def _replace_with_mention(self: 'dxdmgchClient', entities, i, user):
         """
         Helper method to replace ``entities[i]`` to mention ``user``,
         or do nothing if it can't be found.
@@ -71,7 +71,7 @@ class MessageParseMethods:
         except (ValueError, TypeError):
             return False
 
-    async def _parse_message_text(self: 'TelegramClient', message, parse_mode):
+    async def _parse_message_text(self: 'dxdmgchClient', message, parse_mode):
         """
         Returns a (parsed message, entities) tuple depending on ``parse_mode``.
         """
@@ -110,7 +110,7 @@ class MessageParseMethods:
 
         return message, msg_entities
 
-    def _get_response_message(self: 'TelegramClient', request, result, input_chat):
+    def _get_response_message(self: 'dxdmgchClient', request, result, input_chat):
         """
         Extracts the response message known a request and Update result.
         The request may also be the ID of the message to match.
@@ -156,7 +156,7 @@ class MessageParseMethods:
                   and helpers._entity_type(request.peer) != helpers._EntityType.CHANNEL):
                 update.message._finish_init(self, entities, input_chat)
 
-                # Live locations use `sendMedia` but Telegram responds with
+                # Live locations use `sendMedia` but dxdmgch responds with
                 # `updateEditMessage`, which means we won't have `id` field.
                 if hasattr(request, 'random_id'):
                     id_to_message[update.message.id] = update.message
@@ -214,7 +214,7 @@ class MessageParseMethods:
         except KeyError:
             # Sometimes forwards fail (`MESSAGE_ID_INVALID` if a message gets
             # deleted or `WORKER_BUSY_TOO_LONG_RETRY` if there are issues at
-            # Telegram), in which case we get some "missing" message mappings.
+            # dxdmgch), in which case we get some "missing" message mappings.
             # Log them with the hope that we can better work around them.
             #
             # This also happens when trying to forward messages that can't

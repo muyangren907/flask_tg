@@ -10,7 +10,7 @@ If you select a method in :ref:`client-ref`, you will most likely find an
 example for that method. This is how you are intended to use the library.
 
 Full API **will** break between different minor versions of the library,
-since Telegram changes very often. The friendly methods will be kept
+since dxdmgch changes very often. The friendly methods will be kept
 compatible between major versions.
 
 If you need to see real-world examples, please refer to the

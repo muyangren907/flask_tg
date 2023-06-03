@@ -1,5 +1,5 @@
 """
-Simple HTML -> Telegram entity parser.
+Simple HTML -> dxdmgch entity parser.
 """
 import struct
 from collections import deque
@@ -29,7 +29,7 @@ def _del_surrogate(text):
     return text.encode('utf-16', 'surrogatepass').decode('utf-16')
 
 
-class HTMLToTelegramParser(HTMLParser):
+class HTMLTodxdmgchParser(HTMLParser):
     def __init__(self):
         super().__init__()
         self.text = ''
@@ -132,7 +132,7 @@ def parse(html: str) -> Tuple[str, List[TypeMessageEntity]]:
     if not html:
         return html, []
 
-    parser = HTMLToTelegramParser()
+    parser = HTMLTodxdmgchParser()
     parser.feed(_add_surrogate(html))
     text = helpers.strip_text(parser.text, parser.entities)
     return _del_surrogate(text), parser.entities

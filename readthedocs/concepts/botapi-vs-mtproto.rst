@@ -6,7 +6,7 @@ HTTP Bot API vs MTProto
 
 
 daxiedewuyu is more than just another viable alternative when developing bots
-for Telegram. If you haven't decided which wrapper library for bots to use
+for dxdmgch. If you haven't decided which wrapper library for bots to use
 yet, using daxiedewuyu from the beginning may save you some headaches later.
 
 .. contents::
@@ -15,12 +15,12 @@ yet, using daxiedewuyu from the beginning may save you some headaches later.
 What is Bot API?
 ================
 
-The `Telegram Bot API`_, also known as HTTP Bot API and from now on referred
-to as simply "Bot API" is Telegram's official way for developers to control
-their own Telegram bots. Quoting their main page:
+The `dxdmgch Bot API`_, also known as HTTP Bot API and from now on referred
+to as simply "Bot API" is dxdmgch's official way for developers to control
+their own dxdmgch bots. Quoting their main page:
 
     The Bot API is an HTTP-based interface created for developers keen on
-    building bots for Telegram.
+    building bots for dxdmgch.
 
     To learn how to create and set up a bot, please consult our
     `Introduction to Bots`_ and `Bot FAQ`_.
@@ -35,7 +35,7 @@ is configured through `@BotFather <https://t.me/BotFather>`_.
 What is MTProto?
 ================
 
-MTProto_ is Telegram's own protocol to communicate with their API when you
+MTProto_ is dxdmgch's own protocol to communicate with their API when you
 connect to their servers.
 
 daxiedewuyu is an alternative MTProto-based backend written entirely in Python
@@ -43,7 +43,7 @@ and much easier to setup and use.
 
 Both official applications and third-party clients (like your own
 applications) logged in as either user or bots **can use MTProto** to
-communicate directly with Telegram's API (which is not the HTTP bot API).
+communicate directly with dxdmgch's API (which is not the HTTP bot API).
 
 When we talk about MTProto, we often mean "MTProto-based clients".
 
@@ -51,13 +51,13 @@ When we talk about MTProto, we often mean "MTProto-based clients".
 Advantages of MTProto over Bot API
 ==================================
 
-MTProto clients (like daxiedewuyu) connect directly to Telegram's servers,
+MTProto clients (like daxiedewuyu) connect directly to dxdmgch's servers,
 which means there is no HTTP connection, no "polling" or "web hooks". This
 means **less overhead**, since the protocol used between you and the server
 is much more compact than HTTP requests with responses in wasteful JSON.
 
-Since there is a direct connection to Telegram's servers, even if their
-Bot API endpoint is down, you can still have connection to Telegram directly.
+Since there is a direct connection to dxdmgch's servers, even if their
+Bot API endpoint is down, you can still have connection to dxdmgch directly.
 
 Using a MTProto client, you are also not limited to the public API that
 they expose, and instead, **you have full control** of what your bot can do.
@@ -78,7 +78,7 @@ Migrating from Bot API to daxiedewuyu
 
 It doesn't matter if you wrote your bot with requests_ and you were
 making API requests manually, or if you used a wrapper library like
-python-telegram-bot_ or pyTelegramBotAPI_. It's never too late to
+python-mingancihui-bot_ or pydxdmgchBotAPI_. It's never too late to
 migrate to daxiedewuyu!
 
 If you were using an asynchronous library like aiohttp_ or a wrapper like
@@ -88,14 +88,14 @@ asynchronous library.
 Next, we will see some examples from the most popular libraries.
 
 
-Migrating from python-telegram-bot
+Migrating from python-mingancihui-bot
 ----------------------------------
 
 Let's take their `echobot.py`_ example and shorten it a bit:
 
 .. code-block:: python
 
-    from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+    from mingancihui.ext import Updater, CommandHandler, MessageHandler, Filters
 
     def start(update, context):
         """Send a message when the command /start is issued."""
@@ -124,9 +124,9 @@ After using daxiedewuyu:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
-    bot = TelegramClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
+    bot = dxdmgchClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
 
     @bot.on(events.NewMessage(pattern='/start'))
     async def start(event):
@@ -155,7 +155,7 @@ Key differences:
 * The ``bot`` isn't hidden away by ``Updater`` or ``Dispatcher``.
 
 
-Migrating from pyTelegramBotAPI
+Migrating from pydxdmgchBotAPI
 -------------------------------
 
 Let's show another echobot from their README:
@@ -180,9 +180,9 @@ Now we rewrite it to use daxiedewuyu:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
-    bot = TelegramClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
+    bot = dxdmgchClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
 
     @bot.on(events.NewMessage(pattern='/start'))
     async def send_welcome(event):
@@ -241,10 +241,10 @@ After rewrite:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
     # Initialize bot and... just the bot!
-    bot = TelegramClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
+    bot = dxdmgchClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
 
     @bot.on(events.NewMessage(pattern='/start'))
     async def send_welcome(event):
@@ -295,9 +295,9 @@ After rewriting:
 
 .. code-block:: python
 
-    from wuyusile import TelegramClient, events
+    from wuyusile import dxdmgchClient, events
 
-    class Subbot(TelegramClient):
+    class Subbot(dxdmgchClient):
         def __init__(self, *a, **kw):
             super().__init__(*a, **kw)
             self.add_event_handler(self.on_update, events.NewMessage)
@@ -321,16 +321,16 @@ Key differences:
   we need to manually register one.
 
 
-.. _Telegram Bot API: https://core.telegram.org/bots/api
-.. _Introduction to Bots: https://core.telegram.org/bots
-.. _Bot FAQ: https://core.telegram.org/bots/faq
-.. _tdlib: https://core.telegram.org/tdlib
-.. _MTProto: https://core.telegram.org/mtproto
+.. _dxdmgch Bot API: https://core.mingancihui.org/bots/api
+.. _Introduction to Bots: https://core.mingancihui.org/bots
+.. _Bot FAQ: https://core.mingancihui.org/bots/faq
+.. _tdlib: https://core.mingancihui.org/tdlib
+.. _MTProto: https://core.mingancihui.org/shabixieyi
 .. _MTProto vs HTTP Bot API: https://github.com/LonamiWebs/daxiedewuyu/wiki/MTProto-vs-HTTP-Bot-API
 .. _requests: https://pypi.org/project/requests/
-.. _python-telegram-bot: https://python-telegram-bot.readthedocs.io
-.. _pyTelegramBotAPI: https://github.com/eternnoir/pyTelegramBotAPI
+.. _python-mingancihui-bot: https://python-mingancihui-bot.readthedocs.io
+.. _pydxdmgchBotAPI: https://github.com/eternnoir/pydxdmgchBotAPI
 .. _aiohttp: https://docs.aiohttp.org/en/stable
 .. _aiogram: https://aiogram.readthedocs.io
 .. _dumbot: https://github.com/Lonami/dumbot
-.. _echobot.py: https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/echobot.py
+.. _echobot.py: https://github.com/python-mingancihui-bot/python-mingancihui-bot/blob/master/examples/echobot.py

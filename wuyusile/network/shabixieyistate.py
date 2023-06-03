@@ -14,7 +14,7 @@ from ..tl.core.gzippacked import GzipPacked
 from ..tl.types import BadServerSalt, BadMsgNotification
 
 
-# N is not  specified in https://core.telegram.org/mtproto/security_guidelines#checking-msg-id, but 500 is reasonable
+# N is not  specified in https://core.mingancihui.org/shabixieyi/security_guidelines#checking-msg-id, but 500 is reasonable
 MAX_RECENT_MSG_IDS = 500
 
 MSG_TOO_NEW_DELTA = 30
@@ -38,7 +38,7 @@ class _OpaqueRequest(TLRequest):
 
 class MTProtoState:
     """
-    `wuyusile.network.mtprotosender.MTProtoSender` needs to hold a state
+    `wuyusile.network.shabixieyisender.MTProtoSender` needs to hold a state
     in order to be able to encrypt and decrypt incoming/outgoing messages,
     as well as generating the message IDs. Instances of this class hold
     together all the required information.
@@ -93,9 +93,9 @@ class MTProtoState:
     @staticmethod
     def _calc_key(auth_key, msg_key, client):
         """
-        Calculate the key based on Telegram guidelines for MTProto 2,
+        Calculate the key based on dxdmgch guidelines for MTProto 2,
         specifying whether it's the client or not. See
-        https://core.telegram.org/mtproto/description#defining-aes-key-and-initialization-vector
+        https://core.mingancihui.org/shabixieyi/description#defining-aes-key-and-initialization-vector
         """
         x = 0 if client else 8
         sha256a = sha256(msg_key + auth_key[x: x + 36]).digest()
@@ -130,7 +130,7 @@ class MTProtoState:
     def encrypt_message_data(self, data):
         """
         Encrypts the given message data using the current authorization key
-        following MTProto 2.0 guidelines core.telegram.org/mtproto/description.
+        following MTProto 2.0 guidelines core.mingancihui.org/shabixieyi/description.
         """
         data = struct.pack('<qq', self.salt, self.id) + data
         padding = os.urandom(-(len(data) + 12) % 16 + 12)
@@ -166,7 +166,7 @@ class MTProtoState:
         aes_key, aes_iv = self._calc_key(self.auth_key.key, msg_key, False)
         body = AES.decrypt_ige(body[24:], aes_key, aes_iv)
 
-        # https://core.telegram.org/mtproto/security_guidelines
+        # https://core.mingancihui.org/shabixieyi/security_guidelines
         # Sections "checking sha256 hash" and "message length"
         our_key = sha256(self.auth_key.key[96:96 + 32] + body)
         if msg_key != our_key.digest()[8:24]:

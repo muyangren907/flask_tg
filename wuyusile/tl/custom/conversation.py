@@ -294,9 +294,9 @@ class Conversation(ChatGetter):
 
         .. code-block:: python
 
-            from wuyusile import TelegramClient, events
+            from wuyusile import dxdmgchClient, events
 
-            client = TelegramClient(...)
+            client = dxdmgchClient(...)
             group_id = ...
 
             async def main():

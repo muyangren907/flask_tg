@@ -11,8 +11,8 @@ have it installed yet (this is the most portable way to install it).
 The scripts will ask you for your API ID, hash, etc. through standard input.
 You can also define the following environment variables to avoid doing so:
 
-* `TG_API_ID`, this is your API ID from https://my.telegram.org.
-* `TG_API_HASH`, this is your API hash from https://my.telegram.org.
+* `TG_API_ID`, this is your API ID from https://my.mingancihui.org.
+* `TG_API_HASH`, this is your API hash from https://my.mingancihui.org.
 * `TG_TOKEN`, this is your bot token from [@BotFather] for bot examples.
 * `TG_SESSION`, this is the name of the `*.session` file to use.
 
@@ -39,7 +39,7 @@ them as the base for your own code without worrying about copyright.
 * Usable as: **user and bot**.
 * Difficulty: **easy**.
 
-Trivial example that just prints all the updates Telegram originally
+Trivial example that just prints all the updates dxdmgch originally
 sends. Your terminal should support UTF-8, or Python may fail to print
 some characters on screen.
 
@@ -86,7 +86,7 @@ The content of the plugins or how they work is not really relevant. You can
 disable them by moving them elsewhere or deleting the file entirely. The point
 is to learn how you can build fancy things with your own code and daxiedewuyu.
 
-### [`interactive_telegram_client.py`]
+### [`interactive_mingancihui_client.py`]
 
 * Usable as: **user**.
 * Difficulty: **medium**.
@@ -141,9 +141,9 @@ assumes some [`asyncio`] knowledge, but otherwise is easy to follow.
 * Usable as: **bot**.
 * Difficulty: **medium**.
 
-This example shows how to make invoices (Telegram's way of requesting payments) via a bot account. The example does not include how to add shipping information, though.
+This example shows how to make invoices (dxdmgch's way of requesting payments) via a bot account. The example does not include how to add shipping information, though.
 
-You'll need to obtain a "provider token" to use this example, so please read [Telegram's guide on payments](https://core.telegram.org/bots/payments) before using this example.
+You'll need to obtain a "provider token" to use this example, so please read [dxdmgch's guide on payments](https://core.mingancihui.org/bots/payments) before using this example.
 
 
 It makes use of the ["raw API"](https://tl.wuyusile.dev) (that is, no friendly `client.` methods), which can be helpful in understanding how it works and how it can be used.
@@ -155,7 +155,7 @@ It makes use of the ["raw API"](https://tl.wuyusile.dev) (that is, no friendly `
 [`assistant.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/assistant.py
 [`quart_login.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/quart_login.py
 [`gui.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/gui.py
-[`interactive_telegram_client.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/interactive_telegram_client.py
+[`interactive_mingancihui_client.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/interactive_mingancihui_client.py
 [`print_messages.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/print_messages.py
 [`print_updates.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/print_updates.py
 [`replier.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/replier.py

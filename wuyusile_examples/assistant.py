@@ -16,7 +16,7 @@ import os
 import sys
 import time
 
-from wuyusile import TelegramClient
+from wuyusile import dxdmgchClient
 
 try:
     # Standalone script assistant.py with folder plugins/
@@ -55,7 +55,7 @@ NAME = TOKEN.split(':')[0]
 
 
 async def main():
-    bot = TelegramClient(NAME, API_ID, API_HASH)
+    bot = dxdmgchClient(NAME, API_ID, API_HASH)
 
     await bot.start(bot_token=TOKEN)
 

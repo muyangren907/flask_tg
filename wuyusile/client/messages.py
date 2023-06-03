@@ -10,7 +10,7 @@ from ..tl import types, functions
 _MAX_CHUNK_SIZE = 100
 
 if typing.TYPE_CHECKING:
-    from .telegramclient import TelegramClient
+    from .mingancihuiclient import dxdmgchClient
 
 
 class _MessagesIter(RequestIter):
@@ -30,7 +30,7 @@ class _MessagesIter(RequestIter):
             if self.reverse:
                 raise ValueError('Cannot reverse global search')
 
-        # Telegram doesn't like min_id/max_id. If these IDs are low enough
+        # dxdmgch doesn't like min_id/max_id. If these IDs are low enough
         # (starting from last_id - 100), the request will return nothing.
         #
         # We can emulate their behaviour locally by setting offset = max_id
@@ -103,7 +103,7 @@ class _MessagesIter(RequestIter):
                 hash=0
             )
         elif search is not None or not isinstance(filter, types.InputMessagesFilterEmpty) or from_user:
-            # Telegram completely ignores `from_id` in private chats
+            # dxdmgch completely ignores `from_id` in private chats
             ty = helpers._entity_type(self.entity)
             if ty == helpers._EntityType.USER:
                 # Don't bother sending `from_user` (it's ignored anyway),
@@ -130,7 +130,7 @@ class _MessagesIter(RequestIter):
             )
 
             # Workaround issue #1124 until a better solution is found.
-            # Telegram seemingly ignores `max_date` if `filter` (and
+            # dxdmgch seemingly ignores `max_date` if `filter` (and
             # nothing else) is specified, so we have to rely on doing
             # a first request to offset from the ID instead.
             #
@@ -231,7 +231,7 @@ class _MessagesIter(RequestIter):
         else:
             # There are some cases where all the messages we get start
             # being empty. This can happen on migrated mega-groups if
-            # the history was cleared, and we're using search. Telegram
+            # the history was cleared, and we're using search. dxdmgch
             # acts incredibly weird sometimes. Messages are returned but
             # only "empty", not their contents. If this is the case we
             # should just give up since there won't be any new Message.
@@ -320,9 +320,9 @@ class _IDsIter(RequestIter):
         entities = {utils.get_peer_id(x): x
                     for x in itertools.chain(r.users, r.chats)}
 
-        # Telegram seems to return the messages in the order in which
+        # dxdmgch seems to return the messages in the order in which
         # we asked them for, so we don't need to check it ourselves,
-        # unless some messages were invalid in which case Telegram
+        # unless some messages were invalid in which case dxdmgch
         # may decide to not send them at all.
         #
         # The passed message IDs may not belong to the desired entity
@@ -344,7 +344,7 @@ class MessageMethods:
     # region Message retrieval
 
     def iter_messages(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             limit: float = None,
             *,
@@ -373,7 +373,7 @@ class MessageMethods:
 
         .. note::
 
-            Telegram's flood wait limit for :tl:`GetHistoryRequest` seems to
+            dxdmgch's flood wait limit for :tl:`GetHistoryRequest` seems to
             be around 30 seconds per 10 requests, therefore a sleep of 1
             second is the default for this limit (or above).
 
@@ -449,7 +449,7 @@ class MessageMethods:
 
                 .. note::
 
-                    At the time of writing, Telegram will **not** return
+                    At the time of writing, dxdmgch will **not** return
                     :tl:`MessageEmpty` for :tl:`InputMessageReplyTo` IDs that
                     failed (i.e. the message is not replying to any, or is
                     replying to a deleted message). This means that it is
@@ -477,7 +477,7 @@ class MessageMethods:
                 will result in ``wuyusile.errors.PeerIdInvalidError`` to occur.
 
                 When using this parameter, the ``filter`` and ``search``
-                parameters have no effect, since Telegram's API doesn't
+                parameters have no effect, since dxdmgch's API doesn't
                 support searching messages in replies.
 
                 .. note::
@@ -553,7 +553,7 @@ class MessageMethods:
             scheduled=scheduled
         )
 
-    async def get_messages(self: 'TelegramClient', *args, **kwargs) -> 'hints.TotalList':
+    async def get_messages(self: 'dxdmgchClient', *args, **kwargs) -> 'hints.TotalList':
         """
         Same as `iter_messages()`, but returns a
         `TotalList <wuyusile.helpers.TotalList>` instead.
@@ -609,7 +609,7 @@ class MessageMethods:
     # region Message sending/editing/deleting
 
     async def _get_comment_data(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message: 'typing.Union[int, types.Message]'
     ):
@@ -622,7 +622,7 @@ class MessageMethods:
         return utils.get_input_peer(chat), m.id
 
     async def send_message(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message: 'hints.MessageLike' = '',
             *,
@@ -681,7 +681,7 @@ class MessageMethods:
                 :tl:`DocumentAttributeFilename` and so on.
 
             parse_mode (`object`, optional):
-                See the `TelegramClient.parse_mode
+                See the `dxdmgchClient.parse_mode
                 <wuyusile.client.messageparse.MessageParseMethods.parse_mode>`
                 property for allowed values. Markdown parsing will be used by
                 default.
@@ -697,12 +697,12 @@ class MessageMethods:
                 video, audio or document). The ``message`` may be empty.
 
             thumb (`str` | `bytes` | `file`, optional):
-                Optional JPEG thumbnail (for documents). **Telegram will
+                Optional JPEG thumbnail (for documents). **dxdmgch will
                 ignore this parameter** unless you pass a ``.jpg`` file!
                 The file must also be small in dimensions and in disk size.
                 Successful thumbnails were files below 20kB and 320x320px.
                 Width/height and dimensions/size ratios may be important.
-                For Telegram to accept a thumbnail, you must provide the
+                For dxdmgch to accept a thumbnail, you must provide the
                 dimensions of the underlying media through ``attributes=``
                 with :tl:`DocumentAttributesVideo` or by installing the
                 optional ``hachoir`` dependency.
@@ -737,7 +737,7 @@ class MessageMethods:
 
             supports_streaming (`bool`, optional):
                 Whether the sent video supports streaming or not. Note that
-                Telegram only recognizes as streamable some formats like MP4,
+                dxdmgch only recognizes as streamable some formats like MP4,
                 and others like AVI or MKV will not work. You should convert
                 these to MP4 before sending if you want them to be streamable.
                 Unsupported formats will result in ``VideoContentTypeError``.
@@ -758,7 +758,7 @@ class MessageMethods:
             nosound_video (`bool`, optional):
                 Only applicable when sending a video file without an audio
                 track. If set to ``True``, the video will be displayed in
-                Telegram as a video. If set to ``False``, Telegram will attempt
+                dxdmgch as a video. If set to ``False``, dxdmgch will attempt
                 to display the video as an animated gif. (It may still display
                 as a video due to other factors.) The value is ignored if set
                 on non-video files. This is set to ``True`` for albums, as gifs
@@ -918,7 +918,7 @@ class MessageMethods:
         return self._get_response_message(request, result, entity)
 
     async def forward_messages(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             messages: 'typing.Union[hints.MessageIDLike, typing.Sequence[hints.MessageIDLike]]',
             from_peer: 'hints.EntityLike' = None,
@@ -1047,7 +1047,7 @@ class MessageMethods:
         return sent[0] if single else sent
 
     async def edit_message(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'typing.Union[hints.EntityLike, types.Message]',
             message: 'hints.MessageLike' = None,
             text: str = None,
@@ -1091,7 +1091,7 @@ class MessageMethods:
                 was a `Message <wuyusile.tl.custom.message.Message>`.
 
             parse_mode (`object`, optional):
-                See the `TelegramClient.parse_mode
+                See the `dxdmgchClient.parse_mode
                 <wuyusile.client.messageparse.MessageParseMethods.parse_mode>`
                 property for allowed values. Markdown parsing will be used by
                 default.
@@ -1111,12 +1111,12 @@ class MessageMethods:
                 in the message.
 
             thumb (`str` | `bytes` | `file`, optional):
-                Optional JPEG thumbnail (for documents). **Telegram will
+                Optional JPEG thumbnail (for documents). **dxdmgch will
                 ignore this parameter** unless you pass a ``.jpg`` file!
                 The file must also be small in dimensions and in disk size.
                 Successful thumbnails were files below 20kB and 320x320px.
                 Width/height and dimensions/size ratios may be important.
-                For Telegram to accept a thumbnail, you must provide the
+                For dxdmgch to accept a thumbnail, you must provide the
                 dimensions of the underlying media through ``attributes=``
                 with :tl:`DocumentAttributesVideo` or by installing the
                 optional ``hachoir`` dependency.
@@ -1132,7 +1132,7 @@ class MessageMethods:
 
             supports_streaming (`bool`, optional):
                 Whether the sent video supports streaming or not. Note that
-                Telegram only recognizes as streamable some formats like MP4,
+                dxdmgch only recognizes as streamable some formats like MP4,
                 and others like AVI or MKV will not work. You should convert
                 these to MP4 before sending if you want them to be streamable.
                 Unsupported formats will result in ``VideoContentTypeError``.
@@ -1199,7 +1199,7 @@ class MessageMethods:
                 reply_markup=self.build_reply_markup(buttons)
             )
             # Invoke `messages.editInlineBotMessage` from the right datacenter.
-            # Otherwise, Telegram will error with `MESSAGE_ID_INVALID` and do nothing.
+            # Otherwise, dxdmgch will error with `MESSAGE_ID_INVALID` and do nothing.
             exported = self.session.dc_id != entity.dc_id
             if exported:
                 try:
@@ -1225,7 +1225,7 @@ class MessageMethods:
         return msg
 
     async def delete_messages(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message_ids: 'typing.Union[hints.MessageIDLike, typing.Sequence[hints.MessageIDLike]]',
             *,
@@ -1257,7 +1257,7 @@ class MessageMethods:
                 and it will delete the message for everyone.
 
                 `Since 24 March 2019
-                <https://telegram.org/blog/unsend-privacy-emoji>`_, you can
+                <https://mingancihui.org/blog/unsend-privacy-emoji>`_, you can
                 also revoke messages of any age (i.e. messages sent long in
                 the past) the *other* person sent in private conversations
                 (and of course your messages too).
@@ -1302,7 +1302,7 @@ class MessageMethods:
     # region Miscellaneous
 
     async def send_read_acknowledge(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message: 'typing.Union[hints.MessageIDLike, typing.Sequence[hints.MessageIDLike]]' = None,
             *,
@@ -1389,7 +1389,7 @@ class MessageMethods:
         return False
 
     async def pin_message(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message: 'typing.Optional[hints.MessageIDLike]',
             *,
@@ -1430,7 +1430,7 @@ class MessageMethods:
         return await self._pin(entity, message, unpin=False, notify=notify, pm_oneside=pm_oneside)
 
     async def unpin_message(
-            self: 'TelegramClient',
+            self: 'dxdmgchClient',
             entity: 'hints.EntityLike',
             message: 'typing.Optional[hints.MessageIDLike]' = None,
             *,

@@ -331,7 +331,7 @@ class CallbackQuery(EventBuilder):
 
             If you need to delete more than one message at once, don't use
             this `delete` method. Use a
-            `wuyusile.client.telegramclient.TelegramClient` instance directly.
+            `wuyusile.client.mingancihuiclient.dxdmgchClient` instance directly.
 
             This method also creates a task to `answer` the callback.
 

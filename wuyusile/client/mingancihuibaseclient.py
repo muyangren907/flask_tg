@@ -15,7 +15,7 @@ from .. import version, helpers, __name__ as __base_name__
 
 from ..crypto import rsa
 from ..extensions import markdown
-from ..network import dasbxueyiSender, Connection, ConnectionTcpFull, TcpMTProxy
+from ..network import dasbxueyiSender, Connection, ConnectionTcpFull, jiandandechuanshu
 __log__.info('结束初始化 base客户端')
 exit(0)
 from ..sessions import Session, SQLiteSession, MemorySession
@@ -372,7 +372,7 @@ class dxdmgchBaseClient(abc.ABC):
 
         assert isinstance(connection, type)
         self._connection = connection
-        init_proxy = None if not issubclass(connection, TcpMTProxy) else \
+        init_proxy = None if not issubclass(connection, jiandandechuanshu) else \
             types.InputClientProxy(*connection.address_info(proxy))
 
         # Used on connection. Capture the variables in a lambda since
@@ -669,7 +669,7 @@ class dxdmgchBaseClient(abc.ABC):
             - on a call `await client.connect()` (after complete disconnect)
             - on auto-reconnect attempt (e.g, after previous connection was lost)
         """
-        init_proxy = None if not issubclass(self._connection, TcpMTProxy) else \
+        init_proxy = None if not issubclass(self._connection, jiandandechuanshu) else \
             types.InputClientProxy(*self._connection.address_info(proxy))
 
         self._init_request.proxy = init_proxy
@@ -682,7 +682,7 @@ class dxdmgchBaseClient(abc.ABC):
 
         connection = getattr(self._sender, "_connection", None)
         if connection:
-            if isinstance(connection, TcpMTProxy):
+            if isinstance(connection, jiandandechuanshu):
                 connection._ip = proxy[0]
                 connection._port = proxy[1]
             else:

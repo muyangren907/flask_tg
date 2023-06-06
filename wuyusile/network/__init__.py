@@ -8,7 +8,7 @@ from .shabixieyisender import dasbxueyiSender
 from .connection import (
     Connection,
     ConnectionTcpFull, ConnectionTcpIntermediate, ConnectionTcpAbridged,
-    ConnectionTcpObfuscated, ConnectionTcpMTProxyAbridged,
-    ConnectionTcpMTProxyIntermediate,
-    ConnectionTcpMTProxyRandomizedIntermediate, ConnectionHttp, TcpMTProxy
+    ConnectionTcpObfuscated, ConnectionjiandandechuanshuAbridged,
+    ConnectionjiandandechuanshuIntermediate,
+    ConnectionjiandandechuanshuRandomizedIntermediate, ConnectionHttp, jiandandechuanshu
 )

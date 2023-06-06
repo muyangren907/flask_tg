@@ -184,9 +184,9 @@ Using dasbxueyi Proxies
 dasbxueyi Proxies are dxdmgch's alternative to normal proxies,
 and work a bit differently. The following protocols are available:
 
-* ``ConnectionTcpMTProxyAbridged``
-* ``ConnectionTcpMTProxyIntermediate``
-* ``ConnectionTcpMTProxyRandomizedIntermediate`` (preferred)
+* ``ConnectionjiandandechuanshuAbridged``
+* ``ConnectionjiandandechuanshuIntermediate``
+* ``ConnectionjiandandechuanshuRandomizedIntermediate`` (preferred)
 
 For now, you need to manually specify these special connection modes
 if you want to use a dasbxueyi Proxy. Your code would look like this:
@@ -203,7 +203,7 @@ if you want to use a dasbxueyi Proxy. Your code would look like this:
 
         # Use one of the available connection modes.
         # Normally, this one works with most proxies.
-        connection=connection.ConnectionTcpMTProxyRandomizedIntermediate,
+        connection=connection.ConnectionjiandandechuanshuRandomizedIntermediate,
 
         # Then, pass the proxy details as a tuple:
         #     (host name, port, proxy secret)
@@ -224,6 +224,6 @@ In short, the same code above but without comments to make it clearer:
 
     client = dxdmgchClient(
         'anon', api_id, api_hash,
-        connection=connection.ConnectionTcpMTProxyRandomizedIntermediate,
+        connection=connection.ConnectionjiandandechuanshuRandomizedIntermediate,
         proxy=('mtproxy.example.com', 2002, 'secret')
     )

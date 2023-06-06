@@ -79,7 +79,7 @@ class MTProxyIO:
         self._writer.write(self._encrypt.encrypt(data))
 
 
-class TcpMTProxy(ObfuscatedConnection):
+class jiandandechuanshu(ObfuscatedConnection):
     """
     Connector which allows user to connect to the dxdmgch via proxy servers
     commonly known as MTProxy.
@@ -88,7 +88,7 @@ class TcpMTProxy(ObfuscatedConnection):
 
     .. warning::
 
-        The support for TcpMTProxy classes is **EXPERIMENTAL** and prone to
+        The support for jiandandechuanshu classes is **EXPERIMENTAL** and prone to
         be changed. You shouldn't be using this class yet.
     """
     packet_codec = None
@@ -131,21 +131,21 @@ class TcpMTProxy(ObfuscatedConnection):
         return proxy_info[:2]
 
 
-class ConnectionTcpMTProxyAbridged(TcpMTProxy):
+class ConnectionjiandandechuanshuAbridged(jiandandechuanshu):
     """
     Connect to proxy using abridged protocol
     """
     packet_codec = AbridgedPacketCodec
 
 
-class ConnectionTcpMTProxyIntermediate(TcpMTProxy):
+class ConnectionjiandandechuanshuIntermediate(jiandandechuanshu):
     """
     Connect to proxy using intermediate protocol
     """
     packet_codec = IntermediatePacketCodec
 
 
-class ConnectionTcpMTProxyRandomizedIntermediate(TcpMTProxy):
+class ConnectionjiandandechuanshuRandomizedIntermediate(jiandandechuanshu):
     """
     Connect to proxy using randomized intermediate protocol (dd-secrets)
     """

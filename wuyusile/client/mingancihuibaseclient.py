@@ -14,14 +14,15 @@ __log__.info('开始初始化 base客户端')
 from .. import version, helpers, __name__ as __base_name__
 
 from ..crypto import rsa
+__log__.info('结束初始化 base客户端')
+exit(0)
 from ..extensions import markdown
 from ..network import dasbxueyiSender, Connection, ConnectionTcpFull, TcpMTProxy
 from ..sessions import Session, SQLiteSession, MemorySession
 from ..tl import functions, types
 from ..tl.alltlobjects import LAYER
 from .._updates import MessageBox, EntityCache as MbEntityCache, SessionState, ChannelState, Entity, EntityType
-__log__.info('结束初始化 base客户端')
-exit(0)
+
 DEFAULT_DC_ID = 2
 DEFAULT_IPV4_IP = '149.154.167.51'
 # DEFAULT_IPV4_IP = '91.108.56.137'

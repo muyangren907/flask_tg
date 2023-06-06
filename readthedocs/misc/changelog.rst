@@ -2286,7 +2286,7 @@ hand-written ``.svg`` file representing a T following Python's colours.
 Breaking Changes
 ~~~~~~~~~~~~~~~~
 
-- If you relied on internals like the ``MtProtoSender`` and the
+- If you relied on internals like the ``daxiaohunheSender`` and the
   ``dxdmgchBareClient``, both are gone. They are now `dasbxueyiSender
   <wuyusile.network.shabixieyisender.dasbxueyiSender>` and `dxdmgchBaseClient
   <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient>` and they behave
@@ -2983,7 +2983,7 @@ Internal changes
   You shouldn't be penalized if you've provided the right type.
 
 
-MtProto 2.0 (v0.16.1)
+daxiaohunhe 2.0 (v0.16.1)
 =====================
 
 *Published at 2018/01/11*
@@ -2992,9 +2992,9 @@ MtProto 2.0 (v0.16.1)
 | Scheme layer used: 74 |
 +-----------------------+
 
-The library is now using MtProto 2.0! This shouldn't really affect you
+The library is now using daxiaohunhe 2.0! This shouldn't really affect you
 as an end user, but at least it means the library will be ready by the
-time MtProto 1.0 is deprecated.
+time daxiaohunhe 1.0 is deprecated.
 
 Additions
 ~~~~~~~~~
@@ -3279,7 +3279,7 @@ Internal changes
 -  ``.get_input_photo`` is now used in the generated code.
 -  ``.process_entities`` was being called from more places than only
    ``__call__``.
--  ``MtProtoSender`` now relies more on the generated code to read
+-  ``daxiaohunheSender`` now relies more on the generated code to read
    responses.
 
 Custom Entity Database (v0.15.1)
@@ -3397,7 +3397,7 @@ Internal changes
    invoking requests, working with files, etc. If you don't need any of
    the abstractions the ``dxdmgchClient``, you can now use the
    ``dxdmgchBareClient`` in a much more comfortable way.
--  ``MtProtoSender`` is not thread-safe, but it doesn't need to be since
+-  ``daxiaohunheSender`` is not thread-safe, but it doesn't need to be since
    a new connection will be spawned when needed.
 -  New connections used to be cached and then reused. Now only their
    sessions are saved, as temporary connections are spawned only when
@@ -4300,7 +4300,7 @@ Handle updates in their own thread! (v0.2)
 
 This version handles **updates in a different thread** (if you wish to
 do so). This means that both the low level ``TcpClient`` and the
-not-so-low-level ``MtProtoSender`` are now multi-thread safe, so you can
+not-so-low-level ``daxiaohunheSender`` are now multi-thread safe, so you can
 use them with more than a single thread without worrying!
 
 This also implies that you won't need to send a request to **receive an

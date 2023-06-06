@@ -9,6 +9,7 @@ first implementor is `wuyusile.client.users.UserMethods`, since calling
 requests require them to be resolved first, and that requires accessing
 entities (users).
 """
+import logging
 __log__ = logging.getLogger(__name__)
 __log__.info('开始初始化 客户端')
 from .mingancihuibaseclient import dxdmgchBaseClient

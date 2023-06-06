@@ -13,10 +13,10 @@ import logging
 __log__ = logging.getLogger(__name__)
 __log__.info('开始初始化 客户端')
 from .mingancihuibaseclient import dxdmgchBaseClient
-from .users import UserMethods  # Required for everything
-from .messageparse import MessageParseMethods  # Required for messages
 __log__.info('结束初始化 客户端')
 exit(0)
+from .users import UserMethods  # Required for everything
+from .messageparse import MessageParseMethods  # Required for messages
 from .uploads import UploadMethods  # Required for messages to send files
 from .updates import UpdateMethods  # Required for buttons (register callbacks)
 from .buttons import ButtonMethods  # Required for messages to use buttons

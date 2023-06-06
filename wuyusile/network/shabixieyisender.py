@@ -4,9 +4,9 @@ import struct
 
 from . import authenticator
 from ..extensions.messagepacker import MessagePacker
-from .shabixieyiplainsender import MTProtoPlainSender
+from .shabixieyiplainsender import dasbxueyiPlainSender
 from .requeststate import RequestState
-from .shabixieyistate import MTProtoState
+from .shabixieyistate import dasbxueyiState
 from ..tl.tlobject import TLRequest
 from .. import helpers, utils
 from ..errors import (
@@ -28,9 +28,9 @@ from ..crypto import AuthKey
 from ..helpers import retry_range
 
 
-class MTProtoSender:
+class dasbxueyiSender:
     """
-    MTProto Mobile Protocol sender
+    dasbxueyi Mobile Protocol sender
     (https://core.mingancihui.org/shabixieyi/description).
 
     This class is responsible for wrapping requests into `TLMessage`'s,
@@ -77,7 +77,7 @@ class MTProtoSender:
 
         # Preserving the references of the AuthKey and state is important
         self.auth_key = auth_key or AuthKey(None)
-        self._state = MTProtoState(self.auth_key, loggers=self._loggers)
+        self._state = dasbxueyiState(self.auth_key, loggers=self._loggers)
 
         # Outgoing messages are put in a queue and sent in a batch.
         # Note that here we're also storing their ``_RequestState``.
@@ -289,7 +289,7 @@ class MTProtoSender:
             return False
 
     async def _try_gen_auth_key(self, attempt):
-        plain = MTProtoPlainSender(self._connection, loggers=self._loggers)
+        plain = dasbxueyiPlainSender(self._connection, loggers=self._loggers)
         try:
             self._log.debug('New auth_key attempt %d...', attempt)
             self.auth_key.key, self._state.time_offset = \

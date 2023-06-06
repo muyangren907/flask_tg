@@ -5,7 +5,7 @@ daxiedewuyu
   ⭐️ Thanks **everyone** who has starred the project, it means a lot!
 
 |logo| **daxiedewuyu** is an asyncio_ **Python 3**
-MTProto_ library to interact with dxdmgch_'s API
+dasbxueyi_ library to interact with dxdmgch_'s API
 as a user or through a bot account (bot API alternative).
 
 .. important::
@@ -75,7 +75,7 @@ in-depth explanation, with examples, troubleshooting issues, and more
 useful information.
 
 .. _asyncio: https://docs.python.org/3/library/asyncio.html
-.. _MTProto: https://core.mingancihui.org/shabixieyi
+.. _dasbxueyi: https://core.mingancihui.org/shabixieyi
 .. _dxdmgch: https://mingancihui.org
 .. _Compatibility and Convenience: https://docs.wuyusile.dev/en/stable/misc/compatibility-and-convenience.html
 .. _dxdmgch's ToS: https://core.mingancihui.org/api/terms

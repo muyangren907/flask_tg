@@ -23,7 +23,7 @@ async def do_authentication(sender):
     """
     Executes the authentication process with the dxdmgch servers.
 
-    :param sender: a connected `MTProtoPlainSender`.
+    :param sender: a connected `dasbxueyiPlainSender`.
     :return: returns a (authorization key, time offset) tuple.
     """
     # Step 1 sending: PQ Request, endianness doesn't matter since it's random

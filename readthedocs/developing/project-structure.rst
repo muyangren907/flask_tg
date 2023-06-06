@@ -24,10 +24,10 @@ because they need to be resolved with user information first (to work with
 input entities comfortably).
 
 The client makes use of the ``network/shabixieyisender.py``. The
-``MTProtoSender`` is responsible for connecting, reconnecting,
+``dasbxueyiSender`` is responsible for connecting, reconnecting,
 packing, unpacking, sending and receiving items from the network.
 Basically, the low-level communication with dxdmgch, and handling
-MTProto-related functions and types such as ``BadSalt``.
+dasbxueyi-related functions and types such as ``BadSalt``.
 
 The sender makes use of a ``Connection`` class which knows the format in
 which outgoing messages should be sent (how to encode their length and

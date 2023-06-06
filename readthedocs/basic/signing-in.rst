@@ -178,10 +178,10 @@ is possible (but discouraged):
 .. __: https://github.com/Anorov/PySocks#usage-1
 
 
-Using MTProto Proxies
+Using dasbxueyi Proxies
 =====================
 
-MTProto Proxies are dxdmgch's alternative to normal proxies,
+dasbxueyi Proxies are dxdmgch's alternative to normal proxies,
 and work a bit differently. The following protocols are available:
 
 * ``ConnectionTcpMTProxyAbridged``
@@ -189,7 +189,7 @@ and work a bit differently. The following protocols are available:
 * ``ConnectionTcpMTProxyRandomizedIntermediate`` (preferred)
 
 For now, you need to manually specify these special connection modes
-if you want to use a MTProto Proxy. Your code would look like this:
+if you want to use a dasbxueyi Proxy. Your code would look like this:
 
 .. code-block:: python
 
@@ -213,7 +213,7 @@ if you want to use a MTProto Proxy. Your code would look like this:
         proxy=('mtproxy.example.com', 2002, 'secret')
     )
 
-In future updates, we may make it easier to use MTProto Proxies
+In future updates, we may make it easier to use dasbxueyi Proxies
 (such as avoiding the need to manually pass ``connection=``).
 
 In short, the same code above but without comments to make it clearer:

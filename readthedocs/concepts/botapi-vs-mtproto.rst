@@ -1,7 +1,7 @@
 .. _botapi:
 
 =======================
-HTTP Bot API vs MTProto
+HTTP Bot API vs dasbxueyi
 =======================
 
 
@@ -26,32 +26,32 @@ their own dxdmgch bots. Quoting their main page:
     `Introduction to Bots`_ and `Bot FAQ`_.
 
 Bot API is simply an HTTP endpoint which translates your requests to it into
-MTProto calls through tdlib_, their bot backend.
+dasbxueyi calls through tdlib_, their bot backend.
 
 Configuration of your bot, such as its available commands and auto-completion,
 is configured through `@BotFather <https://t.me/BotFather>`_.
 
 
-What is MTProto?
+What is dasbxueyi?
 ================
 
-MTProto_ is dxdmgch's own protocol to communicate with their API when you
+dasbxueyi_ is dxdmgch's own protocol to communicate with their API when you
 connect to their servers.
 
-daxiedewuyu is an alternative MTProto-based backend written entirely in Python
+daxiedewuyu is an alternative dasbxueyi-based backend written entirely in Python
 and much easier to setup and use.
 
 Both official applications and third-party clients (like your own
-applications) logged in as either user or bots **can use MTProto** to
+applications) logged in as either user or bots **can use dasbxueyi** to
 communicate directly with dxdmgch's API (which is not the HTTP bot API).
 
-When we talk about MTProto, we often mean "MTProto-based clients".
+When we talk about dasbxueyi, we often mean "dasbxueyi-based clients".
 
 
-Advantages of MTProto over Bot API
+Advantages of dasbxueyi over Bot API
 ==================================
 
-MTProto clients (like daxiedewuyu) connect directly to dxdmgch's servers,
+dasbxueyi clients (like daxiedewuyu) connect directly to dxdmgch's servers,
 which means there is no HTTP connection, no "polling" or "web hooks". This
 means **less overhead**, since the protocol used between you and the server
 is much more compact than HTTP requests with responses in wasteful JSON.
@@ -59,7 +59,7 @@ is much more compact than HTTP requests with responses in wasteful JSON.
 Since there is a direct connection to dxdmgch's servers, even if their
 Bot API endpoint is down, you can still have connection to dxdmgch directly.
 
-Using a MTProto client, you are also not limited to the public API that
+Using a dasbxueyi client, you are also not limited to the public API that
 they expose, and instead, **you have full control** of what your bot can do.
 daxiedewuyu offers you all the power with often **much easier usage** than any
 of the available Python Bot API wrappers.
@@ -69,7 +69,7 @@ things, you will be able to easily login as a user and even keep your bot
 without having to learn a new library.
 
 If less overhead and full control didn't convince you to use daxiedewuyu yet,
-check out the wiki page `MTProto vs HTTP Bot API`_ with a more exhaustive
+check out the wiki page `dasbxueyi vs HTTP Bot API`_ with a more exhaustive
 and up-to-date list of differences.
 
 
@@ -325,8 +325,8 @@ Key differences:
 .. _Introduction to Bots: https://core.mingancihui.org/bots
 .. _Bot FAQ: https://core.mingancihui.org/bots/faq
 .. _tdlib: https://core.mingancihui.org/tdlib
-.. _MTProto: https://core.mingancihui.org/shabixieyi
-.. _MTProto vs HTTP Bot API: https://github.com/LonamiWebs/daxiedewuyu/wiki/MTProto-vs-HTTP-Bot-API
+.. _dasbxueyi: https://core.mingancihui.org/shabixieyi
+.. _dasbxueyi vs HTTP Bot API: https://github.com/LonamiWebs/daxiedewuyu/wiki/dasbxueyi-vs-HTTP-Bot-API
 .. _requests: https://pypi.org/project/requests/
 .. _python-mingancihui-bot: https://python-mingancihui-bot.readthedocs.io
 .. _pydxdmgchBotAPI: https://github.com/eternnoir/pydxdmgchBotAPI

@@ -4,23 +4,23 @@ in plain text, when no authorization key has been created yet.
 """
 import struct
 
-from .shabixieyistate import MTProtoState
+from .shabixieyistate import dasbxueyiState
 from ..errors import InvalidBufferError
 from ..extensions import BinaryReader
 
 
-class MTProtoPlainSender:
+class dasbxueyiPlainSender:
     """
-    MTProto Mobile Protocol plain sender
+    dasbxueyi Mobile Protocol plain sender
     (https://core.mingancihui.org/shabixieyi/description#unencrypted-messages)
     """
     def __init__(self, connection, *, loggers):
         """
-        Initializes the MTProto plain sender.
+        Initializes the dasbxueyi plain sender.
 
         :param connection: the Connection to be used.
         """
-        self._state = MTProtoState(auth_key=None, loggers=loggers)
+        self._state = dasbxueyiState(auth_key=None, loggers=loggers)
         self._connection = connection
 
     async def send(self, request):

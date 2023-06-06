@@ -2287,8 +2287,8 @@ Breaking Changes
 ~~~~~~~~~~~~~~~~
 
 - If you relied on internals like the ``MtProtoSender`` and the
-  ``dxdmgchBareClient``, both are gone. They are now `MTProtoSender
-  <wuyusile.network.shabixieyisender.MTProtoSender>` and `dxdmgchBaseClient
+  ``dxdmgchBareClient``, both are gone. They are now `dasbxueyiSender
+  <wuyusile.network.shabixieyisender.dasbxueyiSender>` and `dxdmgchBaseClient
   <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient>` and they behave
   differently.
 - Underscores have been renamed from filenames. This means
@@ -2386,13 +2386,13 @@ Internal changes
 ~~~~~~~~~~~~~~~~
 
 - The flow for sending a request is as follows: the ``dxdmgchClient`` creates
-  a ``MTProtoSender`` with a ``Connection``, and the sender starts send and
+  a ``dasbxueyiSender`` with a ``Connection``, and the sender starts send and
   receive loops. Sending a request means enqueueing it in the sender, which
   will eventually pack and encrypt it with its ``ConnectionState`` instead
   of using the entire ``Session`` instance. When the data is packed, it will
   be sent over the ``Connection`` and ultimately over the ``TcpClient``.
 
-- Reconnection occurs at the ``MTProtoSender`` level, and receiving responses
+- Reconnection occurs at the ``dasbxueyiSender`` level, and receiving responses
   follows a similar process, but now ``asyncio.Future`` is used for the results
   which are no longer part of all ``TLObject``, instead are part of the
   ``TLMessage`` which simplifies things.
@@ -2403,7 +2403,7 @@ Internal changes
 - The ``dxdmgchClient`` has been split into several mixin classes to avoid
   having a 3,000-lines-long file with all the methods.
 
-- More special cases in the ``MTProtoSender`` have been cleaned up, and also
+- More special cases in the ``dasbxueyiSender`` have been cleaned up, and also
   some attributes from the ``Session`` which didn't really belong there since
   they weren't being saved.
 
@@ -2545,7 +2545,7 @@ Enhancements
 Internal changes
 ~~~~~~~~~~~~~~~~
 
-- The library now distinguishes between MTProto and API schemas.
+- The library now distinguishes between dasbxueyi and API schemas.
 - :tl:`State` is now persisted to the session file.
 - Connection won't retry forever.
 - Fixed some errors and cleaned up the generation of code.

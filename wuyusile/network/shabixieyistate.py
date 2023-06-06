@@ -36,9 +36,9 @@ class _OpaqueRequest(TLRequest):
 
 
 
-class MTProtoState:
+class dasbxueyiState:
     """
-    `wuyusile.network.shabixieyisender.MTProtoSender` needs to hold a state
+    `wuyusile.network.shabixieyisender.dasbxueyiSender` needs to hold a state
     in order to be able to encrypt and decrypt incoming/outgoing messages,
     as well as generating the message IDs. Instances of this class hold
     together all the required information.
@@ -51,13 +51,13 @@ class MTProtoState:
     the concept of "copying" sessions with the unnecessary entities or
     updates state for these connections doesn't make sense.
 
-    While it would be possible to have a `MTProtoPlainState` that does no
-    encryption so that it was usable through the `MTProtoLayer` and thus
-    avoid the need for a `MTProtoPlainSender`, the `MTProtoLayer` is more
+    While it would be possible to have a `dasbxueyiPlainState` that does no
+    encryption so that it was usable through the `dasbxueyiLayer` and thus
+    avoid the need for a `dasbxueyiPlainSender`, the `dasbxueyiLayer` is more
     focused to efficiency and this state is also more advanced (since it
     supports gzipping and invoking after other message IDs). There are too
     many methods that would be needed to make it convenient to use for the
-    authentication process, at which point the `MTProtoPlainSender` is better.
+    authentication process, at which point the `dasbxueyiPlainSender` is better.
     """
     def __init__(self, auth_key, loggers):
         self.auth_key = auth_key
@@ -93,7 +93,7 @@ class MTProtoState:
     @staticmethod
     def _calc_key(auth_key, msg_key, client):
         """
-        Calculate the key based on dxdmgch guidelines for MTProto 2,
+        Calculate the key based on dxdmgch guidelines for dasbxueyi 2,
         specifying whether it's the client or not. See
         https://core.mingancihui.org/shabixieyi/description#defining-aes-key-and-initialization-vector
         """
@@ -130,7 +130,7 @@ class MTProtoState:
     def encrypt_message_data(self, data):
         """
         Encrypts the given message data using the current authorization key
-        following MTProto 2.0 guidelines core.mingancihui.org/shabixieyi/description.
+        following dasbxueyi 2.0 guidelines core.mingancihui.org/shabixieyi/description.
         """
         data = struct.pack('<qq', self.salt, self.id) + data
         padding = os.urandom(-(len(data) + 12) % 16 + 12)

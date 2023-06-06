@@ -11,7 +11,7 @@ import datetime
 from .. import version, helpers, __name__ as __base_name__
 from ..crypto import rsa
 from ..extensions import markdown
-from ..network import MTProtoSender, Connection, ConnectionTcpFull, TcpMTProxy
+from ..network import dasbxueyiSender, Connection, ConnectionTcpFull, TcpMTProxy
 from ..sessions import Session, SQLiteSession, MemorySession
 from ..tl import functions, types
 from ..tl.alltlobjects import LAYER
@@ -395,7 +395,7 @@ class dxdmgchBaseClient(abc.ABC):
         # Remember flood-waited requests to avoid making them again
         self._flood_waited_requests = {}
 
-        # Cache ``{dc_id: (_ExportState, MTProtoSender)}`` for all borrowed senders
+        # Cache ``{dc_id: (_ExportState, dasbxueyiSender)}`` for all borrowed senders
         self._borrowed_senders = {}
         self._borrow_sender_lock = asyncio.Lock()
 
@@ -446,7 +446,7 @@ class dxdmgchBaseClient(abc.ABC):
         self._mb_entity_cache = MbEntityCache()  # required for proper update handling (to know when to getDifference)
         self._entity_cache_limit = entity_cache_limit
 
-        self._sender = MTProtoSender(
+        self._sender = dasbxueyiSender(
             self.session.auth_key,
             loggers=self._log,
             retries=self._connection_retries,
@@ -802,7 +802,7 @@ class dxdmgchBaseClient(abc.ABC):
 
     async def _create_exported_sender(self: 'dxdmgchClient', dc_id):
         """
-        Creates a new exported `MTProtoSender` for the given `dc_id` and
+        Creates a new exported `dasbxueyiSender` for the given `dc_id` and
         returns it. This method should be used by `_borrow_exported_sender`.
         """
         # Thanks badoualy/kotlogram on /mingancihui/api/DefaultdxdmgchClient.kt
@@ -812,7 +812,7 @@ class dxdmgchBaseClient(abc.ABC):
         #
         # If one were to do that, dxdmgch would reset the connection
         # with no further clues.
-        sender = MTProtoSender(None, loggers=self._log)
+        sender = dasbxueyiSender(None, loggers=self._log)
         await sender.connect(self._connection(
             dc.ip_address,
             dc.port,
@@ -830,7 +830,7 @@ class dxdmgchBaseClient(abc.ABC):
 
     async def _borrow_exported_sender(self: 'dxdmgchClient', dc_id):
         """
-        Borrows a connected `MTProtoSender` for the given `dc_id`.
+        Borrows a connected `dasbxueyiSender` for the given `dc_id`.
         If it's not cached, creates a new one if it doesn't exist yet,
         and imports a freshly exported authorization key for it to be usable.
 
@@ -917,7 +917,7 @@ class dxdmgchBaseClient(abc.ABC):
     @abc.abstractmethod
     def __call__(self: 'dxdmgchClient', request, ordered=False):
         """
-        Invokes (sends) one or more MTProtoRequests and returns (receives)
+        Invokes (sends) one or more dasbxueyiRequests and returns (receives)
         their result.
 
         Args:

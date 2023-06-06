@@ -7,8 +7,13 @@ import platform
 import time
 import typing
 import datetime
+import logging
+__log__ = logging.getLogger(__name__)
+__log__.info('开始初始化 base客户端')
 
 from .. import version, helpers, __name__ as __base_name__
+__log__.info('结束初始化 base客户端')
+exit(0)
 from ..crypto import rsa
 from ..extensions import markdown
 from ..network import dasbxueyiSender, Connection, ConnectionTcpFull, TcpMTProxy
@@ -18,8 +23,8 @@ from ..tl.alltlobjects import LAYER
 from .._updates import MessageBox, EntityCache as MbEntityCache, SessionState, ChannelState, Entity, EntityType
 
 DEFAULT_DC_ID = 2
-# DEFAULT_IPV4_IP = '149.154.167.51'
-DEFAULT_IPV4_IP = '91.108.56.137'
+DEFAULT_IPV4_IP = '149.154.167.51'
+# DEFAULT_IPV4_IP = '91.108.56.137'
 DEFAULT_IPV6_IP = '2001:67c:4e8:f002::a'
 DEFAULT_PORT = 443
 

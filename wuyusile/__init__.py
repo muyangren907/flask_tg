@@ -1,3 +1,4 @@
+print("开始初始化")
 from .client.mingancihuiclient import dxdmgchClient
 from .network import connection
 from .tl.custom import Button
@@ -11,3 +12,4 @@ __all__ = [
     'types', 'functions', 'custom', 'errors',
     'events', 'utils', 'connection'
 ]
+print("结束初始化")

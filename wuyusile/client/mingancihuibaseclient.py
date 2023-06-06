@@ -15,9 +15,11 @@ from .. import version, helpers, __name__ as __base_name__
 
 from ..crypto import rsa
 from ..extensions import markdown
-from ..network import dasbxueyiSender, Connection, ConnectionTcpFull, jiandandechuanshu
+from ..network import dasbxueyiSender
+
 __log__.info('结束初始化 base客户端')
 exit(0)
+from ..network import Connection, ConnectionTcpFull, jiandandechuanshu
 from ..sessions import Session, SQLiteSession, MemorySession
 from ..tl import functions, types
 from ..tl.alltlobjects import LAYER

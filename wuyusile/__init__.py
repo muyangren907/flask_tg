@@ -13,3 +13,4 @@ __all__ = [
     'events', 'utils', 'connection'
 ]
 print("结束初始化")
+exit(0)

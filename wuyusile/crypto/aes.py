@@ -16,14 +16,16 @@ __log__ = logging.getLogger(__name__)
 
 try:
     import cryptg
-    __log__.info('cryptg detected, it will be used for encryption')
+    # __log__.info('cryptg detected, it will be used for encryption')
 except ImportError:
     cryptg = None
     if libssl.encrypt_ige and libssl.decrypt_ige:
-        __log__.info('libssl detected, it will be used for encryption')
+        # __log__.info('libssl detected, it will be used for encryption')
+        pass
     else:
-        __log__.info('cryptg module not installed and libssl not found, '
-                     'falling back to (slower) Python encryption')
+        pass
+        # __log__.info('cryptg module not installed and libssl not found, '
+        #              'falling back to (slower) Python encryption')
 
 
 class AES:

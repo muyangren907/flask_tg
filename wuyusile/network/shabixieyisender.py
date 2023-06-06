@@ -43,6 +43,11 @@ class dasbxueyiSender:
     A new authorization key will be generated on connection if no other
     key exists yet.
     """
+    import logging
+    __log__ = logging.getLogger(__name__)
+    __log__.info('开始初始化 dasbxueyiSender')
+    __log__.info('结束初始化 dasbxueyiSender')
+    exit(0)
     def __init__(self, auth_key, *, loggers,
                  retries=5, delay=1, auto_reconnect=True, connect_timeout=None,
                  auth_key_callback=None,

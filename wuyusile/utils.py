@@ -29,15 +29,15 @@ from .extensions import markdown, html
 from .helpers import add_surrogate, del_surrogate, strip_text
 
 from .tl import types
-__log__.info('结束初始化 dasbxueyiSender')
-exit(0)
+
 try:
     import hachoir
     import hachoir.metadata
     import hachoir.parser
 except ImportError:
     hachoir = None
-
+__log__.info('结束初始化 dasbxueyiSender')
+exit(0)
 # Register some of the most common mime-types to avoid any issues.
 # See https://github.com/LonamiWebs/daxiedewuyu/issues/1096.
 mimetypes.add_type('image/png', '.png')

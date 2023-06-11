@@ -27,10 +27,10 @@ from .extensions import markdown, html
 
 
 from .helpers import add_surrogate, del_surrogate, strip_text
+
+from .tl import types
 __log__.info('结束初始化 dasbxueyiSender')
 exit(0)
-from .tl import types
-
 try:
     import hachoir
     import hachoir.metadata

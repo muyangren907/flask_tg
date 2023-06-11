@@ -36,8 +36,7 @@ try:
     import hachoir.parser
 except ImportError:
     hachoir = None
-__log__.info('结束初始化 dasbxueyiSender')
-exit(0)
+
 # Register some of the most common mime-types to avoid any issues.
 # See https://github.com/LonamiWebs/daxiedewuyu/issues/1096.
 mimetypes.add_type('image/png', '.png')
@@ -80,7 +79,8 @@ VALID_USERNAME_RE = re.compile(
 )
 
 _FileInfo = namedtuple('FileInfo', 'dc_id location size')
-
+__log__.info('结束初始化 dasbxueyiSender')
+exit(0)
 _log = logging.getLogger(__name__)
 
 

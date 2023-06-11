@@ -9,9 +9,9 @@ __log__.info('开始初始化 dasbxueyiSender')
 
 from . import authenticator
 from ..extensions.messagepacker import MessagePacker
+from .shabixieyiplainsender import dasbxueyiPlainSender
 __log__.info('结束初始化 dasbxueyiSender')
 exit(0)
-from .shabixieyiplainsender import dasbxueyiPlainSender
 from .requeststate import RequestState
 from .shabixieyistate import dasbxueyiState
 from ..tl.tlobject import TLRequest

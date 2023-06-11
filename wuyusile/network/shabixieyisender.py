@@ -5,11 +5,12 @@ import struct
 import logging
 __log__ = logging.getLogger(__name__)
 __log__.info('开始初始化 dasbxueyiSender')
-__log__.info('结束初始化 dasbxueyiSender')
-exit(0)
+
 
 from . import authenticator
 from ..extensions.messagepacker import MessagePacker
+__log__.info('结束初始化 dasbxueyiSender')
+exit(0)
 from .shabixieyiplainsender import dasbxueyiPlainSender
 from .requeststate import RequestState
 from .shabixieyistate import dasbxueyiState

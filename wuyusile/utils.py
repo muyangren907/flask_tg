@@ -22,10 +22,11 @@ from types import GeneratorType
 import logging
 __log__ = logging.getLogger(__name__)
 __log__.info('开始初始化 dasbxueyiSender')
+
+from .extensions import markdown, html
 __log__.info('结束初始化 dasbxueyiSender')
 exit(0)
 
-from .extensions import markdown, html
 from .helpers import add_surrogate, del_surrogate, strip_text
 from .tl import types
 

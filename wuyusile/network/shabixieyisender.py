@@ -18,10 +18,9 @@ from .shabixieyistate import dasbxueyiState
 from ..tl.tlobject import TLRequest
 
 from .. import helpers
+from .. import utils
 __log__.info('结束初始化 dasbxueyiSender')
 exit(0)
-from .. import utils
-
 
 from ..errors import (
     BadMessageError, InvalidBufferError, AuthKeyNotFound, SecurityError,

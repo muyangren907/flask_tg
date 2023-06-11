@@ -12,6 +12,8 @@ from ..extensions.messagepacker import MessagePacker
 from .shabixieyiplainsender import dasbxueyiPlainSender
 
 from .requeststate import RequestState
+__log__.info('结束初始化 dasbxueyiSender')
+exit(0)
 from .shabixieyistate import dasbxueyiState
 from ..tl.tlobject import TLRequest
 from .. import helpers, utils
@@ -23,8 +25,8 @@ from ..extensions import BinaryReader
 from ..tl.core import RpcResult, MessageContainer, GzipPacked
 from ..tl.functions.auth import LogOutRequest
 from ..tl.functions import PingRequest, DestroySessionRequest, DestroyAuthKeyRequest
-__log__.info('结束初始化 dasbxueyiSender')
-exit(0)
+
+
 from ..tl.types import (
     MsgsAck, Pong, BadServerSalt, BadMsgNotification, FutureSalts,
     MsgNewDetailedInfo, NewSessionCreated, MsgDetailedInfo, MsgsStateReq,

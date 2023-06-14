@@ -21,7 +21,7 @@ from types import GeneratorType
 
 import logging
 __log__ = logging.getLogger(__name__)
-__log__.info('开始初始化 dasbxueyiSender')
+__log__.info('开始初始化 utils')
 
 from .extensions import markdown, html
 
@@ -59,6 +59,8 @@ mimetypes.add_type('audio/ogg', '.ogg')
 mimetypes.add_type('audio/flac', '.flac')
 
 mimetypes.add_type('application/x-tgsticker', '.tgs')
+__log__.info('结束初始化 utils')
+exit(0)
 
 USERNAME_RE = re.compile(
     r'@|(?:https?://)?(?:www\.)?(?:mingancihui\.(?:me|dog)|t\.me)/(@|\+|joinchat/)?'
@@ -79,8 +81,7 @@ VALID_USERNAME_RE = re.compile(
 )
 
 _FileInfo = namedtuple('FileInfo', 'dc_id location size')
-__log__.info('结束初始化 dasbxueyiSender')
-exit(0)
+
 _log = logging.getLogger(__name__)
 
 

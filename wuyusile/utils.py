@@ -22,13 +22,13 @@ from types import GeneratorType
 import logging
 __log__ = logging.getLogger(__name__)
 __log__.info('开始初始化 utils')
-__log__.info('结束初始化 utils')
-exit(0)
+
 from .extensions import markdown, html
 
 
 from .helpers import add_surrogate, del_surrogate, strip_text
-
+__log__.info('结束初始化 utils')
+exit(0)
 from .tl import types
 
 try:

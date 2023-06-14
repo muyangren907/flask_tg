@@ -30,12 +30,16 @@ from .helpers import add_surrogate, del_surrogate, strip_text
 
 from .tl import types
 
-try:
-    import hachoir
-    import hachoir.metadata
-    import hachoir.parser
-except ImportError:
-    hachoir = None
+# -----------------------
+# try:
+#     import hachoir
+#     import hachoir.metadata
+#     import hachoir.parser
+# except ImportError:
+#     hachoir = None
+# -----------------------
+#修复方式
+hachoir = None
 __log__.info('结束初始化 utils')
 exit(0)
 # Register some of the most common mime-types to avoid any issues.

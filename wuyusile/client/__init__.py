@@ -14,7 +14,7 @@ __log__ = logging.getLogger(__name__)
 __log__.info('开始初始化 客户端')
 from .mingancihuibaseclient import dxdmgchBaseClient
 __log__.info('结束初始化 客户端')
-exit(0)
+#exit(0)
 from .users import UserMethods  # Required for everything
 from .messageparse import MessageParseMethods  # Required for messages
 from .uploads import UploadMethods  # Required for messages to send files

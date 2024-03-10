@@ -21,7 +21,7 @@ from types import GeneratorType
 
 import logging
 __log__ = logging.getLogger(__name__)
-__log__.info('开始初始化 utils')
+# __log__.info('开始初始化 utils')
 
 from .extensions import markdown, html
 
@@ -445,6 +445,7 @@ def get_input_media(
         voice_note=False, video_note=False, supports_streaming=False,
         ttl=None
 ):
+    # print("1"+str(attributes))
     """
     Similar to :meth:`get_input_peer`, but for media.
 
@@ -454,14 +455,17 @@ def get_input_media(
     """
     try:
         if media.SUBCLASS_OF_ID == 0xfaf846f4:  # crc32(b'InputMedia')
+            # print(1)
             return media
         elif media.SUBCLASS_OF_ID == 0x846363e0:  # crc32(b'InputPhoto')
+            # print(2)
             return types.InputMediaPhoto(media, ttl_seconds=ttl)
         elif media.SUBCLASS_OF_ID == 0xf33fdb68:  # crc32(b'InputDocument')
+            # print(3)
             return types.InputMediaDocument(media, ttl_seconds=ttl)
     except AttributeError:
         _raise_cast_fail(media, 'InputMedia')
-
+    # print(attributes)
     if isinstance(media, types.MessageMediaPhoto):
         return types.InputMediaPhoto(
             id=get_input_photo(media.photo),
@@ -485,11 +489,12 @@ def get_input_media(
             id=get_input_document(media),
             ttl_seconds=ttl
         )
-
+    
     if isinstance(media, (types.InputFile, types.InputFileBig)):
         if is_photo:
             return types.InputMediaUploadedPhoto(file=media, ttl_seconds=ttl)
         else:
+            
             attrs, mime = get_attributes(
                 media,
                 attributes=attributes,
@@ -561,7 +566,7 @@ def get_input_media(
 
     if isinstance(media, types.Poll):
         return types.InputMediaPoll(media)
-
+    
     _raise_cast_fail(media, 'InputMedia')
 
 
@@ -688,14 +693,15 @@ def get_attributes(file, *, attributes=None, mime_type=None,
     Get a list of attributes for the given file and
     the mime type as a tuple ([attribute], mime_type).
     """
+    # print(attributes) #进入已有attributes
     # Note: ``file.name`` works for :tl:`InputFile` and some `IOBase` streams
     name = file if isinstance(file, str) else getattr(file, 'name', 'unnamed')
     if mime_type is None:
         mime_type = mimetypes.guess_type(name)[0]
-
+    # print(mime_type)
     attr_dict = {types.DocumentAttributeFilename:
         types.DocumentAttributeFilename(os.path.basename(name))}
-
+    # print(attributes)
     if is_audio(file):
         m = _get_metadata(file)
         if m:
@@ -714,7 +720,7 @@ def get_attributes(file, *, attributes=None, mime_type=None,
                     duration=int(m.get('duration').seconds
                                  if m.has('duration') else 0)
                 )
-
+    # print(attributes)
     if not force_document and is_video(file):
         m = _get_metadata(file)
         if m:
@@ -744,7 +750,11 @@ def get_attributes(file, *, attributes=None, mime_type=None,
                 supports_streaming=supports_streaming)
 
         attr_dict[types.DocumentAttributeVideo] = doc
-
+    # print(force_document)
+    # print(is_video(file))
+    # print(list(attr_dict.values()))
+    # print(voice_note)
+    # print(attributes)
     if voice_note:
         if types.DocumentAttributeAudio in attr_dict:
             attr_dict[types.DocumentAttributeAudio].voice = True
@@ -903,8 +913,10 @@ def is_audio(file):
 def is_video(file):
     """Returns `True` if the file has a video mime type."""
     ext = _get_extension(file)
+    # print(ext)
     if not ext:
         metadata = _get_metadata(file)
+        # print(metadata)
         if metadata and metadata.has('mime_type'):
             return metadata.get('mime_type').startswith('video/')
         else:

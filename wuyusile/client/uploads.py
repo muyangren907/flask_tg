@@ -347,6 +347,7 @@ class UploadMethods:
         """
         # TODO Properly implement allow_cache to reuse the sha256 of the file
         # i.e. `None` was used
+        # print(attributes)
         if not file:
             raise TypeError('Cannot use {!r} as file'.format(file))
 
@@ -402,7 +403,7 @@ class UploadMethods:
             supports_streaming=supports_streaming, ttl=ttl,
             nosound_video=nosound_video,
         )
-
+        # print(media)
         # e.g. invalid cast from :tl:`MessageMediaWebPage`
         if not media:
             raise TypeError('Cannot use {!r} as file'.format(file))
@@ -687,6 +688,7 @@ class UploadMethods:
             allow_cache=True, voice_note=False, video_note=False,
             supports_streaming=False, mime_type=None, as_image=None,
             ttl=None, nosound_video=None):
+        # print(attributes, mime_type) #已有attributes
         if not file:
             return None, None, None
 
@@ -742,17 +744,22 @@ class UploadMethods:
             bot_file = utils.resolve_bot_file_id(file)
             if bot_file:
                 media = utils.get_input_media(bot_file, ttl=ttl)
-
+        # print(media)
         if media:
             pass  # Already have media, don't check the rest
         elif not file_handle:
+            # print(1)
             raise ValueError(
                 'Failed to convert {} to media. Not an existing file, '
                 'an HTTP URL or a valid bot-API-like file ID'.format(file)
             )
         elif as_image:
+            # print(2)
             media = types.InputMediaUploadedPhoto(file_handle, ttl_seconds=ttl)
         else:
+            # ok print(3)
+            # flag
+            # print(attributes, mime_type)
             attributes, mime_type = utils.get_attributes(
                 file,
                 mime_type=mime_type,
@@ -763,7 +770,7 @@ class UploadMethods:
                 supports_streaming=supports_streaming,
                 thumb=thumb
             )
-
+            # print(attributes, mime_type)
             if not thumb:
                 thumb = None
             else:

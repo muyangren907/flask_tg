@@ -1,8 +1,8 @@
 import logging
 __log__ = logging.getLogger(__name__)
-__log__.info('开始初始化')
+# __log__.info('开始初始化')
 from .client.mingancihuiclient import dxdmgchClient
-__log__.info('结束初始化')
+# __log__.info('结束初始化')
 #exit(0)
 from .network import connection
 from .tl.custom import Button

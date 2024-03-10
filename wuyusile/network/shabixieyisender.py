@@ -4,7 +4,7 @@ import struct
 
 import logging
 __log__ = logging.getLogger(__name__)
-__log__.info('开始初始化 dasbxueyiSender')
+# __log__.info('开始初始化 dasbxueyiSender')
 
 
 from . import authenticator

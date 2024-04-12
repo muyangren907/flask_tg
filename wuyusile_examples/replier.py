@@ -13,7 +13,7 @@ from collections import defaultdict
 from wuyusile import dxdmgchClient, events
 
 import logging
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.CRITICAL + 1)
 
 # "When did we last react?" dictionary, 0.0 by default
 recent_reacts = defaultdict(float)

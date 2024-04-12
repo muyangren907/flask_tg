@@ -17,7 +17,7 @@ For that, you can use **events**.
 
         import logging
         logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-                            level=logging.WARNING)
+                            level=logging.CRITICAL + 1)
 
 
 Getting Started

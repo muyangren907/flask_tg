@@ -332,7 +332,7 @@ If you want the old behaviour of no messages being logged, you can configure
 .. code-block:: python
 
     import logging
-    logging.basicConfig(level=logging.CRITICAL)
+    logging.basicConfig(level=logging.CRITICAL + 1)
 
 This is not considered a breaking change because ``stderr`` should only be
 used for logging purposes, not to emit information others may consume (use

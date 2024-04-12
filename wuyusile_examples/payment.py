@@ -17,7 +17,7 @@ provider_token = ''
 
 tracemalloc.start()
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.WARNING)
+                    level=logging.CRITICAL + 1)
 logger = logging.getLogger(__name__)
 
 

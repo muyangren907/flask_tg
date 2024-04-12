@@ -443,8 +443,9 @@ class UpdateMethods:
                     # Don't bother sleeping and timing out if the delay is already 0 (pollutes the logs).
                     try:
                         updates = await asyncio.wait_for(self._updates_queue.get(), deadline_delay)
-                    except asyncio.TimeoutError:
-                        self._log[__name__].debug('Timeout waiting for updates expired')
+                    # except asyncio.TimeoutError:
+                    except Exception as e:
+                        # self._log[__name__].debug('Timeout waiting for updates expired')
                         continue
                 else:
                     continue
@@ -459,9 +460,10 @@ class UpdateMethods:
         except asyncio.CancelledError:
             pass
         except Exception as e:
-            self._log[__name__].exception(f'Fatal error handling updates (this is a bug in daxiedewuyu v{__version__}, please report it)')
-            self._updates_error = e
-            await self.disconnect()
+            pass
+            # self._log[__name__].exception(f'Fatal error handling updates (this is a bug in daxiedewuyu v{__version__}, please report it)')
+            # self._updates_error = e
+            # await self.disconnect()
 
     def _preprocess_updates(self, updates, users, chats):
         self._mb_entity_cache.extend(users, chats)

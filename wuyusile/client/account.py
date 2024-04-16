@@ -120,7 +120,7 @@ class AccountMethods:
             files: bool = None,
             max_file_size: bool = None) -> 'dxdmgchClient':
         """
-        Returns a :ref:`wuyusile-client` which calls methods behind a takeout session.
+        Returns a :ref:`flask-client` which calls methods behind a takeout session.
 
         It does so by creating a proxy object over the current client through
         which making requests will use :tl:`InvokeWithTakeoutRequest` to wrap
@@ -132,7 +132,7 @@ class AccountMethods:
         conversations or mass-download media, since the rate limits will
         be lower. Only some requests will be affected, and you will need
         to adjust the `wait_time` of methods like `client.iter_messages
-        <wuyusile.client.messages.MessageMethods.iter_messages>`.
+        <flask.client.messages.MessageMethods.iter_messages>`.
 
         By default, all parameters are `None`, and you need to enable those
         you plan to use by setting them to either `True` or `False`.
@@ -150,7 +150,7 @@ class AccountMethods:
         occurred during it, then `True` will be considered as a result.
         Otherwise, the takeout will not be finished and its ID will be
         preserved for future usage as `client.session.takeout_id
-        <wuyusile.sessions.abstract.Session.takeout_id>`.
+        <flask.sessions.abstract.Session.takeout_id>`.
 
         Arguments
             finalize (`bool`):
@@ -187,7 +187,7 @@ class AccountMethods:
         Example
             .. code-block:: python
 
-                from wuyusile import errors
+                from flask import errors
 
                 try:
                     async with client.takeout() as takeout:

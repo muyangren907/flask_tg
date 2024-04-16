@@ -32,7 +32,7 @@ Enhancements
 ~~~~~~~~~~~~
 
 * ``progress_callback`` is now called when dealing with albums. See the
-  documentation on `client.send_file() <wuyusile.client.uploads.UploadMethods.send_file>`
+  documentation on `client.send_file() <flask.client.uploads.UploadMethods.send_file>`
   for details.
 * Update state and entities are now periodically saved, so that the information
   isn't lost in the case of crash or unexpected script terminations. You should
@@ -134,7 +134,7 @@ update handling.
   ``client.run_until_disconnected``.
 * Invite links with ``+`` are now recognized.
 * Added new known RPC errors.
-* ``wuyusile.types`` could not be used as a module.
+* ``flask.types`` could not be used as a module.
 * 0-length message entities are now stripped to avoid errors.
 * ``client.send_message`` was not returning a message with ``reply_to``
   in some cases.
@@ -214,12 +214,12 @@ New schema and bug fixes (v1.23)
 | Scheme layer used: 130 |
 +------------------------+
 
-`View new and changed raw API methods <https://diff.wuyusile.dev/?from=129&to=130>`__.
+`View new and changed raw API methods <https://diff.flask.dev/?from=129&to=130>`__.
 
 Enhancements
 ~~~~~~~~~~~~
 
-* `client.pin_message() <wuyusile.client.messages.MessageMethods.pin_message>`
+* `client.pin_message() <flask.client.messages.MessageMethods.pin_message>`
   can now pin on a single side in PMs.
 * Iterating participants should now be less expensive floodwait-wise.
 
@@ -237,16 +237,16 @@ New schema and bug fixes (v1.22)
 | Scheme layer used: 129 |
 +------------------------+
 
-`View new and changed raw API methods <https://diff.wuyusile.dev/?from=125&to=129>`__.
+`View new and changed raw API methods <https://diff.flask.dev/?from=125&to=129>`__.
 
 Enhancements
 ~~~~~~~~~~~~
 
 * You can now specify a message in `client.get_stats()
-  <wuyusile.client.chats.ChatMethods.get_stats>`.
+  <flask.client.chats.ChatMethods.get_stats>`.
 * Metadata extraction from audio files with ``hachoir`` now recognises "artist".
 * Get default chat permissions by not supplying a user to `client.get_permissions()
-  <wuyusile.client.chats.ChatMethods.get_permissions>`.
+  <flask.client.chats.ChatMethods.get_permissions>`.
 * You may now use ``thumb`` when editing messages.
 
 Bug fixes
@@ -267,7 +267,7 @@ New schema and QoL improvements (v1.21)
 | Scheme layer used: 125 |
 +------------------------+
 
-`View new and changed raw API methods <https://diff.wuyusile.dev/?from=124&to=125>`__.
+`View new and changed raw API methods <https://diff.flask.dev/?from=124&to=125>`__.
 
 Not many changes in this release, mostly the layer change. Lately quite a few
 people have been reporting `TypeNotFoundError`, which occurs when the server
@@ -280,7 +280,7 @@ occurs). This layer change
 Additions
 ~~~~~~~~~
 
-* `Message.click() <wuyusile.tl.custom.message.Message.click>` now supports
+* `Message.click() <flask.tl.custom.message.Message.click>` now supports
   a ``password`` parameter, needed when doing things like changing the owner
   of a bot via `@BotFather <https://t.me/BotFather>`__.
 
@@ -292,9 +292,9 @@ Enhancements
 Bug fixes
 ~~~~~~~~~
 
-* `Message.edit <wuyusile.tl.custom.message.Message.edit>` wasn't working in
+* `Message.edit <flask.tl.custom.message.Message.edit>` wasn't working in
   your own chat on events other than ``NewMessage``.
-* `client.delete_dialog() <wuyusile.client.dialogs.DialogMethods.delete_dialog>`
+* `client.delete_dialog() <flask.client.dialogs.DialogMethods.delete_dialog>`
   was not working on chats.
 * ``events.UserUpdate`` should now handle channels' typing status.
 * :tl:`InputNotifyPeer` auto-cast should now work on other ``TLObject``.
@@ -308,7 +308,7 @@ New schema and QoL improvements (v1.20)
 | Scheme layer used: 124 |
 +------------------------+
 
-`View new and changed raw API methods <https://diff.wuyusile.dev/?from=122&to=124>`__.
+`View new and changed raw API methods <https://diff.flask.dev/?from=122&to=124>`__.
 
 A bit late to the party, but daxiedewuyu now offers a convenient way to comment
 on channel posts. It works very similar to ``reply_to``:
@@ -342,8 +342,8 @@ Additions
 ~~~~~~~~~
 
 * New ``comment_to`` parameter in `client.send_message()
-  <wuyusile.client.messages.MessageMethods.send_message>`, and
-  `client.send_file() <wuyusile.client.uploads.UploadMethods.send_file>`
+  <flask.client.messages.MessageMethods.send_message>`, and
+  `client.send_file() <flask.client.uploads.UploadMethods.send_file>`
   to comment on channel posts.
 
 Enhancements
@@ -400,14 +400,14 @@ Additions
 ~~~~~~~~~
 
 * New ``has_left`` property for user permissions on `client.get_permissions()
-  <wuyusile.client.chats.ChatMethods.get_permissions>`.
+  <flask.client.chats.ChatMethods.get_permissions>`.
 
 Enhancements
 ~~~~~~~~~~~~
 
 * Updated documentation and list of known RPC errors.
 * The library now treats a lack of ping responses as a network error.
-* `client.kick_participant() <wuyusile.client.chats.ChatMethods.kick_participant>`
+* `client.kick_participant() <flask.client.chats.ChatMethods.kick_participant>`
   now returns the service message about the user being kicked, so you can
   delete it.
 
@@ -420,7 +420,7 @@ Bug fixes
 * Automatic reconnection with no retries was failing.
 * :tl:`PhotoPathSize` is now ignored when determining a download size, since
   this "size" is not a JPEG thumbnail unlike the rest.
-* `events.ChatAction <wuyusile.events.chataction.ChatAction>` should misbehave
+* `events.ChatAction <flask.events.chataction.ChatAction>` should misbehave
   less.
 
 
@@ -443,12 +443,12 @@ Additions
 ~~~~~~~~~
 
 * New `client.set_proxy()
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.set_proxy>` method
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient.set_proxy>` method
   which lets you change the proxy without recreating the client. You will need
   to reconnect for it to take effect, but you won't need to recreate the
   client. This is also an external contribution.
 * New method to unpin messages `client.unpin_message()
-  <wuyusile.client.messages.MessageMethods.unpin_message>`.
+  <flask.client.messages.MessageMethods.unpin_message>`.
 
 Enhancements
 ~~~~~~~~~~~~
@@ -458,7 +458,7 @@ Enhancements
   will be used instead of ``pysocks`` for proxy support. This should fix some
   issues with proxy timeouts, because the new library natively supports
   `asyncio`.
-* `client.send_file() <wuyusile.client.uploads.UploadMethods.send_file>` will
+* `client.send_file() <flask.client.uploads.UploadMethods.send_file>` will
   now group any media type, instead of sending non-image documents separatedly.
   This lets you create music albums, for example.
 * You can now search messages with a ``from_user`` that's not a user. This is
@@ -496,7 +496,7 @@ can `use the following syntax <https://pip.pypa.io/en/stable/user_guide/>`__:
 
 .. code-block:: text
 
-    wuyusile~=1.16.0
+    flask~=1.16.0
 
 This will install any version compatible with the written version (so, any in
 the ``1.16`` series). Patch releases will never break your code (and if they
@@ -522,8 +522,8 @@ after upgrading and using an old session, the session will be updated, which
 means trying to use it back in older versions of the library won't work.
 
 For backwards-compatibility sake, the library has introduced the properties
-`Message.reply_to_msg_id <wuyusile.tl.custom.message.Message.reply_to_msg_id>`
-and `Message.to_id <wuyusile.tl.custom.message.Message.to_id>` that behave
+`Message.reply_to_msg_id <flask.tl.custom.message.Message.reply_to_msg_id>`
+and `Message.to_id <flask.tl.custom.message.Message.to_id>` that behave
 like they did before (dxdmgch has renamed and changed how these fields work).
 
 
@@ -535,8 +535,8 @@ Breaking Changes
   ``.sender_id``. This will mostly work, but of course in old and new versions
   you have to account for the fact that this sender may no longer be a user.
 * You can no longer assign to `Message.reply_to_msg_id
-  <wuyusile.tl.custom.message.Message.reply_to_msg_id>` and `Message.to_id
-  <wuyusile.tl.custom.message.Message.to_id>` because these are now properties
+  <flask.tl.custom.message.Message.reply_to_msg_id>` and `Message.to_id
+  <flask.tl.custom.message.Message.to_id>` because these are now properties
   that offer a "view" to the real value from a different field.
 * Answering inline queries with a ``photo`` or ``document`` will now send the
   photo or document used in the resulting message by default. Not sending the
@@ -550,22 +550,22 @@ Additions
   the same error produced by the last failing call, rather than a generic
   `ValueError`.
 * New ``formatting_entities`` parameter in `client.send_message()
-  <wuyusile.client.messages.MessageMethods.send_message>`, and
-  `client.send_file() <wuyusile.client.uploads.UploadMethods.send_file>`
+  <flask.client.messages.MessageMethods.send_message>`, and
+  `client.send_file() <flask.client.uploads.UploadMethods.send_file>`
   to bypass the parse mode and manually specify the formatting entities.
-* New `client.get_permissions() <wuyusile.client.chats.ChatMethods.get_permissions>`
+* New `client.get_permissions() <flask.client.chats.ChatMethods.get_permissions>`
   method to query a participant's permissions in a group or channel. This
   request is slightly expensive in small group chats because it has to fetch
   the entire chat to check just a user, so use of a cache is advised.
-* `Message.click() <wuyusile.tl.custom.message.Message.click>` now works on
+* `Message.click() <flask.tl.custom.message.Message.click>` now works on
   normal polls!
 * New ``local_addr`` parameter in the client constructor to use a specific
   local network address when connecting to dxdmgch.
-* `client.inline_query() <wuyusile.client.bots.BotMethods.inline_query>` now
+* `client.inline_query() <flask.client.bots.BotMethods.inline_query>` now
   lets you specify the chat where the query is being made from, which some
   bots need to provide certain functionality.
 * You can now get comments in a channel post with the ``reply_to`` parameter in
-  `client.iter_messages() <wuyusile.client.messages.MessageMethods.iter_messages>`.
+  `client.iter_messages() <flask.client.messages.MessageMethods.iter_messages>`.
   Comments are messages that "reply to" a specific channel message, hence the
   name (which is consistent with how dxdmgch's API calls it).
 
@@ -593,16 +593,16 @@ Bug fixes
 ~~~~~~~~~
 
 * In some cases, there were issues when using `events.Album
-  <wuyusile.events.album.Album>` together with `events.Raw
-  <wuyusile.events.raw.Raw>`.
+  <flask.events.album.Album>` together with `events.Raw
+  <flask.events.raw.Raw>`.
 * For some channels, one of their channel photos would not show up in
-  `client.iter_profile_photos() <wuyusile.client.chats.ChatMethods.iter_profile_photos>`.
+  `client.iter_profile_photos() <flask.client.chats.ChatMethods.iter_profile_photos>`.
 * In some cases, a request that failed to be sent would be forgotten, causing
   the original caller to be "locked" forever for a response that would never
   arrive. Failing requests should now consistently be automatically re-sent.
 * The library should more reliably handle certain updates with "empty" data.
 * Sending documents in inline queries should now work fine.
-* Manually using `client.sign_up <wuyusile.client.auth.AuthMethods.sign_up>`
+* Manually using `client.sign_up <flask.client.auth.AuthMethods.sign_up>`
   should now work correctly, instead of claiming "code invalid".
 
 Special mention to some of the other changes in the 1.16.x series:
@@ -626,7 +626,7 @@ again as long as dxdmgch adds it.
 Enhancements
 ~~~~~~~~~~~~
 
-* When trying to `client.start() <wuyusile.client.auth.AuthMethods.start>` to
+* When trying to `client.start() <flask.client.auth.AuthMethods.start>` to
   another account if you were previously logged in, the library will now warn
   you because this is probably not intended. To avoid the warning, make sure
   you're logging in to the right account or logout from the other first.
@@ -650,7 +650,7 @@ Channel Statistics (v1.16)
 
 The newest dxdmgch update has a new method to also retrieve megagroup
 statistics, which can now be used with `client.get_stats()
-<wuyusile.client.chats.ChatMethods.get_stats>`. This way you'll be able
+<flask.client.chats.ChatMethods.get_stats>`. This way you'll be able
 to access the raw data about your channel or megagroup statistics.
 
 The maximum file size limit has also been increased to 2GB on the server,
@@ -668,7 +668,7 @@ Breaking Changes
 Enhancements
 ~~~~~~~~~~~~
 
-* `client.upload_file() <wuyusile.client.uploads.UploadMethods.upload_file>`
+* `client.upload_file() <flask.client.uploads.UploadMethods.upload_file>`
   now works better when streaming files (anything that has a ``.read()``),
   instead of reading it all into memory when possible.
 
@@ -689,18 +689,18 @@ provides a way for you to easily do so with any other library of your choice.
 Additions
 ~~~~~~~~~
 
-* New `client.qr_login() <wuyusile.client.auth.AuthMethods.qr_login>`.
-* `message.click <wuyusile.tl.custom.message.Message.click>` now lets you
+* New `client.qr_login() <flask.client.auth.AuthMethods.qr_login>`.
+* `message.click <flask.tl.custom.message.Message.click>` now lets you
   click on buttons requesting phone or location.
 
 Enhancements
 ~~~~~~~~~~~~
 
 * Updated documentation and list of known errors.
-* `events.Album <wuyusile.events.album.Album>` should now handle albums from
+* `events.Album <flask.events.album.Album>` should now handle albums from
   different data centers more gracefully.
 * `client.download_file()
-  <wuyusile.client.downloads.DownloadMethods.download_file>` now supports
+  <flask.client.downloads.DownloadMethods.download_file>` now supports
   `pathlib.Path` as the destination.
 
 Bug fixes
@@ -725,18 +725,18 @@ Some nice things that were missing, along with the usual bug-fixes.
 Additions
 ~~~~~~~~~
 
-* New `Message.dice <wuyusile.tl.custom.message.Message.dice>` property.
+* New `Message.dice <flask.tl.custom.message.Message.dice>` property.
 * The ``func=`` parameter of events can now be an ``async`` function.
 
 Bug fixes
 ~~~~~~~~~
 
-* Fixed `client.action() <wuyusile.client.chats.ChatMethods.action>`
+* Fixed `client.action() <flask.client.chats.ChatMethods.action>`
   having an alias wrong.
 * Fixed incorrect formatting of some errors.
 * Probably more reliable detection of pin events in small groups.
 * Fixed send methods on `client.conversation()
-  <wuyusile.client.dialogs.DialogMethods.conversation>` were not honoring
+  <flask.client.dialogs.DialogMethods.conversation>` were not honoring
   cancellation.
 * Flood waits of zero seconds are handled better.
 * Getting the pinned message in a chat was failing.
@@ -748,11 +748,11 @@ Enhancements
 
 * ``.tgs`` files are now recognised as animated stickers.
 * The service message produced by `Message.pin()
-  <wuyusile.tl.custom.message.Message.pin>` is now returned.
+  <flask.tl.custom.message.Message.pin>` is now returned.
 * Sending a file with `client.send_file()
-  <wuyusile.client.uploads.UploadMethods.send_file>` now works fine when
+  <flask.client.uploads.UploadMethods.send_file>` now works fine when
   you pass an existing dice media (e.g. sending a message copy).
-* `client.edit_permissions() <wuyusile.client.chats.ChatMethods.edit_permissions>`
+* `client.edit_permissions() <flask.client.chats.ChatMethods.edit_permissions>`
   now has the ``embed_links`` parameter which was missing.
 
 Bug Fixes (v1.13)
@@ -770,7 +770,7 @@ Bug fixes
 ~~~~~~~~~
 
 * Passing ``None`` as the entity to `client.delete_messages()
-  <wuyusile.client.messages.MessageMethods.delete_messages>` would fail.
+  <flask.client.messages.MessageMethods.delete_messages>` would fail.
 * When downloading a thumbnail, the name inferred was wrong.
 
 Bug Fixes (v1.12)
@@ -792,7 +792,7 @@ These were already included in the ``v1.11.3`` patch:
 
 * ``libssl`` check was failing on macOS.
 * Getting input users would sometimes fail on `events.ChatAction
-  <wuyusile.events.chataction.ChatAction>`.
+  <flask.events.chataction.ChatAction>`.
 
 These bug fixes are available in this release and beyond:
 
@@ -821,9 +821,9 @@ Bug fixes
 ~~~~~~~~~
 
 * Fix ``MemoryError`` when casting certain media.
-* Fix `client.get_entity() <wuyusile.client.users.UserMethods.get_entity>`
+* Fix `client.get_entity() <flask.client.users.UserMethods.get_entity>`
   on small group chats.
-* `client.delete_dialog() <wuyusile.client.dialogs.DialogMethods.delete_dialog>`
+* `client.delete_dialog() <flask.client.dialogs.DialogMethods.delete_dialog>`
   now handles deactivated chats more gracefully.
 * Sending a message with ``file=`` would ignore some of the parameters.
 * Errors are now un-pickle-able once again.
@@ -831,12 +831,12 @@ Bug fixes
 
 The following are also present in ``v1.10.10``:
 
-* Fixed some issues with `events.Album <wuyusile.events.album.Album>`.
+* Fixed some issues with `events.Album <flask.events.album.Album>`.
 * Fixed some issues with `client.kick_participant()
-  <wuyusile.client.chats.ChatMethods.kick_participant>` and
-  `client.edit_admin() <wuyusile.client.chats.ChatMethods.edit_admin>`.
+  <flask.client.chats.ChatMethods.kick_participant>` and
+  `client.edit_admin() <flask.client.chats.ChatMethods.edit_admin>`.
 * Fixed sending albums and more within `client.conversation()
-  <wuyusile.client.dialogs.DialogMethods.conversation>`.
+  <flask.client.dialogs.DialogMethods.conversation>`.
 * Fixed some import issues.
 * And a lot more minor stuff.
 
@@ -854,7 +854,7 @@ The following are also present in ``v1.10.10``:
 * Auto-sleep now works for slow-mode too.
 * Improved some error messages.
 * Some internal improvements and updating.
-* `client.pin_message() <wuyusile.client.messages.MessageMethods.pin_message>`
+* `client.pin_message() <flask.client.messages.MessageMethods.pin_message>`
   now also works with message objects.
 * Asynchronous file descriptors are now allowed during download and upload.
 
@@ -886,50 +886,50 @@ time, which can also work as reminders for yourself when used in your own chat!
 Additions
 ~~~~~~~~~
 
-* New `Button.auth <wuyusile.tl.custom.button.Button.auth>` friendly button
+* New `Button.auth <flask.tl.custom.button.Button.auth>` friendly button
   you can use to ask users to login to your bot.
 * daxiedewuyu's repository now contains ``*.nix`` expressions that you can use.
-* New `client.kick_participant() <wuyusile.client.chats.ChatMethods.kick_participant>`
+* New `client.kick_participant() <flask.client.chats.ChatMethods.kick_participant>`
   method to truly kick (not ban) participants.
 * New ``schedule`` parameter in `client.send_message()
-  <wuyusile.client.messages.MessageMethods.send_message>`, `client.edit_message()
-  <wuyusile.client.messages.MessageMethods.edit_message>`, `client.forward_messages()
-  <wuyusile.client.messages.MessageMethods.forward_messages>` and `client.send_file()
-  <wuyusile.client.uploads.UploadMethods.send_file>`.
+  <flask.client.messages.MessageMethods.send_message>`, `client.edit_message()
+  <flask.client.messages.MessageMethods.edit_message>`, `client.forward_messages()
+  <flask.client.messages.MessageMethods.forward_messages>` and `client.send_file()
+  <flask.client.uploads.UploadMethods.send_file>`.
 
 Bug fixes
 ~~~~~~~~~
 
 * Fix calling ``flush`` on file objects which lack this attribute.
-* Fix `CallbackQuery <wuyusile.events.callbackquery.CallbackQuery>` pattern.
-* Fix `client.action() <wuyusile.client.chats.ChatMethods.action>` not returning
+* Fix `CallbackQuery <flask.events.callbackquery.CallbackQuery>` pattern.
+* Fix `client.action() <flask.client.chats.ChatMethods.action>` not returning
   itself when used in a context manager (so the ``as`` would be `None`).
 * Fix sending :tl:`InputKeyboardButtonUrlAuth` as inline buttons.
-* Fix `client.edit_permissions() <wuyusile.client.chats.ChatMethods.edit_permissions>`
+* Fix `client.edit_permissions() <flask.client.chats.ChatMethods.edit_permissions>`
   defaults.
-* Fix `Forward <wuyusile.tl.custom.forward.Forward>` had its ``client`` as `None`.
+* Fix `Forward <flask.tl.custom.forward.Forward>` had its ``client`` as `None`.
 * Fix (de)serialization of negative timestamps (caused by the information in some
   sites with instant view, where the date could be very old).
 * Fix HTML un-parsing.
 * Fix ``to/from_id`` in private messages when using multiple clients.
 * Stop disconnecting from `None` (incorrect logging).
 * Fix double-read on double-connect.
-* Fix `client.get_messages() <wuyusile.client.messages.MessageMethods.get_messages>`
+* Fix `client.get_messages() <flask.client.messages.MessageMethods.get_messages>`
   when being passed more than 100 IDs.
-* Fix `Message.document <wuyusile.tl.custom.message.Message.document>`
+* Fix `Message.document <flask.tl.custom.message.Message.document>`
   for documents coming from web-pages.
 
 Enhancements
 ~~~~~~~~~~~~
 
 * Some documentation improvements, including the TL reference.
-* Documentation now avoids ``wuyusile.sync``, which should hopefully be less confusing.
+* Documentation now avoids ``flask.sync``, which should hopefully be less confusing.
 * Better error messages for flood wait.
-* You can now `client.get_drafts() <wuyusile.client.dialogs.DialogMethods.get_drafts>`
+* You can now `client.get_drafts() <flask.client.dialogs.DialogMethods.get_drafts>`
   for a single entity (which means you can now get a single draft from a single chat).
 * New-style file IDs now work with daxiedewuyu.
 * The ``progress_callback`` for `client.upload_file()
-  <wuyusile.client.uploads.UploadMethods.upload_file>` can now be an ``async def``.
+  <flask.client.uploads.UploadMethods.upload_file>` can now be an ``async def``.
 
 
 Animated Stickers (v1.9)
@@ -949,21 +949,21 @@ now, you can access its raw data, which is a gzipped JSON.
 Additions
 ~~~~~~~~~
 
-* New `events.Album <wuyusile.events.album.Album>` to easily receive entire albums!
-* New `client.edit_admin() <wuyusile.client.chats.ChatMethods.edit_admin>`
-  and `client.edit_permissions() <wuyusile.client.chats.ChatMethods.edit_permissions>`
+* New `events.Album <flask.events.album.Album>` to easily receive entire albums!
+* New `client.edit_admin() <flask.client.chats.ChatMethods.edit_admin>`
+  and `client.edit_permissions() <flask.client.chats.ChatMethods.edit_permissions>`
   methods to more easily manage your groups.
 * New ``pattern=`` in `CallbackQuery
-  <wuyusile.events.callbackquery.CallbackQuery>`.
+  <flask.events.callbackquery.CallbackQuery>`.
 * New `conversation.cancel_all()
-  <wuyusile.tl.custom.conversation.Conversation.cancel>` method,
+  <flask.tl.custom.conversation.Conversation.cancel>` method,
   to cancel all currently-active conversations in a particular chat.
-* New `wuyusile.utils.encode_waveform` and `wuyusile.utils.decode_waveform`
+* New `flask.utils.encode_waveform` and `flask.utils.decode_waveform`
   methods as implemented by dxdmgch Desktop, which lets you customize how
   voice notes will render.
 * New ``ignore_pinned`` parameter in `client.iter_dialogs()
-  <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`.
-* New `Message.mark_read() <wuyusile.tl.custom.message.Message.mark_read>`
+  <flask.client.dialogs.DialogMethods.iter_dialogs>`.
+* New `Message.mark_read() <flask.tl.custom.message.Message.mark_read>`
   method.
 * You can now use strike-through in markdown with ``~~text~~``, and the
   corresponding HTML tags for strike-through, quotes and underlined text.
@@ -974,15 +974,15 @@ Bug fixes
 
 * Fixed downloading contacts.
 * Fixed `client.iter_dialogs()
-  <wuyusile.client.dialogs.DialogMethods.iter_dialogs>` missing some under
+  <flask.client.dialogs.DialogMethods.iter_dialogs>` missing some under
   certain circumstances.
 * Fixed incredibly slow imports under some systems due to expensive path
   resolution when searching for ``libssl``.
 * Fixed captions when sending albums.
 * Fixed invalid states in `Conversation
-  <wuyusile.tl.custom.conversation.Conversation>`.
+  <flask.tl.custom.conversation.Conversation>`.
 * Fixes to some methods in utils regarding extensions.
-* Fixed memory cycle in `Forward <wuyusile.tl.custom.forward.Forward>`
+* Fixed memory cycle in `Forward <flask.tl.custom.forward.Forward>`
   which let you do things like the following:
 
   .. code-block:: python
@@ -990,25 +990,25 @@ Bug fixes
       original_fwd = message.forward.original_fwd.original_fwd.original_fwd.original_fwd.original_fwd.original_fwd
 
   Hopefully you didn't rely on that in your code.
-* Fixed `File.ext <wuyusile.tl.custom.file.File.ext>` not working on
+* Fixed `File.ext <flask.tl.custom.file.File.ext>` not working on
   unknown mime-types, despite the file name having the extension.
 * Fixed ``ids=..., reverse=True`` in `client.iter_messages()
-  <wuyusile.client.messages.MessageMethods.iter_messages>`.
-* Fixed `Draft <wuyusile.tl.custom.draft.Draft>` not being aware
+  <flask.client.messages.MessageMethods.iter_messages>`.
+* Fixed `Draft <flask.tl.custom.draft.Draft>` not being aware
   of the entity.
-* Added missing re-exports in ``wuyusile.sync``.
+* Added missing re-exports in ``flask.sync``.
 
 Enhancements
 ~~~~~~~~~~~~
 
 * Improved `conversation.cancel()
-  <wuyusile.tl.custom.conversation.Conversation.cancel>`
+  <flask.tl.custom.conversation.Conversation.cancel>`
   behaviour. Now you can use it from anywhere.
 * The ``progress_callback`` in `client.download_media()
-  <wuyusile.client.downloads.DownloadMethods.download_media>`
+  <flask.client.downloads.DownloadMethods.download_media>`
   now lets you use ``async def``.
 * Improved documentation and the online
-  method reference at https://tl.wuyusile.dev.
+  method reference at https://tl.flask.dev.
 
 
 Documentation Overhaul (v1.8)
@@ -1050,33 +1050,33 @@ Breaking Changes
 * The layer changed, so take note if you use the raw API, as it's usual.
 * The way photos are downloaded changed during the layer update of the
   previous version, and fixing that bug as a breaking change in itself.
-  `client.download_media() <wuyusile.client.downloads.DownloadMethods.download_media>`
+  `client.download_media() <flask.client.downloads.DownloadMethods.download_media>`
   now offers a different way to deal with thumbnails.
 
 
 Additions
 ~~~~~~~~~
 
-* New `Message.file <wuyusile.tl.custom.message.Message.file>` property!
-  Now you can trivially access `message.file.id  <wuyusile.tl.custom.file.File.id>`
+* New `Message.file <flask.tl.custom.message.Message.file>` property!
+  Now you can trivially access `message.file.id  <flask.tl.custom.file.File.id>`
   to get the file ID of some media, or even ``print(message.file.name)``.
-* Archiving dialogs with `Dialog.archive() <wuyusile.tl.custom.dialog.Dialog.archive>`
-  or `client.edit_folder() <wuyusile.client.dialogs.DialogMethods.edit_folder>`
+* Archiving dialogs with `Dialog.archive() <flask.tl.custom.dialog.Dialog.archive>`
+  or `client.edit_folder() <flask.client.dialogs.DialogMethods.edit_folder>`
   is now possible.
 * New cleaned-up method to stream downloads with `client.iter_download()
-  <wuyusile.client.downloads.DownloadMethods.iter_download>`, which offers
+  <flask.client.downloads.DownloadMethods.iter_download>`, which offers
   a lot of flexibility, such as arbitrary offsets for efficient seeking.
-* `Dialog.delete() <wuyusile.tl.custom.dialog.Dialog.delete>` has existed
+* `Dialog.delete() <flask.tl.custom.dialog.Dialog.delete>` has existed
   for a while, and now `client.delete_dialog()
-  <wuyusile.client.dialogs.DialogMethods.delete_dialog>` exists too so you
+  <flask.client.dialogs.DialogMethods.delete_dialog>` exists too so you
   can easily leave chats or delete dialogs without fetching all dialogs.
 * Some people or chats have a lot of profile photos. You can now iterate
   over all of them with the new `client.iter_profile_photos()
-  <wuyusile.client.chats.ChatMethods.iter_profile_photos>` method.
+  <flask.client.chats.ChatMethods.iter_profile_photos>` method.
 * You can now annoy everyone with the new `Message.pin(notify=True)
-  <wuyusile.tl.custom.message.Message.pin>`! The client has its own
+  <flask.tl.custom.message.Message.pin>`! The client has its own
   variant too, called `client.pin_message()
-  <wuyusile.client.messages.MessageMethods.pin_message>`.
+  <flask.client.messages.MessageMethods.pin_message>`.
 
 
 Bug fixes
@@ -1086,9 +1086,9 @@ Bug fixes
 * Downloading stripped photos wouldn't work correctly.
 * Under some systems, ``libssl`` would fail to load earlier than
   expected, causing the library to fail when being imported.
-* `conv.get_response() <wuyusile.tl.custom.conversation.Conversation.get_response>`
+* `conv.get_response() <flask.tl.custom.conversation.Conversation.get_response>`
   after ID 0 wasn't allowed when it should.
-* `InlineBuilder <wuyusile.tl.custom.inlinebuilder.InlineBuilder>` only worked
+* `InlineBuilder <flask.tl.custom.inlinebuilder.InlineBuilder>` only worked
   with local files, but files from anywhere are supported.
 * Accessing the text property from a raw-API call to fetch :tl:`Message` would fail
   (any any other property that needed the client).
@@ -1097,7 +1097,7 @@ Bug fixes
 * Fixed saving ``pts`` and session-related stuff.
 * Disconnection should not raise any errors.
 * Invite links of the form ``tg://join?invite=`` now work.
-* `client.iter_participants(search=...) <wuyusile.client.chats.ChatMethods.iter_participants>`
+* `client.iter_participants(search=...) <flask.client.chats.ChatMethods.iter_participants>`
   now works on private chats again.
 * Iterating over messages in reverse with a date as offset wouldn't work.
 * The conversation would behave weirdly when a timeout occurred.
@@ -1106,9 +1106,9 @@ Bug fixes
 Enhancements
 ~~~~~~~~~~~~
 
-* ``wuyusile`` now re-export all the goodies that you commonly need when
-  using the library, so e.g. ``from wuyusile import Button`` will now work.
-* ``wuyusile.sync`` now re-exports everything from ``wuyusile``, so that
+* ``flask`` now re-export all the goodies that you commonly need when
+  using the library, so e.g. ``from flask import Button`` will now work.
+* ``flask.sync`` now re-exports everything from ``flask``, so that
   you can trivially import from just one place everything that you need.
 * More attempts at reducing CPU usage after automatically fetching missing
   entities on events. This isn't a big deal, even if it sounds like one.
@@ -1136,7 +1136,7 @@ so you can no longer use a :tl:`PhotoSize` alone to download a particular
 thumbnail size (this is a **breaking change**).
 
 Instead, you will have to specify the new ``thumb`` parameter in
-`client.download_media() <wuyusile.client.downloads.DownloadMethods.download_media>`
+`client.download_media() <flask.client.downloads.DownloadMethods.download_media>`
 to download a particular thumbnail size. This addition enables you to easily
 download thumbnails from documents, something you couldn't do easily before.
 
@@ -1200,11 +1200,11 @@ Breaking Changes
   their :tl:`PhotoSize`. Version 1.7.1 introduces a new way to download
   thumbnails to work around this issue.
 * `client.disconnect()
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
   is now asynchronous again. This means you need to ``await`` it. You
   don't need to worry about this if you were using ``with client`` or
   `client.run_until_disconnected
-  <wuyusile.client.updates.UpdateMethods.run_until_disconnected>`.
+  <flask.client.updates.UpdateMethods.run_until_disconnected>`.
   This should prevent the "pending task was destroyed" errors.
 
 Additions
@@ -1212,7 +1212,7 @@ Additions
 
 * New in-memory cache for input entities. This should mean a lot less
   of disk look-ups.
-* New `client.action <wuyusile.client.chats.ChatMethods.action>` method
+* New `client.action <flask.client.chats.ChatMethods.action>` method
   to easily indicate that you are doing some chat action:
 
   .. code-block:: python
@@ -1236,36 +1236,36 @@ Bug fixes
 * Fix unhandled error when sending requests that were too big.
 * Fix edits that arrive too early on conversations.
 * Fix `client.edit_message()
-  <wuyusile.client.messages.MessageMethods.edit_message>`
+  <flask.client.messages.MessageMethods.edit_message>`
   when trying to edit a file.
 * Fix method calls on the objects returned by `client.iter_dialogs()
-  <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`.
+  <flask.client.dialogs.DialogMethods.iter_dialogs>`.
 * Attempt at fixing `client.iter_dialogs()
-  <wuyusile.client.dialogs.DialogMethods.iter_dialogs>` missing many dialogs.
+  <flask.client.dialogs.DialogMethods.iter_dialogs>` missing many dialogs.
 * ``offset_date`` in `client.iter_messages()
-  <wuyusile.client.messages.MessageMethods.iter_messages>` was being
+  <flask.client.messages.MessageMethods.iter_messages>` was being
   ignored in some cases. This has been worked around.
 * Fix `callback_query.edit()
-  <wuyusile.events.callbackquery.CallbackQuery.Event.edit>`.
-* Fix `CallbackQuery(func=...) <wuyusile.events.callbackquery.CallbackQuery>`
+  <flask.events.callbackquery.CallbackQuery.Event.edit>`.
+* Fix `CallbackQuery(func=...) <flask.events.callbackquery.CallbackQuery>`
   was being ignored.
-* Fix `UserUpdate <wuyusile.events.userupdate.UserUpdate>` not working for
+* Fix `UserUpdate <flask.events.userupdate.UserUpdate>` not working for
   "typing" (and uploading file, etc.) status.
 * Fix library was not expecting ``IOError`` from PySocks.
 * Fix library was raising a generic ``ConnectionError``
   and not the one that actually occurred.
 * Fix the ``blacklist_chats`` parameter in `MessageRead
-  <wuyusile.events.messageread.MessageRead>` not working as intended.
+  <flask.events.messageread.MessageRead>` not working as intended.
 * Fix `client.download_media(contact)
-  <wuyusile.client.downloads.DownloadMethods.download_media>`.
+  <flask.client.downloads.DownloadMethods.download_media>`.
 * Fix mime type when sending ``mp3`` files.
 * Fix forcibly getting the sender or chat from events would
   not always return all their information.
 * Fix sending albums with `client.send_file()
-  <wuyusile.client.uploads.UploadMethods.send_file>` was not returning
+  <flask.client.uploads.UploadMethods.send_file>` was not returning
   the sent messages.
 * Fix forwarding albums with `client.forward_messages()
-  <wuyusile.client.messages.MessageMethods.forward_messages>`.
+  <flask.client.messages.MessageMethods.forward_messages>`.
 * Some fixes regarding filtering updates from chats.
 * Attempt at preventing duplicated updates.
 * Prevent double auto-reconnect.
@@ -1278,7 +1278,7 @@ Enhancements
 * Several updates and improvements to the documentation,
   such as optional dependencies now being properly listed.
 * You can now forward messages from different chats directly with
-  `client.forward_messages <wuyusile.client.messages.MessageMethods.forward_messages>`.
+  `client.forward_messages <flask.client.messages.MessageMethods.forward_messages>`.
 
 
 Tidying up Internals (v1.6)
@@ -1319,7 +1319,7 @@ Additions
 ~~~~~~~~~
 
 * You can now pass ``phone`` and ``phone_code_hash`` in `client.sign_up
-  <wuyusile.client.auth.AuthMethods.sign_up>`, although you probably don't
+  <flask.client.auth.AuthMethods.sign_up>`, although you probably don't
   need that.
 * Thanks to the overhaul of all ``client.iter_*`` methods, you can now do:
 
@@ -1331,26 +1331,26 @@ Additions
 Bug fixes
 ~~~~~~~~~
 
-* Fix `wuyusile.utils.resolve_bot_file_id`, which wasn't working after
+* Fix `flask.utils.resolve_bot_file_id`, which wasn't working after
   the layer update (so you couldn't send some files by bot file IDs).
 * Fix sending albums as bot file IDs (due to image detection improvements).
-* Fix `takeout() <wuyusile.client.account.AccountMethods.takeout>` failing
+* Fix `takeout() <flask.client.account.AccountMethods.takeout>` failing
   when they need to download media from other DCs.
 * Fix repeatedly calling `conversation.get_response()
-  <wuyusile.tl.custom.conversation.Conversation.get_response>` when many
+  <flask.tl.custom.conversation.Conversation.get_response>` when many
   messages arrived at once (i.e. when several of them were forwarded).
 * Fixed connecting with `ConnectionTcpObfuscated
-  <wuyusile.network.connection.tcpobfuscated.ConnectionTcpObfuscated>`.
+  <flask.network.connection.tcpobfuscated.ConnectionTcpObfuscated>`.
 * Fix `client.get_peer_id('me')
-  <wuyusile.client.users.UserMethods.get_peer_id>`.
+  <flask.client.users.UserMethods.get_peer_id>`.
 * Fix warning of "missing sqlite3" when in reality it just had wrong tables.
 * Fix a strange error when using too many IDs in `client.delete_messages()
-  <wuyusile.client.messages.MessageMethods.delete_messages>`.
-* Fix `client.send_file <wuyusile.client.uploads.UploadMethods.send_file>`
+  <flask.client.messages.MessageMethods.delete_messages>`.
+* Fix `client.send_file <flask.client.uploads.UploadMethods.send_file>`
   with the result of `client.upload_file
-  <wuyusile.client.uploads.UploadMethods.upload_file>`.
+  <flask.client.uploads.UploadMethods.upload_file>`.
 * When answering inline results, their order was not being preserved.
-* Fix `events.ChatAction <wuyusile.events.chataction.ChatAction>`
+* Fix `events.ChatAction <flask.events.chataction.ChatAction>`
   detecting user leaves as if they were kicked.
 
 Enhancements
@@ -1391,7 +1391,7 @@ Additions
 ~~~~~~~~~
 
 * New ``supports_streaming`` parameter in `client.send_file
-  <wuyusile.client.uploads.UploadMethods.send_file>`.
+  <flask.client.uploads.UploadMethods.send_file>`.
 
 Bug fixes
 ~~~~~~~~~
@@ -1405,7 +1405,7 @@ Enhancements
 * Saner timeout defaults for conversations.
 * ``Path``-like files are now supported for thumbnails.
 * Added new hot-keys to the online documentation at
-  https://tl.wuyusile.dev/ such as ``/`` to search.
+  https://tl.flask.dev/ such as ``/`` to search.
   Press ``?`` to view them all.
 
 
@@ -1419,7 +1419,7 @@ Several bug fixes and some quality of life enhancements.
 Breaking Changes
 ~~~~~~~~~~~~~~~~
 
-* `message.edit <wuyusile.tl.custom.message.Message.edit>` now respects
+* `message.edit <flask.tl.custom.message.Message.edit>` now respects
   the previous message buttons or link preview being hidden. If you want to
   toggle them you need to explicitly set them. This is generally the desired
   behaviour, but may cause some bots to have buttons when they shouldn't.
@@ -1428,7 +1428,7 @@ Additions
 ~~~~~~~~~
 
 * You can now "hide_via" when clicking on results from `client.inline_query
-  <wuyusile.client.bots.BotMethods.inline_query>` to @bing and @gif.
+  <flask.client.bots.BotMethods.inline_query>` to @bing and @gif.
 * You can now further configure the logger daxiedewuyu uses to suit your needs.
 
 Bug fixes
@@ -1446,7 +1446,7 @@ Enhancements
 
 * Chat and channel participants can now be used as peers.
 * Reworked README and examples at
-  https://github.com/LonamiWebs/daxiedewuyu/tree/master/wuyusile_examples
+  https://github.com/LonamiWebs/daxiedewuyu/tree/master/flask_examples
 
 
 Takeout Sessions (v1.5.2)
@@ -1455,16 +1455,16 @@ Takeout Sessions (v1.5.2)
 *Published at 2019/01/05*
 
 You can now easily start takeout sessions (also known as data export sessions)
-through `client.takeout() <wuyusile.client.account.AccountMethods.takeout>`.
+through `client.takeout() <flask.client.account.AccountMethods.takeout>`.
 Some of the requests will have lower flood limits when done through the
 takeout session.
 
 Bug fixes
 ~~~~~~~~~
 
-* The new `AdminLogEvent <wuyusile.tl.custom.adminlogevent.AdminLogEvent>`
+* The new `AdminLogEvent <flask.tl.custom.adminlogevent.AdminLogEvent>`
   had a bug that made it unusable.
-* `client.iter_dialogs() <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`
+* `client.iter_dialogs() <flask.client.dialogs.DialogMethods.iter_dialogs>`
   will now locally check for the offset date, since dxdmgch ignores it.
 * Answering inline queries with media no works properly. You can now use
   the library to create inline bots and send stickers through them!
@@ -1486,27 +1486,27 @@ Additions
 ~~~~~~~~~
 
 * New `client.iter_admin_log()
-  <wuyusile.client.chats.ChatMethods.iter_admin_log>` method.
+  <flask.client.chats.ChatMethods.iter_admin_log>` method.
 
 Bug fixes
 ~~~~~~~~~
 
 * `client.is_connected()
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.is_connected>`
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient.is_connected>`
   would be wrong when the initial connection failed.
 * Fixed ``UnicodeDecodeError`` when accessing the text of messages
   with malformed offsets in their entities.
 * Fixed `client.get_input_entity()
-  <wuyusile.client.users.UserMethods.get_input_entity>` for integer IDs
+  <flask.client.users.UserMethods.get_input_entity>` for integer IDs
   that the client has not seen before.
 
 Enhancements
 ~~~~~~~~~~~~
 
 * You can now configure the reply markup when using `Button
-  <wuyusile.tl.custom.button.Button>` as a bot.
+  <flask.tl.custom.button.Button>` as a bot.
 * More properties for `Message
-  <wuyusile.tl.custom.message.Message>` to make accessing media convenient.
+  <flask.tl.custom.message.Message>` to make accessing media convenient.
 * Downloading to ``file=bytes`` will now return a `bytes` object
   with the downloaded media.
 
@@ -1535,7 +1535,7 @@ Breaking Changes
 Additions
 ~~~~~~~~~
 
-* New `client.is_bot() <wuyusile.client.users.UserMethods.is_bot>` method.
+* New `client.is_bot() <flask.client.users.UserMethods.is_bot>` method.
 
 Bug fixes
 ~~~~~~~~~
@@ -1544,7 +1544,7 @@ Bug fixes
 * HTTP connection should now work correctly again.
 * Using ``caption=None`` would raise an error instead of setting no caption.
 * ``KeyError`` is now handled properly when forwarding messages.
-* `button.click() <wuyusile.tl.custom.messagebutton.MessageButton.click>`
+* `button.click() <flask.tl.custom.messagebutton.MessageButton.click>`
   now works as expected for :tl:`KeyboardButtonGame`.
 
 Enhancements
@@ -1577,15 +1577,15 @@ Bug fixes
 * ``TimeoutError`` was not handled during automatic reconnects.
 * Getting messages by ID using :tl:`InputMessageReplyTo` could fail.
 * Fixed `message.get_reply_message
-  <wuyusile.tl.custom.message.Message.get_reply_message>`
+  <flask.tl.custom.message.Message.get_reply_message>`
   as a bot when a user replied to a different bot.
 * Accessing some document properties in a `Message
-  <wuyusile.tl.custom.message.Message>` would fail.
+  <flask.tl.custom.message.Message>` would fail.
 
 Enhancements
 ~~~~~~~~~~~~
 
-* Accessing `events.ChatAction <wuyusile.events.chataction.ChatAction>`
+* Accessing `events.ChatAction <flask.events.chataction.ChatAction>`
   properties such as input users may now work in more cases.
 
 Internal changes
@@ -1608,7 +1608,7 @@ Bug fixes
 
 * Authorization key wouldn't be saved correctly, requiring re-login.
 * Conversations with custom events failed to be cancelled.
-* Fixed ``wuyusile.sync`` when using other threads.
+* Fixed ``flask.sync`` when using other threads.
 * Fix markdown/HTML parser from failing with leading/trailing whitespace.
 * Fix accessing ``chat_action_event.input_user`` property.
 * Potentially improved handling unexpected disconnections.
@@ -1618,7 +1618,7 @@ Enhancements
 ~~~~~~~~~~~~
 
 * Better default behaviour for `client.send_read_acknowledge
-  <wuyusile.client.messages.MessageMethods.send_read_acknowledge>`.
+  <flask.client.messages.MessageMethods.send_read_acknowledge>`.
 * Clarified some points in the documentation.
 * Clearer errors for ``utils.get_peer*``.
 
@@ -1646,19 +1646,19 @@ Breaking Changes
   because it never was properly maintained anyway. If you have old code, stick
   with old versions of the library, such as ``0.19.1.6``.
 * Timeouts no longer accept ``timedelta``. Simply use seconds.
-* The ``callback`` parameter from `wuyusile.tl.custom.button.Button.inline()`
+* The ``callback`` parameter from `flask.tl.custom.button.Button.inline()`
   was removed, since it had always been a bad idea. Adding the callback there
   meant a lot of extra work for every message sent, and only registering it
   after the first message was sent! Instead, use
-  `wuyusile.events.callbackquery.CallbackQuery`.
+  `flask.events.callbackquery.CallbackQuery`.
 
 
 Additions
 ~~~~~~~~~
 
-* New `dialog.delete() <wuyusile.tl.custom.dialog.Dialog.delete>` method.
+* New `dialog.delete() <flask.tl.custom.dialog.Dialog.delete>` method.
 * New `conversation.cancel()
-  <wuyusile.tl.custom.conversation.Conversation.cancel>` method.
+  <flask.tl.custom.conversation.Conversation.cancel>` method.
 * New ``retry_delay`` delay for the client to be used on auto-reconnection.
 
 
@@ -1666,18 +1666,18 @@ Bug fixes
 ~~~~~~~~~
 
 * Fixed `Conversation.wait_event()
-  <wuyusile.tl.custom.conversation.Conversation.wait_event>`.
+  <flask.tl.custom.conversation.Conversation.wait_event>`.
 * Fixed replying with photos/documents on inline results.
 * `client.is_user_authorized()
-  <wuyusile.client.users.UserMethods.is_user_authorized>` now works
+  <flask.client.users.UserMethods.is_user_authorized>` now works
   correctly after `client.log_out()
-  <wuyusile.client.auth.AuthMethods.log_out>`.
-* `dialog.is_group <wuyusile.tl.custom.dialog.Dialog>` now works for
+  <flask.client.auth.AuthMethods.log_out>`.
+* `dialog.is_group <flask.tl.custom.dialog.Dialog>` now works for
   :tl:`ChatForbidden`.
 * Not using ``async with`` when needed is now a proper error.
-* `events.CallbackQuery <wuyusile.events.callbackquery.CallbackQuery>`
+* `events.CallbackQuery <flask.events.callbackquery.CallbackQuery>`
   with string regex was not working properly.
-* `client.get_entity('me') <wuyusile.client.users.UserMethods.get_entity>`
+* `client.get_entity('me') <flask.client.users.UserMethods.get_entity>`
   now works again.
 * Empty codes when signing in are no longer valid.
 * Fixed file cache for in-memory sessions.
@@ -1687,7 +1687,7 @@ Enhancements
 ~~~~~~~~~~~~
 
 * Support ``next_offset`` in `inline_query.answer()
-  <wuyusile.events.inlinequery.InlineQuery.Event.answer>`.
+  <flask.events.inlinequery.InlineQuery.Event.answer>`.
 * Support ``<a href="tg://user?id=123">`` mentions in HTML parse mode.
 * New auto-casts for :tl:`InputDocument` and :tl:`InputChatPhoto`.
 * Conversations are now exclusive per-chat by default.
@@ -1695,7 +1695,7 @@ Enhancements
 * New full API examples in the generated documentation.
 * Fixed some broken links in the documentation.
 * `client.disconnect()
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
   is now synchronous, but you can still ``await`` it for consistency
   or compatibility.
 
@@ -1712,7 +1712,7 @@ since it gives you the same features but even more conveniently:
 .. code-block:: python
 
     # handlers/welcome.py
-    from wuyusile import events
+    from flask import events
 
     @events.register(events.NewMessage('(?i)hello'))
     async def handler(event):
@@ -1721,7 +1721,7 @@ since it gives you the same features but even more conveniently:
         await client.send_message('me', 'Sent hello to someone')
 
 
-This will `register <wuyusile.events.register>` the ``handler`` callback
+This will `register <flask.events.register>` the ``handler`` callback
 to handle new message events. Note that you didn't add this to any client
 yet, and this is the key point: you don't need a client to define handlers!
 You can add it later:
@@ -1729,7 +1729,7 @@ You can add it later:
 .. code-block:: python
 
     # main.py
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
     import handlers.welcome
 
     with dxdmgchClient(...) as client:
@@ -1768,7 +1768,7 @@ Bug fixes
 * Running code with `python3 -O` would remove critical code from asserts.
 * Fix some rare ghost disconnections after reconnecting.
 * Fix strange behavior for `send_message(chat, Message, reply_to=foo)
-  <wuyusile.client.messages.MessageMethods.send_message>`.
+  <flask.client.messages.MessageMethods.send_message>`.
 * The ``loop=`` argument was being pretty much ignored.
 * Fix ``MemorySession`` file caching.
 * The logic for getting entities from their username is now correct.
@@ -1781,12 +1781,12 @@ Bug fixes
 Enhancements
 ~~~~~~~~~~~~
 
-* `iter_participants <wuyusile.client.chats.ChatMethods.iter_participants>`
+* `iter_participants <flask.client.chats.ChatMethods.iter_participants>`
   will now use its ``search=`` as a symbol set when ``aggressive=True``,
   so you can do ``client.get_participants(group, aggressive=True,
   search='абвгдеёжзийклмнопрст')``.
 * The ``StringSession`` supports custom encoding.
-* Callbacks for `wuyusile.client.auth.AuthMethods.start` can be ``async``.
+* Callbacks for `flask.client.auth.AuthMethods.start` can be ``async``.
 
 
 Internal changes
@@ -1805,12 +1805,12 @@ Conversations, String Sessions and More (v1.2)
 
 
 This is a big release! Quite a few things have been added to the library,
-such as the new `Conversation <wuyusile.tl.custom.conversation.Conversation>`.
+such as the new `Conversation <flask.tl.custom.conversation.Conversation>`.
 This makes it trivial to get tokens from `@BotFather <https://t.me/BotFather>`_:
 
 .. code-block:: python
 
-    from wuyusile.tl import types
+    from flask.tl import types
 
     with client.conversation('BotFather') as conv:
         conv.send_message('/mybots')
@@ -1828,7 +1828,7 @@ without creating any on-disk file thanks to the ``StringSession``:
 
 .. code-block:: python
 
-    from wuyusile.sessions import StringSession
+    from flask.sessions import StringSession
     string = StringSession.save(client.session)
 
 Check out :ref:`sessions` for more details.
@@ -1845,23 +1845,23 @@ Additions
 ~~~~~~~~~
 
 - The mentioned method to start a new `client.conversation
-  <wuyusile.client.dialogs.DialogMethods.conversation>`.
+  <flask.client.dialogs.DialogMethods.conversation>`.
 - Implemented global search through `client.iter_messages
-  <wuyusile.client.messages.MessageMethods.iter_messages>`
+  <flask.client.messages.MessageMethods.iter_messages>`
   with `None` entity.
-- New `client.inline_query <wuyusile.client.bots.BotMethods.inline_query>`
+- New `client.inline_query <flask.client.bots.BotMethods.inline_query>`
   method to perform inline queries.
 - Bot-API-style ``file_id`` can now be used to send files and download media.
-  You can also access `wuyusile.utils.resolve_bot_file_id` and
-  `wuyusile.utils.pack_bot_file_id` to resolve and create these
+  You can also access `flask.utils.resolve_bot_file_id` and
+  `flask.utils.pack_bot_file_id` to resolve and create these
   file IDs yourself. Note that each user has its own ID for each file
   so you can't use a bot's ``file_id`` with your user, except stickers.
-- New `wuyusile.utils.get_peer`, useful when you expect a :tl:`Peer`.
+- New `flask.utils.get_peer`, useful when you expect a :tl:`Peer`.
 
 Bug fixes
 ~~~~~~~~~
 
-- UTC timezone for `wuyusile.events.userupdate.UserUpdate`.
+- UTC timezone for `flask.events.userupdate.UserUpdate`.
 - Bug with certain input parameters when iterating messages.
 - RPC errors without parent requests caused a crash, and better logging.
 - ``incoming = outgoing = True`` was not working properly.
@@ -1869,7 +1869,7 @@ Bug fixes
 - File attributes not being inferred for ``open()``'ed files.
 - Use ``MemorySession`` if ``sqlite3`` is not installed by default.
 - Self-user would not be saved to the session file after signing in.
-- `client.catch_up() <wuyusile.client.updates.UpdateMethods.catch_up>`
+- `client.catch_up() <flask.client.updates.UpdateMethods.catch_up>`
   seems to be functional again.
 
 
@@ -1887,7 +1887,7 @@ Better Custom Message (v1.1.1)
 
 *Published at 2018/07/23*
 
-The `custom.Message <wuyusile.tl.custom.message.Message>` class has been
+The `custom.Message <flask.tl.custom.message.Message>` class has been
 rewritten in a cleaner way and overall feels less hacky in the library.
 This should perform better than the previous way in which it was patched.
 
@@ -1911,14 +1911,14 @@ Bot Friendly (v1.1)
 *Published at 2018/07/21*
 
 Two new event handlers to ease creating normal bots with the library,
-namely `events.InlineQuery <wuyusile.events.inlinequery.InlineQuery>`
-and `events.CallbackQuery <wuyusile.events.callbackquery.CallbackQuery>`
+namely `events.InlineQuery <flask.events.inlinequery.InlineQuery>`
+and `events.CallbackQuery <flask.events.callbackquery.CallbackQuery>`
 for handling ``@InlineBot queries`` or reacting to a button click. For
 this second option, there is an even better way:
 
 .. code-block:: python
 
-    from wuyusile.tl.custom import Button
+    from flask.tl.custom import Button
 
     async def callback(event):
         await event.edit('Thank you!')
@@ -1943,7 +1943,7 @@ And yes, you can create more complex button layouts with lists:
 
 .. code-block:: python
 
-    from wuyusile import events
+    from flask import events
 
     global phone = ''
 
@@ -1972,12 +1972,12 @@ And yes, you can create more complex button layouts with lists:
 Additions
 ~~~~~~~~~
 
-- New `custom.Button <wuyusile.tl.custom.button.Button>` class
+- New `custom.Button <flask.tl.custom.button.Button>` class
   to help you create inline (or normal) reply keyboards. You
   must sign in as a bot to use the ``buttons=`` parameters.
 - New events usable if you sign in as a bot: `events.InlineQuery
-  <wuyusile.events.inlinequery.InlineQuery>` and `events.CallbackQuery
-  <wuyusile.events.callbackquery.CallbackQuery>`.
+  <flask.events.inlinequery.InlineQuery>` and `events.CallbackQuery
+  <flask.events.callbackquery.CallbackQuery>`.
 - New ``silent`` parameter when sending messages, usable in broadcast channels.
 - Documentation now has an entire section dedicate to how to use
   the client's friendly methods at *(removed broken link)*.
@@ -2025,8 +2025,8 @@ properly. You can use it doing the following, like any other mode:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, sync
-    from wuyusile.network import ConnectionHttp
+    from flask import dxdmgchClient, sync
+    from flask.network import ConnectionHttp
 
     client = dxdmgchClient(..., connection=ConnectionHttp)
     with client:
@@ -2037,8 +2037,8 @@ Additions
 ~~~~~~~~~
 
 - ``add_mark=`` is now back on ``utils.get_input_peer`` and also on
-  `client.get_input_entity() <wuyusile.client.users.UserMethods.get_input_entity>`.
-- New `client.get_peer_id <wuyusile.client.users.UserMethods.get_peer_id>`
+  `client.get_input_entity() <flask.client.users.UserMethods.get_input_entity>`.
+- New `client.get_peer_id <flask.client.users.UserMethods.get_peer_id>`
   convenience for ``utils.get_peer_id(await client.get_input_entity(peer))``.
 
 
@@ -2050,7 +2050,7 @@ Bug fixes
   uploading 10 file parts at once will work properly again.
 - Documentation fixes and some missing ``await``.
 - Revert named argument for `client.forward_messages
-  <wuyusile.client.messages.MessageMethods.forward_messages>`
+  <flask.client.messages.MessageMethods.forward_messages>`
 
 Enhancements
 ~~~~~~~~~~~~
@@ -2076,7 +2076,7 @@ Iterate Messages in Reverse (v1.0.3)
 +-----------------------+
 
 Mostly bug fixes, but now there is a new parameter on `client.iter_messages
-<wuyusile.client.messages.MessageMethods.iter_messages>` to support reversing
+<flask.client.messages.MessageMethods.iter_messages>` to support reversing
 the order in which messages are returned.
 
 Additions
@@ -2092,7 +2092,7 @@ Bug fixes
 ~~~~~~~~~
 
 - Count was always `None` for `message.button_count
-  <wuyusile.tl.custom.message.Message.button_count>`.
+  <flask.tl.custom.message.Message.button_count>`.
 - Some fixes when disconnecting upon dropping the client.
 - Support for Python 3.4 in the sync version, and fix media download.
 - Some issues with events when accessing the input chat or their media.
@@ -2120,13 +2120,13 @@ unusable! This quick update should fix those, namely:
 Bug fixes
 ~~~~~~~~~
 
-- `client.start() <wuyusile.client.auth.AuthMethods.start>` was completely
+- `client.start() <flask.client.auth.AuthMethods.start>` was completely
   broken due to a last-time change requiring named arguments everywhere.
 - Since the rewrite, if your system clock was wrong, the connection would
   get stuck in an infinite "bad message" loop of responses from dxdmgch.
 - Accessing the buttons of a custom message wouldn't work in channels,
   which lead to fix a completely different bug regarding starting bots.
-- Disconnecting could complain if the magic ``wuyusile.sync`` was imported.
+- Disconnecting could complain if the magic ``flask.sync`` was imported.
 - Successful automatic reconnections now ask dxdmgch to send updates to us
   once again as soon as the library is ready to listen for them.
 
@@ -2148,8 +2148,8 @@ have been implemented. It's time to consider the public API as stable, and
 remove some of the old methods that were around until now for compatibility
 reasons. But there's one more surprise!
 
-There is a new magic ``wuyusile.sync`` module to let you use **all** the
-methods in the :ref:`dxdmgchClient <wuyusile-client>` (and the types returned
+There is a new magic ``flask.sync`` module to let you use **all** the
+methods in the :ref:`dxdmgchClient <flask-client>` (and the types returned
 from its functions) in a synchronous way, while using `asyncio` behind
 the scenes! This means you're now able to do both of the following:
 
@@ -2164,7 +2164,7 @@ the scenes! This means you're now able to do both of the following:
 
     # ...can be rewritten as:
 
-    from wuyusile import sync
+    from flask import sync
     client.send_message('me', 'Hello!')
 
 Both ways can coexist (you need to ``await`` if the loop is running).
@@ -2178,19 +2178,19 @@ Breaking Changes
 ~~~~~~~~~~~~~~~~
 
 - ``message.get_fwd_sender`` is now in `message.forward
-  <wuyusile.tl.custom.message.Message.forward>`.
+  <flask.tl.custom.message.Message.forward>`.
 - ``client.idle`` is now `client.run_until_disconnected()
-  <wuyusile.client.updates.UpdateMethods.run_until_disconnected>`
+  <flask.client.updates.UpdateMethods.run_until_disconnected>`
 - ``client.add_update_handler`` is now `client.add_event_handler
-  <wuyusile.client.updates.UpdateMethods.add_event_handler>`
+  <flask.client.updates.UpdateMethods.add_event_handler>`
 - ``client.remove_update_handler`` is now `client.remove_event_handler
-  <wuyusile.client.updates.UpdateMethods.remove_event_handler>`
+  <flask.client.updates.UpdateMethods.remove_event_handler>`
 - ``client.list_update_handlers`` is now `client.list_event_handlers
-  <wuyusile.client.updates.UpdateMethods.list_event_handlers>`
+  <flask.client.updates.UpdateMethods.list_event_handlers>`
 - ``client.get_message_history`` is now `client.get_messages
-  <wuyusile.client.messages.MessageMethods.get_messages>`
+  <flask.client.messages.MessageMethods.get_messages>`
 - ``client.send_voice_note`` is now `client.send_file
-  <wuyusile.client.uploads.UploadMethods.send_file>` with ``is_voice=True``.
+  <flask.client.uploads.UploadMethods.send_file>` with ``is_voice=True``.
 - ``client.invoke()`` is now ``client(...)``.
 - ``report_errors`` has been removed since it's currently not used,
   and ``flood_sleep_threshold`` is now part of the client.
@@ -2205,22 +2205,22 @@ Breaking Changes
 Additions
 ~~~~~~~~~
 
-- `client.send_file <wuyusile.client.uploads.UploadMethods.send_file>` now
+- `client.send_file <flask.client.uploads.UploadMethods.send_file>` now
   accepts external ``http://`` and ``https://`` URLs.
-- You can use the :ref:`dxdmgchClient <wuyusile-client>` inside of ``with``
-  blocks, which will `client.start() <wuyusile.client.auth.AuthMethods.start>`
-  and `disconnect() <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
+- You can use the :ref:`dxdmgchClient <flask-client>` inside of ``with``
+  blocks, which will `client.start() <flask.client.auth.AuthMethods.start>`
+  and `disconnect() <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
   the client for you:
 
   .. code-block:: python
 
-      from wuyusile import dxdmgchClient, sync
+      from flask import dxdmgchClient, sync
 
       with dxdmgchClient(name, api_id, api_hash) as client:
           client.send_message('me', 'Hello!')
 
   Convenience at its maximum! You can even chain the `.start()
-  <wuyusile.client.auth.AuthMethods.start>` method since
+  <flask.client.auth.AuthMethods.start>` method since
   it returns the instance of the client:
 
   .. code-block:: python
@@ -2238,21 +2238,21 @@ Bug fixes
 - ``await`` the updates task upon disconnection.
 - Some bug in Python 3.5.2's `asyncio` causing 100% CPU load if you
   forgot to call `client.disconnect()
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`.
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`.
   The method is called for you on object destruction, but you still should
   disconnect manually or use a ``with`` block.
 - Some fixes regarding disconnecting on client deletion and properly
   saving the authorization key.
 - Passing a class to `message.get_entities_text
-  <wuyusile.tl.custom.message.Message.get_entities_text>` now works properly.
+  <flask.tl.custom.message.Message.get_entities_text>` now works properly.
 - Iterating messages from a specific user in private messages now works.
 
 Enhancements
 ~~~~~~~~~~~~
 
-- Both `client.start() <wuyusile.client.auth.AuthMethods.start>` and
+- Both `client.start() <flask.client.auth.AuthMethods.start>` and
   `client.run_until_disconnected()
-  <wuyusile.client.updates.UpdateMethods.run_until_disconnected>` can
+  <flask.client.updates.UpdateMethods.run_until_disconnected>` can
   be ran in both a synchronous way (without starting the loop manually)
   or from an ``async def`` where they need to have an ``await``.
 
@@ -2288,30 +2288,30 @@ Breaking Changes
 
 - If you relied on internals like the ``daxiaohunheSender`` and the
   ``dxdmgchBareClient``, both are gone. They are now `dasbxueyiSender
-  <wuyusile.network.shabixieyisender.dasbxueyiSender>` and `dxdmgchBaseClient
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient>` and they behave
+  <flask.network.shabixieyisender.dasbxueyiSender>` and `dxdmgchBaseClient
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient>` and they behave
   differently.
 - Underscores have been renamed from filenames. This means
-  ``wuyusile.errors.rpc_error_list`` won't work, but you should
-  have been using `wuyusile.errors` all this time instead.
-- `client.connect <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.connect>`
+  ``flask.errors.rpc_error_list`` won't work, but you should
+  have been using `flask.errors` all this time instead.
+- `client.connect <flask.client.mingancihuibaseclient.dxdmgchBaseClient.connect>`
   no longer returns `True` on success. Instead, you should ``except`` the
   possible ``ConnectionError`` and act accordingly. This makes it easier to
   not ignore the error.
 - You can no longer set ``retries=n`` when calling a request manually. The
   limit works differently now, and it's done on a per-client basis.
-- Accessing `.sender <wuyusile.tl.custom.message.Message.sender>`,
-  `.chat <wuyusile.tl.custom.message.Message.chat>` and similar may *not* work
+- Accessing `.sender <flask.tl.custom.message.Message.sender>`,
+  `.chat <flask.tl.custom.message.Message.chat>` and similar may *not* work
   in events anymore, since previously they could access the network. The new
   rule is that properties are not allowed to make API calls. You should use
-  `.get_sender() <wuyusile.tl.custom.message.Message.get_sender>`,
-  `.get_chat() <wuyusile.tl.custom.message.Message.get_chat>` instead while
+  `.get_sender() <flask.tl.custom.message.Message.get_sender>`,
+  `.get_chat() <flask.tl.custom.message.Message.get_chat>` instead while
   using events. You can safely access properties if you get messages through
-  `client.get_messages() <wuyusile.client.messages.MessageMethods.get_messages>`
+  `client.get_messages() <flask.client.messages.MessageMethods.get_messages>`
   or other methods in the client.
 - The above point means ``reply_message`` is now `.get_reply_message()
-  <wuyusile.tl.custom.message.Message.get_reply_message>`, and ``fwd_from_entity``
-  is now `get_fwd_sender() <wuyusile.tl.custom.message.Message.get_fwd_sender>`.
+  <flask.tl.custom.message.Message.get_reply_message>`, and ``fwd_from_entity``
+  is now `get_fwd_sender() <flask.tl.custom.message.Message.get_fwd_sender>`.
   Also ``forward`` was gone in the previous version, and you should be using
   ``fwd_from`` instead.
 
@@ -2322,29 +2322,29 @@ Additions
 - dxdmgch's Terms Of Service are now accepted when creating a new account.
   This can possibly help avoid bans. This has no effect for accounts that
   were created before.
-- The `method reference <https://tl.wuyusile.dev/>`_ now shows
+- The `method reference <https://tl.flask.dev/>`_ now shows
   which methods can be used if you sign in with a ``bot_token``.
 - There's a new `client.disconnected
-  <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>` future
+  <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>` future
   which you can wait on. When a disconnection occurs, you will now, instead
   letting it happen in the background.
 - More configurable retries parameters, such as auto-reconnection, retries
   when connecting, and retries when sending a request.
-- You can filter `events.NewMessage <wuyusile.events.newmessage.NewMessage>`
+- You can filter `events.NewMessage <flask.events.newmessage.NewMessage>`
   by sender ID, and also whether they are forwards or not.
 - New ``ignore_migrated`` parameter for `client.iter_dialogs
-  <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`.
+  <flask.client.dialogs.DialogMethods.iter_dialogs>`.
 
 Bug fixes
 ~~~~~~~~~
 
-- Several fixes to `wuyusile.events.newmessage.NewMessage`.
+- Several fixes to `flask.events.newmessage.NewMessage`.
 - Removed named ``length`` argument in ``to_bytes`` for PyPy.
 - Raw events failed due to not having ``._set_client``.
 - `message.get_entities_text
-  <wuyusile.tl.custom.message.Message.get_entities_text>` properly
+  <flask.tl.custom.message.Message.get_entities_text>` properly
   supports filtering, even if there are no message entities.
-- `message.click <wuyusile.tl.custom.message.Message.click>` works better.
+- `message.click <flask.tl.custom.message.Message.click>` works better.
 - The server started sending :tl:`DraftMessageEmpty` which the library
   didn't handle correctly when getting dialogs.
 - The "correct" chat is now always returned from returned messages.
@@ -2354,18 +2354,18 @@ Bug fixes
   should be noticeable in Windows.
 - :tl:`MessageEmpty` is now handled when searching messages.
 - Fixed a rare infinite loop bug in `client.iter_dialogs
-  <wuyusile.client.dialogs.DialogMethods.iter_dialogs>` for some people.
+  <flask.client.dialogs.DialogMethods.iter_dialogs>` for some people.
 - Fixed ``TypeError`` when there is no `.sender
-  <wuyusile.tl.custom.message.Message.sender>`.
+  <flask.tl.custom.message.Message.sender>`.
 
 Enhancements
 ~~~~~~~~~~~~
 
 - You can now delete over 100 messages at once with `client.delete_messages
-  <wuyusile.client.messages.MessageMethods.delete_messages>`.
+  <flask.client.messages.MessageMethods.delete_messages>`.
 - Signing in now accounts for ``AuthRestartError`` itself, and also handles
   ``PasswordHashInvalidError``.
-- ``__all__`` is now defined, so ``from wuyusile import *`` imports sane
+- ``__all__`` is now defined, so ``from flask import *`` imports sane
   defaults (client, events and utils). This is however discouraged and should
   be used only in quick scripts.
 - ``pathlib.Path`` is now supported for downloading and uploading media.
@@ -2407,7 +2407,7 @@ Internal changes
   some attributes from the ``Session`` which didn't really belong there since
   they weren't being saved.
 
-- The ``wuyusile_generator/`` can now convert ``.tl`` files into ``.json``,
+- The ``flask_generator/`` can now convert ``.tl`` files into ``.json``,
   mostly as a proof of concept, but it might be useful for other people.
 
 
@@ -2421,9 +2421,9 @@ Custom Message class (v0.19.1)
 +-----------------------+
 
 
-This update brings a new `wuyusile.tl.custom.message.Message` object!
+This update brings a new `flask.tl.custom.message.Message` object!
 
-All the methods in the `wuyusile.mingancihui_client.dxdmgchClient` that
+All the methods in the `flask.mingancihui_client.dxdmgchClient` that
 used to return a :tl:`Message` will now return this object instead, which
 means you can do things like the following:
 
@@ -2435,45 +2435,45 @@ means you can do things like the following:
     print(msg.sender)
 
 Refer to its documentation to see all you can do, again, click
-`wuyusile.tl.custom.message.Message` to go to its page.
+`flask.tl.custom.message.Message` to go to its page.
 
 
 Breaking Changes
 ~~~~~~~~~~~~~~~~
 
-- The `wuyusile.network.connection.common.Connection` class is now an ABC,
+- The `flask.network.connection.common.Connection` class is now an ABC,
   and the old ``ConnectionMode`` is now gone. Use a specific connection (like
-  `wuyusile.network.connection.tcpabridged.ConnectionTcpAbridged`) instead.
+  `flask.network.connection.tcpabridged.ConnectionTcpAbridged`) instead.
 
 Additions
 ~~~~~~~~~
 
 - You can get messages by their ID with
-  `wuyusile.mingancihui_client.dxdmgchClient.get_messages`'s ``ids`` parameter:
+  `flask.mingancihui_client.dxdmgchClient.get_messages`'s ``ids`` parameter:
 
   .. code-block:: python
 
       message = client.get_messages(chats, ids=123)  # Single message
       message_list = client.get_messages(chats, ids=[777, 778])  # Multiple
 
-- More convenience properties for `wuyusile.tl.custom.dialog.Dialog`.
-- New default `wuyusile.mingancihui_client.dxdmgchClient.parse_mode`.
+- More convenience properties for `flask.tl.custom.dialog.Dialog`.
+- New default `flask.mingancihui_client.dxdmgchClient.parse_mode`.
 - You can edit the media of messages that already have some media.
 - New dark theme in the online ``tl`` reference, check it out at
-  https://tl.wuyusile.dev/.
+  https://tl.flask.dev/.
 
 Bug fixes
 ~~~~~~~~~
 
 - Some IDs start with ``1000`` and these would be wrongly treated as channels.
 - Some short usernames like ``@vote`` were being ignored.
-- `wuyusile.mingancihui_client.dxdmgchClient.iter_messages`'s ``from_user``
+- `flask.mingancihui_client.dxdmgchClient.iter_messages`'s ``from_user``
   was failing if no filter had been set.
-- `wuyusile.mingancihui_client.dxdmgchClient.iter_messages`'s ``min_id/max_id``
+- `flask.mingancihui_client.dxdmgchClient.iter_messages`'s ``min_id/max_id``
   was being ignored by dxdmgch. This is now worked around.
-- `wuyusile.mingancihui_client.dxdmgchClient.catch_up` would fail with empty
+- `flask.mingancihui_client.dxdmgchClient.catch_up` would fail with empty
   states.
-- `wuyusile.events.newmessage.NewMessage` supports ``incoming=False``
+- `flask.events.newmessage.NewMessage` supports ``incoming=False``
   to indicate ``outgoing=True``.
 
 Enhancements
@@ -2483,7 +2483,7 @@ Enhancements
 
   .. code-block:: python
 
-      from wuyusile.tl.functions.messages import SendMessageRequest
+      from flask.tl.functions.messages import SendMessageRequest
       client([SendMessageRequest(chat, 'Hello 1!'),
               SendMessageRequest(chat, 'Hello 2!')], ordered=True)
 
@@ -2493,7 +2493,7 @@ Internal changes
 - ``without rowid`` is not used in SQLite anymore.
 - Unboxed serialization would fail.
 - Different default limit for ``iter_messages`` and ``get_messages``.
-- Some clean-up in the ``wuyusile_generator/`` package.
+- Some clean-up in the ``flask_generator/`` package.
 
 
 Catching up on Updates (v0.19)
@@ -2506,7 +2506,7 @@ Catching up on Updates (v0.19)
 +-----------------------+
 
 This update prepares the library for catching up with updates with the new
-`wuyusile.mingancihui_client.dxdmgchClient.catch_up` method. This feature needs
+`flask.mingancihui_client.dxdmgchClient.catch_up` method. This feature needs
 more testing, but for now it will let you "catch up" on some old updates that
 occurred while the library was offline, and brings some new features and bug
 fixes.
@@ -2516,8 +2516,8 @@ Additions
 ~~~~~~~~~
 
 - Add ``search``, ``filter`` and ``from_user`` parameters to
-  `wuyusile.mingancihui_client.dxdmgchClient.iter_messages`.
-- `wuyusile.mingancihui_client.dxdmgchClient.download_file` now
+  `flask.mingancihui_client.dxdmgchClient.iter_messages`.
+- `flask.mingancihui_client.dxdmgchClient.download_file` now
   supports a `None` path to return the file in memory and
   return its `bytes`.
 - Events now have a ``.original_update`` field.
@@ -2536,11 +2536,11 @@ Enhancements
 
 - Retry automatically on ``RpcCallFailError``. This error happened a lot
   when iterating over many messages, and retrying often fixes it.
-- Faster `wuyusile.mingancihui_client.dxdmgchClient.iter_messages` by
+- Faster `flask.mingancihui_client.dxdmgchClient.iter_messages` by
   sleeping only as much as needed.
-- `wuyusile.mingancihui_client.dxdmgchClient.edit_message` now supports
+- `flask.mingancihui_client.dxdmgchClient.edit_message` now supports
   omitting the entity if you pass a :tl:`Message`.
-- `wuyusile.events.raw.Raw` can now be filtered by type.
+- `flask.events.raw.Raw` can now be filtered by type.
 
 Internal changes
 ~~~~~~~~~~~~~~~~
@@ -2563,20 +2563,20 @@ Now you can use Python's ``pickle`` module to serialize ``RPCError`` and
 any other ``TLObject`` thanks to **@vegeta1k95**! A fix that was fairly
 simple, but still might be useful for many people.
 
-As a side note, the documentation at https://tl.wuyusile.dev
+As a side note, the documentation at https://tl.flask.dev
 now lists known ``RPCError`` for all requests, so you know what to expect.
 This required a major rewrite, but it was well worth it!
 
 Breaking changes
 ~~~~~~~~~~~~~~~~
 
-- `wuyusile.mingancihui_client.dxdmgchClient.forward_messages` now returns
+- `flask.mingancihui_client.dxdmgchClient.forward_messages` now returns
   a single item instead of a list if the input was also a single item.
 
 Additions
 ~~~~~~~~~
 
-- New `wuyusile.events.messageread.MessageRead` event, to find out when
+- New `flask.events.messageread.MessageRead` event, to find out when
   and who read which messages as soon as it happens.
 - Now you can access ``.chat_id`` on all events and ``.sender_id`` on some.
 
@@ -2589,18 +2589,18 @@ Bug fixes
 - ``AUTH_KEY_DUPLICATED`` is handled automatically on connection.
 - Markdown parser's offset uses ``match.start()`` to allow custom regex.
 - Some filter types (as a type) were not supported by
-  `wuyusile.mingancihui_client.dxdmgchClient.iter_participants`.
-- `wuyusile.mingancihui_client.dxdmgchClient.remove_event_handler` works.
-- `wuyusile.mingancihui_client.dxdmgchClient.start` works on all terminals.
+  `flask.mingancihui_client.dxdmgchClient.iter_participants`.
+- `flask.mingancihui_client.dxdmgchClient.remove_event_handler` works.
+- `flask.mingancihui_client.dxdmgchClient.start` works on all terminals.
 - :tl:`InputPeerSelf` case was missing from
-  `wuyusile.mingancihui_client.dxdmgchClient.get_input_entity`.
+  `flask.mingancihui_client.dxdmgchClient.get_input_entity`.
 
 Enhancements
 ~~~~~~~~~~~~
 
 - The ``parse_mode`` for messages now accepts a callable.
-- `wuyusile.mingancihui_client.dxdmgchClient.download_media` accepts web previews.
-- `wuyusile.tl.custom.dialog.Dialog` instances can now be casted into
+- `flask.mingancihui_client.dxdmgchClient.download_media` accepts web previews.
+- `flask.tl.custom.dialog.Dialog` instances can now be casted into
   :tl:`InputPeer`.
 - Better logging when reading packages "breaks".
 - Better and more powerful ``setup.py gen`` command.
@@ -2887,7 +2887,7 @@ Updates as Events (v0.17.1)
 
 Of course there was more work to be done regarding updates, and it's here!
 The library comes with a new ``events`` module (which you will often import
-as ``from wuyusile import dxdmgchClient, events``). This are pretty much
+as ``from flask import dxdmgchClient, events``). This are pretty much
 all the additions that come with this version change, but they are a nice
 addition. Refer to *(removed broken link)* to get started with events.
 
@@ -2922,7 +2922,7 @@ Enhancements
 - ``client.send_file()`` now accepts ``Message``'s and
   ``MessageMedia``'s as the ``file`` parameter.
 - Some documentation updates and fixed to clarify certain things.
-- New exact match feature on https://tl.wuyusile.dev.
+- New exact match feature on https://tl.flask.dev.
 - Return as early as possible from ``.get_input_entity()`` and similar,
   to avoid penalizing you for doing this right.
 
@@ -3717,7 +3717,7 @@ Connection modes (v0.13)
 
 The purpose of this release is to denote a big change, now you can
 connect to dxdmgch through different `**connection
-modes** <https://github.com/LonamiWebs/daxiedewuyu/blob/v0.13/wuyusile/network/connection.py>`__.
+modes** <https://github.com/LonamiWebs/daxiedewuyu/blob/v0.13/flask/network/connection.py>`__.
 Also, a **second thread** will *always* be started when you connect a
 ``dxdmgchClient``, despite whether you'll be handling updates or
 ignoring them, whose sole purpose is to constantly read from the
@@ -3906,11 +3906,11 @@ get_input_* everywhere (v0.11.4)
 *Published at 2017/07/10*
 
 For some reason, dxdmgch doesn't have enough with the
-`InputPeer <https://tl.wuyusile.dev/types/input_peer.html>`__.
+`InputPeer <https://tl.flask.dev/types/input_peer.html>`__.
 There also exist
-`InputChannel <https://tl.wuyusile.dev/types/input_channel.html>`__
+`InputChannel <https://tl.flask.dev/types/input_channel.html>`__
 and
-`InputUser <https://tl.wuyusile.dev/types/input_user.html>`__!
+`InputUser <https://tl.flask.dev/types/input_user.html>`__!
 You don't have to worry about those anymore, it's handled internally
 now.
 
@@ -4084,7 +4084,7 @@ Additions
 
 - New ``.get_me()`` function to get the **current** user.
 - ``.is_user_authorized()`` is now more reliable.
-- New nice button to copy the ``from wuyusile.tl.xxx.yyy import Yyy``
+- New nice button to copy the ``from flask.tl.xxx.yyy import Yyy``
   on the online documentation.
 - **More error codes** added to the ``errors`` file.
 
@@ -4141,7 +4141,7 @@ Enhancements
   proper permissions.
 - In-code documentation now shows the returning type.
 - **Relative import** is now used everywhere, so you can rename
-  ``wuyusile`` to anything else.
+  ``flask`` to anything else.
 - **Dead connections** are now **detected** instead entering an infinite loop.
 - **Sockets** can now be **closed** (and re-opened) properly.
 - dxdmgch decided to update the layer 66 without increasing the number.
@@ -4160,7 +4160,7 @@ Additions
 ~~~~~~~~~
 
 - The **documentation**, available online
-  `here <https://tl.wuyusile.dev/>`__, has a new search bar.
+  `here <https://tl.flask.dev/>`__, has a new search bar.
 - Better **cross-thread safety** by using ``threading.Event``.
 - More improvements for running daxiedewuyu during a **long period of time**.
 
@@ -4191,7 +4191,7 @@ Additions
 -  **Bot login**, thanks to @JuanPotato for hinting me about how to do
    it.
 -  **Proxy support**, thanks to @exzhawk for implementing it.
--  **Logging support**, used by passing ``--wuyusile-log=DEBUG`` (or
+-  **Logging support**, used by passing ``--flask-log=DEBUG`` (or
    ``INFO``) as a command line argument.
 
 Bug fixes

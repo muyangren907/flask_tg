@@ -16,10 +16,10 @@ to find out about the attributes.
 ChatGetter
 ==========
 
-All events base `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`,
+All events base `ChatGetter <flask.tl.custom.chatgetter.ChatGetter>`,
 and some of the objects below do too, so it's important to know its methods.
 
-.. currentmodule:: wuyusile.tl.custom.chatgetter.ChatGetter
+.. currentmodule:: flask.tl.custom.chatgetter.ChatGetter
 
 .. autosummary::
     :nosignatures:
@@ -38,11 +38,11 @@ and some of the objects below do too, so it's important to know its methods.
 SenderGetter
 ============
 
-Similar to `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`, a
-`SenderGetter <wuyusile.tl.custom.sendergetter.SenderGetter>` is the same,
+Similar to `ChatGetter <flask.tl.custom.chatgetter.ChatGetter>`, a
+`SenderGetter <flask.tl.custom.sendergetter.SenderGetter>` is the same,
 but it works for senders instead.
 
-.. currentmodule:: wuyusile.tl.custom.sendergetter.SenderGetter
+.. currentmodule:: flask.tl.custom.sendergetter.SenderGetter
 
 .. autosummary::
     :nosignatures:
@@ -58,14 +58,14 @@ but it works for senders instead.
 Message
 =======
 
-.. currentmodule:: wuyusile.tl.custom.message
+.. currentmodule:: flask.tl.custom.message
 
 The `Message` type is very important, mostly because we are working
 with a library for a *messaging* platform, so messages are widely used:
 in events, when fetching history, replies, etc.
 
-It bases `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>` and
-`SenderGetter <wuyusile.tl.custom.sendergetter.SenderGetter>`.
+It bases `ChatGetter <flask.tl.custom.chatgetter.ChatGetter>` and
+`SenderGetter <flask.tl.custom.sendergetter.SenderGetter>`.
 
 Properties
 ----------
@@ -75,7 +75,7 @@ Properties
     We document *custom properties* here, not all the attributes of the
     `Message` (which is the information dxdmgch actually returns).
 
-.. currentmodule:: wuyusile.tl.custom.message.Message
+.. currentmodule:: flask.tl.custom.message.Message
 
 .. autosummary::
     :nosignatures:
@@ -131,12 +131,12 @@ Methods
 File
 ====
 
-The `File <wuyusile.tl.custom.file.File>` type is a wrapper object
-returned by `Message.file <wuyusile.tl.custom.message.Message.file>`,
+The `File <flask.tl.custom.file.File>` type is a wrapper object
+returned by `Message.file <flask.tl.custom.message.Message.file>`,
 and you can use it to easily access a document's attributes, such as
 its name, bot-API style file ID, etc.
 
-.. currentmodule:: wuyusile.tl.custom.file.File
+.. currentmodule:: flask.tl.custom.file.File
 
 .. autosummary::
     :nosignatures:
@@ -158,14 +158,14 @@ its name, bot-API style file ID, etc.
 Conversation
 ============
 
-The `Conversation <wuyusile.tl.custom.conversation.Conversation>` object
+The `Conversation <flask.tl.custom.conversation.Conversation>` object
 is returned by the `client.conversation()
-<wuyusile.client.dialogs.DialogMethods.conversation>` method to easily
+<flask.client.dialogs.DialogMethods.conversation>` method to easily
 send and receive responses like a normal conversation.
 
-It bases `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`.
+It bases `ChatGetter <flask.tl.custom.chatgetter.ChatGetter>`.
 
-.. currentmodule:: wuyusile.tl.custom.conversation.Conversation
+.. currentmodule:: flask.tl.custom.conversation.Conversation
 
 .. autosummary::
     :nosignatures:
@@ -185,14 +185,14 @@ It bases `ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`.
 AdminLogEvent
 =============
 
-The `AdminLogEvent <wuyusile.tl.custom.adminlogevent.AdminLogEvent>` object
+The `AdminLogEvent <flask.tl.custom.adminlogevent.AdminLogEvent>` object
 is returned by the `client.iter_admin_log()
-<wuyusile.client.chats.ChatMethods.iter_admin_log>` method to easily iterate
+<flask.client.chats.ChatMethods.iter_admin_log>` method to easily iterate
 over past "events" (deleted messages, edits, title changes, leaving members…)
 
 These are all the properties you can find in it:
 
-.. currentmodule:: wuyusile.tl.custom.adminlogevent.AdminLogEvent
+.. currentmodule:: flask.tl.custom.adminlogevent.AdminLogEvent
 
 .. autosummary::
     :nosignatures:
@@ -226,13 +226,13 @@ These are all the properties you can find in it:
 Button
 ======
 
-The `Button <wuyusile.tl.custom.button.Button>` class is used when you login
+The `Button <flask.tl.custom.button.Button>` class is used when you login
 as a bot account to send messages with reply markup, such as inline buttons
 or custom keyboards.
 
 These are the static methods you can use to create instances of the markup:
 
-.. currentmodule:: wuyusile.tl.custom.button.Button
+.. currentmodule:: flask.tl.custom.button.Button
 
 .. autosummary::
     :nosignatures:
@@ -252,21 +252,21 @@ These are the static methods you can use to create instances of the markup:
 InlineResult
 ============
 
-The `InlineResult <wuyusile.tl.custom.inlineresult.InlineResult>` object
+The `InlineResult <flask.tl.custom.inlineresult.InlineResult>` object
 is returned inside a list by the `client.inline_query()
-<wuyusile.client.bots.BotMethods.inline_query>` method to make an inline
+<flask.client.bots.BotMethods.inline_query>` method to make an inline
 query to a bot that supports being used in inline mode, such as
 `@like <https://t.me/like>`_.
 
 Note that the list returned is in fact a *subclass* of a list called
-`InlineResults <wuyusile.tl.custom.inlineresults.InlineResults>`, which,
+`InlineResults <flask.tl.custom.inlineresults.InlineResults>`, which,
 in addition of being a list (iterator, indexed access, etc.), has extra
 attributes and methods.
 
 These are the constants for the types, properties and methods you
 can find the individual results:
 
-.. currentmodule:: wuyusile.tl.custom.inlineresult.InlineResult
+.. currentmodule:: flask.tl.custom.inlineresult.InlineResult
 
 .. autosummary::
     :nosignatures:
@@ -296,10 +296,10 @@ can find the individual results:
 Dialog
 ======
 
-The `Dialog <wuyusile.tl.custom.dialog.Dialog>` object is returned when
-you call `client.iter_dialogs() <wuyusile.client.dialogs.DialogMethods.iter_dialogs>`.
+The `Dialog <flask.tl.custom.dialog.Dialog>` object is returned when
+you call `client.iter_dialogs() <flask.client.dialogs.DialogMethods.iter_dialogs>`.
 
-.. currentmodule:: wuyusile.tl.custom.dialog.Dialog
+.. currentmodule:: flask.tl.custom.dialog.Dialog
 
 .. autosummary::
     :nosignatures:
@@ -312,10 +312,10 @@ you call `client.iter_dialogs() <wuyusile.client.dialogs.DialogMethods.iter_dial
 Draft
 ======
 
-The `Draft <wuyusile.tl.custom.draft.Draft>` object is returned when
-you call `client.iter_drafts() <wuyusile.client.dialogs.DialogMethods.iter_drafts>`.
+The `Draft <flask.tl.custom.draft.Draft>` object is returned when
+you call `client.iter_drafts() <flask.client.dialogs.DialogMethods.iter_drafts>`.
 
-.. currentmodule:: wuyusile.tl.custom.draft.Draft
+.. currentmodule:: flask.tl.custom.draft.Draft
 
 .. autosummary::
     :nosignatures:
@@ -335,10 +335,10 @@ you call `client.iter_drafts() <wuyusile.client.dialogs.DialogMethods.iter_draft
 Utils
 =====
 
-The `wuyusile.utils` module has plenty of methods that make using the
+The `flask.utils` module has plenty of methods that make using the
 library a lot easier. Only the interesting ones will be listed here.
 
-.. currentmodule:: wuyusile.utils
+.. currentmodule:: flask.utils
 
 .. autosummary::
     :nosignatures:

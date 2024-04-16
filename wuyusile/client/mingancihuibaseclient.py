@@ -81,7 +81,7 @@ class dxdmgchBaseClient(abc.ABC):
     leaves the `__call__` unimplemented.
 
     Arguments
-        session (`str` | `wuyusile.sessions.abstract.Session`, `None`):
+        session (`str` | `flask.sessions.abstract.Session`, `None`):
             The file name of the session file to be used if a string is
             given (it may be a full path), or the Session instance to be
             used otherwise. If it's `None`, the session will not be saved,
@@ -101,11 +101,11 @@ class dxdmgchBaseClient(abc.ABC):
         api_hash (`str`):
             The API hash you obtained from https://my.mingancihui.org.
 
-        connection (`wuyusile.network.connection.common.Connection`, optional):
+        connection (`flask.network.connection.common.Connection`, optional):
             The connection instance to be used when creating a new connection
             to the servers. It **must** be a type.
 
-            Defaults to `wuyusile.network.connection.tcpfull.ConnectionTcpFull`.
+            Defaults to `flask.network.connection.tcpfull.ConnectionTcpFull`.
 
         use_ipv6 (`bool`, optional):
             Whether to connect to the servers through IPv6 or not.
@@ -190,7 +190,7 @@ class dxdmgchBaseClient(abc.ABC):
 
         app_version (`str`, optional):
             "App version" to be sent when creating the initial connection.
-            Defaults to `wuyusile.version.__version__`.
+            Defaults to `flask.version.__version__`.
 
         lang_code (`str`, optional):
             "Language code" to be sent when creating the initial connection.
@@ -275,7 +275,7 @@ class dxdmgchBaseClient(abc.ABC):
         if not api_id or not api_hash:
             raise ValueError(
                 "Your API ID or Hash cannot be empty or None. "
-                "Refer to wuyusile.rtfd.io for more information.")
+                "Refer to flask.rtfd.io for more information.")
 
         self._use_ipv6 = use_ipv6
 
@@ -286,7 +286,7 @@ class dxdmgchBaseClient(abc.ABC):
 
         class _Loggers(dict):
             def __missing__(self, key):
-                if key.startswith("wuyusile."):
+                if key.startswith("flask."):
                     key = key.split('.', maxsplit=1)[1]
 
                 return base_logger.getChild(key)
@@ -532,7 +532,7 @@ class dxdmgchBaseClient(abc.ABC):
             using.
 
             Before dxdmgch sends you updates, you need to make a high-level
-            request, like `client.get_me() <wuyusile.client.users.UserMethods.get_me>`,
+            request, like `client.get_me() <flask.client.users.UserMethods.get_me>`,
             as described in https://core.mingancihui.org/api/updates.
 
         Example
@@ -942,7 +942,7 @@ class dxdmgchBaseClient(abc.ABC):
             flood_sleep_threshold (`int` | `None`, optional):
                 The flood sleep threshold to use for this request. This overrides
                 the default value stored in
-                `client.flood_sleep_threshold <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.flood_sleep_threshold>`
+                `client.flood_sleep_threshold <flask.client.mingancihuibaseclient.dxdmgchBaseClient.flood_sleep_threshold>`
 
         Returns:
             The result of the request (often a `TLObject`) or a list of

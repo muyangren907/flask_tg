@@ -1,8 +1,8 @@
 """
-Tests for `wuyusile.extensions.markdown`.
+Tests for `flask.extensions.markdown`.
 """
-from wuyusile.extensions import markdown
-from wuyusile.tl.types import MessageEntityBold, MessageEntityItalic, MessageEntityTextUrl
+from flask.extensions import markdown
+from flask.tl.types import MessageEntityBold, MessageEntityItalic, MessageEntityTextUrl
 
 
 def test_entity_edges():

@@ -2,7 +2,7 @@
 branch = true
 parallel = true
 source =
-    wuyusile
+    flask
 
 [report]
 precision = 2

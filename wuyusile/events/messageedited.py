@@ -7,12 +7,12 @@ from ..tl import types
 class MessageEdited(NewMessage):
     """
     Occurs whenever a message is edited. Just like `NewMessage
-    <wuyusile.events.newmessage.NewMessage>`, you should treat
-    this event as a `Message <wuyusile.tl.custom.message.Message>`.
+    <flask.events.newmessage.NewMessage>`, you should treat
+    this event as a `Message <flask.tl.custom.message.Message>`.
 
     .. warning::
 
-        On channels, `Message.out <wuyusile.tl.custom.message.Message>`
+        On channels, `Message.out <flask.tl.custom.message.Message>`
         will be `True` if you sent the message originally, **not if
         you edited it**! This can be dangerous if you run outgoing
         commands on edits.
@@ -35,7 +35,7 @@ class MessageEdited(NewMessage):
     Example
         .. code-block:: python
 
-            from wuyusile import events
+            from flask import events
 
             @client.on(events.MessageEdited)
             async def handler(event):

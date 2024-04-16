@@ -10,8 +10,8 @@ class Forward(ChatGetter, SenderGetter):
     abstraction to easily access information like the original sender.
 
     Remember that this class implements `ChatGetter
-    <wuyusile.tl.custom.chatgetter.ChatGetter>` and `SenderGetter
-    <wuyusile.tl.custom.sendergetter.SenderGetter>` which means you
+    <flask.tl.custom.chatgetter.ChatGetter>` and `SenderGetter
+    <flask.tl.custom.sendergetter.SenderGetter>` which means you
     have access to all their sender and chat properties and methods.
 
     Attributes:

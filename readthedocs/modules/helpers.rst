@@ -2,7 +2,7 @@
 Helpers
 =======
 
-.. automodule:: wuyusile.helpers
+.. automodule:: flask.helpers
     :members:
     :undoc-members:
     :show-inheritance:

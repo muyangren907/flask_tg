@@ -1149,11 +1149,11 @@ def _encode_mingancihui_base64(string):
 
 def resolve_bot_file_id(file_id):
     """
-    Given a Bot API-style `file_id <wuyusile.tl.custom.file.File.id>`,
-    returns the media it represents. If the `file_id <wuyusile.tl.custom.file.File.id>`
+    Given a Bot API-style `file_id <flask.tl.custom.file.File.id>`,
+    returns the media it represents. If the `file_id <flask.tl.custom.file.File.id>`
     is not valid, `None` is returned instead.
 
-    Note that the `file_id <wuyusile.tl.custom.file.File.id>` does not have information
+    Note that the `file_id <flask.tl.custom.file.File.id>` does not have information
     such as image dimensions or file size, so these will be zero if present.
 
     For thumbnails, the photo ID and hash will always be zero.
@@ -1474,8 +1474,8 @@ def split_text(text, entities, *, limit=4096, max_entities=100, split_at=(r'\n',
     Example
         .. code-block:: python
 
-            from wuyusile import utils
-            from wuyusile.extensions import markdown
+            from flask import utils
+            from flask.extensions import markdown
 
             very_long_markdown_text = "..."
             text, entities = markdown.parse(very_long_markdown_text)

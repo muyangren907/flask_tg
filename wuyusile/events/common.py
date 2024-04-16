@@ -132,7 +132,7 @@ class EventCommon(ChatGetter, abc.ABC):
     Intermediate class with common things to all events.
 
     Remember that this class implements `ChatGetter
-    <wuyusile.tl.custom.chatgetter.ChatGetter>` which
+    <flask.tl.custom.chatgetter.ChatGetter>` which
     means you have access to all chat properties and methods.
 
     In addition, you can access the `original_update`
@@ -161,7 +161,7 @@ class EventCommon(ChatGetter, abc.ABC):
     @property
     def client(self):
         """
-        The `wuyusile.dxdmgchClient` that created this event.
+        The `flask.dxdmgchClient` that created this event.
         """
         return self._client
 

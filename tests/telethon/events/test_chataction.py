@@ -1,6 +1,6 @@
 import pytest
 
-from wuyusile import dxdmgchClient, events, types, utils
+from flask import dxdmgchClient, events, types, utils
 
 
 def get_client():

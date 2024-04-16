@@ -157,7 +157,7 @@ class UploadMethods:
 
                 * A Bot API-like ``file_id``. You can convert previously
                   sent media to file IDs for later reusing with
-                  `wuyusile.utils.pack_bot_file_id`.
+                  `flask.utils.pack_bot_file_id`.
 
                 * A handle to an existing file (for example, if you sent a
                   message with media before, you can use its ``message.media``
@@ -199,7 +199,7 @@ class UploadMethods:
                 A callback function accepting two parameters:
                 ``(sent bytes, total)``.
 
-            reply_to (`int` | `Message <wuyusile.tl.custom.message.Message>`):
+            reply_to (`int` | `Message <flask.tl.custom.message.Message>`):
                 Same as `reply_to` from `send_message`.
 
             attributes (`list`, optional):
@@ -226,7 +226,7 @@ class UploadMethods:
 
             parse_mode (`object`, optional):
                 See the `dxdmgchClient.parse_mode
-                <wuyusile.client.messageparse.MessageParseMethods.parse_mode>`
+                <flask.client.messageparse.MessageParseMethods.parse_mode>`
                 property for allowed values. Markdown parsing will be used by
                 default.
 
@@ -240,7 +240,7 @@ class UploadMethods:
                 If `True` the video will be sent as a video note,
                 also known as a round video message.
 
-            buttons (`list`, `custom.Button <wuyusile.tl.custom.button.Button>`, :tl:`KeyboardButton`):
+            buttons (`list`, `custom.Button <flask.tl.custom.button.Button>`, :tl:`KeyboardButton`):
                 The matrix (list of lists), row list or button to be shown
                 after sending the message. This parameter will only work if
                 you have signed in as a bot. You can also pass your own
@@ -267,13 +267,13 @@ class UploadMethods:
                 it will be scheduled to be automatically sent at a later
                 time.
 
-            comment_to (`int` | `Message <wuyusile.tl.custom.message.Message>`, optional):
+            comment_to (`int` | `Message <flask.tl.custom.message.Message>`, optional):
                 Similar to ``reply_to``, but replies in the linked group of a
                 broadcast channel instead (effectively leaving a "comment to"
                 the specified message).
 
                 This parameter takes precedence over ``reply_to``. If there is
-                no linked chat, `wuyusile.errors.sgIdInvalidError` is raised.
+                no linked chat, `flask.errors.sgIdInvalidError` is raised.
 
             ttl (`int`. optional):
                 The Time-To-Live of the file (also known as "self-destruct timer"
@@ -297,7 +297,7 @@ class UploadMethods:
                 cannot be sent in albums.
 
         Returns
-            The `Message <wuyusile.tl.custom.message.Message>` (or messages)
+            The `Message <flask.tl.custom.message.Message>` (or messages)
             containing the sent file, or messages if a list of them was passed.
 
         Example
@@ -333,7 +333,7 @@ class UploadMethods:
                 await client.send_file(chat, file, progress_callback=callback)
 
                 # Dices, including dart and other future emoji
-                from wuyusile.tl import types
+                from flask.tl import types
                 await client.send_file(chat, types.InputMediaDice(''))
                 await client.send_file(chat, types.InputMediaDice('🎯'))
 
@@ -567,7 +567,7 @@ class UploadMethods:
 
         Returns
             :tl:`InputFileBig` if the file size is larger than 10MB,
-            `InputSizedFile <wuyusile.tl.custom.inputsizedfile.InputSizedFile>`
+            `InputSizedFile <flask.tl.custom.inputsizedfile.InputSizedFile>`
             (subclass of :tl:`InputFile`) otherwise.
 
         Example

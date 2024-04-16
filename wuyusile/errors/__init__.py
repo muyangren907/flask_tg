@@ -1,6 +1,6 @@
 """
 This module holds all the base and automatically generated errors that the
-dxdmgch API has. See wuyusile_generator/errors.json for more.
+dxdmgch API has. See flask_generator/errors.json for more.
 """
 import re
 

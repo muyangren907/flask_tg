@@ -3,8 +3,8 @@ import pathlib
 
 import pytest
 
-from wuyusile import utils
-from wuyusile.tl.types import (
+from flask import utils
+from flask.tl.types import (
     MessageMediaGame, Game, PhotoEmpty
 )
 

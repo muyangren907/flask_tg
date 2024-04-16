@@ -28,7 +28,7 @@ class ChatGetter(abc.ABC):
         If you need to call a method which needs
         this chat, use `input_chat` instead.
 
-        If you're using `wuyusile.events`, use `get_chat()` instead.
+        If you're using `flask.events`, use `get_chat()` instead.
         """
         return self._chat
 
@@ -57,7 +57,7 @@ class ChatGetter(abc.ABC):
         """
         This :tl:`InputPeer` is the input version of the chat where the
         message was sent. Similarly to `input_sender
-        <wuyusile.tl.custom.sendergetter.SenderGetter.input_sender>`, this
+        <flask.tl.custom.sendergetter.SenderGetter.input_sender>`, this
         doesn't have things like username or similar, but still useful in
         some cases.
 
@@ -113,7 +113,7 @@ class ChatGetter(abc.ABC):
         `True` if the message was sent as a private message.
 
         Returns `None` if there isn't enough information
-        (e.g. on `events.MessageDeleted <wuyusile.events.messagedeleted.MessageDeleted>`).
+        (e.g. on `events.MessageDeleted <flask.events.messagedeleted.MessageDeleted>`).
         """
         return isinstance(self._chat_peer, types.PeerUser) if self._chat_peer else None
 
@@ -123,7 +123,7 @@ class ChatGetter(abc.ABC):
         True if the message was sent on a group or megagroup.
 
         Returns `None` if there isn't enough information
-        (e.g. on `events.MessageDeleted <wuyusile.events.messagedeleted.MessageDeleted>`).
+        (e.g. on `events.MessageDeleted <flask.events.messagedeleted.MessageDeleted>`).
         """
         # TODO Cache could tell us more in the future
         if self._broadcast is None and hasattr(self.chat, 'broadcast'):

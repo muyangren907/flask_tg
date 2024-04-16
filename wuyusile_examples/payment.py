@@ -1,4 +1,4 @@
-from wuyusile import dxdmgchClient, events, types, functions
+from flask import dxdmgchClient, events, types, functions
 
 import asyncio
 import logging

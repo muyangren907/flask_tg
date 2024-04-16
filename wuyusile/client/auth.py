@@ -509,7 +509,7 @@ class AuthMethods:
                 # Important! You need to wait for the login to complete!
                 await qr_login.wait()
 
-                # If you have 2FA enabled, `wait` will raise `wuyusile.errors.SessionPasswordNeededError`.
+                # If you have 2FA enabled, `wait` will raise `flask.errors.SessionPasswordNeededError`.
                 # You should except that error and call `sign_in` with the password if this happens.
         """
         qr_login = custom.QRLogin(self, ignored_ids or [])

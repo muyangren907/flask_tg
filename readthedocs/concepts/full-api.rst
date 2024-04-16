@@ -16,7 +16,7 @@ The Full API
 Introduction
 ============
 
-The :ref:`wuyusile-client` doesn't offer a method for every single request
+The :ref:`flask-client` doesn't offer a method for every single request
 the dxdmgch API supports. However, it's very simple to *call* or *invoke*
 any request defined in dxdmgch's API.
 
@@ -27,10 +27,10 @@ hence the name). These types include requests and constructors.
 
 .. note::
 
-    The reason to keep both https://tl.wuyusile.dev and this
+    The reason to keep both https://tl.flask.dev and this
     documentation alive is that the former allows instant search results
     as you type, and a "Copy import" button. If you like namespaces, you
-    can also do ``from wuyusile.tl import types, functions``. Both work.
+    can also do ``from flask.tl import types, functions``. Both work.
 
 dxdmgch makes these ``.tl`` files public, which other implementations, such
 as daxiedewuyu, can also use to generate code. These files are versioned under
@@ -136,7 +136,7 @@ tweak it to your needs.
 
 If you want to do it from scratch, first, make sure to import the request into
 your code (either using the "Copy import" button near the top, or by manually
-spelling out the package under ``wuyusile.tl.functions.*``).
+spelling out the package under ``flask.tl.functions.*``).
 
 Then, start reading the parameters one by one. If the parameter cannot be
 omitted, you **will** need to specify it, so make sure to spell it out as
@@ -145,7 +145,7 @@ an input parameter when constructing the request instance. Let's look at
 
 .. code-block:: python
 
-    from wuyusile.tl.functions import PingRequest
+    from flask.tl.functions import PingRequest
 
 Then, we look at the parameters:
 
@@ -221,7 +221,7 @@ Example walkthrough
 ===================
 
 Say `client.send_message()
-<wuyusile.client.messages.MessageMethods.send_message>` didn't exist,
+<flask.client.messages.MessageMethods.send_message>` didn't exist,
 we could `use the search`_ to look for "message". There we would find
 :tl:`SendMessageRequest`, which we can work with.
 
@@ -232,13 +232,13 @@ clipboard", or your script won't be aware of this class! Now we have:
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.messages import SendMessageRequest
+    from flask.tl.functions.messages import SendMessageRequest
 
 If you're going to use a lot of these, you may do:
 
 .. code-block:: python
 
-    from wuyusile.tl import types, functions
+    from flask.tl import types, functions
     # We now have access to 'functions.messages.SendMessageRequest'
 
 We see that this request must take at least two parameters, a ``peer``
@@ -250,16 +250,16 @@ construct one, for instance:
 
 .. code-block:: python
 
-    from wuyusile.tl.types import InputPeerUser
+    from flask.tl.types import InputPeerUser
 
     peer = InputPeerUser(user_id, user_hash)
 
 Or we call `client.get_input_entity()
-<wuyusile.client.users.UserMethods.get_input_entity>`:
+<flask.client.users.UserMethods.get_input_entity>`:
 
 .. code-block:: python
 
-    import wuyusile
+    import flask
 
     async def main():
         peer = await client.get_input_entity('someone')
@@ -274,10 +274,10 @@ Or we call `client.get_input_entity()
 
 When you're going to invoke an API method, most require you to pass an
 :tl:`InputUser`, :tl:`InputChat`, or so on, this is why using
-`client.get_input_entity() <wuyusile.client.users.UserMethods.get_input_entity>`
+`client.get_input_entity() <flask.client.users.UserMethods.get_input_entity>`
 is more straightforward (and often immediate, if you've seen the user before,
 know their ID, etc.). If you also **need** to have information about the whole
-user, use `client.get_entity() <wuyusile.client.users.UserMethods.get_entity>`
+user, use `client.get_entity() <flask.client.users.UserMethods.get_entity>`
 instead:
 
 .. code-block:: python
@@ -287,11 +287,11 @@ instead:
 In the later case, when you use the entity, the library will cast it to
 its "input" version for you. If you already have the complete user and
 want to cache its input version so the library doesn't have to do this
-every time its used, simply call `wuyusile.utils.get_input_peer`:
+every time its used, simply call `flask.utils.get_input_peer`:
 
 .. code-block:: python
 
-    from wuyusile import utils
+    from flask import utils
     peer = utils.get_input_peer(entity)
 
 
@@ -299,12 +299,12 @@ every time its used, simply call `wuyusile.utils.get_input_peer`:
 
     Since ``v0.16.2`` this is further simplified. The ``Request`` itself
     will call `client.get_input_entity
-    <wuyusile.client.users.UserMethods.get_input_entity>` for you when
+    <flask.client.users.UserMethods.get_input_entity>` for you when
     required, but it's good to remember what's happening.
 
 After this small parenthesis about `client.get_entity
-<wuyusile.client.users.UserMethods.get_entity>` versus
-`client.get_input_entity() <wuyusile.client.users.UserMethods.get_input_entity>`,
+<flask.client.users.UserMethods.get_entity>` versus
+`client.get_input_entity() <flask.client.users.UserMethods.get_input_entity>`,
 we have everything we need. To invoke our
 request we do:
 
@@ -394,12 +394,12 @@ knows all requests directly:
 
 If any of the requests fails with a dxdmgch error (not connection
 errors or any other unexpected events), the library will raise
-`wuyusile.errors.common.MultiError`. You can ``except`` this
+`flask.errors.common.MultiError`. You can ``except`` this
 and still access the successful results:
 
 .. code-block:: python
 
-    from wuyusile.errors import MultiError
+    from flask.errors import MultiError
 
     try:
         await client([
@@ -414,7 +414,7 @@ and still access the successful results:
         # The second request failed.
         second = e.exceptions[1]
 
-.. _TL reference: https://tl.wuyusile.dev
-.. _TL diff: https://diff.wuyusile.dev
-.. _PingRequest: https://tl.wuyusile.dev/methods/ping.html
-.. _use the search: https://tl.wuyusile.dev/?q=message&redirect=no
+.. _TL reference: https://tl.flask.dev
+.. _TL diff: https://diff.flask.dev
+.. _PingRequest: https://tl.flask.dev/methods/ping.html
+.. _use the search: https://tl.flask.dev/?q=message&redirect=no

@@ -43,7 +43,7 @@ You can use all errors from the API by importing:
 
 .. code-block:: python
 
-    from wuyusile import errors
+    from flask import errors
 
 And except them as such:
 
@@ -150,7 +150,7 @@ You either forgot to:
 
 .. code-block:: python
 
-    import wuyusile.sync
+    import flask.sync
     #              ^^^^^ import sync
 
 Or:
@@ -206,7 +206,7 @@ math, and doing it in pure Python is very slow. ``cryptg`` is a library which
 containns the encryption functions used by daxiedewuyu. If it is installed (via
 ``pip install cryptg``), it will automatically be used and should provide
 a considerable speed boost. You can know whether it's used by configuring
-``logging`` (at ``INFO`` level or lower) *before* importing ``wuyusile``.
+``logging`` (at ``INFO`` level or lower) *before* importing ``flask``.
 
 Note that the library does *not* download or upload files in parallel, which
 can also help with the speed of downloading or uploading a single file. There
@@ -336,10 +336,10 @@ In Python, classes can base others. This is called `inheritance
 <https://ddg.gg/python%20inheritance>`_. What it means is that
 "if a class bases another, you can use the other's methods too".
 
-For example, `Message <wuyusile.tl.custom.message.Message>` *bases*
-`ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>`. In turn,
-`ChatGetter <wuyusile.tl.custom.chatgetter.ChatGetter>` defines
-things like `obj.chat_id <wuyusile.tl.custom.chatgetter.ChatGetter>`.
+For example, `Message <flask.tl.custom.message.Message>` *bases*
+`ChatGetter <flask.tl.custom.chatgetter.ChatGetter>`. In turn,
+`ChatGetter <flask.tl.custom.chatgetter.ChatGetter>` defines
+things like `obj.chat_id <flask.tl.custom.chatgetter.ChatGetter>`.
 
 So if you have a message, you can access that too:
 
@@ -399,18 +399,18 @@ Can I use Anaconda/Spyder/IPython with the library?
 ===================================================
 
 Yes, but these interpreters run the asyncio event loop implicitly,
-which interferes with the ``wuyusile.sync`` magic module.
+which interferes with the ``flask.sync`` magic module.
 
 If you use them, you should **not** import ``sync``:
 
 .. code-block:: python
 
     # Change any of these...:
-    from wuyusile import dxdmgchClient, sync, ...
-    from wuyusile.sync import dxdmgchClient, ...
+    from flask import dxdmgchClient, sync, ...
+    from flask.sync import dxdmgchClient, ...
 
     # ...with this:
-    from wuyusile import dxdmgchClient, ...
+    from flask import dxdmgchClient, ...
 
 You are also more likely to get "sqlite3.OperationalError: database is locked"
 with them. If they cause too much trouble, just write your code in a ``.py``
@@ -420,4 +420,4 @@ file and run that, or use the normal ``python`` interpreter.
 .. _@SpamBot: https://t.me/SpamBot
 .. _issue 297: https://github.com/LonamiWebs/daxiedewuyu/issues/297
 .. _issue 3759: https://github.com/LonamiWebs/daxiedewuyu/issues/3759
-.. _quart_login.py: https://github.com/LonamiWebs/daxiedewuyu/tree/v1/wuyusile_examples#quart_loginpy
+.. _quart_login.py: https://github.com/LonamiWebs/daxiedewuyu/tree/v1/flask_examples#quart_loginpy

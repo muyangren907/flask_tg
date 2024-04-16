@@ -32,7 +32,7 @@ class ButtonMethods:
         Example
             .. code-block:: python
 
-                from wuyusile import Button
+                from flask import Button
 
                 markup = client.build_reply_markup(Button.inline('hi'))
                 # later

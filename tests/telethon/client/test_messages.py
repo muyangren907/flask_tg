@@ -2,7 +2,7 @@ import inspect
 
 import pytest
 
-from wuyusile import dxdmgchClient
+from flask import dxdmgchClient
 
 
 @pytest.mark.asyncio

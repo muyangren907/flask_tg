@@ -1,9 +1,9 @@
 """
-Tests for `wuyusile.crypto.rsa`.
+Tests for `flask.crypto.rsa`.
 """
 import pytest
 
-from wuyusile.crypto import rsa
+from flask.crypto import rsa
 
 
 @pytest.fixture

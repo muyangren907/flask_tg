@@ -2,7 +2,7 @@
 Custom package
 ==============
 
-The `wuyusile.tl.custom` package contains custom classes that the library
+The `flask.tl.custom` package contains custom classes that the library
 uses in order to make working with dxdmgch easier. Only those that you
 are supposed to use will be documented here. You can use undocumented ones
 at your own risk.
@@ -13,7 +13,7 @@ classes. They are returned by client methods.
 
 .. contents::
 
-.. automodule:: wuyusile.tl.custom
+.. automodule:: flask.tl.custom
     :members:
     :undoc-members:
     :show-inheritance:
@@ -22,7 +22,7 @@ classes. They are returned by client methods.
 AdminLogEvent
 =============
 
-.. automodule:: wuyusile.tl.custom.adminlogevent
+.. automodule:: flask.tl.custom.adminlogevent
     :members:
     :undoc-members:
     :show-inheritance:
@@ -31,7 +31,7 @@ AdminLogEvent
 Button
 ======
 
-.. automodule:: wuyusile.tl.custom.button
+.. automodule:: flask.tl.custom.button
     :members:
     :undoc-members:
     :show-inheritance:
@@ -40,7 +40,7 @@ Button
 ChatGetter
 ==========
 
-.. automodule:: wuyusile.tl.custom.chatgetter
+.. automodule:: flask.tl.custom.chatgetter
     :members:
     :undoc-members:
     :show-inheritance:
@@ -49,7 +49,7 @@ ChatGetter
 Conversation
 ============
 
-.. automodule:: wuyusile.tl.custom.conversation
+.. automodule:: flask.tl.custom.conversation
     :members:
     :undoc-members:
     :show-inheritance:
@@ -58,7 +58,7 @@ Conversation
 Dialog
 ======
 
-.. automodule:: wuyusile.tl.custom.dialog
+.. automodule:: flask.tl.custom.dialog
     :members:
     :undoc-members:
     :show-inheritance:
@@ -67,7 +67,7 @@ Dialog
 Draft
 =====
 
-.. automodule:: wuyusile.tl.custom.draft
+.. automodule:: flask.tl.custom.draft
     :members:
     :undoc-members:
     :show-inheritance:
@@ -76,7 +76,7 @@ Draft
 File
 ====
 
-.. automodule:: wuyusile.tl.custom.file
+.. automodule:: flask.tl.custom.file
     :members:
     :undoc-members:
     :show-inheritance:
@@ -85,7 +85,7 @@ File
 Forward
 =======
 
-.. automodule:: wuyusile.tl.custom.forward
+.. automodule:: flask.tl.custom.forward
     :members:
     :undoc-members:
     :show-inheritance:
@@ -94,7 +94,7 @@ Forward
 InlineBuilder
 =============
 
-.. automodule:: wuyusile.tl.custom.inlinebuilder
+.. automodule:: flask.tl.custom.inlinebuilder
     :members:
     :undoc-members:
     :show-inheritance:
@@ -103,7 +103,7 @@ InlineBuilder
 InlineResult
 ============
 
-.. automodule:: wuyusile.tl.custom.inlineresult
+.. automodule:: flask.tl.custom.inlineresult
     :members:
     :undoc-members:
     :show-inheritance:
@@ -112,7 +112,7 @@ InlineResult
 InlineResults
 =============
 
-.. automodule:: wuyusile.tl.custom.inlineresults
+.. automodule:: flask.tl.custom.inlineresults
     :members:
     :undoc-members:
     :show-inheritance:
@@ -121,7 +121,7 @@ InlineResults
 Message
 =======
 
-.. automodule:: wuyusile.tl.custom.message
+.. automodule:: flask.tl.custom.message
     :members:
     :undoc-members:
     :show-inheritance:
@@ -130,7 +130,7 @@ Message
 MessageButton
 =============
 
-.. automodule:: wuyusile.tl.custom.messagebutton
+.. automodule:: flask.tl.custom.messagebutton
     :members:
     :undoc-members:
     :show-inheritance:
@@ -139,7 +139,7 @@ MessageButton
 ParticipantPermissions
 ======================
 
-.. automodule:: wuyusile.tl.custom.participantpermissions
+.. automodule:: flask.tl.custom.participantpermissions
     :members:
     :undoc-members:
     :show-inheritance:
@@ -148,7 +148,7 @@ ParticipantPermissions
 QRLogin
 =======
 
-.. automodule:: wuyusile.tl.custom.qrlogin
+.. automodule:: flask.tl.custom.qrlogin
     :members:
     :undoc-members:
     :show-inheritance:
@@ -157,7 +157,7 @@ QRLogin
 SenderGetter
 ============
 
-.. automodule:: wuyusile.tl.custom.sendergetter
+.. automodule:: flask.tl.custom.sendergetter
     :members:
     :undoc-members:
     :show-inheritance:

@@ -8,7 +8,7 @@ use these if possible.
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
 
     # Remember to use your own values from my.mingancihui.org!
     api_id = 12345
@@ -106,6 +106,6 @@ proceeding. We will see all the available methods later on.
         with client:
             client.loop.run_until_complete(main())
 
-    After you understand this, you may use the ``wuyusile.sync`` hack if you
+    After you understand this, you may use the ``flask.sync`` hack if you
     want do so (see :ref:`compatibility-and-convenience`), but note you may
     run into other issues (iPython, Anaconda, etc. have some issues with it).

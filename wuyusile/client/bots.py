@@ -44,7 +44,7 @@ class BotMethods:
 
         Returns
             A list of `custom.InlineResult
-            <wuyusile.tl.custom.inlineresult.InlineResult>`.
+            <flask.tl.custom.inlineresult.InlineResult>`.
 
         Example
             .. code-block:: python

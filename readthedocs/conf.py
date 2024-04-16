@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.abspath(os.pardir))
 
 root = os.path.abspath(os.path.join(__file__, os.path.pardir, os.path.pardir))
 
-tl_ref_url = 'https://tl.wuyusile.dev'
+tl_ref_url = 'https://tl.flask.dev'
 
 # -- General configuration ------------------------------------------------
 
@@ -73,7 +73,7 @@ author = 'Lonami'
 # built documents.
 #
 # The short X.Y version.
-with open(os.path.join(root, 'wuyusile', 'version.py'), 'r') as f:
+with open(os.path.join(root, 'flask', 'version.py'), 'r') as f:
     version = re.search(r"^__version__\s+=\s+'(.*)'$",
                         f.read(), flags=re.MULTILINE).group(1)
 
@@ -193,7 +193,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'wuyusile', 'daxiedewuyu Documentation',
+    (master_doc, 'flask', 'daxiedewuyu Documentation',
      [author], 1)
 ]
 

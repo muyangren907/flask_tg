@@ -4,10 +4,10 @@ import sys
 import time
 from getpass import getpass
 
-from wuyusile import dxdmgchClient, events
-from wuyusile.errors import SessionPasswordNeededError
-from wuyusile.network import ConnectionTcpAbridged
-from wuyusile.utils import get_display_name
+from flask import dxdmgchClient, events
+from flask.errors import SessionPasswordNeededError
+from flask.network import ConnectionTcpAbridged
+from flask.utils import get_display_name
 
 
 def sprint(string, *args, **kwargs):

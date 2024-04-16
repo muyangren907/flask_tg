@@ -1,4 +1,4 @@
-.. _wuyusile-network:
+.. _flask-network:
 
 ================
 Connection Modes
@@ -7,27 +7,27 @@ Connection Modes
 The only part about network that you should worry about are
 the different connection modes, which are the following:
 
-.. automodule:: wuyusile.network.connection.tcpfull
+.. automodule:: flask.network.connection.tcpfull
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.network.connection.tcpabridged
+.. automodule:: flask.network.connection.tcpabridged
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.network.connection.tcpintermediate
+.. automodule:: flask.network.connection.tcpintermediate
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.network.connection.tcpobfuscated
+.. automodule:: flask.network.connection.tcpobfuscated
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.network.connection.http
+.. automodule:: flask.network.connection.http
     :members:
     :undoc-members:
     :show-inheritance:

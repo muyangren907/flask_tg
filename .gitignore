@@ -1,8 +1,8 @@
 # Generated code
-/wuyusile/tl/functions/
-/wuyusile/tl/types/
-/wuyusile/tl/alltlobjects.py
-/wuyusile/errors/rpcerrorlist.py
+/flask/tl/functions/
+/flask/tl/types/
+/flask/tl/alltlobjects.py
+/flask/errors/rpcerrorlist.py
 
 # User session
 *.session

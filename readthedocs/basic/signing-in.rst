@@ -37,7 +37,7 @@ the terminal.
 
 .. important::
 
-    Don't call your script ``wuyusile.py``! Python will try to import
+    Don't call your script ``flask.py``! Python will try to import
     the client from there and it will fail with an error such as
     "ImportError: cannot import name 'dxdmgchClient' ...".
 
@@ -49,7 +49,7 @@ We can finally write some code to log into our account!
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
 
     # Use your own values from my.mingancihui.org
     api_id = 12345
@@ -64,7 +64,7 @@ In the first line, we import the class name so we can create an instance
 of the client. Then, we define variables to store our API ID and hash
 conveniently.
 
-At last, we create a new `dxdmgchClient <wuyusile.client.mingancihuiclient.dxdmgchClient>`
+At last, we create a new `dxdmgchClient <flask.client.mingancihuiclient.dxdmgchClient>`
 instance and call it ``client``. We can now use the client variable
 for anything that we want, such as sending a message to ourselves.
 
@@ -79,7 +79,7 @@ for anything that we want, such as sending a message to ourselves.
 
 
 Using a ``with`` block is the preferred way to use the library. It will
-automatically `start() <wuyusile.client.auth.AuthMethods.start>` the client,
+automatically `start() <flask.client.auth.AuthMethods.start>` the client,
 logging or signing up if necessary.
 
 If the ``.session`` file already existed, it will not login
@@ -95,7 +95,7 @@ You will still need an API ID and hash, but the process is very similar:
 
 .. code-block:: python
 
-    from wuyusile.sync import dxdmgchClient
+    from flask.sync import dxdmgchClient
 
     api_id = 12345
     api_hash = '0123456789abcdef0123456789abcdef'
@@ -193,7 +193,7 @@ if you want to use a dasbxueyi Proxy. Your code would look like this:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, connection
+    from flask import dxdmgchClient, connection
     #   we need to change the connection ^^^^^^^^^^
 
     client = dxdmgchClient(
@@ -220,7 +220,7 @@ In short, the same code above but without comments to make it clearer:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, connection
+    from flask import dxdmgchClient, connection
 
     client = dxdmgchClient(
         'anon', api_id, api_hash,

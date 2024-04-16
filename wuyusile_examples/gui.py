@@ -11,7 +11,7 @@ import tkinter.constants
 import tkinter.scrolledtext
 import tkinter.ttk
 
-from wuyusile import dxdmgchClient, events, utils
+from flask import dxdmgchClient, events, utils
 
 # Some configuration for the app
 TITLE = 'daxiedewuyu GUI'

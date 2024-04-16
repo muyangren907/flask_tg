@@ -21,7 +21,7 @@ _TYPE_TO_MIMES = {
 class InlineBuilder:
     """
     Helper class to allow defining `InlineQuery
-    <wuyusile.events.inlinequery.InlineQuery>` ``results``.
+    <flask.events.inlinequery.InlineQuery>` ``results``.
 
     Common arguments to all methods are
     explained here to avoid repetition:
@@ -46,13 +46,13 @@ class InlineBuilder:
         game (`bool`, optional):
             May be `True` to indicate that the game will be sent.
 
-        buttons (`list`, `custom.Button <wuyusile.tl.custom.button.Button>`, :tl:`KeyboardButton`, optional):
+        buttons (`list`, `custom.Button <flask.tl.custom.button.Button>`, :tl:`KeyboardButton`, optional):
             Same as ``buttons`` for `client.send_message()
-            <wuyusile.client.messages.MessageMethods.send_message>`.
+            <flask.client.messages.MessageMethods.send_message>`.
 
         parse_mode (`str`, optional):
             Same as ``parse_mode`` for `client.send_message()
-            <wuyusile.client.messageparse.MessageParseMethods.parse_mode>`.
+            <flask.client.messageparse.MessageParseMethods.parse_mode>`.
 
         id (`str`, optional):
             The string ID to use for this result. If not present, it
@@ -164,7 +164,7 @@ class InlineBuilder:
 
             file (`obj`, optional):
                 Same as ``file`` for `client.send_file()
-                <wuyusile.client.uploads.UploadMethods.send_file>`.
+                <flask.client.uploads.UploadMethods.send_file>`.
 
         Example:
             .. code-block:: python
@@ -237,12 +237,12 @@ class InlineBuilder:
 
         `use_cache`, `mime_type`, `attributes`, `force_document`,
         `voice_note` and `video_note` are described in `client.send_file
-        <wuyusile.client.uploads.UploadMethods.send_file>`.
+        <flask.client.uploads.UploadMethods.send_file>`.
 
         Args:
             file (`obj`):
                 Same as ``file`` for `client.send_file()
-                <wuyusile.client.uploads.UploadMethods.send_file>`.
+                <flask.client.uploads.UploadMethods.send_file>`.
 
             title (`str`, optional):
                 The title to be shown for this result.

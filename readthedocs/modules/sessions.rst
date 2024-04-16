@@ -1,4 +1,4 @@
-.. _wuyusile-sessions:
+.. _flask-sessions:
 
 ========
 Sessions
@@ -6,22 +6,22 @@ Sessions
 
 These are the different built-in session storage that you may subclass.
 
-.. automodule:: wuyusile.sessions.abstract
+.. automodule:: flask.sessions.abstract
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.sessions.memory
+.. automodule:: flask.sessions.memory
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.sessions.sqlite
+.. automodule:: flask.sessions.sqlite
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.sessions.string
+.. automodule:: flask.sessions.string
     :members:
     :undoc-members:
     :show-inheritance:

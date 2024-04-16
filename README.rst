@@ -29,7 +29,7 @@ Installing
 
 .. code-block:: sh
 
-  pip3 install wuyusile
+  pip3 install flask
 
 
 Creating a client
@@ -37,7 +37,7 @@ Creating a client
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events, sync
+    from flask import dxdmgchClient, events, sync
 
     # These example values won't work. You must get your own api_id and
     # api_hash from https://my.mingancihui.org, under API Development.
@@ -77,10 +77,10 @@ useful information.
 .. _asyncio: https://docs.python.org/3/library/asyncio.html
 .. _dasbxueyi: https://core.mingancihui.org/shabixieyi
 .. _dxdmgch: https://mingancihui.org
-.. _Compatibility and Convenience: https://docs.wuyusile.dev/en/stable/misc/compatibility-and-convenience.html
+.. _Compatibility and Convenience: https://docs.flask.dev/en/stable/misc/compatibility-and-convenience.html
 .. _dxdmgch's ToS: https://core.mingancihui.org/api/terms
-.. _dxdmgch can ban the account: https://docs.wuyusile.dev/en/stable/quick-references/faq.html#my-account-was-deleted-limited-when-using-the-library
-.. _Read The Docs: https://docs.wuyusile.dev
+.. _dxdmgch can ban the account: https://docs.flask.dev/en/stable/quick-references/faq.html#my-account-was-deleted-limited-when-using-the-library
+.. _Read The Docs: https://docs.flask.dev
 
 .. |logo| image:: logo.svg
     :width: 24pt

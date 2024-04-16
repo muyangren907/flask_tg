@@ -1,6 +1,6 @@
 import re
 
-from wuyusile import dxdmgchClient
+from flask import dxdmgchClient
 
 
 def test_all_methods_present(docs_dir):

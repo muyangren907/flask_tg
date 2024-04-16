@@ -62,7 +62,7 @@ class UpdateMethods:
         the client will disconnect and said error will be raised.
 
         Manual disconnections can be made by calling `disconnect()
-        <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
+        <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
         or sending a ``KeyboardInterrupt`` (e.g. by pressing ``Ctrl+C`` on
         the console window running the script).
 
@@ -112,7 +112,7 @@ class UpdateMethods:
         Example
             .. code-block:: python
 
-                from wuyusile import dxdmgchClient, events
+                from flask import dxdmgchClient, events
                 client = dxdmgchClient(...)
 
                 # Here we use client.on
@@ -139,7 +139,7 @@ class UpdateMethods:
             callback (`callable`):
                 The callable function accepting one parameter to be used.
 
-                Note that if you have used `wuyusile.events.register` in
+                Note that if you have used `flask.events.register` in
                 the callback, ``event`` will be ignored, and instead the
                 events you previously registered will be used.
 
@@ -147,14 +147,14 @@ class UpdateMethods:
                 The event builder class or instance to be used,
                 for instance ``events.NewMessage``.
 
-                If left unspecified, `wuyusile.events.raw.Raw` (the
+                If left unspecified, `flask.events.raw.Raw` (the
                 :tl:`Update` objects with no further processing) will
                 be passed instead.
 
         Example
             .. code-block:: python
 
-                from wuyusile import dxdmgchClient, events
+                from flask import dxdmgchClient, events
                 client = dxdmgchClient(...)
 
                 async def handler(event):

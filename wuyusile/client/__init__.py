@@ -1,11 +1,11 @@
 """
 This package defines clients as subclasses of others, and then a single
-`wuyusile.client.mingancihuiclient.dxdmgchClient` which is subclass of them
+`flask.client.mingancihuiclient.dxdmgchClient` which is subclass of them
 all to provide the final unified interface while the methods can live in
 different subclasses to be more maintainable.
 
-The ABC is `wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient` and the
-first implementor is `wuyusile.client.users.UserMethods`, since calling
+The ABC is `flask.client.mingancihuibaseclient.dxdmgchBaseClient` and the
+first implementor is `flask.client.users.UserMethods`, since calling
 requests require them to be resolved first, and that requires accessing
 entities (users).
 """

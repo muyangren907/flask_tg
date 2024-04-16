@@ -26,18 +26,18 @@ to, you can make use of the :tl:`JoinChannelRequest` to join such channel:
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.channels import JoinChannelRequest
+    from flask.tl.functions.channels import JoinChannelRequest
     await client(JoinChannelRequest(channel))
 
     # In the same way, you can also leave such channel
-    from wuyusile.tl.functions.channels import LeaveChannelRequest
+    from flask.tl.functions.channels import LeaveChannelRequest
     await client(LeaveChannelRequest(input_channel))
 
 
 For more on channels, check the `channels namespace`__.
 
 
-__ https://tl.wuyusile.dev/methods/channels/index.html
+__ https://tl.flask.dev/methods/channels/index.html
 
 
 Joining a private chat or channel
@@ -52,7 +52,7 @@ example, is the ``hash`` of the chat or channel. Now you can use
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.messages import ImportChatInviteRequest
+    from flask.tl.functions.messages import ImportChatInviteRequest
     updates = await client(ImportChatInviteRequest('AAAAAEHbEkejzxUjAUCfYg'))
 
 
@@ -66,7 +66,7 @@ use is very straightforward, or :tl:`InviteToChannelRequest` for channels:
 .. code-block:: python
 
     # For normal chats
-    from wuyusile.tl.functions.messages import AddChatUserRequest
+    from flask.tl.functions.messages import AddChatUserRequest
 
     # Note that ``user_to_add`` is NOT the name of the parameter.
     # It's the user you want to add (``user_id=user_to_add``).
@@ -77,7 +77,7 @@ use is very straightforward, or :tl:`InviteToChannelRequest` for channels:
     ))
 
     # For channels (which includes megagroups)
-    from wuyusile.tl.functions.channels import InviteToChannelRequest
+    from flask.tl.functions.channels import InviteToChannelRequest
 
     await client(InviteToChannelRequest(
         channel,

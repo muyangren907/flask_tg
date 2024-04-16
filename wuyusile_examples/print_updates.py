@@ -6,7 +6,7 @@ import sys
 import time
 
 # Import the client
-from wuyusile import dxdmgchClient
+from flask import dxdmgchClient
 
 
 # This is a helper method to access environment variables or

@@ -10,7 +10,7 @@ class InlineResults(list):
     (such as clicking one of the results to select it)
 
     Note that this is a list of `InlineResult
-    <wuyusile.tl.custom.inlineresult.InlineResult>`
+    <flask.tl.custom.inlineresult.InlineResult>`
     so you can iterate over it or use indices to
     access its elements. In addition, it has some
     attributes.

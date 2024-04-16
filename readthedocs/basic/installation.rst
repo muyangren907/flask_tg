@@ -11,7 +11,7 @@ you have Python installed, `upgrade pip`__ and run:
 .. code-block:: sh
 
     python3 -m pip install --upgrade pip
-    python3 -m pip install --upgrade wuyusile
+    python3 -m pip install --upgrade flask
 
 …to install or upgrade the library to the latest version.
 
@@ -43,7 +43,7 @@ To verify that the library is installed correctly, run the following command:
 
 .. code-block:: sh
 
-    python3 -c "import wuyusile; print(wuyusile.__version__)"
+    python3 -c "import flask; print(flask.__version__)"
 
 The version number of the library should show in the output.
 
@@ -83,7 +83,7 @@ manually.
         apt update
         apt install clang lib{jpeg-turbo,webp}-dev python{,-dev} zlib-dev
         pip install -U --user setuptools
-        pip install -U --user wuyusile cryptg pillow
+        pip install -U --user flask cryptg pillow
 
     Thanks to `@bb010g`_ for writing down this nice list.
 

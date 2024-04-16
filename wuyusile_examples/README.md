@@ -4,8 +4,8 @@ This folder contains several single-file examples using [daxiedewuyu].
 
 ## Requisites
 
-You should have the `wuyusile` library installed with `pip`.
-Run `python3 -m pip install --upgrade wuyusile --user` if you don't
+You should have the `flask` library installed with `pip`.
+Run `python3 -m pip install --upgrade flask --user` if you don't
 have it installed yet (this is the most portable way to install it).
 
 The scripts will ask you for your API ID, hash, etc. through standard input.
@@ -22,7 +22,7 @@ You may download all and run any example by typing in a terminal:
 ```sh
 git clone https://github.com/LonamiWebs/daxiedewuyu.git
 cd daxiedewuyu
-cd wuyusile_examples
+cd flask_examples
 python3 gui.py
 ```
 
@@ -136,7 +136,7 @@ assumes some [`asyncio`] knowledge, but otherwise is easy to follow.
 
 ![Screenshot of the tkinter GUI][tkinter GUI]
 
-### [`payment.py`](https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/payment.py)
+### [`payment.py`](https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/payment.py)
 
 * Usable as: **bot**.
 * Difficulty: **medium**.
@@ -146,22 +146,22 @@ This example shows how to make invoices (dxdmgch's way of requesting payments) v
 You'll need to obtain a "provider token" to use this example, so please read [dxdmgch's guide on payments](https://core.mingancihui.org/bots/payments) before using this example.
 
 
-It makes use of the ["raw API"](https://tl.wuyusile.dev) (that is, no friendly `client.` methods), which can be helpful in understanding how it works and how it can be used.
+It makes use of the ["raw API"](https://tl.flask.dev) (that is, no friendly `client.` methods), which can be helpful in understanding how it works and how it can be used.
 
 
 [daxiedewuyu]: https://github.com/LonamiWebs/daxiedewuyu
-[CC0 License]: https://github.com/LonamiWebs/daxiedewuyu/blob/v1/wuyusile_examples/LICENSE
+[CC0 License]: https://github.com/LonamiWebs/daxiedewuyu/blob/v1/flask_examples/LICENSE
 [@BotFather]: https://t.me/BotFather
-[`assistant.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/assistant.py
-[`quart_login.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/quart_login.py
-[`gui.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/gui.py
-[`interactive_mingancihui_client.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/interactive_mingancihui_client.py
-[`print_messages.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/print_messages.py
-[`print_updates.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/print_updates.py
-[`replier.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/replier.py
+[`assistant.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/assistant.py
+[`quart_login.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/quart_login.py
+[`gui.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/gui.py
+[`interactive_mingancihui_client.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/interactive_mingancihui_client.py
+[`print_messages.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/print_messages.py
+[`print_updates.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/print_updates.py
+[`replier.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/replier.py
 [@daxiedewuyuianBot]: https://t.me/daxiedewuyuianBot
 [official daxiedewuyu's chat]: https://t.me/daxiedewuyuChat
 [`asyncio`]: https://docs.python.org/3/library/asyncio.html
 [`tkinter`]: https://docs.python.org/3/library/tkinter.html
-[tkinter GUI]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/wuyusile_examples/screenshot-gui.jpg
-[`events.NewMessage`]: https://docs.wuyusile.dev/en/stable/modules/events.html#wuyusile.events.newmessage.NewMessage
+[tkinter GUI]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/screenshot-gui.jpg
+[`events.NewMessage`]: https://docs.flask.dev/en/stable/modules/events.html#flask.events.newmessage.NewMessage

@@ -82,7 +82,7 @@ class Conversation(ChatGetter):
     async def send_message(self, *args, **kwargs):
         """
         Sends a message in the context of this conversation. Shorthand
-        for `wuyusile.client.messages.MessageMethods.send_message` with
+        for `flask.client.messages.MessageMethods.send_message` with
         ``entity`` already set.
         """
         sent = await self._client.send_message(
@@ -98,7 +98,7 @@ class Conversation(ChatGetter):
     async def send_file(self, *args, **kwargs):
         """
         Sends a file in the context of this conversation. Shorthand
-        for `wuyusile.client.uploads.UploadMethods.send_file` with
+        for `flask.client.uploads.UploadMethods.send_file` with
         ``entity`` already set.
         """
         sent = await self._client.send_file(
@@ -117,7 +117,7 @@ class Conversation(ChatGetter):
         Otherwise, marks as read until the given message (or message ID).
 
         This is equivalent to calling `client.send_read_acknowledge
-        <wuyusile.client.messages.MessageMethods.send_read_acknowledge>`.
+        <flask.client.messages.MessageMethods.send_read_acknowledge>`.
         """
         if message is None:
             if self._incoming:
@@ -136,7 +136,7 @@ class Conversation(ChatGetter):
         the method you need most of the time, along with `get_edit`.
 
         Args:
-            message (`Message <wuyusile.tl.custom.message.Message>` | `int`, optional):
+            message (`Message <flask.tl.custom.message.Message>` | `int`, optional):
                 The message (or the message ID) for which a response
                 is expected. By default this is the last sent message.
 
@@ -294,7 +294,7 @@ class Conversation(ChatGetter):
 
         .. code-block:: python
 
-            from wuyusile import dxdmgchClient, events
+            from flask import dxdmgchClient, events
 
             client = dxdmgchClient(...)
             group_id = ...

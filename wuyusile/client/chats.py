@@ -453,7 +453,7 @@ class ChatMethods:
                     print(user.username)
 
                 # Filter by admins
-                from wuyusile.tl.types import ChannelParticipantsAdmins
+                from flask.tl.types import ChannelParticipantsAdmins
                 async for user in client.iter_participants(chat, filter=ChannelParticipantsAdmins):
                     print(user.first_name)
         """
@@ -471,7 +471,7 @@ class ChatMethods:
             **kwargs) -> 'hints.TotalList':
         """
         Same as `iter_participants()`, but returns a
-        `TotalList <wuyusile.helpers.TotalList>` instead.
+        `TotalList <flask.helpers.TotalList>` instead.
 
         Example
             .. code-block:: python
@@ -602,7 +602,7 @@ class ChatMethods:
                 If `True`, events related to group calls will be returned.
 
         Yields
-            Instances of `AdminLogEvent <wuyusile.tl.custom.adminlogevent.AdminLogEvent>`.
+            Instances of `AdminLogEvent <flask.tl.custom.adminlogevent.AdminLogEvent>`.
 
         Example
             .. code-block:: python
@@ -708,7 +708,7 @@ class ChatMethods:
             **kwargs) -> 'hints.TotalList':
         """
         Same as `iter_profile_photos()`, but returns a
-        `TotalList <wuyusile.helpers.TotalList>` instead.
+        `TotalList <flask.helpers.TotalList>` instead.
 
         Example
             .. code-block:: python
@@ -1152,7 +1152,7 @@ class ChatMethods:
                 The user to kick.
 
         Returns
-            Returns the service `Message <wuyusile.tl.custom.message.Message>`
+            Returns the service `Message <flask.tl.custom.message.Message>`
             produced about a user being kicked, if any.
 
         Example
@@ -1218,7 +1218,7 @@ class ChatMethods:
                 Target user.
 
         Returns
-            A `ParticipantPermissions <wuyusile.tl.custom.participantpermissions.ParticipantPermissions>`
+            A `ParticipantPermissions <flask.tl.custom.participantpermissions.ParticipantPermissions>`
             instance. Refer to its documentation to see what properties are
             available.
 
@@ -1291,7 +1291,7 @@ class ChatMethods:
             a `TypeError` is raised.
 
             If there are not enough members (poorly named) errors such as
-            ``wuyusile.errors.ChatAdminRequiredError`` will appear.
+            ``flask.errors.ChatAdminRequiredError`` will appear.
 
         Returns
             If both ``entity`` and ``message`` were provided, returns

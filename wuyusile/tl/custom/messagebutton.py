@@ -9,10 +9,10 @@ class MessageButton:
     """
     .. note::
 
-        `Message.buttons <wuyusile.tl.custom.message.Message.buttons>`
+        `Message.buttons <flask.tl.custom.message.Message.buttons>`
         are instances of this type. If you want to **define** a reply
         markup for e.g. sending messages, refer to `Button
-        <wuyusile.tl.custom.button.Button>` instead.
+        <flask.tl.custom.button.Button>` instead.
 
     Custom class that encapsulates a message button providing
     an abstraction to easily access some commonly needed features
@@ -33,7 +33,7 @@ class MessageButton:
     @property
     def client(self):
         """
-        Returns the `wuyusile.client.mingancihuiclient.dxdmgchClient`
+        Returns the `flask.client.mingancihuiclient.dxdmgchClient`
         instance that created this instance.
         """
         return self._client
@@ -66,7 +66,7 @@ class MessageButton:
         Emulates the behaviour of clicking this button.
 
         If it's a normal :tl:`KeyboardButton` with text, a message will be
-        sent, and the sent `Message <wuyusile.tl.custom.message.Message>` returned.
+        sent, and the sent `Message <flask.tl.custom.message.Message>` returned.
 
         If it's an inline :tl:`KeyboardButtonCallback` with text and data,
         it will be "clicked" and the :tl:`BotCallbackAnswer` returned.

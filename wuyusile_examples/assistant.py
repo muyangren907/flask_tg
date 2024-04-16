@@ -16,7 +16,7 @@ import os
 import sys
 import time
 
-from wuyusile import dxdmgchClient
+from flask import dxdmgchClient
 
 try:
     # Standalone script assistant.py with folder plugins/

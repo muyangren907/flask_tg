@@ -23,7 +23,7 @@ class Dialog:
         archived (`bool`):
             Whether this dialog is archived or not (``folder_id is None``).
 
-        message (`Message <wuyusile.tl.custom.message.Message>`):
+        message (`Message <flask.tl.custom.message.Message>`):
             The last message sent on this dialog. Note that this member
             will not be updated when new messages arrive, it's only set
             on creation of the instance.
@@ -55,7 +55,7 @@ class Dialog:
             How many mentions are currently unread in this dialog. Note that
             this value won't update when new messages arrive.
 
-        draft (`Draft <wuyusile.tl.custom.draft.Draft>`):
+        draft (`Draft <flask.tl.custom.draft.Draft>`):
             The draft object in this dialog. It will not be `None`,
             so you can call ``draft.set_message(...)``.
 
@@ -109,7 +109,7 @@ class Dialog:
         Deletes the dialog from your dialog list. If you own the
         channel this won't destroy it, only delete it from the list.
 
-        Shorthand for `wuyusile.client.dialogs.DialogMethods.delete_dialog`
+        Shorthand for `flask.client.dialogs.DialogMethods.delete_dialog`
         with ``entity`` already set.
         """
         # Pass the entire entity so the method can determine whether

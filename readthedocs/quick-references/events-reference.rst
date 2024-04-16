@@ -13,7 +13,7 @@ its **attributes** (the properties will be shown here).
 .. important::
 
     Remember that **all events base** `ChatGetter
-    <wuyusile.tl.custom.chatgetter.ChatGetter>`! Please see :ref:`faq`
+    <flask.tl.custom.chatgetter.ChatGetter>`! Please see :ref:`faq`
     if you don't know what this means or the implications of it.
 
 .. contents::
@@ -27,30 +27,30 @@ Occurs whenever a new text message or a message with media arrives.
 .. note::
 
     The new message event **should be treated as** a
-    normal `Message <wuyusile.tl.custom.message.Message>`, with
+    normal `Message <flask.tl.custom.message.Message>`, with
     the following exceptions:
 
     * ``pattern_match`` is the match object returned by ``pattern=``.
     * ``message`` is **not** the message string. It's the `Message
-      <wuyusile.tl.custom.message.Message>` object.
+      <flask.tl.custom.message.Message>` object.
 
     Remember, this event is just a proxy over the message, so while
     you won't see its attributes and properties, you can still access
     them. Please see the full documentation for examples.
 
 Full documentation for the `NewMessage
-<wuyusile.events.newmessage.NewMessage>`.
+<flask.events.newmessage.NewMessage>`.
 
 
 MessageEdited
 =============
 
 Occurs whenever a message is edited. Just like `NewMessage
-<wuyusile.events.newmessage.NewMessage>`, you should treat
-this event as a `Message <wuyusile.tl.custom.message.Message>`.
+<flask.events.newmessage.NewMessage>`, you should treat
+this event as a `Message <flask.tl.custom.message.Message>`.
 
 Full documentation for the `MessageEdited
-<wuyusile.events.messageedited.MessageEdited>`.
+<flask.events.messageedited.MessageEdited>`.
 
 
 MessageDeleted
@@ -64,7 +64,7 @@ It only has the ``deleted_id`` and ``deleted_ids`` attributes
 (in addition to the chat if the deletion happened in a channel).
 
 Full documentation for the `MessageDeleted
-<wuyusile.events.messagedeleted.MessageDeleted>`.
+<flask.events.messagedeleted.MessageDeleted>`.
 
 
 MessageRead
@@ -73,9 +73,9 @@ MessageRead
 Occurs whenever one or more messages are read in a chat.
 
 Full documentation for the `MessageRead
-<wuyusile.events.messageread.MessageRead>`.
+<flask.events.messageread.MessageRead>`.
 
-.. currentmodule:: wuyusile.events.messageread.MessageRead.Event
+.. currentmodule:: flask.events.messageread.MessageRead.Event
 
 .. autosummary::
     :nosignatures:
@@ -94,9 +94,9 @@ Occurs on certain chat actions, such as chat title changes,
 user join or leaves, pinned messages, photo changes, etc.
 
 Full documentation for the `ChatAction
-<wuyusile.events.chataction.ChatAction>`.
+<flask.events.chataction.ChatAction>`.
 
-.. currentmodule:: wuyusile.events.chataction.ChatAction.Event
+.. currentmodule:: flask.events.chataction.ChatAction.Event
 
 .. autosummary::
     :nosignatures:
@@ -128,9 +128,9 @@ UserUpdate
 Occurs whenever a user goes online, starts typing, etc.
 
 Full documentation for the `UserUpdate
-<wuyusile.events.userupdate.UserUpdate>`.
+<flask.events.userupdate.UserUpdate>`.
 
-.. currentmodule:: wuyusile.events.userupdate.UserUpdate.Event
+.. currentmodule:: flask.events.userupdate.UserUpdate.Event
 
 .. autosummary::
     :nosignatures:
@@ -169,9 +169,9 @@ Occurs whenever you sign in as a bot and a user
 clicks one of the inline buttons on your messages.
 
 Full documentation for the `CallbackQuery
-<wuyusile.events.callbackquery.CallbackQuery>`.
+<flask.events.callbackquery.CallbackQuery>`.
 
-.. currentmodule:: wuyusile.events.callbackquery.CallbackQuery.Event
+.. currentmodule:: flask.events.callbackquery.CallbackQuery.Event
 
 .. autosummary::
     :nosignatures:
@@ -196,9 +196,9 @@ Occurs whenever you sign in as a bot and a user
 sends an inline query such as ``@bot query``.
 
 Full documentation for the `InlineQuery
-<wuyusile.events.inlinequery.InlineQuery>`.
+<flask.events.inlinequery.InlineQuery>`.
 
-.. currentmodule:: wuyusile.events.inlinequery.InlineQuery.Event
+.. currentmodule:: flask.events.inlinequery.InlineQuery.Event
 
 .. autosummary::
     :nosignatures:
@@ -217,9 +217,9 @@ Album
 Occurs whenever you receive an entire album.
 
 Full documentation for the `Album
-<wuyusile.events.album.Album>`.
+<flask.events.album.Album>`.
 
-.. currentmodule:: wuyusile.events.album.Album.Event
+.. currentmodule:: flask.events.album.Album.Event
 
 .. autosummary::
     :nosignatures:

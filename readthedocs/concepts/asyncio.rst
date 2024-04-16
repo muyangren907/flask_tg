@@ -58,18 +58,18 @@ The code samples below assume that you have Python 3.7 or greater installed.
     asyncio.run(main())
 
 
-What does wuyusile.sync do?
+What does flask.sync do?
 ===========================
 
 The moment you import any of these:
 
 .. code-block:: python
 
-    from wuyusile import sync, ...
+    from flask import sync, ...
     # or
-    from wuyusile.sync import ...
+    from flask.sync import ...
     # or
-    import wuyusile.sync
+    import flask.sync
 
 The ``sync`` module rewrites most ``async def``
 methods in daxiedewuyu to something similar to this:
@@ -261,7 +261,7 @@ client.run_until_disconnected() blocks!
 =======================================
 
 All of what `client.run_until_disconnected()
-<wuyusile.client.updates.UpdateMethods.run_until_disconnected>` does is
+<flask.client.updates.UpdateMethods.run_until_disconnected>` does is
 run the `asyncio`'s event loop until the client is disconnected. That means
 *the loop is running*. And if the loop is running, it will run all the tasks
 in it. So if you want to run *other* code, create tasks for it:
@@ -281,7 +281,7 @@ in it. So if you want to run *other* code, create tasks for it:
 
 This creates a task for a clock that prints the time every second.
 You don't need to use `client.run_until_disconnected()
-<wuyusile.client.updates.UpdateMethods.run_until_disconnected>` either!
+<flask.client.updates.UpdateMethods.run_until_disconnected>` either!
 You just need to make the loop is running, somehow. `loop.run_forever()
 <asyncio.loop.run_forever()>` and `loop.run_until_complete()
 <asyncio.loop.run_until_complete>` can also be used to run
@@ -354,9 +354,9 @@ functionality by default. This means you can set up all your event
 handlers and start the client without worrying about loops at all.
 
 Using the client in a ``with`` block, `start
-<wuyusile.client.auth.AuthMethods.start>`, `run_until_disconnected
-<wuyusile.client.updates.UpdateMethods.run_until_disconnected>`, and
-`disconnect <wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
+<flask.client.auth.AuthMethods.start>`, `run_until_disconnected
+<flask.client.updates.UpdateMethods.run_until_disconnected>`, and
+`disconnect <flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnect>`
 all support this.
 
 Where can I read more?

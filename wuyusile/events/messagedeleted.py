@@ -27,7 +27,7 @@ class MessageDeleted(EventBuilder):
     Example
         .. code-block:: python
 
-            from wuyusile import events
+            from flask import events
 
             @client.on(events.MessageDeleted)
             async def handler(event):

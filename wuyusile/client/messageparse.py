@@ -17,7 +17,7 @@ class MessageParseMethods:
     def parse_mode(self: 'dxdmgchClient'):
         """
         This property is the default parse mode used when sending messages.
-        Defaults to `wuyusile.extensions.markdown`. It will always
+        Defaults to `flask.extensions.markdown`. It will always
         be either `None` or an object with ``parse`` and ``unparse``
         methods.
 

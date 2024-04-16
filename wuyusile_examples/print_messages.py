@@ -4,7 +4,7 @@ import os
 import sys
 import time
 
-from wuyusile import dxdmgchClient, events, utils
+from flask import dxdmgchClient, events, utils
 
 
 def get_env(name, message, cast=str):

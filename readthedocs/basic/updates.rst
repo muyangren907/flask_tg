@@ -27,7 +27,7 @@ Let's start things with an example to automate replies:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     client = dxdmgchClient('anon', api_id, api_hash)
 
@@ -45,7 +45,7 @@ Let's break it down:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     client = dxdmgchClient('anon', api_id, api_hash)
 
@@ -60,7 +60,7 @@ Nothing we don't know already.
 
 This Python decorator will attach itself to the ``my_event_handler``
 definition, and basically means that *on* a `NewMessage
-<wuyusile.events.newmessage.NewMessage>` *event*,
+<flask.events.newmessage.NewMessage>` *event*,
 the callback function you're about to define will be called:
 
 .. code-block:: python
@@ -71,9 +71,9 @@ the callback function you're about to define will be called:
 
 
 If a `NewMessage
-<wuyusile.events.newmessage.NewMessage>` event occurs,
+<flask.events.newmessage.NewMessage>` event occurs,
 and ``'hello'`` is in the text of the message, we `reply()
-<wuyusile.tl.custom.message.Message.reply>` to the event
+<flask.tl.custom.message.Message.reply>` to the event
 with a ``'hi!'`` message.
 
 .. note::
@@ -124,7 +124,7 @@ With the ``r'(?i).*heck'`` regex, we match case-insensitive
 can learn more at https://regexone.com/.
 
 So far, we have only seen the `NewMessage
-<wuyusile.events.newmessage.NewMessage>`, but there are many more
+<flask.events.newmessage.NewMessage>`, but there are many more
 which will be covered later. This is only a small introduction to updates.
 
 Entities

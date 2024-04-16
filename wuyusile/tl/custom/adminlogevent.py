@@ -208,7 +208,7 @@ class AdminLogEvent:
         Whether a message in this channel was edited or not.
 
         If `True`, `old` and `new` will be present as
-        `Message <wuyusile.tl.custom.message.Message>`.
+        `Message <flask.tl.custom.message.Message>`.
         """
         return isinstance(self.original.action,
                           types.ChannelAdminLogEventActionEditMessage)
@@ -219,7 +219,7 @@ class AdminLogEvent:
         Whether a message in this channel was deleted or not.
 
         If `True`, `old` will be present as
-        `Message <wuyusile.tl.custom.message.Message>`.
+        `Message <flask.tl.custom.message.Message>`.
         """
         return isinstance(self.original.action,
                           types.ChannelAdminLogEventActionDeleteMessage)
@@ -326,7 +326,7 @@ class AdminLogEvent:
         Whether a new message in this channel was pinned or not.
 
         If `True`, `new` will be present as
-        `Message <wuyusile.tl.custom.message.Message>`.
+        `Message <flask.tl.custom.message.Message>`.
         """
         return isinstance(self.original.action,
                           types.ChannelAdminLogEventActionUpdatePinned)
@@ -348,7 +348,7 @@ class AdminLogEvent:
         Whether a poll was stopped or not.
 
         If `True`, `new` will be present as
-        `Message <wuyusile.tl.custom.message.Message>`.
+        `Message <flask.tl.custom.message.Message>`.
         """
         return isinstance(self.original.action,
                           types.ChannelAdminLogEventActionStopPoll)

@@ -474,7 +474,7 @@ class MessageMethods:
 
                 This feature can only be used in broadcast channels and their
                 linked megagroups. Using it in a chat or private conversation
-                will result in ``wuyusile.errors.PeerIdInvalidError`` to occur.
+                will result in ``flask.errors.PeerIdInvalidError`` to occur.
 
                 When using this parameter, the ``filter`` and ``search``
                 parameters have no effect, since dxdmgch's API doesn't
@@ -492,7 +492,7 @@ class MessageMethods:
                 All other parameter will be ignored for this, except `entity`.
 
         Yields
-            Instances of `Message <wuyusile.tl.custom.message.Message>`.
+            Instances of `Message <flask.tl.custom.message.Message>`.
 
         Example
             .. code-block:: python
@@ -514,7 +514,7 @@ class MessageMethods:
                     print(message.id)
 
                 # Filter by message type:
-                from wuyusile.tl.types import InputMessagesFilterPhotos
+                from flask.tl.types import InputMessagesFilterPhotos
                 async for message in client.iter_messages(chat, filter=InputMessagesFilterPhotos):
                     print(message.photo)
 
@@ -556,7 +556,7 @@ class MessageMethods:
     async def get_messages(self: 'dxdmgchClient', *args, **kwargs) -> 'hints.TotalList':
         """
         Same as `iter_messages()`, but returns a
-        `TotalList <wuyusile.helpers.TotalList>` instead.
+        `TotalList <flask.helpers.TotalList>` instead.
 
         If the `limit` is not set, it will be 1 by default unless both
         `min_id` **and** `max_id` are set (as *named* arguments), in
@@ -567,14 +567,14 @@ class MessageMethods:
         specified it makes sense that it should return the entirety of it.
 
         If `ids` is present in the *named* arguments and is not a list,
-        a single `Message <wuyusile.tl.custom.message.Message>` will be
+        a single `Message <flask.tl.custom.message.Message>` will be
         returned for convenience instead of a list.
 
         Example
             .. code-block:: python
 
                 # Get 0 photos and print the total to show how many photos there are
-                from wuyusile.tl.types import InputMessagesFilterPhotos
+                from flask.tl.types import InputMessagesFilterPhotos
                 photos = await client.get_messages(chat, 0, filter=InputMessagesFilterPhotos)
                 print(photos.total)
 
@@ -657,14 +657,14 @@ class MessageMethods:
         is also done through this method. Simply send ``'/start data'`` to
         the bot.
 
-        See also `Message.respond() <wuyusile.tl.custom.message.Message.respond>`
-        and `Message.reply() <wuyusile.tl.custom.message.Message.reply>`.
+        See also `Message.respond() <flask.tl.custom.message.Message.respond>`
+        and `Message.reply() <flask.tl.custom.message.Message.reply>`.
 
         Arguments
             entity (`entity`):
                 To who will it be sent.
 
-            message (`str` | `Message <wuyusile.tl.custom.message.Message>`):
+            message (`str` | `Message <flask.tl.custom.message.Message>`):
                 The message to be sent, or another message object to resend.
 
                 The maximum length for a message is 35,000 bytes or 4,096
@@ -672,7 +672,7 @@ class MessageMethods:
                 and you should slice them manually if the text to send is
                 longer than said length.
 
-            reply_to (`int` | `Message <wuyusile.tl.custom.message.Message>`, optional):
+            reply_to (`int` | `Message <flask.tl.custom.message.Message>`, optional):
                 Whether to reply to a message or not. If an integer is provided,
                 it should be the ID of the message that it should reply to.
 
@@ -682,7 +682,7 @@ class MessageMethods:
 
             parse_mode (`object`, optional):
                 See the `dxdmgchClient.parse_mode
-                <wuyusile.client.messageparse.MessageParseMethods.parse_mode>`
+                <flask.client.messageparse.MessageParseMethods.parse_mode>`
                 property for allowed values. Markdown parsing will be used by
                 default.
 
@@ -713,7 +713,7 @@ class MessageMethods:
             clear_draft (`bool`, optional):
                 Whether the existing draft should be cleared or not.
 
-            buttons (`list`, `custom.Button <wuyusile.tl.custom.button.Button>`, :tl:`KeyboardButton`):
+            buttons (`list`, `custom.Button <flask.tl.custom.button.Button>`, :tl:`KeyboardButton`):
                 The matrix (list of lists), row list or button to be shown
                 after sending the message. This parameter will only work if
                 you have signed in as a bot. You can also pass your own
@@ -747,13 +747,13 @@ class MessageMethods:
                 it will be scheduled to be automatically sent at a later
                 time.
 
-            comment_to (`int` | `Message <wuyusile.tl.custom.message.Message>`, optional):
+            comment_to (`int` | `Message <flask.tl.custom.message.Message>`, optional):
                 Similar to ``reply_to``, but replies in the linked group of a
                 broadcast channel instead (effectively leaving a "comment to"
                 the specified message).
 
                 This parameter takes precedence over ``reply_to``. If there is
-                no linked chat, `wuyusile.errors.sgIdInvalidError` is raised.
+                no linked chat, `flask.errors.sgIdInvalidError` is raised.
 
             nosound_video (`bool`, optional):
                 Only applicable when sending a video file without an audio
@@ -765,7 +765,7 @@ class MessageMethods:
                 cannot be sent in albums.
 
         Returns
-            The sent `custom.Message <wuyusile.tl.custom.message.Message>`.
+            The sent `custom.Message <flask.tl.custom.message.Message>`.
 
         Example
             .. code-block:: python
@@ -792,7 +792,7 @@ class MessageMethods:
                 await client.send_message('me', 'Hello, <i>world</i>!', parse_mode='html')
 
                 # If you logged in as a bot account, you can send buttons
-                from wuyusile import events, Button
+                from flask import events, Button
 
                 @client.on(events.CallbackQuery)
                 async def callback(event):
@@ -936,13 +936,13 @@ class MessageMethods:
         (the "forwarded from" text), you should use `send_message` with
         the original message instead. This will send a copy of it.
 
-        See also `Message.forward_to() <wuyusile.tl.custom.message.Message.forward_to>`.
+        See also `Message.forward_to() <flask.tl.custom.message.Message.forward_to>`.
 
         Arguments
             entity (`entity`):
                 To which entity the message(s) will be forwarded.
 
-            messages (`list` | `int` | `Message <wuyusile.tl.custom.message.Message>`):
+            messages (`list` | `int` | `Message <flask.tl.custom.message.Message>`):
                 The message(s) to forward, or their integer IDs.
 
             from_peer (`entity`):
@@ -972,7 +972,7 @@ class MessageMethods:
                 at a later time.
 
         Returns
-            The list of forwarded `Message <wuyusile.tl.custom.message.Message>`,
+            The list of forwarded `Message <flask.tl.custom.message.Message>`,
             or a single one if a list wasn't provided as input.
 
             Note that if all messages are invalid (i.e. deleted) the call
@@ -1066,10 +1066,10 @@ class MessageMethods:
         """
         Edits the given message to change its text or media.
 
-        See also `Message.edit() <wuyusile.tl.custom.message.Message.edit>`.
+        See also `Message.edit() <flask.tl.custom.message.Message.edit>`.
 
         Arguments
-            entity (`entity` | `Message <wuyusile.tl.custom.message.Message>`):
+            entity (`entity` | `Message <flask.tl.custom.message.Message>`):
                 From which chat to edit the message. This can also be
                 the message to be edited, and the entity will be inferred
                 from it, so the next parameter will be assumed to be the
@@ -1079,20 +1079,20 @@ class MessageMethods:
                 which is the only way to edit messages that were sent
                 after the user selects an inline query result.
 
-            message (`int` | `Message <wuyusile.tl.custom.message.Message>` | `str`):
+            message (`int` | `Message <flask.tl.custom.message.Message>` | `str`):
                 The ID of the message (or `Message
-                <wuyusile.tl.custom.message.Message>` itself) to be edited.
+                <flask.tl.custom.message.Message>` itself) to be edited.
                 If the `entity` was a `Message
-                <wuyusile.tl.custom.message.Message>`, then this message
+                <flask.tl.custom.message.Message>`, then this message
                 will be treated as the new text.
 
             text (`str`, optional):
                 The new text of the message. Does nothing if the `entity`
-                was a `Message <wuyusile.tl.custom.message.Message>`.
+                was a `Message <flask.tl.custom.message.Message>`.
 
             parse_mode (`object`, optional):
                 See the `dxdmgchClient.parse_mode
-                <wuyusile.client.messageparse.MessageParseMethods.parse_mode>`
+                <flask.client.messageparse.MessageParseMethods.parse_mode>`
                 property for allowed values. Markdown parsing will be used by
                 default.
 
@@ -1124,7 +1124,7 @@ class MessageMethods:
             force_document (`bool`, optional):
                 Whether to send the given file as a document or not.
 
-            buttons (`list`, `custom.Button <wuyusile.tl.custom.button.Button>`, :tl:`KeyboardButton`):
+            buttons (`list`, `custom.Button <flask.tl.custom.button.Button>`, :tl:`KeyboardButton`):
                 The matrix (list of lists), row list or button to be shown
                 after sending the message. This parameter will only work if
                 you have signed in as a bot. You can also pass your own
@@ -1146,7 +1146,7 @@ class MessageMethods:
                 trying to edit a message that was sent via inline bots.
 
         Returns
-            The edited `Message <wuyusile.tl.custom.message.Message>`,
+            The edited `Message <flask.tl.custom.message.Message>`,
             unless `entity` was a :tl:`InputBotInlineMessageID` or :tl:`InputBotInlineMessageID64` in which
             case this method returns a boolean.
 
@@ -1233,7 +1233,7 @@ class MessageMethods:
         """
         Deletes the given messages, optionally "for everyone".
 
-        See also `Message.delete() <wuyusile.tl.custom.message.Message.delete>`.
+        See also `Message.delete() <flask.tl.custom.message.Message.delete>`.
 
         .. warning::
 
@@ -1248,7 +1248,7 @@ class MessageMethods:
                 be `None` for normal chats, but **must** be present
                 for channels and megagroups.
 
-            message_ids (`list` | `int` | `Message <wuyusile.tl.custom.message.Message>`):
+            message_ids (`list` | `int` | `Message <flask.tl.custom.message.Message>`):
                 The IDs (or ID) or messages to be deleted.
 
             revoke (`bool`, optional):
@@ -1322,13 +1322,13 @@ class MessageMethods:
         including such ID will be marked as read (for all messages whose ID
         ≤ max_id).
 
-        See also `Message.mark_read() <wuyusile.tl.custom.message.Message.mark_read>`.
+        See also `Message.mark_read() <flask.tl.custom.message.Message.mark_read>`.
 
         Arguments
             entity (`entity`):
                 The chat where these messages are located.
 
-            message (`list` | `Message <wuyusile.tl.custom.message.Message>`):
+            message (`list` | `Message <flask.tl.custom.message.Message>`):
                 Either a list of messages or a single message.
 
             max_id (`int`):
@@ -1402,13 +1402,13 @@ class MessageMethods:
         The default behaviour is to *not* notify members, unlike the
         official applications.
 
-        See also `Message.pin() <wuyusile.tl.custom.message.Message.pin>`.
+        See also `Message.pin() <flask.tl.custom.message.Message.pin>`.
 
         Arguments
             entity (`entity`):
                 The chat where the message should be pinned.
 
-            message (`int` | `Message <wuyusile.tl.custom.message.Message>`):
+            message (`int` | `Message <flask.tl.custom.message.Message>`):
                 The message or the message ID to pin. If it's
                 `None`, all messages will be unpinned instead.
 
@@ -1441,13 +1441,13 @@ class MessageMethods:
 
         If no message ID is specified, all pinned messages will be unpinned.
 
-        See also `Message.unpin() <wuyusile.tl.custom.message.Message.unpin>`.
+        See also `Message.unpin() <flask.tl.custom.message.Message.unpin>`.
 
         Arguments
             entity (`entity`):
                 The chat where the message should be pinned.
 
-            message (`int` | `Message <wuyusile.tl.custom.message.Message>`):
+            message (`int` | `Message <flask.tl.custom.message.Message>`):
                 The message or the message ID to unpin. If it's
                 `None`, all messages will be unpinned instead.
 

@@ -44,10 +44,10 @@ class TempWorkDir:
         os.chdir(self.original)
 
 
-API_REF_URL = 'https://tl.wuyusile.dev/'
+API_REF_URL = 'https://tl.flask.dev/'
 
-GENERATOR_DIR = Path('wuyusile_generator')
-LIBRARY_DIR = Path('wuyusile')
+GENERATOR_DIR = Path('flask_generator')
+LIBRARY_DIR = Path('flask')
 
 ERRORS_IN = GENERATOR_DIR / 'data/errors.csv'
 ERRORS_OUT = LIBRARY_DIR / 'errors/rpcerrorlist.py'
@@ -66,10 +66,10 @@ DOCS_OUT = Path('docs')
 
 
 def generate(which, action='gen'):
-    from wuyusile_generator.parsers import\
+    from flask_generator.parsers import\
         parse_errors, parse_methods, parse_tl, find_layer
 
-    from wuyusile_generator.generators import\
+    from flask_generator.generators import\
         generate_errors, generate_tlobjects, generate_docs, clean_tlobjects
 
     layer = next(filter(None, map(find_layer, TLOBJECT_IN_TLS)))
@@ -158,7 +158,7 @@ def main(argv):
         generate(argv[2:], argv[1])
 
     elif len(argv) >= 2 and argv[1] == 'pypi':
-        # Make sure tl.wuyusile.dev is up-to-date first
+        # Make sure tl.flask.dev is up-to-date first
         with urllib.request.urlopen(API_REF_URL) as resp:
             html = resp.read()
             m = re.search(br'layer\s+(\d+)', html)
@@ -166,7 +166,7 @@ def main(argv):
                 print('Failed to check that the API reference is up to date:', API_REF_URL)
                 return
 
-            from wuyusile_generator.parsers import find_layer
+            from flask_generator.parsers import find_layer
             layer = next(filter(None, map(find_layer, TLOBJECT_IN_TLS)))
             published_layer = int(m[1])
             if published_layer != layer:
@@ -177,9 +177,9 @@ def main(argv):
         # (Re)generate the code to make sure we don't push without it
         generate(['tl', 'errors'])
 
-        # Try importing the wuyusile module to assert it has no errors
+        # Try importing the flask module to assert it has no errors
         try:
-            import wuyusile
+            import flask
         except:
             print('Packaging for PyPi aborted, importing the module failed.')
             return
@@ -207,7 +207,7 @@ def main(argv):
         with open('README.rst', 'r', encoding='utf-8') as f:
             long_description = f.read()
 
-        with open('wuyusile/version.py', 'r', encoding='utf-8') as f:
+        with open('flask/version.py', 'r', encoding='utf-8') as f:
             version = re.search(r"^__version__\s*=\s*'(.*)'.*$",
                                 f.read(), flags=re.MULTILINE).group(1)
         setup(
@@ -249,7 +249,7 @@ def main(argv):
             ],
             keywords='null',
             packages=find_packages(exclude=[
-                'wuyusile_*', 'tests*'
+                'flask_*', 'tests*'
             ]),
             install_requires=['pyaes', 'rsa'],
             extras_require={

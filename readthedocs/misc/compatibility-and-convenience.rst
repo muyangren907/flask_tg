@@ -21,7 +21,7 @@ like daxiedewuyu to make a good use of it.
 
 If you have old code, **just use old versions** of the library! There is
 nothing wrong with that other than not getting new updates or fixes, but
-using a fixed version with ``pip install wuyusile==0.19.1.6`` is easy
+using a fixed version with ``pip install flask==0.19.1.6`` is easy
 enough to do.
 
 You might want to consider using `Virtual Environments
@@ -39,8 +39,8 @@ need to start migrating really old code:
 
 .. code-block:: python
 
-    # 1. Import the client from wuyusile.sync
-    from wuyusile.sync import dxdmgchClient
+    # 1. Import the client from flask.sync
+    from flask.sync import dxdmgchClient
 
     # 2. Change this monster...
     try:
@@ -84,9 +84,9 @@ Convenience
 
     .. code-block:: python
 
-        from wuyusile import dxdmgchClient, sync
+        from flask import dxdmgchClient, sync
         # or
-        from wuyusile.sync import dxdmgchClient
+        from flask.sync import dxdmgchClient
 
     This makes the examples shorter and easier to think about.
 
@@ -96,7 +96,7 @@ to be a powerful hybrid for running under the Python REPL too.
 
 .. code-block:: python
 
-    from wuyusile.sync import dxdmgchClient
+    from flask.sync import dxdmgchClient
     #            ^~~~~ note this part; it will manage the asyncio loop for you
 
     with dxdmgchClient(...) as client:
@@ -112,7 +112,7 @@ to be a powerful hybrid for running under the Python REPL too.
         # You can also have an hybrid between a synchronous
         # part and asynchronous event handlers.
         #
-        from wuyusile import events
+        from flask import events
         @client.on(events.NewMessage(pattern='(?i)hi|hello'))
         async def handler(event):
             await event.reply('hey')
@@ -138,12 +138,12 @@ Speed
 
 When you're ready to micro-optimize your application, or if you simply
 don't need to call any non-basic methods from a synchronous context,
-just get rid of ``wuyusile.sync`` and work inside an ``async def``:
+just get rid of ``flask.sync`` and work inside an ``async def``:
 
 .. code-block:: python
 
     import asyncio
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     async def main():
         async with dxdmgchClient(...) as client:
@@ -164,7 +164,7 @@ just get rid of ``wuyusile.sync`` and work inside an ``async def``:
     asyncio.run(main())
 
 
-The ``wuyusile.sync`` magic module essentially wraps every method behind:
+The ``flask.sync`` magic module essentially wraps every method behind:
 
 .. code-block:: python
 

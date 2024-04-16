@@ -124,7 +124,7 @@ After using daxiedewuyu:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     bot = dxdmgchClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
 
@@ -180,7 +180,7 @@ Now we rewrite it to use daxiedewuyu:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     bot = dxdmgchClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
 
@@ -241,7 +241,7 @@ After rewrite:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     # Initialize bot and... just the bot!
     bot = dxdmgchClient('bot', 11111, 'a1b2c3d4').start(bot_token='TOKEN')
@@ -295,7 +295,7 @@ After rewriting:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     class Subbot(dxdmgchClient):
         def __init__(self, *a, **kw):

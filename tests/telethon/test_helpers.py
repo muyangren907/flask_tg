@@ -1,14 +1,14 @@
 """
-tests for wuyusile.helpers
+tests for flask.helpers
 """
 
 from base64 import b64decode
 
 import pytest
 
-from wuyusile import helpers
-from wuyusile.utils import get_inner_text
-from wuyusile.tl.types import MessageEntityUnknown as Meu
+from flask import helpers
+from flask.utils import get_inner_text
+from flask.tl.types import MessageEntityUnknown as Meu
 
 
 def test_strip_text():

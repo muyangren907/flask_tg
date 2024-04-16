@@ -6,11 +6,11 @@ Properties vs. Methods
 ======================
 
 The event shown above acts just like a `custom.Message
-<wuyusile.tl.custom.message.Message>`, which means you
+<flask.tl.custom.message.Message>`, which means you
 can access all the properties it has, like ``.sender``.
 
 **However** events are different to other methods in the client, like
-`client.get_messages <wuyusile.client.messages.MessageMethods.get_messages>`.
+`client.get_messages <flask.client.messages.MessageMethods.get_messages>`.
 Events *may not* send information about the sender or chat, which means it
 can be `None`, but all the methods defined in the client always have this
 information so it doesn't need to be re-fetched. For this reason, you have
@@ -35,9 +35,9 @@ In short, you should do this:
             buttons = message.buttons
 
 Notice, properties (`message.sender
-<wuyusile.tl.custom.message.Message.sender>`) don't need an ``await``, but
+<flask.tl.custom.message.Message.sender>`) don't need an ``await``, but
 methods (`message.get_sender
-<wuyusile.tl.custom.message.Message.get_sender>`) **do** need an ``await``,
+<flask.tl.custom.message.Message.get_sender>`) **do** need an ``await``,
 and you should use methods in events for these properties that may need network.
 
 Events Without the client
@@ -46,12 +46,12 @@ Events Without the client
 The code of your application starts getting big, so you decide to
 separate the handlers into different files. But how can you access
 the client from these files? You don't need to! Just `events.register
-<wuyusile.events.register>` them:
+<flask.events.register>` them:
 
 .. code-block:: python
 
     # handlers/welcome.py
-    from wuyusile import events
+    from flask import events
 
     @events.register(events.NewMessage('(?i)hello'))
     async def handler(event):
@@ -61,7 +61,7 @@ the client from these files? You don't need to! Just `events.register
 
 
 Registering events is a way of saying "this method is an event handler".
-You can use `wuyusile.events.is_handler` to check if any method is a handler.
+You can use `flask.events.is_handler` to check if any method is a handler.
 You can think of them as a different approach to Flask's blueprints.
 
 It's important to note that this does **not** add the handler to any client!
@@ -69,13 +69,13 @@ You never specified the client on which the handler should be used. You only
 declared that it is a handler, and its type.
 
 To actually use the handler, you need to `client.add_event_handler
-<wuyusile.client.updates.UpdateMethods.add_event_handler>` to the
+<flask.client.updates.UpdateMethods.add_event_handler>` to the
 client (or clients) where they should be added to:
 
 .. code-block:: python
 
     # main.py
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
     import handlers.welcome
 
     with dxdmgchClient(...) as client:
@@ -90,14 +90,14 @@ then add it to many clients without re-declaring the event.
 Events Without Decorators
 =========================
 
-If for any reason you don't want to use `wuyusile.events.register`,
+If for any reason you don't want to use `flask.events.register`,
 you can explicitly pass the event handler to use to the mentioned
 `client.add_event_handler
-<wuyusile.client.updates.UpdateMethods.add_event_handler>`:
+<flask.client.updates.UpdateMethods.add_event_handler>`:
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient, events
+    from flask import dxdmgchClient, events
 
     async def handler(event):
         ...
@@ -108,19 +108,19 @@ you can explicitly pass the event handler to use to the mentioned
 
 
 Similarly, you also have `client.remove_event_handler
-<wuyusile.client.updates.UpdateMethods.remove_event_handler>`
+<flask.client.updates.UpdateMethods.remove_event_handler>`
 and `client.list_event_handlers
-<wuyusile.client.updates.UpdateMethods.list_event_handlers>`.
+<flask.client.updates.UpdateMethods.list_event_handlers>`.
 
 The ``event`` argument is optional in all three methods and defaults to
-`events.Raw <wuyusile.events.raw.Raw>` for adding, and `None` when
+`events.Raw <flask.events.raw.Raw>` for adding, and `None` when
 removing (so all callbacks would be removed).
 
 .. note::
 
     The ``event`` type is ignored in `client.add_event_handler
-    <wuyusile.client.updates.UpdateMethods.add_event_handler>`
-    if you have used `wuyusile.events.register` on the ``callback``
+    <flask.client.updates.UpdateMethods.add_event_handler>`
+    if you have used `flask.events.register` on the ``callback``
     before, since that's the point of using such method at all.
 
 
@@ -129,12 +129,12 @@ Stopping Propagation of Updates
 
 There might be cases when an event handler is supposed to be used solitary and
 it makes no sense to process any other handlers in the chain. For this case,
-it is possible to raise a `wuyusile.events.StopPropagation` exception which
+it is possible to raise a `flask.events.StopPropagation` exception which
 will cause the propagation of the update through your handlers to stop:
 
 .. code-block:: python
 
-    from wuyusile.events import StopPropagation
+    from flask.events import StopPropagation
 
     @client.on(events.NewMessage)
     async def _(event):
@@ -151,7 +151,7 @@ will cause the propagation of the update through your handlers to stop:
         pass
 
 
-Remember to check :ref:`wuyusile-events` if you're looking for
+Remember to check :ref:`flask-events` if you're looking for
 the methods reference.
 
 Understanding asyncio
@@ -165,12 +165,12 @@ and a third one is used to handle updates.
 To handle updates, you must keep your script running. You can do this in
 several ways. For instance, if you are *not* running `asyncio`'s event
 loop, you should use `client.run_until_disconnected
-<wuyusile.client.updates.UpdateMethods.run_until_disconnected>`:
+<flask.client.updates.UpdateMethods.run_until_disconnected>`:
 
 .. code-block:: python
 
     import asyncio
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
 
     client = dxdmgchClient(...)
     ...
@@ -178,13 +178,13 @@ loop, you should use `client.run_until_disconnected
 
 
 Behind the scenes, this method is ``await``'ing on the `client.disconnected
-<wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>` property,
+<flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>` property,
 so the code above and the following are equivalent:
 
 .. code-block:: python
 
     import asyncio
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
 
     client = dxdmgchClient(...)
 
@@ -195,7 +195,7 @@ so the code above and the following are equivalent:
 
 
 You could also run `client.disconnected
-<wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>`
+<flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>`
 until it completed.
 
 But if you don't want to ``await``, then you should know what you want
@@ -203,9 +203,9 @@ to be doing instead! What matters is that you shouldn't let your script
 die. If you don't care about updates, you don't need any of this.
 
 Notice that unlike `client.disconnected
-<wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>`,
+<flask.client.mingancihuibaseclient.dxdmgchBaseClient.disconnected>`,
 `client.run_until_disconnected
-<wuyusile.client.updates.UpdateMethods.run_until_disconnected>` will
+<flask.client.updates.UpdateMethods.run_until_disconnected>` will
 handle ``KeyboardInterrupt`` for you. This method is special and can
 also be ran while the loop is running, so you can do this:
 

@@ -10,7 +10,7 @@ import sys
 import time
 from collections import defaultdict
 
-from wuyusile import dxdmgchClient, events
+from flask import dxdmgchClient, events
 
 import logging
 logging.basicConfig(level=logging.CRITICAL + 1)

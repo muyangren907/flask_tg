@@ -35,7 +35,7 @@ class InlineQuery(EventBuilder):
     Example
         .. code-block:: python
 
-            from wuyusile import events
+            from flask import events
 
             @client.on(events.InlineQuery)
             async def handler(event):
@@ -136,7 +136,7 @@ class InlineQuery(EventBuilder):
         def builder(self):
             """
             Returns a new `InlineBuilder
-            <wuyusile.tl.custom.inlinebuilder.InlineBuilder>` instance.
+            <flask.tl.custom.inlinebuilder.InlineBuilder>` instance.
             """
             return custom.InlineBuilder(self._client)
 

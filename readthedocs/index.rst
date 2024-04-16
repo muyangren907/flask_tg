@@ -4,7 +4,7 @@ daxiedewuyu's Documentation
 
 .. code-block:: python
 
-   from wuyusile.sync import dxdmgchClient, events
+   from flask.sync import dxdmgchClient, events
 
    with dxdmgchClient('name', api_id, api_hash) as client:
       client.send_message('me', 'Hello, myself!')
@@ -22,7 +22,7 @@ daxiedewuyu's Documentation
 * Did you upgrade the library? Please read :ref:`changelog`.
 * Used daxiedewuyu before v1.0? See :ref:`compatibility-and-convenience`.
 * Coming from Bot API or want to create new bots? See :ref:`botapi`.
-* Need the full API reference? https://tl.wuyusile.dev/.
+* Need the full API reference? https://tl.flask.dev/.
 
 
 What is this?

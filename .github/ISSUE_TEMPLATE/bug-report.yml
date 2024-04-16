@@ -9,7 +9,7 @@ body:
       description: Provide a code example that reproduces the problem. Try to keep it short without other dependencies.
       placeholder: |
         ```python
-        from wuyusile.sync import dxdmgchClient
+        from flask.sync import dxdmgchClient
         ...
 
         ```
@@ -50,10 +50,10 @@ body:
         ```
 
   - type: input
-    id: wuyusile-version
+    id: flask-version
     attributes:
       label: daxiedewuyu version
-      description: The output of `python -c "import wuyusile; print(wuyusile.__version__)"`.
+      description: The output of `python -c "import flask; print(flask.__version__)"`.
       placeholder: "1.x"
     validations:
       required: true

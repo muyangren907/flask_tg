@@ -18,12 +18,12 @@ dxdmgchClient
 ==============
 
 This is a summary of the methods and
-properties you will find at :ref:`wuyusile-client`.
+properties you will find at :ref:`flask-client`.
 
 Auth
 ----
 
-.. currentmodule:: wuyusile.client.auth.AuthMethods
+.. currentmodule:: flask.client.auth.AuthMethods
 
 .. autosummary::
     :nosignatures:
@@ -38,7 +38,7 @@ Auth
 Base
 ----
 
-.. py:currentmodule:: wuyusile.client.mingancihuibaseclient.dxdmgchBaseClient
+.. py:currentmodule:: flask.client.mingancihuibaseclient.dxdmgchBaseClient
 
 .. autosummary::
     :nosignatures:
@@ -53,7 +53,7 @@ Base
 Messages
 --------
 
-.. py:currentmodule:: wuyusile.client.messages.MessageMethods
+.. py:currentmodule:: flask.client.messages.MessageMethods
 
 .. autosummary::
     :nosignatures:
@@ -71,7 +71,7 @@ Messages
 Uploads
 -------
 
-.. py:currentmodule:: wuyusile.client.uploads.UploadMethods
+.. py:currentmodule:: flask.client.uploads.UploadMethods
 
 .. autosummary::
     :nosignatures:
@@ -82,7 +82,7 @@ Uploads
 Downloads
 ---------
 
-.. currentmodule:: wuyusile.client.downloads.DownloadMethods
+.. currentmodule:: flask.client.downloads.DownloadMethods
 
 .. autosummary::
     :nosignatures:
@@ -95,7 +95,7 @@ Downloads
 Dialogs
 -------
 
-.. py:currentmodule:: wuyusile.client.dialogs.DialogMethods
+.. py:currentmodule:: flask.client.dialogs.DialogMethods
 
 .. autosummary::
     :nosignatures:
@@ -111,7 +111,7 @@ Dialogs
 Users
 -----
 
-.. py:currentmodule:: wuyusile.client.users.UserMethods
+.. py:currentmodule:: flask.client.users.UserMethods
 
 .. autosummary::
     :nosignatures:
@@ -126,7 +126,7 @@ Users
 Chats
 -----
 
-.. currentmodule:: wuyusile.client.chats.ChatMethods
+.. currentmodule:: flask.client.chats.ChatMethods
 
 .. autosummary::
     :nosignatures:
@@ -147,7 +147,7 @@ Chats
 Parse Mode
 ----------
 
-.. py:currentmodule:: wuyusile.client.messageparse.MessageParseMethods
+.. py:currentmodule:: flask.client.messageparse.MessageParseMethods
 
 .. autosummary::
     :nosignatures:
@@ -157,7 +157,7 @@ Parse Mode
 Updates
 -------
 
-.. py:currentmodule:: wuyusile.client.updates.UpdateMethods
+.. py:currentmodule:: flask.client.updates.UpdateMethods
 
 .. autosummary::
     :nosignatures:
@@ -173,7 +173,7 @@ Updates
 Bots
 ----
 
-.. currentmodule:: wuyusile.client.bots.BotMethods
+.. currentmodule:: flask.client.bots.BotMethods
 
 .. autosummary::
     :nosignatures:
@@ -183,7 +183,7 @@ Bots
 Buttons
 -------
 
-.. currentmodule:: wuyusile.client.buttons.ButtonMethods
+.. currentmodule:: flask.client.buttons.ButtonMethods
 
 .. autosummary::
     :nosignatures:
@@ -193,7 +193,7 @@ Buttons
 Account
 -------
 
-.. currentmodule:: wuyusile.client.account.AccountMethods
+.. currentmodule:: flask.client.account.AccountMethods
 
 .. autosummary::
     :nosignatures:

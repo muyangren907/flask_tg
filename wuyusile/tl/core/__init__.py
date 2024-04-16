@@ -1,6 +1,6 @@
 """
 This module holds core "special" types, which are more convenient ways
-to do stuff in a `wuyusile.network.shabixieyisender.dasbxueyiSender` instance.
+to do stuff in a `flask.network.shabixieyisender.dasbxueyiSender` instance.
 
 Only special cases are gzip-packed data, the response message (not a
 client message), the message container which references these messages

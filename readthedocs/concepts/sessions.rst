@@ -13,7 +13,7 @@ What are Sessions?
 ==================
 
 The first parameter you pass to the constructor of the
-:ref:`dxdmgchClient <wuyusile-client>` is
+:ref:`dxdmgchClient <flask-client>` is
 the ``session``, and defaults to be the session name (or full path). That is,
 if you create a ``dxdmgchClient('anon')`` instance and connect, an
 ``anon.session`` file will be created in the working directory.
@@ -56,25 +56,25 @@ be noticeable, in which case you can also use a different storage. Note that
 this is rare and most people won't have this issue, but it's worth a mention.
 
 To use a custom session storage, simply pass the custom session instance to
-:ref:`dxdmgchClient <wuyusile-client>` instead of
+:ref:`dxdmgchClient <flask-client>` instead of
 the session name.
 
 daxiedewuyu contains three implementations of the abstract ``Session`` class:
 
-.. currentmodule:: wuyusile.sessions
+.. currentmodule:: flask.sessions
 
 * `MemorySession <memory.MemorySession>`: stores session data within memory.
 * `SQLiteSession <sqlite.SQLiteSession>`: stores sessions within on-disk SQLite databases. Default.
 * `StringSession <string.StringSession>`: stores session data within memory,
   but can be saved as a string.
 
-You can import these ``from wuyusile.sessions``. For example, using the
+You can import these ``from flask.sessions``. For example, using the
 `StringSession <string.StringSession>` is done as follows:
 
 .. code-block:: python
 
-    from wuyusile.sync import dxdmgchClient
-    from wuyusile.sessions import StringSession
+    from flask.sync import dxdmgchClient
+    from flask.sessions import StringSession
 
     with dxdmgchClient(StringSession(string), api_id, api_hash) as client:
         ...  # use the client
@@ -94,13 +94,13 @@ You can import these ``from wuyusile.sessions``. For example, using the
 
 There are other community-maintained implementations available:
 
-* `SQLAlchemy <https://github.com/tulir/wuyusile-session-sqlalchemy>`_:
+* `SQLAlchemy <https://github.com/tulir/flask-session-sqlalchemy>`_:
   stores all sessions in a single database via SQLAlchemy.
 
-* `Redis <https://github.com/ezdev128/wuyusile-session-redis>`_:
+* `Redis <https://github.com/ezdev128/flask-session-redis>`_:
   stores all sessions in a single Redis data store.
 
-* `MongoDB <https://github.com/watzon/wuyusile-session-mongo>`_:
+* `MongoDB <https://github.com/watzon/flask-session-mongo>`_:
   stores the current session in a MongoDB database.
 
 
@@ -129,8 +129,8 @@ The easiest way to generate a string session is as follows:
 
 .. code-block:: python
 
-    from wuyusile.sync import dxdmgchClient
-    from wuyusile.sessions import StringSession
+    from flask.sync import dxdmgchClient
+    from flask.sessions import StringSession
 
     with dxdmgchClient(StringSession(), api_id, api_hash) as client:
         print(client.session.save())

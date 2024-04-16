@@ -79,11 +79,11 @@ real ID, and the peer type (the class):
 
 .. code-block:: python
 
-    from wuyusile import utils
+    from flask import utils
     real_id, peer_type = utils.resolve_id(-1000000000456)
 
     print(real_id)  # 456
-    print(peer_type)  # <class 'wuyusile.tl.types.PeerChannel'>
+    print(peer_type)  # <class 'flask.tl.types.PeerChannel'>
 
     peer = peer_type(real_id)
     print(peer)  # PeerChannel(channel_id=456)
@@ -114,7 +114,7 @@ refers to a :tl:`User`. If this is **not** the case, you can manually fix it:
 
 .. code-block:: python
 
-    from wuyusile import types
+    from flask import types
     await client.send_message(types.PeerChannel(456), 'hello')
     #                         ^^^^^^^^^^^^^^^^^ explicit peer type
 
@@ -140,7 +140,7 @@ use :tl:`GetFullChannelRequest` to obtain this:
 
 .. code-block:: python
 
-    from wuyusile import functions
+    from flask import functions
     full = await client(functions.channels.GetFullChannelRequest(your_channel))
     full_channel = full.full_chat
     # full_channel is a ChannelFull
@@ -166,4 +166,4 @@ They are in the ``full.chats`` attribute:
         linked_group = next(c for c in full.chats if c.id == full_channel.linked_chat_id)
         print(linked_group.username)
 
-.. _Chat type: https://tl.wuyusile.dev/types/chat.html
+.. _Chat type: https://tl.flask.dev/types/chat.html

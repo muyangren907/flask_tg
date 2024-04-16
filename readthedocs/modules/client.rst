@@ -1,10 +1,10 @@
-.. _wuyusile-client:
+.. _flask-client:
 
 ==============
 dxdmgchClient
 ==============
 
-.. currentmodule:: wuyusile.client
+.. currentmodule:: flask.client
 
 The `dxdmgchClient <mingancihuiclient.dxdmgchClient>` aggregates several mixin
 classes to provide all the common functionality in a nice, Pythonic interface.
@@ -14,7 +14,7 @@ Each mixin has its own methods, which you all can use.
 
 .. code-block:: python
 
-    from wuyusile import dxdmgchClient
+    from flask import dxdmgchClient
 
     client = dxdmgchClient(name, api_id, api_hash)
 
@@ -32,72 +32,72 @@ you can access all of their methods.
 
 See :ref:`client-ref` for a short summary.
 
-.. automodule:: wuyusile.client.mingancihuiclient
+.. automodule:: flask.client.mingancihuiclient
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.mingancihuibaseclient
+.. automodule:: flask.client.mingancihuibaseclient
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.account
+.. automodule:: flask.client.account
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.auth
+.. automodule:: flask.client.auth
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.bots
+.. automodule:: flask.client.bots
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.buttons
+.. automodule:: flask.client.buttons
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.chats
+.. automodule:: flask.client.chats
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.dialogs
+.. automodule:: flask.client.dialogs
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.downloads
+.. automodule:: flask.client.downloads
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.messageparse
+.. automodule:: flask.client.messageparse
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.messages
+.. automodule:: flask.client.messages
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.updates
+.. automodule:: flask.client.updates
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.uploads
+.. automodule:: flask.client.uploads
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: wuyusile.client.users
+.. automodule:: flask.client.users
     :members:
     :undoc-members:
     :show-inheritance:

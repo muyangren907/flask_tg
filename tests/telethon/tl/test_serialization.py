@@ -1,6 +1,6 @@
 import pytest
 
-from wuyusile.tl import types, functions
+from flask.tl import types, functions
 
 
 def test_nested_invalid_serialization():

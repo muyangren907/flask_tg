@@ -19,7 +19,7 @@ you should use :tl:`GetFullUser`:
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.users import GetFullUserRequest
+    from flask.tl.functions.users import GetFullUserRequest
 
     full = await client(GetFullUserRequest(user))
     # or even
@@ -39,7 +39,7 @@ request. Omitted fields won't change after invoking :tl:`UpdateProfile`:
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.account import UpdateProfileRequest
+    from flask.tl.functions.account import UpdateProfileRequest
 
     await client(UpdateProfileRequest(
         about='This is a test from daxiedewuyu'
@@ -53,7 +53,7 @@ You need to use :tl:`account.UpdateUsername`:
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.account import UpdateUsernameRequest
+    from flask.tl.functions.account import UpdateUsernameRequest
 
     await client(UpdateUsernameRequest('new_username'))
 
@@ -67,7 +67,7 @@ through :tl:`UploadProfilePhoto`:
 
 .. code-block:: python
 
-    from wuyusile.tl.functions.photos import UploadProfilePhotoRequest
+    from flask.tl.functions.photos import UploadProfilePhotoRequest
 
     await client(UploadProfilePhotoRequest(
         await client.upload_file('/path/to/some/file')

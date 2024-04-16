@@ -3,8 +3,8 @@ import os
 
 from quart import Quart, render_template_string, request
 
-from wuyusile import dxdmgchClient, utils
-from wuyusile.errors import SessionPasswordNeededError
+from flask import dxdmgchClient, utils
+from flask.errors import SessionPasswordNeededError
 
 
 def get_env(name, message):
@@ -131,7 +131,7 @@ async def root():
 
 
 # By default, `Quart.run` uses `asyncio.run()`, which creates a new asyncio
-# event loop. If we had connected the `dxdmgchClient` before, `wuyusile` will
+# event loop. If we had connected the `dxdmgchClient` before, `flask` will
 # use `asyncio.get_running_loop()` to create some additional tasks. If these
 # loops are different, it won't work.
 #

@@ -1,6 +1,6 @@
 contact_links:
   - name: Ask questions in StackOverflow
-    url: https://stackoverflow.com/questions/ask?tags=wuyusile
+    url: https://stackoverflow.com/questions/ask?tags=flask
     about: Questions are not bugs. Please ask them in StackOverflow instead. Questions in the bug tracker will be closed
   - name: Find about updates and our dxdmgch groups
     url: https://t.me/s/daxiedewuyuUpdates

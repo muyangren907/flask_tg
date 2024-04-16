@@ -22,7 +22,7 @@ class ChatAction(EventBuilder):
     Example
         .. code-block:: python
 
-            from wuyusile import events
+            from flask import events
 
             @client.on(events.ChatAction)
             async def handler(event):
@@ -124,7 +124,7 @@ class ChatAction(EventBuilder):
         Represents the event of a new chat action.
 
         Members:
-            action_message  (`MessageAction <https://tl.wuyusile.dev/types/message_action.html>`_):
+            action_message  (`MessageAction <https://tl.flask.dev/types/message_action.html>`_):
                 The message invoked by this Chat Action.
 
             new_pin (`bool`):
@@ -224,7 +224,7 @@ class ChatAction(EventBuilder):
         async def respond(self, *args, **kwargs):
             """
             Responds to the chat action message (not as a reply). Shorthand for
-            `wuyusile.client.messages.MessageMethods.send_message` with
+            `flask.client.messages.MessageMethods.send_message` with
             ``entity`` already set.
             """
             return await self._client.send_message(
@@ -233,7 +233,7 @@ class ChatAction(EventBuilder):
         async def reply(self, *args, **kwargs):
             """
             Replies to the chat action message (as a reply). Shorthand for
-            `wuyusile.client.messages.MessageMethods.send_message` with
+            `flask.client.messages.MessageMethods.send_message` with
             both ``entity`` and ``reply_to`` already set.
 
             Has the same effect as `respond` if there is no message.
@@ -250,7 +250,7 @@ class ChatAction(EventBuilder):
             Deletes the chat action message. You're responsible for checking
             whether you have the permission to do so, or to except the error
             otherwise. Shorthand for
-            `wuyusile.client.messages.MessageMethods.delete_messages` with
+            `flask.client.messages.MessageMethods.delete_messages` with
             ``entity`` and ``message_ids`` already set.
 
             Does nothing if no message action triggered this event.
@@ -266,7 +266,7 @@ class ChatAction(EventBuilder):
         async def get_pinned_message(self):
             """
             If ``new_pin`` is `True`, this returns the `Message
-            <wuyusile.tl.custom.message.Message>` object that was pinned.
+            <flask.tl.custom.message.Message>` object that was pinned.
             """
             if self._pinned_messages is None:
                 await self.get_pinned_messages()
@@ -277,7 +277,7 @@ class ChatAction(EventBuilder):
         async def get_pinned_messages(self):
             """
             If ``new_pin`` is `True`, this returns a `list` of `Message
-            <wuyusile.tl.custom.message.Message>` objects that were pinned.
+            <flask.tl.custom.message.Message>` objects that were pinned.
             """
             if not self._pin_ids:
                 return self._pin_ids  # either None or empty list

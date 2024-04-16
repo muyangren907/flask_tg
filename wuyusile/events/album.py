@@ -74,7 +74,7 @@ class Album(EventBuilder):
     Example
         .. code-block:: python
 
-            from wuyusile import events
+            from flask import events
 
             @client.on(events.Album)
             async def handler(event):
@@ -147,7 +147,7 @@ class Album(EventBuilder):
         Represents the event of a new album.
 
         Members:
-            messages (Sequence[`Message <wuyusile.tl.custom.message.Message>`]):
+            messages (Sequence[`Message <flask.tl.custom.message.Message>`]):
                 The list of messages belonging to the same album.
         """
         def __init__(self, messages):
@@ -211,7 +211,7 @@ class Album(EventBuilder):
         @property
         def forward(self):
             """
-            The `Forward <wuyusile.tl.custom.forward.Forward>`
+            The `Forward <flask.tl.custom.forward.Forward>`
             information for the first message in the album if it was forwarded.
             """
             # Each individual message in an album all reply to the same message
@@ -223,7 +223,7 @@ class Album(EventBuilder):
 
         async def get_reply_message(self):
             """
-            The `Message <wuyusile.tl.custom.message.Message>`
+            The `Message <flask.tl.custom.message.Message>`
             that this album is replying to, or `None`.
 
             The result will be cached after its first use.
@@ -233,7 +233,7 @@ class Album(EventBuilder):
         async def respond(self, *args, **kwargs):
             """
             Responds to the album (not as a reply). Shorthand for
-            `wuyusile.client.messages.MessageMethods.send_message`
+            `flask.client.messages.MessageMethods.send_message`
             with ``entity`` already set.
             """
             return await self.messages[0].respond(*args, **kwargs)
@@ -241,7 +241,7 @@ class Album(EventBuilder):
         async def reply(self, *args, **kwargs):
             """
             Replies to the first photo in the album (as a reply). Shorthand
-            for `wuyusile.client.messages.MessageMethods.send_message`
+            for `flask.client.messages.MessageMethods.send_message`
             with both ``entity`` and ``reply_to`` already set.
             """
             return await self.messages[0].reply(*args, **kwargs)
@@ -249,7 +249,7 @@ class Album(EventBuilder):
         async def forward_to(self, *args, **kwargs):
             """
             Forwards the entire album. Shorthand for
-            `wuyusile.client.messages.MessageMethods.forward_messages`
+            `flask.client.messages.MessageMethods.forward_messages`
             with both ``messages`` and ``from_peer`` already set.
             """
             if self._client:
@@ -261,7 +261,7 @@ class Album(EventBuilder):
             """
             Edits the first caption or the message, or the first messages'
             caption if no caption is set, iff it's outgoing. Shorthand for
-            `wuyusile.client.messages.MessageMethods.edit_message`
+            `flask.client.messages.MessageMethods.edit_message`
             with both ``entity`` and ``message`` already set.
 
             Returns `None` if the message was incoming,
@@ -270,7 +270,7 @@ class Album(EventBuilder):
             .. note::
 
                 This is different from `client.edit_message
-                <wuyusile.client.messages.MessageMethods.edit_message>`
+                <flask.client.messages.MessageMethods.edit_message>`
                 and **will respect** the previous state of the message.
                 For example, if the message didn't have a link preview,
                 the edit won't add one by default, and you should force
@@ -290,7 +290,7 @@ class Album(EventBuilder):
             Deletes the entire album. You're responsible for checking whether
             you have the permission to do so, or to except the error otherwise.
             Shorthand for
-            `wuyusile.client.messages.MessageMethods.delete_messages` with
+            `flask.client.messages.MessageMethods.delete_messages` with
             ``entity`` and ``message_ids`` already set.
             """
             if self._client:
@@ -303,7 +303,7 @@ class Album(EventBuilder):
             """
             Marks the entire album as read. Shorthand for
             `client.send_read_acknowledge()
-            <wuyusile.client.messages.MessageMethods.send_read_acknowledge>`
+            <flask.client.messages.MessageMethods.send_read_acknowledge>`
             with both ``entity`` and ``message`` already set.
             """
             if self._client:
@@ -313,7 +313,7 @@ class Album(EventBuilder):
         async def pin(self, *, notify=False):
             """
             Pins the first photo in the album. Shorthand for
-            `wuyusile.client.messages.MessageMethods.pin_message`
+            `flask.client.messages.MessageMethods.pin_message`
             with both ``entity`` and ``message`` already set.
             """
             return await self.messages[0].pin(notify=notify)

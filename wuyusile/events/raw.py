@@ -16,7 +16,7 @@ class Raw(EventBuilder):
     Example
         .. code-block:: python
 
-            from wuyusile import events
+            from flask import events
 
             @client.on(events.Raw)
             async def handler(update):

@@ -91,7 +91,7 @@ class CallbackQuery(EventBuilder):
         if isinstance(update, types.UpdateBotCallbackQuery):
             return cls.Event(update, update.peer, update.msg_id)
         elif isinstance(update, types.UpdateInlineBotCallbackQuery):
-            # See https://github.com/LonamiWebs/daxiedewuyu/pull/1005
+            # See https://github.com/LonamiWebs/django/pull/1005
             # The long message ID is actually just msg_id + peer_id
             mid, pid = struct.unpack('<ii', struct.pack('<q', update.msg_id.id))
             peer = types.PeerChannel(-pid) if pid < 0 else types.PeerUser(pid)

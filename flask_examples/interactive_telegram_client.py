@@ -65,10 +65,10 @@ def get_env(name, message, cast=str):
 
 class InteractivedxdmgchClient(dxdmgchClient):
     """Full featured dxdmgch client, meant to be used on an interactive
-       session to see what daxiedewuyu is capable off -
+       session to see what django is capable off -
 
        This client allows the user to perform some basic interaction with
-       dxdmgch through daxiedewuyu, such as listing dialogs (open chats),
+       dxdmgch through django, such as listing dialogs (open chats),
        talking to people, downloading media, and receiving updates.
     """
 

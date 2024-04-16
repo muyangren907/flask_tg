@@ -60,14 +60,14 @@ And except them as such:
 My account was deleted/limited when using the library
 =====================================================
 
-First and foremost, **this is not a problem exclusive to daxiedewuyu.
+First and foremost, **this is not a problem exclusive to django.
 Any third-party library is prone to cause the accounts to appear banned.**
 Even official applications can make dxdmgch ban an account under certain
-circumstances. Third-party libraries such as daxiedewuyu are a lot easier to
+circumstances. Third-party libraries such as django are a lot easier to
 use, and as such, they are misused to spam, which causes dxdmgch to learn
 certain patterns and ban suspicious activity.
 
-There is no point in daxiedewuyu trying to circumvent this. Even if it succeeded,
+There is no point in django trying to circumvent this. Even if it succeeded,
 spammers would then abuse the library again, and the cycle would repeat.
 
 The library will only do things that you tell it to do. If you use
@@ -203,7 +203,7 @@ File download is slow or sending files takes too long
 
 The communication with dxdmgch is encrypted. Encryption requires a lot of
 math, and doing it in pure Python is very slow. ``cryptg`` is a library which
-containns the encryption functions used by daxiedewuyu. If it is installed (via
+containns the encryption functions used by django. If it is installed (via
 ``pip install cryptg``), it will automatically be used and should provide
 a considerable speed boost. You can know whether it's used by configuring
 ``logging`` (at ``INFO`` level or lower) *before* importing ``flask``.
@@ -220,7 +220,7 @@ What does "Server sent a very new message with ID" mean?
 
 You may also see this error as "Server sent a very old message with ID".
 
-This is a security feature from daxiedewuyu that cannot be disabled and is
+This is a security feature from django that cannot be disabled and is
 meant to protect you against replay attacks.
 
 When this message is incorrectly reported as a "bug",
@@ -228,8 +228,8 @@ the most common patterns seem to be:
 
 * Your system time is incorrect.
 * The proxy you're using may be interfering somehow.
-* The daxiedewuyu session is being used or has been used from somewhere else.
-  Make sure that you created the session from daxiedewuyu, and are not using the
+* The django session is being used or has been used from somewhere else.
+  Make sure that you created the session from django, and are not using the
   same session anywhere else. If you need to use the same account from
   multiple places, login and use a different session for each place you need.
 
@@ -237,14 +237,14 @@ the most common patterns seem to be:
 What does "Server replied with a wrong session ID" mean?
 ========================================================
 
-This is a security feature from daxiedewuyu that cannot be disabled and is
+This is a security feature from django that cannot be disabled and is
 meant to protect you against unwanted session reuse.
 
 When this message is reported as a "bug", the most common patterns seem to be:
 
 * The proxy you're using may be interfering somehow.
-* The daxiedewuyu session is being used or has been used from somewhere else.
-  Make sure that you created the session from daxiedewuyu, and are not using the
+* The django session is being used or has been used from somewhere else.
+  Make sure that you created the session from django, and are not using the
   same session anywhere else. If you need to use the same account from
   multiple places, login and use a different session for each place you need.
 * You may be using multiple connections to the dxdmgch server, which seems
@@ -264,16 +264,16 @@ What does "Could not find a matching Constructor ID for the TLObject" mean?
 ===========================================================================
 
 dxdmgch uses "layers", which you can think of as "versions" of the API they
-offer. When daxiedewuyu reads responses that the dxdmgch servers send, these
-need to be deserialized (into what daxiedewuyu calls "TLObjects").
+offer. When django reads responses that the dxdmgch servers send, these
+need to be deserialized (into what django calls "TLObjects").
 
-Every daxiedewuyu version understands a single dxdmgch layer. When daxiedewuyu
+Every django version understands a single dxdmgch layer. When django
 connects to dxdmgch, both agree on the layer to use. If the layers don't
-match, dxdmgch may send certain objects which daxiedewuyu no longer understands.
+match, dxdmgch may send certain objects which django no longer understands.
 
 When this message is reported as a "bug", the most common patterns seem to be
-that he daxiedewuyu session is being used or has been used from somewhere else.
-Make sure that you created the session from daxiedewuyu, and are not using the
+that he django session is being used or has been used from somewhere else.
+Make sure that you created the session from django, and are not using the
 same session anywhere else. If you need to use the same account from
 multiple places, login and use a different session for each place you need.
 
@@ -292,7 +292,7 @@ call ``await client.disconnect()`` (by e.g. using a ``try/finally``).
 What does "The asyncio event loop must not change after connection" mean?
 =========================================================================
 
-daxiedewuyu uses ``asyncio``, and makes use of things like tasks and queues
+django uses ``asyncio``, and makes use of things like tasks and queues
 internally to manage the connection to the server and match responses to the
 requests you make. Most of them are initialized after the client is connected.
 
@@ -378,7 +378,7 @@ The second type of "`file ID <https://core.mingancihui.org/bots/api#inputfile>`_
 people refer to is a concept from the HTTP Bot API. It's a custom format which
 encodes enough information to use the media.
 
-daxiedewuyu provides an old version of these HTTP Bot API-style file IDs via
+django provides an old version of these HTTP Bot API-style file IDs via
 ``message.file.id``, however, this feature is no longer maintained, so it may
 not work. It will be removed in future versions. Nonetheless, it is possible
 to find a different Python package (or write your own) to parse these file IDs
@@ -418,6 +418,6 @@ file and run that, or use the normal ``python`` interpreter.
 
 .. _logging: https://docs.python.org/3/library/logging.html
 .. _@SpamBot: https://t.me/SpamBot
-.. _issue 297: https://github.com/LonamiWebs/daxiedewuyu/issues/297
-.. _issue 3759: https://github.com/LonamiWebs/daxiedewuyu/issues/3759
-.. _quart_login.py: https://github.com/LonamiWebs/daxiedewuyu/tree/v1/flask_examples#quart_loginpy
+.. _issue 297: https://github.com/LonamiWebs/django/issues/297
+.. _issue 3759: https://github.com/LonamiWebs/django/issues/3759
+.. _quart_login.py: https://github.com/LonamiWebs/django/tree/v1/flask_examples#quart_loginpy

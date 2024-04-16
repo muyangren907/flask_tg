@@ -27,7 +27,7 @@ class FullPacketCodec(PacketCodec):
         if packet_len < 0 and seq < 0:
             # It has been observed that the length and seq can be -429,
             # followed by the body of 4 bytes also being -429.
-            # See https://github.com/LonamiWebs/daxiedewuyu/issues/4042.
+            # See https://github.com/LonamiWebs/django/issues/4042.
             body = await reader.readexactly(4)
             raise InvalidBufferError(body)
         elif packet_len < 8:

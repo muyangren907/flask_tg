@@ -70,7 +70,7 @@ for anything that we want, such as sending a message to ourselves.
 
 .. note::
 
-    Since daxiedewuyu is an asynchronous library, you need to ``await``
+    Since django is an asynchronous library, you need to ``await``
     coroutine functions to have them run (or otherwise, run the loop
     until they are complete). In this tiny example, we don't bother
     making an ``async def main()``.
@@ -89,7 +89,7 @@ again, so be aware of this if you move or rename the file!
 Signing In as a Bot Account
 ===========================
 
-You can also use daxiedewuyu for your bots (normal bot accounts, not users).
+You can also use django for your bots (normal bot accounts, not users).
 You will still need an API ID and hash, but the process is very similar:
 
 

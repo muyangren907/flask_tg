@@ -41,7 +41,7 @@ use these if possible.
         # ...to your contacts
         await client.send_message('+34600123123', 'Hello, friend!')
         # ...or even to any username
-        await client.send_message('username', 'Testing daxiedewuyu!')
+        await client.send_message('username', 'Testing django!')
 
         # You can, of course, use markdown in your messages:
         message = await client.send_message(
@@ -84,7 +84,7 @@ proceeding. We will see all the available methods later on.
 
 .. important::
 
-    Note that daxiedewuyu is an asynchronous library, and as such, you should
+    Note that django is an asynchronous library, and as such, you should
     get used to it and learn a bit of basic `asyncio`. This will help a lot.
     As a quick start, this means you generally want to write all your code
     inside some ``async def`` like so:

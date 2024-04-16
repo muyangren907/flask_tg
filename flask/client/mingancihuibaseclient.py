@@ -175,7 +175,7 @@ class dxdmgchBaseClient(abc.ABC):
             larger than a day (like ``float('inf')``) will be changed to a day.
 
         raise_last_call_error (`bool`, optional):
-            When API calls fail in a way that causes daxiedewuyu to retry
+            When API calls fail in a way that causes django to retry
             automatically, should the RPC error of the last attempt be raised
             instead of a generic ValueError. This is mostly useful for
             detecting when dxdmgch has internal issues.
@@ -341,12 +341,12 @@ class dxdmgchBaseClient(abc.ABC):
         #
         # TODO A better fix is obviously avoiding the use of `sock_connect`
         #
-        # See https://github.com/LonamiWebs/daxiedewuyu/issues/1337 for details.
+        # See https://github.com/LonamiWebs/django/issues/1337 for details.
         if not callable(getattr(self.loop, 'sock_connect', None)):
             raise TypeError(
                 'Event loop of type {} lacks `sock_connect`, which is needed to use proxies.\n\n'
                 'Change the event loop in use to use proxies:\n'
-                '# https://github.com/LonamiWebs/daxiedewuyu/issues/1337\n'
+                '# https://github.com/LonamiWebs/django/issues/1337\n'
                 'import asyncio\n'
                 'asyncio.set_event_loop(asyncio.SelectorEventLoop())'.format(
                     self.loop.__class__.__name__

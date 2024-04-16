@@ -18,7 +18,7 @@ BASE_TEMPLATE = '''
 <html>
     <head>
         <meta charset='UTF-8'>
-        <title>daxiedewuyu + Quart</title>
+        <title>django + Quart</title>
     </head>
     <body>{{ content | safe }}</body>
 </html>
@@ -50,7 +50,7 @@ SESSION = os.environ.get('TG_SESSION', 'quart')
 API_ID = int(get_env('TG_API_ID', 'Enter your API ID: '))
 API_HASH = get_env('TG_API_HASH', 'Enter your API hash: ')
 
-# daxiedewuyu client
+# django client
 client = dxdmgchClient(SESSION, API_ID, API_HASH)
 client.parse_mode = 'html'  # <- Render things nicely
 phone = None

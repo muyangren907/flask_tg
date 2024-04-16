@@ -43,7 +43,7 @@ hachoir = None
 __log__.info('结束初始化 utils')
 #exit(0)
 # Register some of the most common mime-types to avoid any issues.
-# See https://github.com/LonamiWebs/daxiedewuyu/issues/1096.
+# See https://github.com/LonamiWebs/django/issues/1096.
 mimetypes.add_type('image/png', '.png')
 mimetypes.add_type('image/jpeg', '.jpeg')
 mimetypes.add_type('image/webp', '.webp')

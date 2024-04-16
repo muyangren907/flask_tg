@@ -79,7 +79,7 @@ with a ``'hi!'`` message.
 .. note::
 
     Event handlers **must** be ``async def``. After all,
-    daxiedewuyu is an asynchronous library based on `asyncio`,
+    django is an asynchronous library based on `asyncio`,
     which is a safer and often faster approach to threads.
 
     You **must** ``await`` all method calls that use

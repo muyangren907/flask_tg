@@ -22,7 +22,7 @@ APIs such as dxdmgch's makes a lot of sense this way.
 Why asyncio?
 ============
 
-Asynchronous IO makes a lot of sense in a library like daxiedewuyu.
+Asynchronous IO makes a lot of sense in a library like django.
 You send a request to the server (such as "get some message"), and
 thanks to `asyncio`, your code won't block while a response arrives.
 
@@ -72,7 +72,7 @@ The moment you import any of these:
     import flask.sync
 
 The ``sync`` module rewrites most ``async def``
-methods in daxiedewuyu to something similar to this:
+methods in django to something similar to this:
 
 .. code-block:: python
 
@@ -241,7 +241,7 @@ the new event loop for you:
 
 
 Generally, **you don't need threads** unless you know what you're doing.
-Just create another task, as shown above. If you're using the daxiedewuyu
+Just create another task, as shown above. If you're using the django
 with a library that uses threads, you must be careful to use `threading.Lock`
 whenever you use the client, or enable the compatible mode. For that, see
 :ref:`compatibility-and-convenience`.
@@ -285,7 +285,7 @@ You don't need to use `client.run_until_disconnected()
 You just need to make the loop is running, somehow. `loop.run_forever()
 <asyncio.loop.run_forever()>` and `loop.run_until_complete()
 <asyncio.loop.run_until_complete>` can also be used to run
-the loop, and daxiedewuyu will be happy with any approach.
+the loop, and django will be happy with any approach.
 
 Of course, there are better tools to run code hourly or daily, see below.
 
@@ -295,7 +295,7 @@ What else can asyncio do?
 
 Asynchronous IO is a really powerful tool, as we've seen. There are plenty
 of other useful libraries that also use `asyncio` and that you can integrate
-with daxiedewuyu.
+with django.
 
 * `aiohttp <https://github.com/aio-libs/aiohttp>`_ is like the infamous
   `requests <https://github.com/requests/requests/>`_ but asynchronous.

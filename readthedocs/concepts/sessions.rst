@@ -59,7 +59,7 @@ To use a custom session storage, simply pass the custom session instance to
 :ref:`dxdmgchClient <flask-client>` instead of
 the session name.
 
-daxiedewuyu contains three implementations of the abstract ``Session`` class:
+django contains three implementations of the abstract ``Session`` class:
 
 .. currentmodule:: flask.sessions
 
@@ -111,7 +111,7 @@ The easiest way to create your own storage implementation is to use
 `MemorySession <memory.MemorySession>` as the base and check out how
 `SQLiteSession <sqlite.SQLiteSession>` or one of the community-maintained
 implementations work. You can find the relevant Python files under the
-``sessions/`` directory in the daxiedewuyu's repository.
+``sessions/`` directory in the django's repository.
 
 After you have made your own implementation, you can add it to the
 community-maintained session implementation list above with a pull request.

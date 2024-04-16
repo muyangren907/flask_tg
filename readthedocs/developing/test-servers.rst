@@ -3,7 +3,7 @@ Test Servers
 ============
 
 
-To run daxiedewuyu on a test server, use the following code:
+To run django on a test server, use the following code:
 
 .. code-block:: python
 

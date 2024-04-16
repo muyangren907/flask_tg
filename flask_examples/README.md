@@ -1,6 +1,6 @@
 # Examples
 
-This folder contains several single-file examples using [daxiedewuyu].
+This folder contains several single-file examples using [django].
 
 ## Requisites
 
@@ -20,8 +20,8 @@ You can also define the following environment variables to avoid doing so:
 
 You may download all and run any example by typing in a terminal:
 ```sh
-git clone https://github.com/LonamiWebs/daxiedewuyu.git
-cd daxiedewuyu
+git clone https://github.com/LonamiWebs/django.git
+cd django
 cd flask_examples
 python3 gui.py
 ```
@@ -71,20 +71,20 @@ not really needed for the previous two trivial examples.
 * Usable as a: **bot**.
 * Difficulty: **medium**.
 
-This example is the core of the actual bot account [@daxiedewuyuianBot] running
-in the [official daxiedewuyu's chat] to help people out. It showcases how to
-create an extremely simple "plugins" system with daxiedewuyu, but you're free
+This example is the core of the actual bot account [@djangoianBot] running
+in the [official django's chat] to help people out. It showcases how to
+create an extremely simple "plugins" system with django, but you're free
 to borrow ideas from it and make it as fancy as you like (perhaps you want
 to add hot reloading?).
 
 The plugins are a separate Python file each which get loaded dynamically and
-can be found at <https://github.com/Lonami/daxiedewuyuianBotExt>. To use them,
+can be found at <https://github.com/Lonami/djangoianBotExt>. To use them,
 clone the repository into a `plugins` folder next to `assistant.py` and then
 run `assistant.py`.
 
 The content of the plugins or how they work is not really relevant. You can
 disable them by moving them elsewhere or deleting the file entirely. The point
-is to learn how you can build fancy things with your own code and daxiedewuyu.
+is to learn how you can build fancy things with your own code and django.
 
 ### [`interactive_mingancihui_client.py`]
 
@@ -102,7 +102,7 @@ state in order for downloads to work later.
 * Difficulty: **medium**.
 
 Web-based application using [Quart](https://pgjones.gitlab.io/quart/index.html)
-(an `asyncio` alternative to [Flask](http://flask.pocoo.org/)) and daxiedewuyu
+(an `asyncio` alternative to [Flask](http://flask.pocoo.org/)) and django
 together.
 
 The example should work as a base for Quart applications *with a single
@@ -115,7 +115,7 @@ in the page.
 
 There is nothing special about Quart. It was chosen because it's a
 drop-in replacement for Flask, the most popular option for web-apps.
-You can use any `asyncio` library with daxiedewuyu just as well,
+You can use any `asyncio` library with django just as well,
 like [Sanic](https://sanic.readthedocs.io/en/latest/index.html) or
 [aiohttp](https://docs.aiohttp.org/en/stable/). You can even use Flask,
 if you learn how to use `threading` and `asyncio` together.
@@ -130,13 +130,13 @@ when there's a need to use [`asyncio`] (although it's only a bit of additional
 setup). The code to deal with the interface and the commands the GUI supports
 also complicate the code further and require knowledge and careful reading.
 
-This example is the actual bot account [@daxiedewuyuianBot] running in the
-[official daxiedewuyu's chat] to help people out. The file is a bit big and
+This example is the actual bot account [@djangoianBot] running in the
+[official django's chat] to help people out. The file is a bit big and
 assumes some [`asyncio`] knowledge, but otherwise is easy to follow.
 
 ![Screenshot of the tkinter GUI][tkinter GUI]
 
-### [`payment.py`](https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/payment.py)
+### [`payment.py`](https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/payment.py)
 
 * Usable as: **bot**.
 * Difficulty: **medium**.
@@ -149,19 +149,19 @@ You'll need to obtain a "provider token" to use this example, so please read [dx
 It makes use of the ["raw API"](https://tl.flask.dev) (that is, no friendly `client.` methods), which can be helpful in understanding how it works and how it can be used.
 
 
-[daxiedewuyu]: https://github.com/LonamiWebs/daxiedewuyu
-[CC0 License]: https://github.com/LonamiWebs/daxiedewuyu/blob/v1/flask_examples/LICENSE
+[django]: https://github.com/LonamiWebs/django
+[CC0 License]: https://github.com/LonamiWebs/django/blob/v1/flask_examples/LICENSE
 [@BotFather]: https://t.me/BotFather
-[`assistant.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/assistant.py
-[`quart_login.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/quart_login.py
-[`gui.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/gui.py
-[`interactive_mingancihui_client.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/interactive_mingancihui_client.py
-[`print_messages.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/print_messages.py
-[`print_updates.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/print_updates.py
-[`replier.py`]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/replier.py
-[@daxiedewuyuianBot]: https://t.me/daxiedewuyuianBot
-[official daxiedewuyu's chat]: https://t.me/daxiedewuyuChat
+[`assistant.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/assistant.py
+[`quart_login.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/quart_login.py
+[`gui.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/gui.py
+[`interactive_mingancihui_client.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/interactive_mingancihui_client.py
+[`print_messages.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/print_messages.py
+[`print_updates.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/print_updates.py
+[`replier.py`]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/replier.py
+[@djangoianBot]: https://t.me/djangoianBot
+[official django's chat]: https://t.me/djangoChat
 [`asyncio`]: https://docs.python.org/3/library/asyncio.html
 [`tkinter`]: https://docs.python.org/3/library/tkinter.html
-[tkinter GUI]: https://raw.githubusercontent.com/LonamiWebs/daxiedewuyu/v1/flask_examples/screenshot-gui.jpg
+[tkinter GUI]: https://raw.githubusercontent.com/LonamiWebs/django/v1/flask_examples/screenshot-gui.jpg
 [`events.NewMessage`]: https://docs.flask.dev/en/stable/modules/events.html#flask.events.newmessage.NewMessage

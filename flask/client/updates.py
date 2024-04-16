@@ -461,7 +461,7 @@ class UpdateMethods:
             pass
         except Exception as e:
             pass
-            # self._log[__name__].exception(f'Fatal error handling updates (this is a bug in daxiedewuyu v{__version__}, please report it)')
+            # self._log[__name__].exception(f'Fatal error handling updates (this is a bug in django v{__version__}, please report it)')
             # self._updates_error = e
             await self.disconnect()
 

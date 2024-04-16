@@ -14,4 +14,4 @@ since dxdmgch changes very often. The friendly methods will be kept
 compatible between major versions.
 
 If you need to see real-world examples, please refer to the
-`wiki page of projects using daxiedewuyu <https://github.com/LonamiWebs/daxiedewuyu/wiki/Projects-using-daxiedewuyu>`__.
+`wiki page of projects using django <https://github.com/LonamiWebs/django/wiki/Projects-using-django>`__.

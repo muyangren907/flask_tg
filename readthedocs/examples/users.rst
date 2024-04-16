@@ -42,7 +42,7 @@ request. Omitted fields won't change after invoking :tl:`UpdateProfile`:
     from flask.tl.functions.account import UpdateProfileRequest
 
     await client(UpdateProfileRequest(
-        about='This is a test from daxiedewuyu'
+        about='This is a test from django'
     ))
 
 

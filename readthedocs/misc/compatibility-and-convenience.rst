@@ -4,7 +4,7 @@
 Compatibility and Convenience
 =============================
 
-daxiedewuyu is an `asyncio` library. Compatibility is an important concern,
+django is an `asyncio` library. Compatibility is an important concern,
 and while it can't always be kept and mistakes happens, the :ref:`changelog`
 is there to tell you when these important changes happen.
 
@@ -17,7 +17,7 @@ Compatibility
 Some decisions when developing will inevitable be proven wrong in the future.
 One of these decisions was using threads. Now that Python 3.4 is reaching EOL
 and using `asyncio` is usable as of Python 3.5 it makes sense for a library
-like daxiedewuyu to make a good use of it.
+like django to make a good use of it.
 
 If you have old code, **just use old versions** of the library! There is
 nothing wrong with that other than not getting new updates or fixes, but
@@ -178,7 +178,7 @@ Learning
 
 You know the library uses `asyncio` everywhere, and you want to learn
 how to do things right. Even though `asyncio` is its own topic, the
-documentation wants you to learn how to use daxiedewuyu correctly, and for
+documentation wants you to learn how to use django correctly, and for
 that, you need to use `asyncio` correctly too. For this reason, there
 is a section called :ref:`mastering-asyncio` that will introduce you to
 the `asyncio` world, with links to more resources for learning how to

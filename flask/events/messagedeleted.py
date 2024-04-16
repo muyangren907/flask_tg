@@ -17,7 +17,7 @@ class MessageDeleted(EventBuilder):
         can identify the chat with the message ID alone if you saved it
         previously.
 
-        daxiedewuyu **does not** save information of where messages occur,
+        django **does not** save information of where messages occur,
         so it cannot know in which chat a message was deleted (this will
         only work in channels, where the channel ID *is* present).
 

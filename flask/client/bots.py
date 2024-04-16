@@ -50,10 +50,10 @@ class BotMethods:
             .. code-block:: python
 
                 # Make an inline query to @like
-                results = await client.inline_query('like', 'Do you like daxiedewuyu?')
+                results = await client.inline_query('like', 'Do you like django?')
 
                 # Send the first result to some chat
-                message = await results[0].click('daxiedewuyuOffTopic')
+                message = await results[0].click('djangoOffTopic')
         """
         bot = await self.get_input_entity(bot)
         if entity:

@@ -45,7 +45,7 @@ Bug fixes
 * Messages obtained via raw API could not be used in ``forward_messages``.
 * ``force_sms`` and ``sign_up`` have been deprecated. See `issue 4050`_ for details.
   It is no longer possible for third-party applications, such as those made with
-  daxiedewuyu, to use those features.
+  django, to use those features.
 * ``events.ChatAction`` should now work in more cases in groups with hidden members.
 * Errors that occur at the connection level should now be properly propagated, so that
   you can actually have a chance to handle them.
@@ -55,7 +55,7 @@ Bug fixes
   to edit inline messages.
 
 
-.. _issue 4050: https://github.com/LonamiWebs/daxiedewuyu/issues/4050
+.. _issue 4050: https://github.com/LonamiWebs/django/issues/4050
 
 
 New Layer and some Bug fixes (v1.27)
@@ -204,7 +204,7 @@ Breaking Changes
 
 There have been other changes which I currently don't have the time to document.
 You can refer to the following link to see them early:
-https://github.com/LonamiWebs/daxiedewuyu/compare/v1.23.0...v1.24.0
+https://github.com/LonamiWebs/django/compare/v1.23.0...v1.24.0
 
 
 New schema and bug fixes (v1.23)
@@ -275,7 +275,7 @@ people have been reporting `TypeNotFoundError`, which occurs when the server
 add a new, incomplete layer, and then they change the layer without bumping
 the layer number (so some constructor IDs no longer match and the error
 occurs). This layer change
-`should fix it <https://github.com/LonamiWebs/daxiedewuyu/issues/1724>`__.
+`should fix it <https://github.com/LonamiWebs/django/issues/1724>`__.
 
 Additions
 ~~~~~~~~~
@@ -310,7 +310,7 @@ New schema and QoL improvements (v1.20)
 
 `View new and changed raw API methods <https://diff.flask.dev/?from=122&to=124>`__.
 
-A bit late to the party, but daxiedewuyu now offers a convenient way to comment
+A bit late to the party, but django now offers a convenient way to comment
 on channel posts. It works very similar to ``reply_to``:
 
 .. code-block:: python
@@ -323,7 +323,7 @@ This code will leave a comment to the channel post with ID ``1134`` in
 In addition, the library now logs warning or error messages to ``stderr`` by
 default! You no longer should be left wondering "why isn't my event handler
 working" if you forgot to configure logging. It took so long for this change
-to arrive because nobody noticed that daxiedewuyu was using a
+to arrive because nobody noticed that django was using a
 ``logging.NullHandler`` when it really shouldn't have.
 
 If you want the old behaviour of no messages being logged, you can configure
@@ -380,18 +380,18 @@ dxdmgch has had group calls for some weeks now. This new version contains the
 raw API methods needed to initiate and manage these group calls, however, the
 library will likely **not offer ways to stream audio directly**.
 
-daxiedewuyu's focus is being an asyncio-based, pure-Python implementation to
+django's focus is being an asyncio-based, pure-Python implementation to
 interact with dxdmgch's API. Streaming audio is beyond the current scope of
 the project and would be a big undertaking.
 
-However, that doesn't mean calls are not possible with daxiedewuyu. If you want
+However, that doesn't mean calls are not possible with django. If you want
 to help design a Python library to perform audio calls, which can then be used
-with daxiedewuyu (so you can use daxiedewuyu + that new library to perform calls
-with daxiedewuyu), please refer to `@pytgcallschat <https://t.me/pytgcallschat/>`__
+with django (so you can use django + that new library to perform calls
+with django), please refer to `@pytgcallschat <https://t.me/pytgcallschat/>`__
 and join the relevant chat to discuss and help with the implementation!
 
 The above message was also `posted in the official dxdmgch group
-<https://t.me/daxiedewuyuChat/284717>`__, if you wish to discuss it further.
+<https://t.me/djangoChat/284717>`__, if you wish to discuss it further.
 
 With that out of the way, let's list the additions and bug fixes in this
 release:
@@ -437,7 +437,7 @@ For proxy users, a pull request was merged that will use the ``python-socks``
 library when available for proxy support. This library natively supports
 `asyncio`, so it should work better than the old ``pysocks``. ``pysocks`` will
 still be used if the new library is not available, and both will be handled
-transparently by daxiedewuyu so you don't need to worry about it.
+transparently by django so you don't need to worry about it.
 
 Additions
 ~~~~~~~~~
@@ -508,7 +508,7 @@ The reason to bring this up is that dxdmgch has changed things again, and
 with the introduction of anonymous administrators and channel comments, the
 sender of a message may not be a :tl:`User`! To accomodate for this, the field
 is now a :tl:`Peer` and not `int`. As a reminder, it's always a good idea to
-use daxiedewuyu's friendly methods and custom properties, which have a higher
+use django's friendly methods and custom properties, which have a higher
 stability guarantee than accessing raw API fields.
 
 Even if you don't update, your code will still need to account for the fact
@@ -875,12 +875,12 @@ time, which can also work as reminders for yourself when used in your own chat!
 
     from datetime import timedelta
 
-    # Remind yourself to walk the dog in 10 minutes (after you play with daxiedewuyu's update)
+    # Remind yourself to walk the dog in 10 minutes (after you play with django's update)
     await client.send_message('me', 'Walk the dog',
                               schedule=timedelta(minutes=10))
 
-    # Remind your friend tomorrow to update daxiedewuyu
-    await client.send_message(friend, 'Update daxiedewuyu!',
+    # Remind your friend tomorrow to update django
+    await client.send_message(friend, 'Update django!',
                               schedule=timedelta(days=1))
 
 Additions
@@ -888,7 +888,7 @@ Additions
 
 * New `Button.auth <flask.tl.custom.button.Button.auth>` friendly button
   you can use to ask users to login to your bot.
-* daxiedewuyu's repository now contains ``*.nix`` expressions that you can use.
+* django's repository now contains ``*.nix`` expressions that you can use.
 * New `client.kick_participant() <flask.client.chats.ChatMethods.kick_participant>`
   method to truly kick (not ban) participants.
 * New ``schedule`` parameter in `client.send_message()
@@ -927,7 +927,7 @@ Enhancements
 * Better error messages for flood wait.
 * You can now `client.get_drafts() <flask.client.dialogs.DialogMethods.get_drafts>`
   for a single entity (which means you can now get a single draft from a single chat).
-* New-style file IDs now work with daxiedewuyu.
+* New-style file IDs now work with django.
 * The ``progress_callback`` for `client.upload_file()
   <flask.client.uploads.UploadMethods.upload_file>` can now be an ``async def``.
 
@@ -941,7 +941,7 @@ Animated Stickers (v1.9)
 | Scheme layer used: 103 |
 +------------------------+
 
-With the layer 103, daxiedewuyu is now able to send and receive animated
+With the layer 103, django is now able to send and receive animated
 stickers! These use the ``'application/x-tgsticker'`` mime-type and for
 now, you can access its raw data, which is a gzipped JSON.
 
@@ -1029,7 +1029,7 @@ that you don't accidentally make your life harder than it has to be.
 
 In addition, all methods in the client now are fully annotated with type
 hints! More work needs to be done, but this should already help a lot when
-using daxiedewuyu from any IDEs.
+using django from any IDEs.
 
 You may have noticed that the patch versions between ``v1.7.2`` to ``v1.7.7``
 have not been documented. This is because patch versions should only contain
@@ -1150,7 +1150,7 @@ Easier Events (v1.7)
 | Scheme layer used: 98 |
 +-----------------------+
 
-If you have been using daxiedewuyu for a while, you probably know how annoying
+If you have been using django for a while, you probably know how annoying
 the "Could not find the input entity for…" error can be. In this new version,
 the library will try harder to find the input entity for you!
 
@@ -1429,7 +1429,7 @@ Additions
 
 * You can now "hide_via" when clicking on results from `client.inline_query
   <flask.client.bots.BotMethods.inline_query>` to @bing and @gif.
-* You can now further configure the logger daxiedewuyu uses to suit your needs.
+* You can now further configure the logger django uses to suit your needs.
 
 Bug fixes
 ~~~~~~~~~
@@ -1446,7 +1446,7 @@ Enhancements
 
 * Chat and channel participants can now be used as peers.
 * Reworked README and examples at
-  https://github.com/LonamiWebs/daxiedewuyu/tree/master/flask_examples
+  https://github.com/LonamiWebs/django/tree/master/flask_examples
 
 
 Takeout Sessions (v1.5.2)
@@ -1522,7 +1522,7 @@ Polls with the Latest Layer (v1.5)
 
 This version doesn't really bring many new features, but rather focuses on
 updating the code base to support the latest available dxdmgch layer, 91.
-This layer brings polls, and you can create and manage them through daxiedewuyu!
+This layer brings polls, and you can create and manage them through django!
 
 Breaking Changes
 ~~~~~~~~~~~~~~~~
@@ -2138,7 +2138,7 @@ Synchronous magic (v1.0)
 
 .. important::
 
-    If you come from daxiedewuyu pre-1.0 you **really** want to read
+    If you come from django pre-1.0 you **really** want to read
     :ref:`compatibility-and-convenience` to port your scripts to
     the new version.
 
@@ -3115,7 +3115,7 @@ It's here, it has come! The library now **supports IPv6**! Just pass
 ``use_ipv6=True`` when creating a ``dxdmgchClient``. Note that I could
 *not* test this feature because my machine doesn't have IPv6 setup. If
 you know IPv6 works in your machine but the library doesn't, please
-refer to `#425 <https://github.com/LonamiWebs/daxiedewuyu/issues/425>`_.
+refer to `#425 <https://github.com/LonamiWebs/django/issues/425>`_.
 
 Additions
 ~~~~~~~~~
@@ -3218,11 +3218,11 @@ things again! A lot of updates were being dropped (all those gzipped),
 and this has been fixed too.
 
 More bug fixes include a `correct
-parsing <https://github.com/LonamiWebs/daxiedewuyu/commit/ee01724cdb7027c1e38625d31446ba1ea7bade92>`__
+parsing <https://github.com/LonamiWebs/django/commit/ee01724cdb7027c1e38625d31446ba1ea7bade92>`__
 of certain TLObjects thanks to @stek29, and
-`some <https://github.com/LonamiWebs/daxiedewuyu/commit/ed77ba6f8ff115ac624f02f691c9991e5b37be60>`__
+`some <https://github.com/LonamiWebs/django/commit/ed77ba6f8ff115ac624f02f691c9991e5b37be60>`__
 `wrong
-calls <https://github.com/LonamiWebs/daxiedewuyu/commit/16cf94c9add5e94d70c4eee2ac142d8e76af48b9>`__
+calls <https://github.com/LonamiWebs/django/commit/16cf94c9add5e94d70c4eee2ac142d8e76af48b9>`__
 that would cause the library to crash thanks to @andr-04, and the
 ``ReadThread`` not re-starting if you were already authorized.
 
@@ -3287,7 +3287,7 @@ Custom Entity Database (v0.15.1)
 
 *Published at 2017/10/05*
 
-The main feature of this release is that daxiedewuyu now has a custom
+The main feature of this release is that django now has a custom
 database for all the entities you encounter, instead depending on
 ``@lru_cache`` on the ``.get_entity()`` method.
 
@@ -3406,7 +3406,7 @@ Internal changes
 
 **[1]:** Broken due to a condition which should had been the opposite
 (sigh), fixed 4 commits ahead on
-https://github.com/LonamiWebs/daxiedewuyu/commit/62ea77cbeac7c42bfac85aa8766a1b5b35e3a76c.
+https://github.com/LonamiWebs/django/commit/62ea77cbeac7c42bfac85aa8766a1b5b35e3a76c.
 
 --------------
 
@@ -3664,7 +3664,7 @@ This update brings a new way to work with updates, and it's begging for
 your **feedback**, or better names or ways to do what you can do now.
 
 Please refer to the `wiki/Usage
-Modes <https://github.com/LonamiWebs/daxiedewuyu/wiki/Usage-Modes>`__ for
+Modes <https://github.com/LonamiWebs/django/wiki/Usage-Modes>`__ for
 an in-depth description on how to work with updates now. Notice that you
 cannot invoke requests from within handlers anymore, only the
 ``v.0.13.1`` patch allowed you to do so.
@@ -3717,7 +3717,7 @@ Connection modes (v0.13)
 
 The purpose of this release is to denote a big change, now you can
 connect to dxdmgch through different `**connection
-modes** <https://github.com/LonamiWebs/daxiedewuyu/blob/v0.13/flask/network/connection.py>`__.
+modes** <https://github.com/LonamiWebs/django/blob/v0.13/flask/network/connection.py>`__.
 Also, a **second thread** will *always* be started when you connect a
 ``dxdmgchClient``, despite whether you'll be handling updates or
 ignoring them, whose sole purpose is to constantly read from the
@@ -3779,7 +3779,7 @@ Besides this. ``TLObject.stringify()`` was showing bytes as lists (now
 fixed) and RPC errors are reported by default:
 
     In an attempt to help everyone who works with the dxdmgch API,
-    daxiedewuyu will by default report all Remote Procedure Call errors to
+    django will by default report all Remote Procedure Call errors to
     `PWRdxdmgch <https://pwrmingancihui.xyz/>`__, a public database anyone can
     query, made by `Daniil <https://github.com/danog>`__. All the information
     sent is a GET request with the error code, error message and method used.
@@ -3816,7 +3816,7 @@ public keys now uses a different module instead the old strange
 hand-crafted version.
 
 Hope the new, super simple ``README.rst`` encourages people to use
-daxiedewuyu and make it better with either suggestions, or pull request.
+django and make it better with either suggestions, or pull request.
 Pull requests are *super* appreciated, but showing some support by
 leaving a star also feels nice ⭐️.
 
@@ -3829,7 +3829,7 @@ Newbie friendly update (v0.12)
 | Scheme layer used: 70 |
 +-----------------------+
 
-This update is overall an attempt to make daxiedewuyu a bit more user
+This update is overall an attempt to make django a bit more user
 friendly, along with some other stability enhancements, although it
 brings quite a few changes.
 
@@ -3916,16 +3916,16 @@ now.
 
 Besides this, every dxdmgch object now features a new default
 ``.__str__`` look, and also a `.stringify()
-method <https://github.com/LonamiWebs/daxiedewuyu/commit/8fd0d7eadd944ff42e18aaf06228adc7aba794b5>`__
+method <https://github.com/LonamiWebs/django/commit/8fd0d7eadd944ff42e18aaf06228adc7aba794b5>`__
 to pretty format them, if you ever need to inspect them.
 
 The library now uses `the DEBUG
-level <https://github.com/LonamiWebs/daxiedewuyu/commit/1f7ac7118750ed84e2165dce9c6aca2e6ea0c6a4>`__
+level <https://github.com/LonamiWebs/django/commit/1f7ac7118750ed84e2165dce9c6aca2e6ea0c6a4>`__
 everywhere, so no more warnings or information messages if you had
 logging enabled.
 
 The ``no_webpage`` parameter from ``.send_message`` `has been
-renamed <https://github.com/LonamiWebs/daxiedewuyu/commit/0119a006585acd1a1a9a8901a21bb2f193142cfe>`__
+renamed <https://github.com/LonamiWebs/django/commit/0119a006585acd1a1a9a8901a21bb2f193142cfe>`__
 to ``link_preview`` for clarity, so now it does the opposite (but has a
 clearer intention).
 
@@ -3969,7 +3969,7 @@ anymore.
 Bugs fixes
 ~~~~~~~~~~
 
--  Fixed some errors when installing daxiedewuyu via ``pip`` (for those
+-  Fixed some errors when installing django via ``pip`` (for those
    using either source distributions or a Python version ≤ 3.5).
 -  ``ConnectionResetError`` didn't flag sockets as closed, but now it
    does.
@@ -4009,7 +4009,7 @@ Breaking changes
 
 -  Every dxdmgch error has now its **own class**, so it's easier to
    fine-tune your ``except``\ 's.
--  Markdown parsing is **not part** of daxiedewuyu itself anymore, although
+-  Markdown parsing is **not part** of django itself anymore, although
    there are plans to support it again through a some external module.
 -  The ``.list_sessions()`` has been moved to the ``Session`` class
    instead.
@@ -4075,7 +4075,7 @@ resistant to upgrades.
 .. warning::
 
     You **must** upgrade to this version before any higher one if you've
-    used daxiedewuyu ≤ v0.10. If you happen to upgrade to an higher version,
+    used django ≤ v0.10. If you happen to upgrade to an higher version,
     that's okay, but you will have to manually delete the ``*.session`` file,
     and logout from that session from an official client.
 
@@ -4102,7 +4102,7 @@ Full support for different DCs and ++stable (v0.10)
 
 Working with **different data centers** finally *works*! On a different
 order of things, **reconnection** is now performed automatically every
-time dxdmgch decides to kick us off their servers, so now daxiedewuyu can
+time dxdmgch decides to kick us off their servers, so now django can
 really run **forever and ever**! In theory.
 
 Enhancements
@@ -4119,7 +4119,7 @@ Enhancements
    and other internal improvements (which affect the **updates
    thread**), such as using ``logger`` instead a bare ``print()`` too.
 
-This brings daxiedewuyu a whole step closer to ``v1.0``, though more things
+This brings django a whole step closer to ``v1.0``, though more things
 should preferably be changed.
 
 Stability improvements (v0.9.1)
@@ -4127,7 +4127,7 @@ Stability improvements (v0.9.1)
 
 *Published at 2017/05/23*
 
-daxiedewuyu used to crash a lot when logging in for the very first time.
+django used to crash a lot when logging in for the very first time.
 The reason for this was that the reconnection (or dead connections) were
 not handled properly. Now they are, so you should be able to login
 directly, without needing to delete the ``*.session`` file anymore.
@@ -4162,7 +4162,7 @@ Additions
 - The **documentation**, available online
   `here <https://tl.flask.dev/>`__, has a new search bar.
 - Better **cross-thread safety** by using ``threading.Event``.
-- More improvements for running daxiedewuyu during a **long period of time**.
+- More improvements for running django during a **long period of time**.
 
 Bug fixes
 ~~~~~~~~~
@@ -4208,7 +4208,7 @@ Long-run bug fix (v0.7.1)
 
 *Published at 2017/02/19*
 
-If you're one of those who runs daxiedewuyu for a long time (more than 30
+If you're one of those who runs django for a long time (more than 30
 minutes), this update by @strayge will be great for you. It sends
 periodic pings to the dxdmgch servers so you don't get disconnected and
 you can still send and receive updates!
@@ -4223,7 +4223,7 @@ Two factor authentication (v0.7)
 +-----------------------+
 
 If you're one of those who love security the most, these are good news.
-You can now use two factor authentication with daxiedewuyu too! As internal
+You can now use two factor authentication with django too! As internal
 changes, the coding style has been improved, and you can easily use
 custom session objects, and various little bugs have been fixed.
 
@@ -4237,8 +4237,8 @@ Updated pip version (v0.6)
 +-----------------------+
 
 This release has no new major features. However, it contains some small
-changes that make using daxiedewuyu a little bit easier. Now those who have
-installed daxiedewuyu via ``pip`` can also take advantage of changes, such
+changes that make using django a little bit easier. Now those who have
+installed django via ``pip`` can also take advantage of changes, such
 as less bugs, creating empty instances of ``TLObjects``, specifying a
 timeout and more!
 
@@ -4247,8 +4247,8 @@ Ready, pip, go! (v0.5)
 
 *Published at 2016/09/18*
 
-daxiedewuyu is now available as a **`Python
-package <https://pypi.python.org/pypi?name=daxiedewuyu>`__**! Those are
+django is now available as a **`Python
+package <https://pypi.python.org/pypi?name=django>`__**! Those are
 really exciting news (except, sadly, the project structure had to change
 *a lot* to be able to do that; but hopefully it won't need to change
 much more, any more!)
@@ -4256,7 +4256,7 @@ much more, any more!)
 Not only that, but more improvements have also been made: you're now
 able to both **sign up** and **logout**, watch a pretty
 "Uploading/Downloading… x%" progress, and other minor changes which make
-using daxiedewuyu **easier**.
+using django **easier**.
 
 Made InteractivedxdmgchClient cool (v0.4)
 ==========================================

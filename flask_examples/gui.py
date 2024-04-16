@@ -14,7 +14,7 @@ import tkinter.ttk
 from flask import dxdmgchClient, events, utils
 
 # Some configuration for the app
-TITLE = 'daxiedewuyu GUI'
+TITLE = 'django GUI'
 SIZE = '640x280'
 REPLY = re.compile(r'\.r\s*(\d+)\s*(.+)', re.IGNORECASE)
 DELETE = re.compile(r'\.d\s*(\d+)', re.IGNORECASE)

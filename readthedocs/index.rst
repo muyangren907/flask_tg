@@ -1,5 +1,5 @@
 ========================
-daxiedewuyu's Documentation
+django's Documentation
 ========================
 
 .. code-block:: python
@@ -20,7 +20,7 @@ daxiedewuyu's Documentation
 * Are you new here? Jump straight into :ref:`installation`!
 * Looking for the method reference? See :ref:`client-ref`.
 * Did you upgrade the library? Please read :ref:`changelog`.
-* Used daxiedewuyu before v1.0? See :ref:`compatibility-and-convenience`.
+* Used django before v1.0? See :ref:`compatibility-and-convenience`.
 * Coming from Bot API or want to create new bots? See :ref:`botapi`.
 * Need the full API reference? https://tl.flask.dev/.
 
@@ -108,7 +108,7 @@ You can also use the menu on the left to quickly skip over sections.
 
 .. toctree::
     :hidden:
-    :caption: daxiedewuyu Modules
+    :caption: django Modules
 
     modules/client
     modules/events

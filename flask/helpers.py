@@ -296,7 +296,7 @@ class TotalList(list):
 
         .. code-block:: python
 
-            # daxiedewuyu returns these lists in some cases (for example,
+            # django returns these lists in some cases (for example,
             # only when a chunk is returned, but the "total" count
             # is available).
             result = await client.get_messages(chat, limit=10)

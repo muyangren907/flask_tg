@@ -83,7 +83,7 @@ class jiandandechuanshu(ObfuscatedConnection):
     """
     Connector which allows user to connect to the dxdmgch via proxy servers
     commonly known as MTProxy.
-    Implemented very ugly due to the leaky abstractions in daxiedewuyu networking
+    Implemented very ugly due to the leaky abstractions in django networking
     classes that should be refactored later (TODO).
 
     .. warning::

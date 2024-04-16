@@ -23,12 +23,12 @@ Technically, both :tl:`Chat` and :tl:`Channel` are a form of the `Chat type`_.
 chats*. When you create a group through an official application, this is the
 type that you get. Official applications refer to these as "Group".
 
-Both the bot API and daxiedewuyu will add a minus sign (negate) the real chat ID
+Both the bot API and django will add a minus sign (negate) the real chat ID
 so that you can tell at a glance, with just a number, the entity type.
 
 For example, if you create a chat with :tl:`CreateChatRequest`, the real chat
 ID might be something like `123`. If you try printing it from a
-`message.chat_id` you will see `-123`. This ID helps daxiedewuyu know you're
+`message.chat_id` you will see `-123`. This ID helps django know you're
 talking about a :tl:`Chat`.
 
 
@@ -61,12 +61,12 @@ The API refers to the different types of :tl:`Channel` with certain attributes:
   want to transform it into something where only they can post messages.
 
 
-Both the bot API and daxiedewuyu will "concatenate" ``-100`` to the real chat ID
+Both the bot API and django will "concatenate" ``-100`` to the real chat ID
 so that you can tell at a glance, with just a number, the entity type.
 
 For example, if you create a new broadcast channel, the real channel ID might
 be something like `456`. If you try printing it from a `message.chat_id` you
-will see `-1000000000456`. This ID helps daxiedewuyu know you're talking about a
+will see `-1000000000456`. This ID helps django know you're talking about a
 :tl:`Channel`.
 
 
@@ -108,7 +108,7 @@ API calls to find out the identifier, you can use ``client.get_peer_id``:
     print(await client.get_peer_id('me'))  # your id
 
 
-If there is no "mark" (no minus sign), daxiedewuyu will assume your identifier
+If there is no "mark" (no minus sign), django will assume your identifier
 refers to a :tl:`User`. If this is **not** the case, you can manually fix it:
 
 

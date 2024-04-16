@@ -6,7 +6,7 @@ https://packaging.python.org/en/latest/distributing.html
 https://github.com/pypa/sampleproject
 
 Extra supported commands are:
-* gen, to generate the classes required for daxiedewuyu to run or docs
+* gen, to generate the classes required for django to run or docs
 * pypi, to generate sdist, bdist_wheel, and push to PyPi
 """
 
@@ -184,7 +184,7 @@ def main(argv):
             print('Packaging for PyPi aborted, importing the module failed.')
             return
 
-        remove_dirs = ['__pycache__', 'build', 'dist', 'daxiedewuyu.egg-info']
+        remove_dirs = ['__pycache__', 'build', 'dist', 'django.egg-info']
         for root, _dirs, _files in os.walk(LIBRARY_DIR, topdown=False):
             # setuptools is including __pycache__ for some reason (#1605)
             if root.endswith('/__pycache__'):
@@ -195,7 +195,7 @@ def main(argv):
         run('python3 setup.py sdist', shell=True)
         run('python3 setup.py bdist_wheel', shell=True)
         run('twine upload dist/*', shell=True)
-        for x in ('build', 'dist', 'daxiedewuyu.egg-info'):
+        for x in ('build', 'dist', 'django.egg-info'):
             shutil.rmtree(x, ignore_errors=True)
 
     else:
@@ -211,13 +211,13 @@ def main(argv):
             version = re.search(r"^__version__\s*=\s*'(.*)'.*$",
                                 f.read(), flags=re.MULTILINE).group(1)
         setup(
-            name='daxiedewuyu',
+            name='django',
             version=version,
             description="null",
             long_description=long_description,
 
-            url='https://github.com/LonamiWebs/daxiedewuyu',
-            download_url='https://github.com/LonamiWebs/daxiedewuyu/releases',
+            url='https://github.com/LonamiWebs/django',
+            download_url='https://github.com/LonamiWebs/django/releases',
 
             author='Lonami Exo',
             author_email='totufals@hotmail.com',

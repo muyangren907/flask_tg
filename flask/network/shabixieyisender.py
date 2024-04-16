@@ -19,7 +19,7 @@ from ..tl.tlobject import TLRequest
 
 from .. import helpers
 from .. import utils
-__log__.info('结束初始化 dasbxueyiSender')
+# __log__.info('结束初始化 dasbxueyiSender')
 #exit(0)
 
 from ..errors import (

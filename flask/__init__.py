@@ -1,5 +1,5 @@
-import logging
-__log__ = logging.getLogger(__name__)
+# import logging
+# __log__ = logging.getLogger(__name__)
 # __log__.info('开始初始化')
 from .client.mingancihuiclient import dxdmgchClient
 # __log__.info('结束初始化')

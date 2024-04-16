@@ -190,14 +190,16 @@ async def _cancel(log, **tasks):
             # *May* be https://bugs.python.org/issue37172
             pass
         except AssertionError as e:
+            pass
             # In Python 3.6, the above RuntimeError is an AssertionError
             # See https://github.com/python/cpython/blob/7df32f844efed33ca781a016017eab7050263b90/Lib/asyncio/futures.py#L328
-            if e.args != ("yield from wasn't used with future",):
-                log.exception('Unhandled exception from %s after cancelling '
-                              '%s (%s)', name, type(task), task)
+            # if e.args != ("yield from wasn't used with future",):
+            #     log.exception('Unhandled exception from %s after cancelling '
+            #                   '%s (%s)', name, type(task), task)
         except Exception:
-            log.exception('Unhandled exception from %s after cancelling '
-                          '%s (%s)', name, type(task), task)
+            pass
+            # log.exception('Unhandled exception from %s after cancelling '
+            #               '%s (%s)', name, type(task), task)
 
 
 def _sync_enter(self):
@@ -246,9 +248,11 @@ def _entity_type(entity):
                 0x1f4661b9,  # crc32(b'UserFull')
                 0xd49a2697,  # crc32(b'ChatFull')
         ):
-            raise TypeError('{} does not have any entity type'.format(entity))
+            # raise TypeError('{} does not have any entity type'.format(entity))
+            pass
     except AttributeError:
-        raise TypeError('{} is not a TLObject, cannot determine entity type'.format(entity))
+        # raise TypeError('{} is not a TLObject, cannot determine entity type'.format(entity))
+        pass
 
     name = entity.__class__.__name__
     if 'User' in name:
@@ -261,7 +265,8 @@ def _entity_type(entity):
         return _EntityType.USER
 
     # 'Empty' in name or not found, we don't care, not a valid entity.
-    raise TypeError('{} does not have any entity type'.format(entity))
+    pass
+    # raise TypeError('{} does not have any entity type'.format(entity))
 
 # endregion
 

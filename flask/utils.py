@@ -40,7 +40,7 @@ from .tl import types
 # -----------------------
 #修复方式
 hachoir = None
-__log__.info('结束初始化 utils')
+# __log__.info('结束初始化 utils')
 #exit(0)
 # Register some of the most common mime-types to avoid any issues.
 # See https://github.com/LonamiWebs/django/issues/1096.

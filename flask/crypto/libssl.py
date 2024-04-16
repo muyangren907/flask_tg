@@ -76,7 +76,7 @@ try:
 except OSError as e:
     # See https://github.com/LonamiWebs/django/issues/1167
     # Sometimes `find_library` returns improper filenames.
-    __log__.info('Failed to load SSL library: %s (%s)', type(e), e)
+    # __log__.info('Failed to load SSL library: %s (%s)', type(e), e)
     _libssl = None
 
 if not _libssl:
